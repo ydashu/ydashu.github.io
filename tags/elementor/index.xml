@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Elementor on ydashu</title>
+        <link>https://ydashu.github.io/tags/elementor/</link>
+        <description>Recent content in Elementor on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/elementor/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>wordpress主题</title>
+        <link>https://ydashu.github.io/p/wordpress%E4%B8%BB%E9%A2%98/</link>
+        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress%E4%B8%BB%E9%A2%98/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;主题名称&lt;/th&gt;
+          &lt;th&gt;推荐指数&lt;/th&gt;
+          &lt;th&gt;速度评级&lt;/th&gt;
+          &lt;th&gt;官方评分&lt;/th&gt;
+          &lt;th&gt;速度&lt;/th&gt;
+          &lt;th&gt;模板库&lt;/th&gt;
+          &lt;th&gt;默认的编辑器&lt;/th&gt;
+          &lt;th&gt;woocommerce&lt;/th&gt;
+          &lt;th&gt;文档&lt;/th&gt;
+          &lt;th&gt;视频&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;generatePress&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;少&lt;/td&gt;
+          &lt;td&gt;GenerateBlocks&lt;/td&gt;
+          &lt;td&gt;可以用GreenShift woo addon，但不推荐&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.generatepress.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.generatepress.com/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@GeneratePress/playlists&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/@GeneratePress/playlists&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;blocksy&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;较多&lt;/td&gt;
+          &lt;td&gt;GreenShift或Stackable&lt;/td&gt;
+          &lt;td&gt;配合GreenShift woo addon自定义产品界面&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=M0pVNdurzc0&amp;amp;list=PLIEKo1RENmYxv7s01erTf4Y6JbClr5AEk&amp;amp;index=34&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/watch?v=M0pVNdurzc0&amp;amp;list=PLIEKo1RENmYxv7s01erTf4Y6JbClr5AEk&amp;amp;index=34&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://creativethemes.com/blocksy/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://creativethemes.com/blocksy/docs/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@CreativeThemes/playlists&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/@CreativeThemes/playlists&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kadence&lt;/td&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;较多&lt;/td&gt;
+          &lt;td&gt;Kadence Blocks&lt;/td&gt;
+          &lt;td&gt;配合Kadence Shop Kit (WooCommerce Extras)自定义产品界面&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=Nk6VXAzRRFQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/watch?v=Nk6VXAzRRFQ&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kadencewp.com/help-center/knowledge-base/kadence-theme/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kadencewp.com/help-center/knowledge-base/kadence-theme/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/@KadenceWP/playlists&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/@KadenceWP/playlists&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Twenty Twenty&lt;/td&gt;
+          &lt;td&gt;9&lt;/td&gt;
+          &lt;td&gt;9&lt;/td&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;源生&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://wordpress.org/documentation/category/default-themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wordpress.org/documentation/category/default-themes/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/results?search_query=wordpress&amp;#43;Twenty&amp;#43;Twenty&amp;amp;sp=EgIQAw%253D%253D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/results?search_query=wordpress+Twenty+Twenty&amp;amp;sp=EgIQAw%253D%253D&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;betheme&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;99&lt;/td&gt;
+          &lt;td&gt;多&lt;/td&gt;
+          &lt;td&gt;Bebuilder&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://support.muffingroup.com/documentation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://support.muffingroup.com/documentation/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/results?search_query=betheme&amp;amp;sp=EgIQAw%253D%253D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/results?search_query=betheme&amp;amp;sp=EgIQAw%253D%253D&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;hello elementor&lt;/td&gt;
+          &lt;td&gt;99&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;14&lt;/td&gt;
+          &lt;td&gt;4.5&lt;/td&gt;
+          &lt;td&gt;少&lt;/td&gt;
+          &lt;td&gt;elementor&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/results?search_query=hello&amp;#43;elementor&amp;amp;sp=EgIQAw%253D%253D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/results?search_query=hello+elementor&amp;amp;sp=EgIQAw%253D%253D&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;astra&lt;/td&gt;
+          &lt;td&gt;99&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;13&lt;/td&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;非常多&lt;/td&gt;
+          &lt;td&gt;elementor&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://wpastra.com/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wpastra.com/docs/&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/results?search_query=astra&amp;#43;theme&amp;amp;sp=EgIQAw%253D%253D&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/results?search_query=astra+theme&amp;amp;sp=EgIQAw%253D%253D&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;什么是wordpress主题&#34;&gt;什么是wordpress主题
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;主题（Theme）&lt;/strong&gt; 是一组文件（包括模板、样式表、脚本和媒体）组成的工具，用于定义网站的外观和布局。简单来说，主题决定了你的网站看起来是什么样子，并控制了内容如何在前端呈现。&lt;/p&gt;
+&lt;h3 id=&#34;主题的作用&#34;&gt;主题的作用
+&lt;/h3&gt;&lt;p&gt;wordpress的主题主要控制appearance。如增加如elementor和widgets等组件、Customize中的配置控制、页面的结构和内容呈现。例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;index.php：主模板文件&lt;/li&gt;
+&lt;li&gt;header.php：定义页面头部&lt;/li&gt;
+&lt;li&gt;footer.php：定义页面底部&lt;/li&gt;
+&lt;li&gt;single.php：单篇文章页面模板&lt;/li&gt;
+&lt;li&gt;page.php：单独页面模板&lt;/li&gt;
+&lt;li&gt;archive.php：存档页面模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;什么是wordpress编辑器&#34;&gt;什么是wordpress编辑器
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;WordPress编辑器&lt;/strong&gt; 是用于创建、编辑和管理内容（如文章、页面等）的工具。它是WordPress中最重要的部分之一，负责让用户以可视化的方式编写内容，无需编写代码。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;index.php：主模板文件&lt;/li&gt;
+&lt;li&gt;header.php：定义页面头部&lt;/li&gt;
+&lt;li&gt;footer.php：定义页面底部&lt;/li&gt;
+&lt;li&gt;single.php：单篇文章页面模板&lt;/li&gt;
+&lt;li&gt;page.php：单独页面模板&lt;/li&gt;
+&lt;li&gt;archive.php：存档页面模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;编辑器分类&#34;&gt;编辑器分类
+&lt;/h3&gt;&lt;p&gt;wordpress编辑器主要分为三个大类&lt;/p&gt;
+&lt;h4 id=&#34;传统编辑器-classic-editor&#34;&gt;传统编辑器 classic editor
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;最为传统的编辑器，wordpress 5.0之前版本的默认编辑器&lt;/li&gt;
+&lt;li&gt;支持html编辑&lt;/li&gt;
+&lt;li&gt;现在也常用于woocommerce的产品编辑界面或者配合(ACF+动态变量)使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;区块编辑器-block-editorgutenberg&#34;&gt;区块编辑器 block editor/Gutenberg
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;wordpress 5.0之后版本的默认编辑器&lt;/li&gt;
+&lt;li&gt;速度比拖拽式编辑器快&lt;/li&gt;
+&lt;li&gt;魔改版本：GenerateBlocks、GreenShift、Stackable、Kadence Blocks等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;页面构建器page-builders&#34;&gt;页面构建器Page Builders
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;新手友好，拖拽式编辑&lt;/li&gt;
+&lt;li&gt;速度慢&lt;/li&gt;
+&lt;li&gt;常见的elementor、Bebulider、Divi Builder、WPBakery 等等&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

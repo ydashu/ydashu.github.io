@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>电商 on ydashu</title>
+        <link>https://ydashu.github.io/tags/%E7%94%B5%E5%95%86/</link>
+        <description>Recent content in 电商 on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/%E7%94%B5%E5%95%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>WordPress vs Shopify</title>
+        <link>https://ydashu.github.io/p/wordpress-vs-shopify/</link>
+        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress-vs-shopify/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;内容&lt;/th&gt;
+          &lt;th&gt;WordPress&lt;/th&gt;
+          &lt;th&gt;Shopify&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;适用于&lt;/td&gt;
+          &lt;td&gt;Blog网站、B2B外贸、希望自主可控的B2C（相对更控用VPS、Hosting也可能被扫）、希望手续费低的B2C&lt;/td&gt;
+          &lt;td&gt;一般的B2C(对于违禁品shopify会封)、对手续费不在意的B2C、简单快速上手&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;核心&lt;/td&gt;
+          &lt;td&gt;Blog为核心的开源平台，后续发展各种主题和插件。  &lt;br&gt;其中的Wocommerce是其中最常用的电商插件。  &lt;br&gt;官方审核的主题和插件在后台可搜，定制化非审核的插件可以导入的模式插入&lt;/td&gt;
+          &lt;td&gt;以电商为核心的盈利为主要目的的闭源平台，有一些主题和插件，但不多&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;是否可控&lt;/td&gt;
+          &lt;td&gt;产品方面比shopify更可控；  &lt;br&gt;安全方面不确定，感觉不如shopify&lt;/td&gt;
+          &lt;td&gt;产品方面比不可控（违禁品可能被关店）；  &lt;br&gt;安全方面不确定，感觉shopify好&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;费用&lt;/td&gt;
+          &lt;td&gt;域名费用、hosting或VPS费用、CDN费用（网站流量低可白嫖）、主题和插件费用（破解版可白嫖）、支付网关交易手续费2.9% + 0.30美元左右&lt;/td&gt;
+          &lt;td&gt;域名费用、月租费、  &lt;br&gt;shopify payments支付：支付网关交易手续费；  &lt;br&gt;第三方支付方式(如PayPal或Stripe)：第三方交易手续费、支付网关交易手续费。  &lt;br&gt;支付网关交易手续费、第三方交易手续费：三种月租套餐的费率不同&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;功能性&lt;/td&gt;
+          &lt;td&gt;定制化程度高&lt;/td&gt;
+          &lt;td&gt;定制化程度低&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;易用性&lt;/td&gt;
+          &lt;td&gt;相对复杂&lt;/td&gt;
+          &lt;td&gt;相对简单&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;网站速度&lt;/td&gt;
+          &lt;td&gt;取决于VPS或Hosting、CDN、主题、插件、代码、图片等多种因素。  &lt;br&gt;其他条件不变，wordpress的Gutenberg主题比shopify快&lt;/td&gt;
+          &lt;td&gt;取决于主题、、插件、代码、图片等多种因素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SEO&lt;/td&gt;
+          &lt;td&gt;有很多插件，但是不推荐使用、现在SEO不在于技术，而是内容和站外引流&lt;/td&gt;
+          &lt;td&gt;基本没什么插件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;后台界面UI&lt;/td&gt;
+          &lt;td&gt;更传统&lt;/td&gt;
+          &lt;td&gt;更现代&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

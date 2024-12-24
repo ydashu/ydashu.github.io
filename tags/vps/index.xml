@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Vps on ydashu</title>
+        <link>https://ydashu.github.io/tags/vps/</link>
+        <description>Recent content in Vps on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/vps/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>wordpress使用VPS和Hosting</title>
+        <link>https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/</link>
+        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;备注：Hosting以honstinger为例，其他的Hosting博主目前还未使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;vps-vs-hosting&#34;&gt;VPS vs Hosting
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;内容&lt;/th&gt;
+          &lt;th&gt;VPS&lt;/th&gt;
+          &lt;th&gt;Hosting&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;适用于&lt;/td&gt;
+          &lt;td&gt;更强的代码能力、更强的主机配置能力；更加自主可控、VPS参数可选更多、预算充足&lt;/td&gt;
+          &lt;td&gt;更快的建站、托管式安装wordpress和cpanel或hpanel(honstinger)等、预算有限&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;后台界面UI&lt;/td&gt;
+          &lt;td&gt;相对复杂；纯linux代码或者安装cpanel&lt;/td&gt;
+          &lt;td&gt;相对简单；自动安装hpanel(hongstinger)或cpanel(其他的)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;网站速度&lt;/td&gt;
+          &lt;td&gt;取决于VPS的参数、带宽的参数、CDN等。  &lt;br&gt;一般来说比Hosting快&lt;/td&gt;
+          &lt;td&gt;一般来说速度如下：  &lt;br&gt;wordpress(VPS &amp;gt; Hosting) &amp;gt; shopify&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据库&lt;/td&gt;
+          &lt;td&gt;需要手动配置&lt;/td&gt;
+          &lt;td&gt;自动配置好&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;费用&lt;/td&gt;
+          &lt;td&gt;较高&lt;/td&gt;
+          &lt;td&gt;较低&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;优势&lt;/td&gt;
+          &lt;td&gt;主机配置更高、更加自主可控、一般固定ip&lt;/td&gt;
+          &lt;td&gt;一键安装、每日备份、可视化创建邮箱、可视化文件管理、自动配置dns、自动SSL&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;劣势&lt;/td&gt;
+          &lt;td&gt;很多功能需要手动设置，对建站人的要求高&lt;/td&gt;
+          &lt;td&gt;低配版无固定ip、主机配置低&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;vps搭建wordpress的方法&#34;&gt;VPS搭建wordpress的方法
+&lt;/h2&gt;&lt;p&gt;参考如下两个链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/2390730&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;腾讯云&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wumadev.com/vps%E6%90%AD%E5%BB%BAwordpress/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;无码开发&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hosting的选择&#34;&gt;Hosting的选择
+&lt;/h2&gt;&lt;h3 id=&#34;2024年各服务商&#34;&gt;2024年各服务商
+&lt;/h3&gt;&lt;p&gt;主要Hostinger、IONOS、Bluehost、sitegroud等&lt;/p&gt;
+&lt;p&gt;2024年的情况：&lt;/p&gt;
+&lt;p&gt;首推Hosinger便宜好用，功能全，支持支付宝、国内银行发行的国际信用卡等支付。hpancel简单大气美观。&lt;/p&gt;
+&lt;p&gt;其中IONOS最便宜，但是后台界面做的很差，国内银行发行的国际信用卡支付后有很大概率失败，不推荐。&lt;/p&gt;
+&lt;p&gt;Bluehost、sitegroud这两个也比较常用，其中sitegroud界面好于Bluehost，差于Hostinger。两者性价比中规中矩。&lt;/p&gt;
+&lt;h3 id=&#34;小技巧&#34;&gt;小技巧：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以用google搜索 wordpress hosting或者wordpress hosting coupon等关键词，有些有优惠。比如如下网站：&lt;a class=&#34;link&#34; href=&#34;https://www.top10.com/hosting/wordpresshosting-comparison&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;top10.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;备注：这个技巧同样适用于域名的购买： domain coupon namecheap、domain coupon code namecheap等等关键词&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;假设已经有另外一个服务商的账号，比如Hosinger。一般都有推广链接，会对推广人有返点并对被推广人优惠&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多渠道对比下，找出最适合的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hosting初始化wordpress的方法&#34;&gt;Hosting初始化wordpress的方法
+&lt;/h2&gt;&lt;h3 id=&#34;购买套餐&#34;&gt;购买套餐
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hostinger.com/pricing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hostinger&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要储存空间、访问人数、免费CDN、支持手动备份和静态p等区别，CDN可以用&lt;strong&gt;LiteSpeed Cache&lt;/strong&gt;插件的quic.cloud替代，对储存空间、访问人数、静态ip没有要求的其实差别不大。&lt;/p&gt;
+&lt;p&gt;静态IP地址是指在互联网上始终不变的IP地址。对于网站来说，使用静态IP地址有以下几个好处：（来自kimi）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;域名解析稳定性&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静态IP地址不会改变，因此域名系统（DNS）记录可以永久指向同一个IP地址，这有助于确保域名解析的稳定性和可靠性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;安全性&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静态IP地址可以更容易地设置防火墙规则和其他安全措施，因为IP地址是已知且不变的。这对于防止未授权访问和DDoS攻击等安全威胁至关重要。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;远程访问&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你需要远程访问服务器，静态IP地址可以简化VPN和其他远程访问技术的过程，因为你不需要担心IP地址会改变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;邮件服务&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用静态IP地址可以减少邮件服务提供商将你的邮件标记为垃圾邮件的风险，因为动态IP地址有时会被用于发送垃圾邮件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;搜索引擎优化（SEO）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;虽然搜索引擎优化主要关注网站内容和链接，但拥有一个静态IP地址可以确保你的网站始终可访问，这对于搜索引擎爬虫来说是有利的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;API和集成&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你的网站需要与其他服务或API集成，静态IP地址可以确保这些服务始终能够找到并访问你的服务器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;易于管理&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静态IP地址使得管理网络和服务器配置变得更加简单，因为你不需要不断更新IP地址相关的配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安装wordpress&#34;&gt;安装wordpress
+&lt;/h3&gt;&lt;p&gt;创建一个新的空白网站，里面的插件和主题都不勾选&lt;/p&gt;
+&lt;h4 id=&#34;域名配置&#34;&gt;域名配置
+&lt;/h4&gt;&lt;p&gt;设置属于你的域名，推荐namecheap平台。&lt;/p&gt;
+&lt;h4 id=&#34;服务器位置选择&#34;&gt;服务器位置选择
+&lt;/h4&gt;&lt;p&gt;选择距离你的目标用户近的&lt;/p&gt;
+&lt;h4 id=&#34;dns配置&#34;&gt;DNS配置
+&lt;/h4&gt;&lt;p&gt;登录你的域名服务商的用户账号，按照下图的操作指南，将域名的dns设置为 ns1.dns-parking.com 和 ns2.dns-parking.com
+&lt;img src=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2.jpg&#34;
+	width=&#34;883&#34;
+	height=&#34;314&#34;
+	srcset=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu10862371665848239409.jpg 480w, https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu7110167347572518882.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;674px&#34;
+	
+&gt;
+一般来说会自动生成DNS的记录的key和value。如果要修改，比如改邮箱MX和TXT的记录值==&amp;gt;可在路径“website/Dashboard/Advanced/DNS Zone Editor”下修改.&lt;/p&gt;
+&lt;h5 id=&#34;dns-check网站&#34;&gt;Dns check网站
+&lt;/h5&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dnschecker.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DNS Checker&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;安装ssl&#34;&gt;安装SSL
+&lt;/h4&gt;&lt;p&gt;可在路径“website/Dashboard/Wordpresss/Overview/Core”下开启Force HTTPS这个选项，会自动安装SSL&lt;/p&gt;
+&lt;h3 id=&#34;邮箱配置&#34;&gt;邮箱配置
+&lt;/h3&gt;&lt;h4 id=&#34;hostinger自带邮箱&#34;&gt;hostinger自带邮箱
+&lt;/h4&gt;&lt;p&gt;上述dns配置完成后，系统会自动生成MX指向hostinger的记录值 &lt;code&gt;mx1.hostinger.com&lt;/code&gt; 和 &lt;code&gt;mx2.hostinger.com&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;点击&lt;code&gt;Email/Manage/Email Account&lt;/code&gt;创建email账户&lt;/p&gt;
+&lt;p&gt;在“&lt;code&gt;Configure apps and devices&lt;/code&gt; ”这里有&lt;code&gt;Browser&lt;/code&gt;和&lt;code&gt;Recommended apps&lt;/code&gt;两个选项。如果要配置同步到gmail、outlook、163等支持&lt;code&gt;IMAP/SMTP&lt;/code&gt;或&lt;code&gt;POP&lt;/code&gt;的邮箱，选择&lt;code&gt;Recommended apps&lt;/code&gt;这个选项，这个选项也可以用Browser登录，登录网站为&lt;a class=&#34;link&#34; href=&#34;http://mail.hostinger.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mail.hostinger.com&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;配置其他邮箱以企业微信邮箱为例&#34;&gt;配置其他邮箱：以企业微信邮箱为例
+&lt;/h4&gt;&lt;h5 id=&#34;配置mx&#34;&gt;配置MX
+&lt;/h5&gt;&lt;p&gt;MX: &lt;code&gt;mxbiz1.qq.com&lt;/code&gt; 和 &lt;code&gt;mxbiz2.qq.com&lt;/code&gt;&lt;br&gt;
+参考文档：&lt;a class=&#34;link&#34; href=&#34;https://open.work.weixin.qq.com/help2/pc/15333&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://open.work.weixin.qq.com/help2/pc/15333&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;配置txt&#34;&gt;配置TXT
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;SPF
+&lt;ul&gt;
+&lt;li&gt;主机记录：&lt;code&gt;@或者为空 &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;记录类型：&lt;code&gt;TXT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;TXT记录值为：&lt;code&gt;v=spf1 include:spf.mail.qq.com ~all  &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;参考文档为 &lt;a class=&#34;link&#34; href=&#34;https://open.work.weixin.qq.com/help2/pc/14554&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://open.work.weixin.qq.com/help2/pc/14554&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DKIM
+&lt;ul&gt;
+&lt;li&gt;需要按照企业微信的路径”企业微信管理后台-&amp;gt;协作-&amp;gt;邮件-&amp;gt;设置-&amp;gt;DKIM验证-&amp;gt;配置”获取配置信息&lt;/li&gt;
+&lt;li&gt;参考文档为 &lt;a class=&#34;link&#34; href=&#34;https://open.work.weixin.qq.com/help2/pc/19647&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://open.work.weixin.qq.com/help2/pc/19647&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DMARC
+&lt;ul&gt;
+&lt;li&gt;主机记录：&lt;code&gt;_dmarc &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;记录类型：&lt;code&gt;TXT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;记录值: &lt;code&gt;v=DMARC1; p=none; rua=mailto:mailauth-reports@qq.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;参考文档为 &lt;a class=&#34;link&#34; href=&#34;https://open.work.weixin.qq.com/help2/pc/19820&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://open.work.weixin.qq.com/help2/pc/19820&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
