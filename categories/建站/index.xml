@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>ydashu</title>
-        <link>https://ydashu.github.io/</link>
-        <description>Recent content on ydashu</description>
+        <title>建站 on ydashu</title>
+        <link>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</link>
+        <description>Recent content in 建站 on ydashu</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Front Matter 字段说明</title>
         <link>https://ydashu.github.io/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
@@ -963,80 +963,6 @@
 &lt;a class=&#34;link&#34; href=&#34;https://letere-gzj.github.io/hugo-stack/p/hugo/custom-blog/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;letere&lt;/a&gt;&lt;/p&gt;
 </description>
-        </item>
-        <item>
-        <title>博客总览</title>
-        <link>https://ydashu.github.io/p/%E5%8D%9A%E5%AE%A2%E6%80%BB%E8%A7%88/</link>
-        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/p/%E5%8D%9A%E5%AE%A2%E6%80%BB%E8%A7%88/</guid>
-        <description>&lt;h2 id=&#34;分类设置&#34;&gt;分类设置
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e5%bb%ba%e7%ab%99/&#34; &gt;建站&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/wordpress/&#34; &gt;wordpress&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/shopify/&#34; &gt;shopify&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/hugo/&#34; &gt;hugo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/google/&#34; &gt;google&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/ai/&#34; &gt;AI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/it/&#34; &gt;IT&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e9%87%91%e8%9e%8d/&#34; &gt;金融&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/&#34; &gt;未分类&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>归档</title>
-        <link>https://ydashu.github.io/archives/</link>
-        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/archives/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>关于</title>
-        <link>https://ydashu.github.io/%E5%85%B3%E4%BA%8E/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;个人记录&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>搜索</title>
-        <link>https://ydashu.github.io/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/search/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>友链</title>
-        <link>https://ydashu.github.io/%E5%8F%8B%E9%93%BE/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/%E5%8F%8B%E9%93%BE/</guid>
-        <description>&lt;!-- 这个段落不会显示 
-To use this feature, add `links` section to frontmatter.
-
-This page&#39;s frontmatter:
-
-```yaml
-links:
-  - title: GitHub
-    description: GitHub is the world&#39;s largest software development platform.
-    website: https://github.com
-    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-  - title: TypeScript
-    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
-    website: https://www.typescriptlang.org
-    image: ts-logo-128.jpg
-```
-
-`image` field accepts both local and external images.
---&gt;</description>
         </item>
         
     </channel>

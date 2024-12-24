@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>总 on ydashu</title>
+        <link>https://ydashu.github.io/categories/%E6%80%BB/</link>
+        <description>Recent content in 总 on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%80%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>博客总览</title>
+        <link>https://ydashu.github.io/p/%E5%8D%9A%E5%AE%A2%E6%80%BB%E8%A7%88/</link>
+        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E5%8D%9A%E5%AE%A2%E6%80%BB%E8%A7%88/</guid>
+        <description>&lt;h2 id=&#34;分类设置&#34;&gt;分类设置
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e5%bb%ba%e7%ab%99/&#34; &gt;建站&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/wordpress/&#34; &gt;wordpress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/shopify/&#34; &gt;shopify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/hugo/&#34; &gt;hugo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/google/&#34; &gt;google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/ai/&#34; &gt;AI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/it/&#34; &gt;IT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e9%87%91%e8%9e%8d/&#34; &gt;金融&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e6%9c%aa%e5%88%86%e7%b1%bb/&#34; &gt;未分类&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
