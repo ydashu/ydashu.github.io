@@ -7,6 +7,304 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate></lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>tailscale-远程软件使用教程</title>
+        <link>https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+        <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;本文以常见的windows为例，linux和macOS也类似&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;远程连接的几种方式&#34;&gt;远程连接的几种方式
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;公网ip访问&lt;/li&gt;
+&lt;li&gt;中继服务器代理访问
+&lt;ul&gt;
+&lt;li&gt;如：相关平台向日葵、todesk等；或者自己搭建中继&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tailscale / ZeroTier（Mesh网络）
+&lt;ul&gt;
+&lt;li&gt;最推荐的方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下是上面三种方式的对比：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th&gt;公网直接访问&lt;/th&gt;
+          &lt;th&gt;中继服务器代理访问&lt;/th&gt;
+          &lt;th&gt;Tailscale / ZeroTier（Mesh网络）&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;复杂度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;简单但需要配置安全措施&lt;/td&gt;
+          &lt;td&gt;中等，需配置中继服务器和网络&lt;/td&gt;
+          &lt;td&gt;低，自动配置，用户友好&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;安全性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;低，需要额外的安全措施&lt;/td&gt;
+          &lt;td&gt;中等，通过加密和控制访问提高安全&lt;/td&gt;
+          &lt;td&gt;高，端到端加密，穿透NAT与防火墙&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;延迟&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;较低，但受网络状况影响&lt;/td&gt;
+          &lt;td&gt;较高，取决于中继服务器的质量&lt;/td&gt;
+          &lt;td&gt;较低，P2P直连或通过中继优化&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;穿透NAT能力&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;较弱，除非配置端口映射&lt;/td&gt;
+          &lt;td&gt;强，可以穿透NAT&lt;/td&gt;
+          &lt;td&gt;强，自动穿透NAT和防火墙&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;成本&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;低，通常不需要额外服务&lt;/td&gt;
+          &lt;td&gt;中等，需要租赁中继服务器或服务&lt;/td&gt;
+          &lt;td&gt;免费或收费，取决于使用的服务&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;扩展性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;低，较难实现多设备的管理&lt;/td&gt;
+          &lt;td&gt;中等，依赖中继服务器&lt;/td&gt;
+          &lt;td&gt;高，支持多设备之间的自动连接&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;tailscale教程&#34;&gt;tailscale教程
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;windows版为例&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;登录&#34;&gt;登录
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tailscale.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tailscale · Best VPN Service for Secure Networks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击上面链接登录-推荐使用google或者微软账户登录&lt;/p&gt;
+&lt;h3 id=&#34;添加设备-下载&#34;&gt;添加设备-下载
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140308.jpg&#34;
+	width=&#34;1264&#34;
+	height=&#34;581&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140308_hu6115829999209187074.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140308_hu11107077030502903552.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;522px&#34;
+	
+&gt;
+复制上述链接并下载&lt;/p&gt;
+&lt;h3 id=&#34;安装下载好的软件&#34;&gt;安装下载好的软件
+&lt;/h3&gt;&lt;h3 id=&#34;login&#34;&gt;login
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140345.jpg&#34;
+	width=&#34;179&#34;
+	height=&#34;113&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140345_hu16998007737962521929.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140345_hu1055845158175177780.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击log in会跳出网页网站，登录后点击connect就会登录&lt;/p&gt;
+&lt;h4 id=&#34;log-out&#34;&gt;Log out
+&lt;/h4&gt;&lt;p&gt;一般会保留登录记录，不过不小心log out了。实测再次log in失效。&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;win+R ==&amp;gt; control ==&amp;gt; 控制面板 ==&amp;gt; 卸载程序 ==&amp;gt; 找到Tailscale,双击 ==&amp;gt;Repair&lt;/p&gt;
+&lt;h3 id=&#34;在第二台-控制电脑上登录&#34;&gt;在第二台-控制电脑上登录
+&lt;/h3&gt;&lt;p&gt;第一台电脑登录好后会在网页后台&lt;a class=&#34;link&#34; href=&#34;https://login.tailscale.com/admin/machines&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tailscale&lt;/a&gt;显示，上面有IP和是否connect
+&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140528.jpg&#34;
+	width=&#34;1280&#34;
+	height=&#34;679&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140528_hu2443632472422953402.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140528_hu4168647629067326871.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;452px&#34;
+	
+&gt;
+第二台电脑也按照上述流程登录，这时Machines界面会出现两个。&lt;/p&gt;
+&lt;p&gt;右键点击软件图标会出现机器名称和IP
+&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140557.jpg&#34;
+	width=&#34;298&#34;
+	height=&#34;222&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140557_hu2358473569210034630.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140557_hu10839330367919593208.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;被控电脑的设置&#34;&gt;被控电脑的设置
+&lt;/h3&gt;&lt;h4 id=&#34;启动远程桌面&#34;&gt;启动远程桌面
+&lt;/h4&gt;&lt;h5 id=&#34;打开设置&#34;&gt;&lt;strong&gt;打开设置&lt;/strong&gt;：
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;按 &lt;code&gt;Windows + I&lt;/code&gt; 键打开“设置”应用程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;访问系统设置&#34;&gt;&lt;strong&gt;访问系统设置&lt;/strong&gt;：
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;在“设置”窗口中，点击“系统”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;选择远程桌面&#34;&gt;&lt;strong&gt;选择远程桌面&lt;/strong&gt;：
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;在左侧菜单中，向下滚动并点击“远程桌面”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;启用远程桌面&#34;&gt;&lt;strong&gt;启用远程桌面&lt;/strong&gt;：
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在右侧面板中，将“启用远程桌面”切换到“开”。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可能会出现一个确认对话框，点击“确认”。&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140655.jpg&#34;
+	width=&#34;891&#34;
+	height=&#34;550&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140655_hu16864488245245812851.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140655_hu1153041357885361950.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;388px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;配置防火墙&#34;&gt;配置防火墙
+&lt;/h3&gt;&lt;h4 id=&#34;打开控制面板&#34;&gt;&lt;strong&gt;打开控制面板&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;按 &lt;code&gt;Windows + R&lt;/code&gt; 键，输入 &lt;code&gt;control&lt;/code&gt; 并按回车键。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;访问系统和安全设置&#34;&gt;&lt;strong&gt;访问系统和安全设置&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在控制面板中，点击“系统和安全”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;打开-windows-防火墙&#34;&gt;&lt;strong&gt;打开 Windows 防火墙&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;点击“Windows Defender 防火墙”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;允许应用通过防火墙&#34;&gt;&lt;strong&gt;允许应用通过防火墙&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在左侧面板中，点击“允许应用或功能通过 Windows Defender 防火墙”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查远程桌面&#34;&gt;&lt;strong&gt;检查远程桌面&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在打开的窗口中，确保“远程桌面”旁边的复选框已选中（包括专用和公用网络）。&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140805.jpg&#34;
+	width=&#34;891&#34;
+	height=&#34;550&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140805_hu16864488245245812851.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140805_hu1153041357885361950.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;388px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;验证远程桌面设置&#34;&gt;&lt;strong&gt;验证远程桌面设置&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;检查用户权限&#34;&gt;&lt;strong&gt;检查用户权限&lt;/strong&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确保目标设备上的用户账户有权限使用远程桌面。&lt;/li&gt;
+&lt;li&gt;按 &lt;code&gt;Windows + R&lt;/code&gt; 键，输入 &lt;code&gt;SystemPropertiesRemote&lt;/code&gt; 并按回车键，打开“系统属性”窗口的“远程”标签。&lt;/li&gt;
+&lt;li&gt;在“远程桌面”部分，点击“选择用户…”按钮。如何查看现在的账户？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;打开控制面板==&amp;gt;点击“用户帐户”&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140836.jpg&#34;
+	width=&#34;941&#34;
+	height=&#34;381&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140836_hu5570093400754598496.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140836_hu8237870510451795229.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;246&#34;
+		data-flex-basis=&#34;592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;本机的用户名是admin。（备注：一般Administrator用户远程最好把密码改复杂，有可能会被黑客暴力破解）&lt;/p&gt;
+&lt;p&gt;如何更改密码？ CTRL+ALT+Delete ==&amp;gt; 更改密码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;确认当前用户在允许远程访问的用户列表中，如果没有，请点击“添加”并添加相关用户。
+&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140916.jpg&#34;
+	width=&#34;887&#34;
+	height=&#34;598&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140916_hu1757438433331241892.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140916_hu2523351949076456187.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;355px&#34;
+	
+&gt;
+&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140921.jpg&#34;
+	width=&#34;546&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140921_hu1791000778663406765.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140921_hu16644077242716400930.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;375px&#34;
+	
+&gt;
+&lt;img src=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140924.jpg&#34;
+	width=&#34;614&#34;
+	height=&#34;766&#34;
+	srcset=&#34;https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140924_hu3533732201657931952.jpg 480w, https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/20241227140924_hu7732407018184457935.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;192px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;找到和上述用户账户匹配的名称，然后添加进去&lt;/p&gt;
+&lt;h4 id=&#34;确保计算机不处于睡眠状态&#34;&gt;&lt;strong&gt;确保计算机不处于睡眠状态&lt;/strong&gt;：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确保目标计算机设置为在需要远程连接时不会进入睡眠模式，这可能会导致远程连接失败。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;操控电脑的操作&#34;&gt;操控电脑的操作
+&lt;/h2&gt;&lt;h3 id=&#34;打开远程桌面连接&#34;&gt;&lt;strong&gt;打开远程桌面连接&lt;/strong&gt;：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;按 &lt;code&gt;Windows + R&lt;/code&gt; 键，输入 &lt;code&gt;mstsc&lt;/code&gt; 并按回车。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;输入-tailscale-ip-地址&#34;&gt;&lt;strong&gt;输入 Tailscale IP 地址&lt;/strong&gt;：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;在“计算机”字段中输入 100.106.57.13（被控电脑的 Tailscale IP），点击“连接”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;输入管理员用户名和密码&#34;&gt;&lt;strong&gt;输入管理员用户名和密码&lt;/strong&gt;：
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在身份验证窗口中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户名： admin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密码： &lt;code&gt;AdminPassWord&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>
