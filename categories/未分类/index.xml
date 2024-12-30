@@ -7,7 +7,171 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Fri, 27 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>chrome常用插件和工具网站</title>
+        <link>https://ydashu.github.io/p/chrome%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/chrome%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</guid>
+        <description>&lt;h2 id=&#34;插件&#34;&gt;插件
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;chrome插件官方网站：&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chromewebstore&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;图片下载&#34;&gt;图片下载
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;fatkun
+&lt;ul&gt;
+&lt;li&gt;chrome官方已经下架，需要下载的可以官网手动下载
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.fatkun.net/zh-CN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://web.f7tk.com/zh-CN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;imageye
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/image-downloader-imageye/agionbommeaifngbhincahgmoflcikhm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chrome官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.imageye.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;imageye官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/image-downloader-pro-%E2%80%94%E2%80%94-i/ldaenkbmmnehilpkmnigoaodoiicdlje&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Image DP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;其他
+- chrome搜&lt;code&gt;image&lt;/code&gt;或&lt;code&gt;image download&lt;/code&gt;
+- google搜&lt;code&gt;image download chrome extension&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;阅读器&#34;&gt;阅读器
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;LinghuBros Reader
+&lt;ul&gt;
+&lt;li&gt;支持多种格式：&lt;code&gt;ePub,PDF,MOBI,AZW3,FB2,supports mind map and TTS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/linghubros-reader-for-epu/okgffdhpnikhbmpieeefjbkjmfbffehp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chrome官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.linghuxiong.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LinghuBros官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代理&#34;&gt;代理
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Proxy SwitchyOmega&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;社交网站翻译&#34;&gt;社交网站翻译
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;whatsapp
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/automatic-whatsapp-transl/gcnighohnjfolifjjkncjllmhiafjkhn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Automatic Whatsapp ™ Translator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;竞品网站分析&#34;&gt;竞品网站分析
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;web技术/框架识别
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wappalyzer&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;网站技术分析：如识别wordpress/shopify/hugo等建站框架识别&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;google相关&#34;&gt;google相关
+&lt;/h3&gt;&lt;h4 id=&#34;google-tag&#34;&gt;google tag
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/tag-assistant/kejbdjndbnbjgmefkgdddjlbokphdefk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tag Assistant&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;google tag验证器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tampermonkey-油猴&#34;&gt;Tampermonkey 油猴
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;添加chrome的脚本插件&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chrome官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tampermonkey.net/index.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tampermonkey官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tampermonkey.net/scripts.php?locale=zh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网推荐的脚本网站&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;工具网站&#34;&gt;工具网站
+&lt;/h2&gt;&lt;h3 id=&#34;ai&#34;&gt;AI
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chatgpt.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chatgpt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://x.com/i/grok?focus=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;X.grok&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.doubao.com/chat/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;豆包&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://kimi.moonshot.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;kimi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在线ps&#34;&gt;在线ps
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ps.gaoding.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;稿定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://picwish.cn/create&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;佐糖&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;在线自动抠图、裁剪、压缩等（高清下载和批量编辑等需要会员）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pdf工具&#34;&gt;pdf工具
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ilovepdf.com/zh-cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ilovepdf&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;免费&lt;/li&gt;
+&lt;li&gt;功能：合并、拆分、压缩、转换、旋转和解锁等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;翻译&#34;&gt;翻译
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.deepl.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;deepL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://translate.google.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;google translate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;国际物流查询&#34;&gt;国际物流查询
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.17track.net/zh-cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;17track&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;在线接手机码&#34;&gt;在线接手机码
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sms-activate.guru/cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sms-active&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;一次性接码&lt;/li&gt;
+&lt;li&gt;俄罗斯人开发的网站&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;阅读器-1&#34;&gt;阅读器
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://fereai.com/reader/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://fereai.com/reader/&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;支持.&lt;code&gt;mobi, .epub, .azw, .azw3, .txt, .prc&lt;/code&gt;, 不支持&lt;code&gt;.PDF&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>tailscale-远程软件使用教程</title>
         <link>https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
         <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
