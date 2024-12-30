@@ -172,6 +172,193 @@
 </description>
         </item>
         <item>
+        <title>wordPress架构</title>
+        <link>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%84/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%84/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;个人看法，仅供参考&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;架构&lt;/th&gt;
+          &lt;th&gt;非电商网站推荐指数&lt;/th&gt;
+          &lt;th&gt;电商网站推荐指数&lt;/th&gt;
+          &lt;th&gt;特点&lt;/th&gt;
+          &lt;th&gt;适用场景&lt;/th&gt;
+          &lt;th&gt;内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GeneratePress+GenerateBlocks&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;网站速度特快&lt;/td&gt;
+          &lt;td&gt;B2B网站；博客网站；基本不需要定制化的woo电商网站&lt;/td&gt;
+          &lt;td&gt;generatepress+GenerateBlocks+ACF+Meow(Gallery&amp;amp;lightbox)+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Blocksy+GenerateBlocks&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;网站速度很快&lt;/td&gt;
+          &lt;td&gt;对woo的产品布局定制化不高（有基础的布局调整）的电商网站&lt;/td&gt;
+          &lt;td&gt;blocksy+GenerateBlocks+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache+woo&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GeneratePress+KadenceBlocks&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;网站速度快&lt;/td&gt;
+          &lt;td&gt;B2B网站；博客网站&lt;/td&gt;
+          &lt;td&gt;GeneratePress+KadenceBlocks+ACF+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GeneratePress+KadenceBlocks+Kadence shop kit&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;网站速度快&lt;/td&gt;
+          &lt;td&gt;对woo的产品布局定制化高的电商网站&lt;/td&gt;
+          &lt;td&gt;GeneratePress+KadenceBlocks+Kadence shop kit+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Greenshift Theme+Greenshift&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;动态效果&lt;/td&gt;
+          &lt;td&gt;对woo的产品布局和page定制化高的电商网站&lt;/td&gt;
+          &lt;td&gt;GreenshiftTheme+Greenshift+greenshift addon+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GeneratePress+Greenshift&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;11&lt;/td&gt;
+          &lt;td&gt;动态效果&lt;/td&gt;
+          &lt;td&gt;动态效果定制化高，不需要woo的网站&lt;/td&gt;
+          &lt;td&gt;GeneratePress+Greenshift+greenshift addon+ACF+Fluent Forms+FluentSMTP+WP Media folder+Intuitive Custom Post Order+LiteSpeed Cache&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BeTheme全家桶&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;建站速度快、模板库丰富、网站速度一般、Drag and Drop&lt;/td&gt;
+          &lt;td&gt;建站人员要求低、建站速度要求快的电商网站&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Astra+elementor&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;12&lt;/td&gt;
+          &lt;td&gt;建站速度快、模板库丰富、网站速度一般、Drag and Drop&lt;/td&gt;
+          &lt;td&gt;建站人员要求低的电商网站&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>提升wordpress网站速度</title>
+        <link>https://ydashu.github.io/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</guid>
+        <description>&lt;h2 id=&#34;快速的网站架构&#34;&gt;快速的网站架构
+&lt;/h2&gt;&lt;p&gt;可以参考如下：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/p/wordpress%e6%9e%b6%e6%9e%84/&#34; &gt;wordpress架构&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cache缓存&#34;&gt;Cache缓存
+&lt;/h2&gt;&lt;p&gt;wordpress框架下，cache缓存插件有很多，比如：LiteSpeed 、WP Rocket、W3等。下面以hostinger集成的比较好用的LiteSpeed Cache为例&lt;/p&gt;
+&lt;h3 id=&#34;litespeed-cache&#34;&gt;LiteSpeed Cache
+&lt;/h3&gt;&lt;p&gt;参考文档&lt;a class=&#34;link&#34; href=&#34;https://www.hostinger.com/tutorials/litespeed-website-optimization-tool/#What_Is_LiteSpeed&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hostinger: WordPress LiteSpeed Cache Plugin&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;速度对比&#34;&gt;速度对比
+&lt;/h4&gt;&lt;p&gt;LiteSpeed Web Server on VPS &amp;gt; (Hostinger Cloud LsWS) &amp;gt; OpenLiteSpeed ≈ Nginx &amp;gt; Apache&lt;/p&gt;
+&lt;h4 id=&#34;litespeed-cache是什么&#34;&gt;LiteSpeed Cache是什么
+&lt;/h4&gt;&lt;p&gt;LiteSpeed Cache 是 LiteSpeed Technologies 的一款产品，可优化网页上的动态内容。它具有高级缓存功能和优化功能。LiteSpeed Cache 还可作为插件在多个平台上使用，包括 WordPress&lt;/p&gt;
+&lt;h4 id=&#34;litespeed-cache配置&#34;&gt;LiteSpeed Cache配置
+&lt;/h4&gt;&lt;p&gt;前提：只有在LiteSpeed 网络服务器上托管网站的用户才能解锁全部功能&lt;/p&gt;
+&lt;p&gt;配置好的文件导出如下，可导入&lt;a href=&#34;download/LSCWP_cfg.data&#34; download&gt;LSCWP_cfg&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;注意事项&#34;&gt;注意事项
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;cdn连接：QUIC.cloud CDN（LiteSpeed Cache原生的）或 Cloudflare API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不必要的cache setting off: 如Cache Commenters等（看具体的网站）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;图像优化很重要，优化设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lazy Load Images没必要打开：除非网站的图片很大，加载很慢&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Crawler打开，其中的手动更新和自动时间设置很重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cdn&#34;&gt;CDN
+&lt;/h2&gt;&lt;p&gt;以LiteSpeed Cache绑定的QUIC.cloud CDN为例&lt;/p&gt;
+&lt;h3 id=&#34;hostinger原生-vs-quiccloud-vs-cloudflare&#34;&gt;hostinger原生 vs QUIC.cloud vs Cloudflare
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;hostinger原生&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;大部分版本免费（除了最低档）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实测效果不如另外两个&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;QUIC.cloud&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有付费和免费版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;速度快&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wordpress LiteSpeed Cache原生&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有付费和免费版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;速度快&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;很常用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;quiccloud-cdn配置&#34;&gt;QUIC.cloud CDN配置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更改域名设置Nameservers为quit.cloud指定的Nameservers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置DNS records&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置各个计划（免费or付费）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;后期赠送的配额用完，测试下QUIC.cloud CDN免费和hostinger原生哪个速度快&lt;/p&gt;
+&lt;h3 id=&#34;配置前后对比&#34;&gt;配置前后对比
+&lt;/h3&gt;</description>
+        </item>
+        <item>
         <title>B2B外贸营销途径</title>
         <link>https://ydashu.github.io/p/b2b%E5%A4%96%E8%B4%B8%E8%90%A5%E9%94%80%E9%80%94%E5%BE%84/</link>
         <pubDate>Fri, 27 Dec 2024 00:00:00 +0000</pubDate>
@@ -624,6 +811,56 @@ D尝了一口说，哎呀，不就是白开水吗？&lt;br&gt;
 领导赶紧看看茶壶，然后尴尬地说，忘了放茶叶了。&lt;br&gt;
 过了几天，D因为上班玩游戏被开除了。&lt;br&gt;
 当愚昧成为主流， 清醒便是犯罪&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>内涵短文</title>
+        <link>https://ydashu.github.io/p/%E5%86%85%E6%B6%B5%E7%9F%AD%E6%96%87/</link>
+        <pubDate>Thu, 26 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E5%86%85%E6%B6%B5%E7%9F%AD%E6%96%87/</guid>
+        <description>&lt;h2 id=&#34;借钱&#34;&gt;《借钱》
+&lt;/h2&gt;&lt;h3 id=&#34;一&#34;&gt;（一）
+&lt;/h3&gt;&lt;p&gt;一个商人向小陈借了20000块，并且写了借据。在还钱的期限快到的时候，小陈突然发现借据丢了，这使他焦急万分！因为他知道，丢失了借据，向他借钱的这个人是会赖账的。小陈的朋友小周知道此事后，对小陈说：“你给这个商人发个短信过去，要他到时候把向你借的25000块还给你。”&lt;br&gt;
+短信发出以后，小陈很快收到了回复，借钱的商人在短信里写道：“我向你借的是20000块，不是25000块，到时候就还你。”&lt;/p&gt;
+&lt;h3 id=&#34;二&#34;&gt;（二）
+&lt;/h3&gt;&lt;p&gt;上个月，因家里有事急用钱，我跟同事借了两万块，同事二话没说立马就转账给了我。我发微信给他：一个星期后还你，当时他没回我&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;一个星期后，由于忙着准备出国，我竟忘了还钱这事。突然，同事回了条信息：&amp;ldquo;好的&amp;rdquo;。&lt;br&gt;
+我马上就想起来了，于是赶紧把钱还给了他。&lt;/p&gt;
+&lt;h2 id=&#34;人性的弱点&#34;&gt;《人性的弱点》
+&lt;/h2&gt;&lt;p&gt;有个老人爱清静，可附近常有小孩玩，吵得他要命。于是他把小孩召集过来说：我这很冷清，谢谢你们让这更热闹，说完每人发三颗糖。孩子们很开心，天天来玩。&lt;br&gt;
+几天后，每人只给2颗。&lt;br&gt;
+再后来，每人给1颗。&lt;br&gt;
+慢慢地，最后就不给了。&lt;br&gt;
+孩子们生气说：以后再也不来这给你热闹了。&lt;br&gt;
+老人清静了。&lt;br&gt;
+抓住人性的弱点，无事不成。&lt;/p&gt;
+&lt;h2 id=&#34;校服&#34;&gt;《校服》
+&lt;/h2&gt;&lt;p&gt;记得初中学校要求统一穿校服，一套80。我抱着撑死胆大的饿死胆小的心态跟我妈报了100，我妈不信，非得问我邻居家的同学。他竟然说校服120！&lt;br&gt;
+至今忘不了老妈心疼的眼神，望着我说：该多少就多少嘛，你还在长身体，你那点零花钱留着自己花！说完给了我120。&lt;br&gt;
+望着邻居家同学，我真心觉得，自愧不如!!&lt;br&gt;
+那个同学现在已经副厅。&lt;/p&gt;
+&lt;h2 id=&#34;不厚道&#34;&gt;《不厚道》
+&lt;/h2&gt;&lt;p&gt;某男每天施舍给街口一乞丐5元，从不间断。婚后改为2元，生子后改为1元。&lt;br&gt;
+有一天乞丐忍不住问：“先生，为什么你给我的钱越来越少？”答：“独身时没什么压力，后有妻，再有子，生活负担重，只能给1元了。”&lt;br&gt;
+乞丐听后大火：“你太不厚道，再有压力，也不能拿我的钱去养你的家人……”&lt;br&gt;
+##《人情世故，深刻！》&lt;br&gt;
+朋友老李帮我搞定了孩子转学的事，我给了老李5000，老李说什么都不要，我生气地说：拿着，瞧不起我啊！老李接了，说：以后有事不要麻烦我，看不起我。往后有事找老李，老李还是一如既往的热心。&lt;br&gt;
+老李帮同事小王搞定了孩子转学的事，小王说：辛苦了。老李苦笑着说：都是朋友，客气个啥啊。小王说：有时间咱喝点儿。老李说：不用了，用这个钱给孩子买点学习资料吧。此后，老李再没帮过小王…&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;商业头脑&#34;&gt;商业头脑
+&lt;/h2&gt;&lt;h3 id=&#34;一-1&#34;&gt;（一）
+&lt;/h3&gt;&lt;p&gt;一个自助餐厅因顾客浪费严重而效益不好，为了改善这一情况，餐厅规定：凡是浪费食物者罚款10元！&lt;br&gt;
+结果生意一落千丈。&lt;br&gt;
+后经人提点将售价提高10元，规定改为：凡没有浪费食物者奖励10元！&lt;br&gt;
+结果生意火爆且杜绝了浪费行为。&lt;br&gt;
+感悟：让对方感觉占便宜，比给对方真的便宜，更重要。&lt;/p&gt;
+&lt;h3 id=&#34;二-1&#34;&gt;（二）
+&lt;/h3&gt;&lt;p&gt;朋友去买牛肉，老板说：“一斤30元，三斤100元。”&lt;br&gt;
+朋友心想：这数学学得不好是真要命啊！随后拿出30元买了1斤，这样买了3次，然后跟老板说：“看到没有，我花90元就买了3斤，你定价定错了！”&lt;br&gt;
+老板笑了笑说：“自从我这么干，每次都可以一下卖掉3斤呢&amp;hellip;&amp;hellip;”&lt;/p&gt;
+&lt;h3 id=&#34;三&#34;&gt;（三）
+&lt;/h3&gt;&lt;p&gt;男人下岗，在夜市卖炒饭。卖20元一份，生意一般。对面也卖炒饭，卖15元一份，多加一个鸡蛋，生意火爆。原来的同事去看他的时候，替他发愁，问他为啥不降价？&lt;br&gt;
+男人说：“对面摊位也是我的…&amp;hellip;”&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -2153,6 +2390,14 @@ D尝了一口说，哎呀，不就是白开水吗？&lt;br&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>
+        </item>
+        <item>
+        <title></title>
+        <link>https://ydashu.github.io/p/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/</guid>
+        <description></description>
         </item>
         
     </channel>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cache on ydashu</title>
+        <link>https://ydashu.github.io/tags/cache/</link>
+        <description>Recent content in Cache on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/cache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>提升wordpress网站速度</title>
+        <link>https://ydashu.github.io/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</guid>
+        <description>&lt;h2 id=&#34;快速的网站架构&#34;&gt;快速的网站架构
+&lt;/h2&gt;&lt;p&gt;可以参考如下：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/p/wordpress%e6%9e%b6%e6%9e%84/&#34; &gt;wordpress架构&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cache缓存&#34;&gt;Cache缓存
+&lt;/h2&gt;&lt;p&gt;wordpress框架下，cache缓存插件有很多，比如：LiteSpeed 、WP Rocket、W3等。下面以hostinger集成的比较好用的LiteSpeed Cache为例&lt;/p&gt;
+&lt;h3 id=&#34;litespeed-cache&#34;&gt;LiteSpeed Cache
+&lt;/h3&gt;&lt;p&gt;参考文档&lt;a class=&#34;link&#34; href=&#34;https://www.hostinger.com/tutorials/litespeed-website-optimization-tool/#What_Is_LiteSpeed&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hostinger: WordPress LiteSpeed Cache Plugin&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;速度对比&#34;&gt;速度对比
+&lt;/h4&gt;&lt;p&gt;LiteSpeed Web Server on VPS &amp;gt; (Hostinger Cloud LsWS) &amp;gt; OpenLiteSpeed ≈ Nginx &amp;gt; Apache&lt;/p&gt;
+&lt;h4 id=&#34;litespeed-cache是什么&#34;&gt;LiteSpeed Cache是什么
+&lt;/h4&gt;&lt;p&gt;LiteSpeed Cache 是 LiteSpeed Technologies 的一款产品，可优化网页上的动态内容。它具有高级缓存功能和优化功能。LiteSpeed Cache 还可作为插件在多个平台上使用，包括 WordPress&lt;/p&gt;
+&lt;h4 id=&#34;litespeed-cache配置&#34;&gt;LiteSpeed Cache配置
+&lt;/h4&gt;&lt;p&gt;前提：只有在LiteSpeed 网络服务器上托管网站的用户才能解锁全部功能&lt;/p&gt;
+&lt;p&gt;配置好的文件导出如下，可导入&lt;a href=&#34;download/LSCWP_cfg.data&#34; download&gt;LSCWP_cfg&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;注意事项&#34;&gt;注意事项
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;cdn连接：QUIC.cloud CDN（LiteSpeed Cache原生的）或 Cloudflare API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不必要的cache setting off: 如Cache Commenters等（看具体的网站）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;图像优化很重要，优化设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lazy Load Images没必要打开：除非网站的图片很大，加载很慢&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Crawler打开，其中的手动更新和自动时间设置很重要&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cdn&#34;&gt;CDN
+&lt;/h2&gt;&lt;p&gt;以LiteSpeed Cache绑定的QUIC.cloud CDN为例&lt;/p&gt;
+&lt;h3 id=&#34;hostinger原生-vs-quiccloud-vs-cloudflare&#34;&gt;hostinger原生 vs QUIC.cloud vs Cloudflare
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;hostinger原生&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;大部分版本免费（除了最低档）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实测效果不如另外两个&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;QUIC.cloud&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有付费和免费版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;速度快&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wordpress LiteSpeed Cache原生&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cloudflare&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有付费和免费版本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;速度快&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;很常用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;quiccloud-cdn配置&#34;&gt;QUIC.cloud CDN配置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更改域名设置Nameservers为quit.cloud指定的Nameservers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置DNS records&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置各个计划（免费or付费）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;后期赠送的配额用完，测试下QUIC.cloud CDN免费和hostinger原生哪个速度快&lt;/p&gt;
+&lt;h3 id=&#34;配置前后对比&#34;&gt;配置前后对比
+&lt;/h3&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

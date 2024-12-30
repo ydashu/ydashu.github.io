@@ -5,6 +5,9 @@
     <loc>https://ydashu.github.io/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://ydashu.github.io/tags/cache/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,10 +17,25 @@
     <loc>https://ydashu.github.io/p/chrome%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://ydashu.github.io/tags/gtmetrix/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ydashu.github.io/post/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/tags/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/wordpress/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</loc>
@@ -42,6 +60,9 @@
     <lastmod>2024-12-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E8%A7%84%E5%88%92/</loc>
+    <lastmod>2024-12-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E5%86%85%E6%B6%B5%E7%9F%AD%E6%96%87/</loc>
     <lastmod>2024-12-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E5%86%85%E6%B6%B5%E7%9F%AD%E6%96%87/</loc>
@@ -110,9 +131,6 @@
     <loc>https://ydashu.github.io/tags/wordpress/</loc>
     <lastmod>2024-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ydashu.github.io/categories/wordpress/</loc>
-    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ydashu.github.io/p/wordpress-vs-shopify/</loc>
     <lastmod>2024-12-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -131,9 +149,6 @@
     <loc>https://ydashu.github.io/tags/%E7%94%B5%E5%95%86/</loc>
     <lastmod>2024-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
-    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ydashu.github.io/tags/%E9%82%AE%E7%AE%B1/</loc>
     <lastmod>2024-12-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -148,6 +163,8 @@
   </url><url>
     <loc>https://ydashu.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/</loc>
   </url><url>
     <loc>https://ydashu.github.io/categories/test/</loc>
   </url><url>
