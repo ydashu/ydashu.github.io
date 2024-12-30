@@ -263,9 +263,9 @@
       <ol>
         <li><a href="#hostinger原生-vs-quiccloud-vs-cloudflare">hostinger原生 vs QUIC.cloud vs Cloudflare</a></li>
         <li><a href="#quiccloud-cdn配置">QUIC.cloud CDN配置</a></li>
-        <li><a href="#配置前后对比">配置前后对比</a></li>
       </ol>
     </li>
+    <li><a href="#测试网站性能">测试网站性能</a></li>
   </ol>
 </nav>
         </div>
@@ -348,9 +348,10 @@
 </h4><p>LiteSpeed Cache 是 LiteSpeed Technologies 的一款产品，可优化网页上的动态内容。它具有高级缓存功能和优化功能。LiteSpeed Cache 还可作为插件在多个平台上使用，包括 WordPress</p>
 <h4 id="litespeed-cache配置">LiteSpeed Cache配置
 </h4><p>前提：只有在LiteSpeed 网络服务器上托管网站的用户才能解锁全部功能</p>
-<p>配置好的文件导出如下，可导入<a href="download/LSCWP_cfg.data" download>LSCWP_cfg</a></p>
-<h5 id="注意事项">注意事项
-</h5><ul>
+<p>配置好的文件导出如下，可导入<code>LSCWP_cfg.data</code>: <a href="/download/LSCWP_cfg.data" download>下载</a></p>
+<p>通过下载文件，wordpress后台中的LiteSpeed插件中可以导入相关配置</p>
+<p>注意事项</p>
+<ul>
 <li>
 <p>cdn连接：QUIC.cloud CDN（LiteSpeed Cache原生的）或 Cloudflare API</p>
 </li>
@@ -413,19 +414,19 @@
 </ul>
 <h3 id="quiccloud-cdn配置">QUIC.cloud CDN配置
 </h3><ol>
-<li>
-<p>更改域名设置Nameservers为quit.cloud指定的Nameservers</p>
-</li>
-<li>
-<p>设置DNS records</p>
-</li>
-<li>
-<p>设置各个计划（免费or付费）</p>
-</li>
+<li>更改域名设置Nameservers为quit.cloud指定的Nameservers</li>
+<li>设置DNS records</li>
+<li>设置各个计划（免费or付费）</li>
 </ol>
-<p>后期赠送的配额用完，测试下QUIC.cloud CDN免费和hostinger原生哪个速度快</p>
-<h3 id="配置前后对比">配置前后对比
-</h3>
+<h2 id="测试网站性能">测试网站性能
+</h2><blockquote>
+<p>通过此，可以测试网站前后性能对比</p>
+</blockquote>
+<ul>
+<li>GTmetrix</li>
+<li>google page insight</li>
+</ul>
+
 </section>
 
 
@@ -508,12 +509,12 @@
             
                 
 <article class="">
-    <a href="/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/">
+    <a href="/p/wordpress-vs-shopify/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Front Matter 字段说明</h2>
+            <h2 class="article-title">WordPress vs Shopify</h2>
         </div>
     </a>
 </article>
@@ -521,12 +522,12 @@
             
                 
 <article class="">
-    <a href="/p/wordpress-vs-shopify/">
+    <a href="/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">WordPress vs Shopify</h2>
+            <h2 class="article-title">hugo-Front Matter 字段说明</h2>
         </div>
     </a>
 </article>

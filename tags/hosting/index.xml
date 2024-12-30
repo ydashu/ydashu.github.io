@@ -156,16 +156,12 @@
 &lt;/h4&gt;&lt;p&gt;选择距离你的目标用户近的&lt;/p&gt;
 &lt;h4 id=&#34;dns配置&#34;&gt;DNS配置
 &lt;/h4&gt;&lt;p&gt;登录你的域名服务商的用户账号，按照下图的操作指南，将域名的dns设置为 ns1.dns-parking.com 和 ns2.dns-parking.com
-&lt;img src=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2.jpg&#34;
-	width=&#34;883&#34;
-	height=&#34;314&#34;
-	srcset=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu10862371665848239409.jpg 480w, https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu7110167347572518882.jpg 1024w&#34;
+&lt;img src=&#34;https://ydashu.github.io/image/%e5%bb%ba%e7%ab%99/image-2.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;281&#34;
-		data-flex-basis=&#34;674px&#34;
 	
 &gt;
 一般来说会自动生成DNS的记录的key和value。如果要修改，比如改邮箱MX和TXT的记录值==&amp;gt;可在路径“website/Dashboard/Advanced/DNS Zone Editor”下修改.&lt;/p&gt;

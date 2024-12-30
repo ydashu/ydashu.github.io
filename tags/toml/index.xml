@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
         <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/toml/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Front Matter 字段说明</title>
-        <link>https://ydashu.github.io/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</link>
+        <title>hugo-Front Matter 字段说明</title>
+        <link>https://ydashu.github.io/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://ydashu.github.io/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</guid>
+        <guid>https://ydashu.github.io/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</guid>
         <description>&lt;h2 id=&#34;front-matter的3种代码&#34;&gt;Front Matter的3种代码
 &lt;/h2&gt;&lt;p&gt;hugo的Front Matter字段输出有3种形式，分别是&lt;/p&gt;
 &lt;ul&gt;

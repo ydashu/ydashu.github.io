@@ -115,9 +115,10 @@
 &lt;/h4&gt;&lt;p&gt;LiteSpeed Cache 是 LiteSpeed Technologies 的一款产品，可优化网页上的动态内容。它具有高级缓存功能和优化功能。LiteSpeed Cache 还可作为插件在多个平台上使用，包括 WordPress&lt;/p&gt;
 &lt;h4 id=&#34;litespeed-cache配置&#34;&gt;LiteSpeed Cache配置
 &lt;/h4&gt;&lt;p&gt;前提：只有在LiteSpeed 网络服务器上托管网站的用户才能解锁全部功能&lt;/p&gt;
-&lt;p&gt;配置好的文件导出如下，可导入&lt;a href=&#34;download/LSCWP_cfg.data&#34; download&gt;LSCWP_cfg&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&#34;注意事项&#34;&gt;注意事项
-&lt;/h5&gt;&lt;ul&gt;
+&lt;p&gt;配置好的文件导出如下，可导入&lt;code&gt;LSCWP_cfg.data&lt;/code&gt;: &lt;a href=&#34;https://ydashu.github.io/download/LSCWP_cfg.data&#34; download&gt;下载&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通过下载文件，wordpress后台中的LiteSpeed插件中可以导入相关配置&lt;/p&gt;
+&lt;p&gt;注意事项&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;cdn连接：QUIC.cloud CDN（LiteSpeed Cache原生的）或 Cloudflare API&lt;/p&gt;
 &lt;/li&gt;
@@ -180,26 +181,26 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;quiccloud-cdn配置&#34;&gt;QUIC.cloud CDN配置
 &lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;更改域名设置Nameservers为quit.cloud指定的Nameservers&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;设置DNS records&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;设置各个计划（免费or付费）&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;更改域名设置Nameservers为quit.cloud指定的Nameservers&lt;/li&gt;
+&lt;li&gt;设置DNS records&lt;/li&gt;
+&lt;li&gt;设置各个计划（免费or付费）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;后期赠送的配额用完，测试下QUIC.cloud CDN免费和hostinger原生哪个速度快&lt;/p&gt;
-&lt;h3 id=&#34;配置前后对比&#34;&gt;配置前后对比
-&lt;/h3&gt;</description>
+&lt;h2 id=&#34;测试网站性能&#34;&gt;测试网站性能
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;通过此，可以测试网站前后性能对比&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;GTmetrix&lt;/li&gt;
+&lt;li&gt;google page insight&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
-        <title>Front Matter 字段说明</title>
-        <link>https://ydashu.github.io/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</link>
+        <title>hugo-Front Matter 字段说明</title>
+        <link>https://ydashu.github.io/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://ydashu.github.io/p/front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</guid>
+        <guid>https://ydashu.github.io/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/</guid>
         <description>&lt;h2 id=&#34;front-matter的3种代码&#34;&gt;Front Matter的3种代码
 &lt;/h2&gt;&lt;p&gt;hugo的Front Matter字段输出有3种形式，分别是&lt;/p&gt;
 &lt;ul&gt;
@@ -1123,16 +1124,12 @@
 &lt;/h4&gt;&lt;p&gt;&lt;code&gt;/test_site/content/post&lt;/code&gt;作为&lt;code&gt;Obsidian&lt;/code&gt;的本地仓库路径&lt;/p&gt;
 &lt;h4 id=&#34;编辑&#34;&gt;编辑
 &lt;/h4&gt;&lt;p&gt;格式如下图
-&lt;img src=&#34;https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/20241227145626.jpg&#34;
-	width=&#34;237&#34;
-	height=&#34;434&#34;
-	srcset=&#34;https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/20241227145626_hu5832399803049714219.jpg 480w, https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/20241227145626_hu12661826452431717355.jpg 1024w&#34;
+&lt;img src=&#34;https://ydashu.github.io/image/%e5%bb%ba%e7%ab%99/20241227145626.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;54&#34;
-		data-flex-basis=&#34;131px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1425,16 +1422,12 @@
 &lt;/h4&gt;&lt;p&gt;选择距离你的目标用户近的&lt;/p&gt;
 &lt;h4 id=&#34;dns配置&#34;&gt;DNS配置
 &lt;/h4&gt;&lt;p&gt;登录你的域名服务商的用户账号，按照下图的操作指南，将域名的dns设置为 ns1.dns-parking.com 和 ns2.dns-parking.com
-&lt;img src=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2.jpg&#34;
-	width=&#34;883&#34;
-	height=&#34;314&#34;
-	srcset=&#34;https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu10862371665848239409.jpg 480w, https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/image-2_hu7110167347572518882.jpg 1024w&#34;
+&lt;img src=&#34;https://ydashu.github.io/image/%e5%bb%ba%e7%ab%99/image-2.jpg&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;281&#34;
-		data-flex-basis=&#34;674px&#34;
 	
 &gt;
 一般来说会自动生成DNS的记录的key和value。如果要修改，比如改邮箱MX和TXT的记录值==&amp;gt;可在路径“website/Dashboard/Advanced/DNS Zone Editor”下修改.&lt;/p&gt;
