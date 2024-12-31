@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="常用搜索语法 语法 语法说明 示例 示例说明 + 同AND，搜索包含多个关键词的结果 搜索 + 引擎 搜索包含【搜索】和【引擎】两个词的页面 OR 或者 搜索 OR 引擎 搜索包含【搜索】或【引擎】两个词的页面 - 减号，不包含减号后面词的页面 搜索引擎 -百度 搜索不包括【百度】的【搜索引擎】的页面 &quot;&quot; 双引号，精确匹配 “搜索引擎” 精确匹配【搜索引擎】这个关键词的页面 * 星号，通配符，模糊搜索，星号代替某个字 搜*引擎 星号可以为任何字 ~ 近义词 ~mobile phone 结果中包含查询的短语以及它的同义词 @ 在用于搜索社交媒体的字词前加上@ trump @twitter 搜索trump的twitter $ 在数字前加上$搜索特定价格 camera $400 搜索400$的camera # 搜索 # 标签 #throwbackthursday 搜索标签throwbackthursday .. 在两个数字之间加上.. 在数字范围内执行搜索 camera 500..1000 搜索价格在500-1000的camera filetype 搜索某一种文件类型的资源 C++ filetype:pdf 搜索类型为pdf的C++网页资源 site 在指定站点搜索 C++ site:https://www.zhihu.com 在知乎中搜索和C++相关的网页 cache 查看网站的 Google 缓存版本，会直接显示缓存页面 cache:weibo.com 查看微博的谷歌快照 info 在网址前加info:，获取网站详情 info:github.com 搜索github网站详情 related 搜索与某个网站有关联的页面 related:sina.com 和新浪网网站结构内容相似的一些其它网站 link 返回所有链接到某个URL地址的网页 link:www.csdn.net 搜索所有含指向【www.csdn.net】链接的网页 inurl 搜索查询词出现在url中的页面 inurl:搜索引擎 搜索链接url中有【搜索引擎】的网页 intitle 搜索查询词出现在页面标题中的页面 intitle:搜索引擎 搜索页面标题中有【搜索引擎】的网页 intext 搜索查询词出现在页面正文中的页面 SEO intext:搜索引擎 在正文包含【搜索引擎】的网页中搜索【SEO】 inanchor 搜索链接锚文字中包含搜索词的页面 inanchor:前端 搜索链接锚文字中包含【前端】的页面 allinurl 页面url中包含多个关键词的页面 allinurl:SEO 搜索引擎优化 相当于：inurl:SEO inurl:搜索引擎优化 allintitle 页面标题中包含多个关键词的页面 allintitle:SEO 搜索引擎优化 相当于：intitle:SEO intitle:搜索引擎优化 allintext 页面正文包含多个关键词的页面 allintext:SEO 搜索引擎优化 相当于：intext:SEO intext:搜索引擎优化 allinanchor 页面链接锚文字包含多个关键词的页面 allinanchor:SEO 搜索引擎优化 相当于：inanchor:SEO inanchor:搜索引擎优化 weather 返回城市的天气/时间/日出时间/日落时间 weather:beijing 显示北京的天气 music 歌手名字+music/songs，返回歌曲 周杰伦 music 返回周杰伦的各首歌曲 num 设置搜索结果数量 num=20 返回20个搜索结果 lr 指定语言搜索 lr=lang_zh-CN 搜索简体中文内容 cr 按国家限制搜索结果 cr=countryCN 仅显示来自中国的网页内容 hl 指定界面语言 hl=en 将界面语言设置为英语 as_qdr 搜索时间范围 as_qdr=d 搜索一天内更新的内容 q 指定搜索关键字 q=搜索引擎 直接使用搜索引擎作为关键词 ncr 禁用国家限制 ncr 显示所有国家的搜索结果 google高级搜索网站 google advanced search\n">
+<title>google搜索技巧</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="google搜索技巧">
+<meta property='og:description' content="常用搜索语法 语法 语法说明 示例 示例说明 + 同AND，搜索包含多个关键词的结果 搜索 + 引擎 搜索包含【搜索】和【引擎】两个词的页面 OR 或者 搜索 OR 引擎 搜索包含【搜索】或【引擎】两个词的页面 - 减号，不包含减号后面词的页面 搜索引擎 -百度 搜索不包括【百度】的【搜索引擎】的页面 &quot;&quot; 双引号，精确匹配 “搜索引擎” 精确匹配【搜索引擎】这个关键词的页面 * 星号，通配符，模糊搜索，星号代替某个字 搜*引擎 星号可以为任何字 ~ 近义词 ~mobile phone 结果中包含查询的短语以及它的同义词 @ 在用于搜索社交媒体的字词前加上@ trump @twitter 搜索trump的twitter $ 在数字前加上$搜索特定价格 camera $400 搜索400$的camera # 搜索 # 标签 #throwbackthursday 搜索标签throwbackthursday .. 在两个数字之间加上.. 在数字范围内执行搜索 camera 500..1000 搜索价格在500-1000的camera filetype 搜索某一种文件类型的资源 C++ filetype:pdf 搜索类型为pdf的C++网页资源 site 在指定站点搜索 C++ site:https://www.zhihu.com 在知乎中搜索和C++相关的网页 cache 查看网站的 Google 缓存版本，会直接显示缓存页面 cache:weibo.com 查看微博的谷歌快照 info 在网址前加info:，获取网站详情 info:github.com 搜索github网站详情 related 搜索与某个网站有关联的页面 related:sina.com 和新浪网网站结构内容相似的一些其它网站 link 返回所有链接到某个URL地址的网页 link:www.csdn.net 搜索所有含指向【www.csdn.net】链接的网页 inurl 搜索查询词出现在url中的页面 inurl:搜索引擎 搜索链接url中有【搜索引擎】的网页 intitle 搜索查询词出现在页面标题中的页面 intitle:搜索引擎 搜索页面标题中有【搜索引擎】的网页 intext 搜索查询词出现在页面正文中的页面 SEO intext:搜索引擎 在正文包含【搜索引擎】的网页中搜索【SEO】 inanchor 搜索链接锚文字中包含搜索词的页面 inanchor:前端 搜索链接锚文字中包含【前端】的页面 allinurl 页面url中包含多个关键词的页面 allinurl:SEO 搜索引擎优化 相当于：inurl:SEO inurl:搜索引擎优化 allintitle 页面标题中包含多个关键词的页面 allintitle:SEO 搜索引擎优化 相当于：intitle:SEO intitle:搜索引擎优化 allintext 页面正文包含多个关键词的页面 allintext:SEO 搜索引擎优化 相当于：intext:SEO intext:搜索引擎优化 allinanchor 页面链接锚文字包含多个关键词的页面 allinanchor:SEO 搜索引擎优化 相当于：inanchor:SEO inanchor:搜索引擎优化 weather 返回城市的天气/时间/日出时间/日落时间 weather:beijing 显示北京的天气 music 歌手名字+music/songs，返回歌曲 周杰伦 music 返回周杰伦的各首歌曲 num 设置搜索结果数量 num=20 返回20个搜索结果 lr 指定语言搜索 lr=lang_zh-CN 搜索简体中文内容 cr 按国家限制搜索结果 cr=countryCN 仅显示来自中国的网页内容 hl 指定界面语言 hl=en 将界面语言设置为英语 as_qdr 搜索时间范围 as_qdr=d 搜索一天内更新的内容 q 指定搜索关键字 q=搜索引擎 直接使用搜索引擎作为关键词 ncr 禁用国家限制 ncr 显示所有国家的搜索结果 google高级搜索网站 google advanced search\n">
+<meta property='og:url' content='https://ydashu.github.io/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-31T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="google搜索技巧">
+<meta name="twitter:description" content="常用搜索语法 语法 语法说明 示例 示例说明 + 同AND，搜索包含多个关键词的结果 搜索 + 引擎 搜索包含【搜索】和【引擎】两个词的页面 OR 或者 搜索 OR 引擎 搜索包含【搜索】或【引擎】两个词的页面 - 减号，不包含减号后面词的页面 搜索引擎 -百度 搜索不包括【百度】的【搜索引擎】的页面 &quot;&quot; 双引号，精确匹配 “搜索引擎” 精确匹配【搜索引擎】这个关键词的页面 * 星号，通配符，模糊搜索，星号代替某个字 搜*引擎 星号可以为任何字 ~ 近义词 ~mobile phone 结果中包含查询的短语以及它的同义词 @ 在用于搜索社交媒体的字词前加上@ trump @twitter 搜索trump的twitter $ 在数字前加上$搜索特定价格 camera $400 搜索400$的camera # 搜索 # 标签 #throwbackthursday 搜索标签throwbackthursday .. 在两个数字之间加上.. 在数字范围内执行搜索 camera 500..1000 搜索价格在500-1000的camera filetype 搜索某一种文件类型的资源 C++ filetype:pdf 搜索类型为pdf的C++网页资源 site 在指定站点搜索 C++ site:https://www.zhihu.com 在知乎中搜索和C++相关的网页 cache 查看网站的 Google 缓存版本，会直接显示缓存页面 cache:weibo.com 查看微博的谷歌快照 info 在网址前加info:，获取网站详情 info:github.com 搜索github网站详情 related 搜索与某个网站有关联的页面 related:sina.com 和新浪网网站结构内容相似的一些其它网站 link 返回所有链接到某个URL地址的网页 link:www.csdn.net 搜索所有含指向【www.csdn.net】链接的网页 inurl 搜索查询词出现在url中的页面 inurl:搜索引擎 搜索链接url中有【搜索引擎】的网页 intitle 搜索查询词出现在页面标题中的页面 intitle:搜索引擎 搜索页面标题中有【搜索引擎】的网页 intext 搜索查询词出现在页面正文中的页面 SEO intext:搜索引擎 在正文包含【搜索引擎】的网页中搜索【SEO】 inanchor 搜索链接锚文字中包含搜索词的页面 inanchor:前端 搜索链接锚文字中包含【前端】的页面 allinurl 页面url中包含多个关键词的页面 allinurl:SEO 搜索引擎优化 相当于：inurl:SEO inurl:搜索引擎优化 allintitle 页面标题中包含多个关键词的页面 allintitle:SEO 搜索引擎优化 相当于：intitle:SEO intitle:搜索引擎优化 allintext 页面正文包含多个关键词的页面 allintext:SEO 搜索引擎优化 相当于：intext:SEO intext:搜索引擎优化 allinanchor 页面链接锚文字包含多个关键词的页面 allinanchor:SEO 搜索引擎优化 相当于：inanchor:SEO inanchor:搜索引擎优化 weather 返回城市的天气/时间/日出时间/日落时间 weather:beijing 显示北京的天气 music 歌手名字+music/songs，返回歌曲 周杰伦 music 返回周杰伦的各首歌曲 num 设置搜索结果数量 num=20 返回20个搜索结果 lr 指定语言搜索 lr=lang_zh-CN 搜索简体中文内容 cr 按国家限制搜索结果 cr=countryCN 仅显示来自中国的网页内容 hl 指定界面语言 hl=en 将界面语言设置为英语 as_qdr 搜索时间范围 as_qdr=d 搜索一天内更新的内容 q 指定搜索关键字 q=搜索引擎 直接使用搜索引擎作为关键词 ncr 禁用国家限制 ncr 显示所有国家的搜索结果 google高级搜索网站 google advanced search\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu9061058719908882919.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#常用搜索语法">常用搜索语法</a></li>
+    <li><a href="#google高级搜索网站">google高级搜索网站</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/google/" >
+                Google
+            </a>
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/">google搜索技巧</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-31</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="常用搜索语法">常用搜索语法
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>语法</strong></th>
+          <th><strong>语法说明</strong></th>
+          <th><strong>示例</strong></th>
+          <th><strong>示例说明</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>+</strong></td>
+          <td>同AND，搜索包含多个关键词的结果</td>
+          <td>搜索 + 引擎</td>
+          <td>搜索包含【搜索】和【引擎】两个词的页面</td>
+      </tr>
+      <tr>
+          <td><strong>OR</strong></td>
+          <td>或者</td>
+          <td>搜索 OR 引擎</td>
+          <td>搜索包含【搜索】或【引擎】两个词的页面</td>
+      </tr>
+      <tr>
+          <td><strong>-</strong></td>
+          <td>减号，不包含减号后面词的页面</td>
+          <td>搜索引擎 -百度</td>
+          <td>搜索不包括【百度】的【搜索引擎】的页面</td>
+      </tr>
+      <tr>
+          <td><strong>&quot;&quot;</strong></td>
+          <td>双引号，精确匹配</td>
+          <td>“搜索引擎”</td>
+          <td>精确匹配【搜索引擎】这个关键词的页面</td>
+      </tr>
+      <tr>
+          <td><strong>*</strong></td>
+          <td>星号，通配符，模糊搜索，星号代替某个字</td>
+          <td>搜*引擎</td>
+          <td>星号可以为任何字</td>
+      </tr>
+      <tr>
+          <td><strong>~</strong></td>
+          <td>近义词</td>
+          <td>~mobile phone</td>
+          <td>结果中包含查询的短语以及它的同义词</td>
+      </tr>
+      <tr>
+          <td><strong>@</strong></td>
+          <td>在用于搜索社交媒体的字词前加上@</td>
+          <td>trump @twitter</td>
+          <td>搜索trump的twitter</td>
+      </tr>
+      <tr>
+          <td><strong>$</strong></td>
+          <td>在数字前加上$搜索特定价格</td>
+          <td>camera $400</td>
+          <td>搜索400$的camera</td>
+      </tr>
+      <tr>
+          <td><strong>#</strong></td>
+          <td>搜索 # 标签</td>
+          <td>#throwbackthursday</td>
+          <td>搜索标签throwbackthursday</td>
+      </tr>
+      <tr>
+          <td><strong>..</strong></td>
+          <td>在两个数字之间加上.. 在数字范围内执行搜索</td>
+          <td>camera 500..1000</td>
+          <td>搜索价格在500-1000的camera</td>
+      </tr>
+      <tr>
+          <td><strong>filetype</strong></td>
+          <td>搜索某一种文件类型的资源</td>
+          <td>C++ filetype:pdf</td>
+          <td>搜索类型为pdf的C++网页资源</td>
+      </tr>
+      <tr>
+          <td><strong>site</strong></td>
+          <td>在指定站点搜索</td>
+          <td>C++ site:https://www.zhihu.com</td>
+          <td>在知乎中搜索和C++相关的网页</td>
+      </tr>
+      <tr>
+          <td><strong>cache</strong></td>
+          <td>查看网站的 Google 缓存版本，会直接显示缓存页面</td>
+          <td>cache:weibo.com</td>
+          <td>查看微博的谷歌快照</td>
+      </tr>
+      <tr>
+          <td><strong>info</strong></td>
+          <td>在网址前加info:，获取网站详情</td>
+          <td>info:github.com</td>
+          <td>搜索github网站详情</td>
+      </tr>
+      <tr>
+          <td><strong>related</strong></td>
+          <td>搜索与某个网站有关联的页面</td>
+          <td>related:sina.com</td>
+          <td>和新浪网网站结构内容相似的一些其它网站</td>
+      </tr>
+      <tr>
+          <td><strong>link</strong></td>
+          <td>返回所有链接到某个URL地址的网页</td>
+          <td>link:www.csdn.net</td>
+          <td>搜索所有含指向【www.csdn.net】链接的网页</td>
+      </tr>
+      <tr>
+          <td><strong>inurl</strong></td>
+          <td>搜索查询词出现在url中的页面</td>
+          <td>inurl:搜索引擎</td>
+          <td>搜索链接url中有【搜索引擎】的网页</td>
+      </tr>
+      <tr>
+          <td><strong>intitle</strong></td>
+          <td>搜索查询词出现在页面标题中的页面</td>
+          <td>intitle:搜索引擎</td>
+          <td>搜索页面标题中有【搜索引擎】的网页</td>
+      </tr>
+      <tr>
+          <td><strong>intext</strong></td>
+          <td>搜索查询词出现在页面正文中的页面</td>
+          <td>SEO intext:搜索引擎</td>
+          <td>在正文包含【搜索引擎】的网页中搜索【SEO】</td>
+      </tr>
+      <tr>
+          <td><strong>inanchor</strong></td>
+          <td>搜索链接锚文字中包含搜索词的页面</td>
+          <td>inanchor:前端</td>
+          <td>搜索链接锚文字中包含【前端】的页面</td>
+      </tr>
+      <tr>
+          <td><strong>allinurl</strong></td>
+          <td>页面url中包含多个关键词的页面</td>
+          <td>allinurl:SEO 搜索引擎优化</td>
+          <td>相当于：inurl:SEO inurl:搜索引擎优化</td>
+      </tr>
+      <tr>
+          <td><strong>allintitle</strong></td>
+          <td>页面标题中包含多个关键词的页面</td>
+          <td>allintitle:SEO 搜索引擎优化</td>
+          <td>相当于：intitle:SEO intitle:搜索引擎优化</td>
+      </tr>
+      <tr>
+          <td><strong>allintext</strong></td>
+          <td>页面正文包含多个关键词的页面</td>
+          <td>allintext:SEO 搜索引擎优化</td>
+          <td>相当于：intext:SEO intext:搜索引擎优化</td>
+      </tr>
+      <tr>
+          <td><strong>allinanchor</strong></td>
+          <td>页面链接锚文字包含多个关键词的页面</td>
+          <td>allinanchor:SEO 搜索引擎优化</td>
+          <td>相当于：inanchor:SEO inanchor:搜索引擎优化</td>
+      </tr>
+      <tr>
+          <td><strong>weather</strong></td>
+          <td>返回城市的天气/时间/日出时间/日落时间</td>
+          <td>weather:beijing</td>
+          <td>显示北京的天气</td>
+      </tr>
+      <tr>
+          <td><strong>music</strong></td>
+          <td>歌手名字+music/songs，返回歌曲</td>
+          <td>周杰伦 music</td>
+          <td>返回周杰伦的各首歌曲</td>
+      </tr>
+      <tr>
+          <td><strong>num</strong></td>
+          <td>设置搜索结果数量</td>
+          <td>num=20</td>
+          <td>返回20个搜索结果</td>
+      </tr>
+      <tr>
+          <td><strong>lr</strong></td>
+          <td>指定语言搜索</td>
+          <td>lr=lang_zh-CN</td>
+          <td>搜索简体中文内容</td>
+      </tr>
+      <tr>
+          <td><strong>cr</strong></td>
+          <td>按国家限制搜索结果</td>
+          <td>cr=countryCN</td>
+          <td>仅显示来自中国的网页内容</td>
+      </tr>
+      <tr>
+          <td><strong>hl</strong></td>
+          <td>指定界面语言</td>
+          <td>hl=en</td>
+          <td>将界面语言设置为英语</td>
+      </tr>
+      <tr>
+          <td><strong>as_qdr</strong></td>
+          <td>搜索时间范围</td>
+          <td>as_qdr=d</td>
+          <td>搜索一天内更新的内容</td>
+      </tr>
+      <tr>
+          <td><strong>q</strong></td>
+          <td>指定搜索关键字</td>
+          <td>q=搜索引擎</td>
+          <td>直接使用搜索引擎作为关键词</td>
+      </tr>
+      <tr>
+          <td><strong>ncr</strong></td>
+          <td>禁用国家限制</td>
+          <td>ncr</td>
+          <td>显示所有国家的搜索结果</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="google高级搜索网站">google高级搜索网站
+</h2><p><a class="link" href="https://www.google.com/advanced_search"  target="_blank" rel="noopener"
+    >google advanced search</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/chrome%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%92%8C%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">chrome常用插件和工具网站</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">tailscale-远程软件使用教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
