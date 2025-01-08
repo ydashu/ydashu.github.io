@@ -7,6 +7,162 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate></lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Wed, 08 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>音频文件和视频文件 - 数据参数的解析</title>
+        <link>https://ydashu.github.io/p/%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6-%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E7%9A%84%E8%A7%A3%E6%9E%90/</link>
+        <pubDate>Wed, 08 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6-%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E7%9A%84%E8%A7%A3%E6%9E%90/</guid>
+        <description>&lt;h2 id=&#34;音频文件&#34;&gt;音频文件
+&lt;/h2&gt;&lt;h3 id=&#34;采样率-sample-rate&#34;&gt;采样率 (Sample Rate)
+&lt;/h3&gt;&lt;p&gt;采样率是指每秒钟采集的音频样本数量，通常以Hz（赫兹）为单位。常见的采样率有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;44.1 kHz（CD质量）&lt;/li&gt;
+&lt;li&gt;48 kHz（视频音频标准）&lt;/li&gt;
+&lt;li&gt;96 kHz、192 kHz（高保真音频）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;采样率越高，音频的频率范围越广，音质也越高，但文件的大小也会增大。&lt;/p&gt;
+&lt;h3 id=&#34;位深度-bit-depth&#34;&gt;位深度 (Bit Depth)
+&lt;/h3&gt;&lt;p&gt;位深度表示每个样本的精度，通常为16位、24位或32位。位深度越高，能够表示的音频细节越丰富。常见值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;16位：CD质量&lt;/li&gt;
+&lt;li&gt;24位：高分辨率音频&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;声道数-channels&#34;&gt;声道数 (Channels)
+&lt;/h3&gt;&lt;p&gt;音频文件的声道数决定了音频的空间感，常见的配置有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单声道（Mono）：1个声道&lt;/li&gt;
+&lt;li&gt;立体声（Stereo）：2个声道&lt;/li&gt;
+&lt;li&gt;环绕声（Surround）：5.1声道、7.1声道等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;比特率-bitrate&#34;&gt;比特率 (Bitrate)
+&lt;/h3&gt;&lt;p&gt;比特率指的是单位时间内传输或存储音频的比特数，通常以kbps（千比特每秒）为单位。比特率越高，音频质量越好，但文件也越大。常见比特率：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;128 kbps（较低质量）&lt;/li&gt;
+&lt;li&gt;192 kbps（中等质量）&lt;/li&gt;
+&lt;li&gt;320 kbps（高质量）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;编码格式-audio-codec&#34;&gt;编码格式 (Audio Codec)
+&lt;/h3&gt;&lt;p&gt;音频编码格式决定了音频文件的压缩方法和压缩效率，常见格式包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无损格式&lt;/strong&gt;：如WAV、FLAC、ALAC，音质保留原始数据，但文件较大。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;有损格式&lt;/strong&gt;：如MP3、AAC、OGG，音质有损失，但文件小。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;持续时间-duration&#34;&gt;持续时间 (Duration)
+&lt;/h3&gt;&lt;p&gt;音频文件的时长，通常以秒（s）为单位。计算时，可以通过采样率、位深度和声道数来推算音频的大小与持续时间的关系。&lt;/p&gt;
+&lt;h3 id=&#34;音频元数据-metadata&#34;&gt;音频元数据 (Metadata)
+&lt;/h3&gt;&lt;p&gt;音频文件中可能还包含一些元数据，如标题、艺术家、专辑、封面图片等。这些信息通常存储在ID3标签中（例如MP3文件）或其他元数据格式。&lt;/p&gt;
+&lt;h3 id=&#34;音频文件大小&#34;&gt;音频文件大小：
+&lt;/h3&gt;&lt;p&gt;文件大小 (字节) = 采样率 × 位深度 × 声道数 × 时间 (秒) = 比特率 × 时间 (秒)&lt;/p&gt;
+&lt;h4 id=&#34;举例说明&#34;&gt;举例说明：
+&lt;/h4&gt;&lt;p&gt;假设我们有一个&lt;strong&gt;16-bit&lt;/strong&gt;深度、&lt;strong&gt;44.1 kHz&lt;/strong&gt;采样率、&lt;strong&gt;立体声&lt;/strong&gt;的无压缩音频文件，时长为&lt;strong&gt;3分钟&lt;/strong&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;采样率&lt;/strong&gt; = 44.1 kHz = 44,100次/秒&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位深度&lt;/strong&gt; = 16 bit = 2字节&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声道数&lt;/strong&gt; = 2（立体声）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;持续时间&lt;/strong&gt; = 3分钟 = 180秒&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;代入公式计算文件大小：&lt;/p&gt;
+&lt;p&gt;音频文件大小 = 44,100 × 2 × 2 × 180&lt;/p&gt;
+&lt;p&gt;音频文件大小 = 15,876,000字节 = 15.87MB&lt;/p&gt;
+&lt;h3 id=&#34;网易云音乐下载音质推荐&#34;&gt;网易云音乐下载音质推荐
+&lt;/h3&gt;&lt;p&gt;airpod一般支持48khz、16-bit、双声道&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;采样率&lt;/strong&gt;：通常为44.1 kHz 或 48 kHz，支持更高采样率（如96 kHz）在某些设备和格式下。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位深度&lt;/strong&gt;：常见为16位，但支持24位无损音频（特别是ALAC格式时）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声道数&lt;/strong&gt;：支持立体声（2声道）和空间音频（虚拟多声道，最多支持7.1声道）
+所以用airpod听网易云音乐无损（SQ）和更高音质区别不大&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;高音质效率的决定因素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原音频文件参数&lt;/li&gt;
+&lt;li&gt;音频设备的最高支持的音频参数&lt;/li&gt;
+&lt;li&gt;音频设备的声源个数 - 主要影响声道数&lt;/li&gt;
+&lt;li&gt;线材或者蓝牙的传输效率&lt;/li&gt;
+&lt;li&gt;设备的解码效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;视频文件&#34;&gt;视频文件
+&lt;/h2&gt;&lt;p&gt;视频文件涉及的数据参数与音频类似，但由于视频文件包含图像和声音的综合内容，其参数更加复杂。以下是视频文件中常见的几个关键数据参数：&lt;/p&gt;
+&lt;h3 id=&#34;分辨率-resolution&#34;&gt;分辨率 (Resolution)
+&lt;/h3&gt;&lt;p&gt;分辨率指的是视频画面的尺寸，通常以宽度 x 高度的像素数表示。常见的视频分辨率包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;480p：720 x 480像素（标清）&lt;/li&gt;
+&lt;li&gt;720p：1280 x 720像素（高清）&lt;/li&gt;
+&lt;li&gt;1080p：1920 x 1080像素（全高清）&lt;/li&gt;
+&lt;li&gt;4K：3840 x 2160像素（超高清）&lt;/li&gt;
+&lt;li&gt;8K：7680 x 4320像素（超高清）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分辨率越高，画面细节越丰富，视频文件的大小也会增大。&lt;/p&gt;
+&lt;h3 id=&#34;帧率-frame-rate-fps&#34;&gt;帧率 (Frame Rate, FPS)
+&lt;/h3&gt;&lt;p&gt;类似音频中采样率 (Sample Rate)&lt;/p&gt;
+&lt;p&gt;帧率表示视频每秒钟展示的图像帧数，通常以&lt;strong&gt;FPS&lt;/strong&gt;（frames per second）为单位。常见的帧率有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;24 FPS：电影标准帧率&lt;/li&gt;
+&lt;li&gt;30 FPS：常见的电视和在线视频帧率&lt;/li&gt;
+&lt;li&gt;60 FPS：高质量运动视频或游戏视频&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;帧率越高，视频播放越流畅，但文件大小也更大。&lt;/p&gt;
+&lt;h3 id=&#34;码率-bitrate&#34;&gt;码率 (Bitrate)
+&lt;/h3&gt;&lt;p&gt;类似音频中比特率 (Bitrate)&lt;/p&gt;
+&lt;p&gt;视频的码率表示每秒钟传输的视频数据量，通常以&lt;strong&gt;Kbps&lt;/strong&gt;（千比特每秒）或&lt;strong&gt;Mbps&lt;/strong&gt;（兆比特每秒）为单位。码率越高，视频质量越好，但文件也越大。常见的码率：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;低码率（如500 Kbps）：视频质量较差，适合网络带宽较低的情况&lt;/li&gt;
+&lt;li&gt;高码率（如5 Mbps或更高）：高质量视频，如1080p或4K视频&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;压缩格式-codec&#34;&gt;压缩格式 (Codec)
+&lt;/h3&gt;&lt;p&gt;视频文件通常会使用一种或多种编码格式进行压缩。常见的视频编码格式有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;H.264&lt;/strong&gt;（也称为AVC）：目前最广泛使用的视频编码格式，平衡了压缩效率和视频质量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;H.265&lt;/strong&gt;（HEVC）：比H.264更高效的压缩格式，适用于4K视频，但编码和解码的硬件要求更高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VP9&lt;/strong&gt;：Google开发的开源视频编码格式，常用于YouTube等视频平台。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AV1&lt;/strong&gt;：最新的视频编码格式，压缩效率更高，但解码支持较少。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;颜色深度-color-depth&#34;&gt;颜色深度 (Color Depth)
+&lt;/h3&gt;&lt;p&gt;类似音频中位深度 (Bit Depth)&lt;/p&gt;
+&lt;p&gt;颜色深度表示视频图像中每个像素的色彩信息量，通常用位来表示（如8-bit、10-bit）。颜色深度越高，视频的色彩和细节越丰富，适用于HDR（高动态范围）视频。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;8-bit&lt;/strong&gt;：每个颜色通道使用256种不同的颜色值（共1677万种颜色）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;10-bit&lt;/strong&gt;：每个颜色通道使用1024种不同的颜色值（共10.7亿种颜色）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;视频时长-duration&#34;&gt;视频时长 (Duration)
+&lt;/h3&gt;&lt;p&gt;视频时长指的是视频的播放时间，通常以&lt;strong&gt;秒&lt;/strong&gt;或&lt;strong&gt;分钟&lt;/strong&gt;为单位。视频时长影响最终文件的大小和存储需求。&lt;/p&gt;
+&lt;h3 id=&#34;音频参数&#34;&gt;音频参数
+&lt;/h3&gt;&lt;p&gt;视频文件通常还会包含音频轨道，音频的参数类似于前面提到的音频文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;采样率&lt;/strong&gt;：常见有44.1 kHz、48 kHz、96 kHz等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位深度&lt;/strong&gt;：常见为16 bit、24 bit等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声道数&lt;/strong&gt;：通常为单声道（Mono）或立体声（Stereo）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;视频帧结构-frame-structure&#34;&gt;视频帧结构 (Frame Structure)
+&lt;/h3&gt;&lt;p&gt;视频帧可以分为I帧（关键帧）、P帧（前向预测帧）和B帧（双向预测帧）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I帧&lt;/strong&gt;：完整的帧，包含了完整的图像信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;P帧&lt;/strong&gt;：只记录前一个I帧的差异。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B帧&lt;/strong&gt;：记录前后帧的差异，通常用于压缩效率更高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;视频的压缩方式（如H.264、H.265）决定了帧的结构和压缩效率。&lt;/p&gt;
+&lt;h3 id=&#34;封装格式-container-format&#34;&gt;封装格式 (Container Format)
+&lt;/h3&gt;&lt;p&gt;封装格式决定了视频和音频流是如何组合在一起的。常见的封装格式有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MP4&lt;/strong&gt;：最常见的视频文件格式，支持H.264、H.265、AAC等编码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MKV&lt;/strong&gt;：开源格式，支持几乎所有的视频编码和音频编码，常用于高清影视存储。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AVI&lt;/strong&gt;：较老的格式，支持多种编码，但文件大且兼容性较差。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MOV&lt;/strong&gt;：Apple的标准格式，通常用于QuickTime播放器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;视频文件大小-file-size&#34;&gt;视频文件大小 (File Size)
+&lt;/h3&gt;&lt;p&gt;视频文件的大小与分辨率、帧率、码率、压缩格式、时长等参数密切相关。文件大小的计算公式通常为：&lt;/p&gt;
+&lt;p&gt;文件大小 (字节) = 分辨率 * 帧率 * 颜色深度 * 时间 + 其他 = 码率 × 时长 (秒) + 其他&lt;/p&gt;
+&lt;p&gt;其他中包括音频文件、封面、字幕等&lt;/p&gt;
+&lt;h4 id=&#34;举例计算视频文件大小&#34;&gt;举例计算视频文件大小：
+&lt;/h4&gt;&lt;p&gt;假设有一个分辨率为1920x1080、30 FPS、码率为5 Mbps、时长为10分钟的视频文件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;码率&lt;/strong&gt;：5 Mbps = 5,000,000 bps&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时长&lt;/strong&gt;：10分钟 = 600秒&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用公式计算：&lt;/p&gt;
+&lt;p&gt;视频文件大小 = 5,000,000×600÷8字节 = 375,000,000字节 = 375MB&lt;/p&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>
