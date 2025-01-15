@@ -3,13 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ydashu.github.io/</loc>
-    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
-    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/post/</loc>
-    <lastmod>2025-01-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E6%9C%AC%E8%83%BD%E7%9A%84%E7%AC%A6%E5%8F%B7/</loc>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E9%9A%8F%E8%AE%B0/</loc>
+    <lastmod>2025-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E8%BE%A3%E6%A4%92--%E7%9B%90%E7%9A%84%E6%9B%BF%E4%BB%A3%E5%93%81/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E7%B4%A2%E6%96%AF%E9%A3%8E%E7%AE%A1-%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E5%A4%96%E8%B4%B8/</loc>
+    <lastmod>2025-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/%E5%AE%8F%E8%A7%82%E9%87%91%E8%9E%8D/</loc>
     <lastmod>2025-01-08T00:00:00+00:00</lastmod>
@@ -33,9 +48,6 @@
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E9%87%91%E5%8F%A51/</loc>
-    <lastmod>2025-01-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/categories/%E9%9A%8F%E8%AE%B0/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E4%BA%B2%E5%AD%90%E5%85%B3%E7%B3%BB/</loc>
@@ -102,9 +114,6 @@
     <lastmod>2024-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
-    <lastmod>2024-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/categories/%E5%A4%96%E8%B4%B8/</loc>
     <lastmod>2024-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E5%A4%96%E8%B4%B8-b2b-vs-b2c/</loc>
@@ -241,6 +250,8 @@
   </url><url>
     <loc>https://ydashu.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/</loc>
   </url><url>
     <loc>https://ydashu.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
