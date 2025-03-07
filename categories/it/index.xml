@@ -326,17 +326,24 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.tampermonkey.net/scripts.php?locale=zh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网推荐的脚本网站&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;翻译&#34;&gt;翻译
+&lt;/h3&gt;&lt;h4 id=&#34;immersive-translate&#34;&gt;Immersive Translate
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/detail/immersive-translate-trans/bpoadfkcbjbfhfodiogcnhhhpibjhbnh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chrome官网安装地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;中英文都显示&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;工具网站&#34;&gt;工具网站
 &lt;/h2&gt;&lt;h3 id=&#34;ai&#34;&gt;AI
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chatgpt.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;chatgpt&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://x.com/i/grok?focus=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;openai.chatgpt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://grok.com/?referrer=website&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;X.grok&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.doubao.com/chat/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;豆包&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://kimi.moonshot.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;kimi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gemini.google.com/app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;google.gemini&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chat.deepseek.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;deepseek.deepseek&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;在线ps&#34;&gt;在线ps
 &lt;/h3&gt;&lt;ul&gt;
@@ -368,7 +375,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;翻译&#34;&gt;翻译
+&lt;h3 id=&#34;翻译-1&#34;&gt;翻译
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.deepl.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;deepL&lt;/a&gt;&lt;/li&gt;

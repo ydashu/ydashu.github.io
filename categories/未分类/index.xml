@@ -151,10 +151,10 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;视频文件大小-file-size&#34;&gt;视频文件大小 (File Size)
 &lt;/h3&gt;&lt;p&gt;视频文件的大小与分辨率、帧率、码率、压缩格式、时长等参数密切相关。文件大小的计算公式通常为：&lt;/p&gt;
-&lt;p&gt;文件大小 (字节) = 分辨率 * 帧率 * 颜色深度 * 时间 + 其他 = 码率 × 时长 (秒) + 其他&lt;/p&gt;
+&lt;p&gt;文件大小 (字节) = (分辨率 * 帧率 * 颜色深度 * 时间 + 其他 ) * 压缩效率= (码率 × 时长 (秒) + 其他) * 压缩效率&lt;/p&gt;
 &lt;p&gt;其他中包括音频文件、封面、字幕等&lt;/p&gt;
 &lt;h4 id=&#34;举例计算视频文件大小&#34;&gt;举例计算视频文件大小：
-&lt;/h4&gt;&lt;p&gt;假设有一个分辨率为1920x1080、30 FPS、码率为5 Mbps、时长为10分钟的视频文件：&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;假设有一个分辨率为1920x1080、30 FPS、码率为5 Mbps、时长为10分钟的无压缩视频文件：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;码率&lt;/strong&gt;：5 Mbps = 5,000,000 bps&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;时长&lt;/strong&gt;：10分钟 = 600秒&lt;/li&gt;

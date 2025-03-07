@@ -93,7 +93,7 @@
 &lt;li&gt;自称是最快的建站框架&lt;/li&gt;
 &lt;li&gt;静态网站，hugo比hexo快&lt;/li&gt;
 &lt;li&gt;网站速度hugo &amp;gt; hexo &amp;gt; (wordpresss ? shopify)&lt;/li&gt;
-&lt;li&gt;可以零成本搭建（本地计算机 + github page等免费host ?+ github action自动触发）&lt;/li&gt;
+&lt;li&gt;可以零成本搭建（本地计算机 + github page等免费host + github action自动触发）&lt;/li&gt;
 &lt;li&gt;官网：&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;gohugo.io&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

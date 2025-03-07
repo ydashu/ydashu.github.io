@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Python on ydashu</title>
+        <link>https://ydashu.github.io/categories/python/</link>
+        <description>Recent content in Python on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>windows下安装python编程环境和IDE-基于Anaconda&#43;vscode</title>
+        <link>https://ydashu.github.io/p/windows%E4%B8%8B%E5%AE%89%E8%A3%85python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E5%92%8Cide-%E5%9F%BA%E4%BA%8Eanaconda-vscode/</link>
+        <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/windows%E4%B8%8B%E5%AE%89%E8%A3%85python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E5%92%8Cide-%E5%9F%BA%E4%BA%8Eanaconda-vscode/</guid>
+        <description>&lt;h2 id=&#34;安装vscode&#34;&gt;安装vscode
+&lt;/h2&gt;&lt;p&gt;点击下载&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;安装官网&lt;/a&gt;，安装，一直点下一步&lt;/p&gt;
+&lt;h2 id=&#34;安装anaconda&#34;&gt;安装Anaconda
+&lt;/h2&gt;&lt;p&gt;点击下载&lt;a class=&#34;link&#34; href=&#34;https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Windows-x86_64.exe&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;安装官网&lt;/a&gt;，安装，一直点下一步&lt;/p&gt;
+&lt;p&gt;ps：注意安装的时候&lt;strong&gt;不要&lt;/strong&gt;勾选&lt;code&gt;Add Anaconda3 to my PATH environment variable&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;anaconda设置环境&#34;&gt;Anaconda设置环境
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;打开Anaconda的navigator，点击Environment&lt;/li&gt;
+&lt;li&gt;create一个新的环境，最好不要直接用base(root)&lt;/li&gt;
+&lt;li&gt;点击创建好的新的环境&lt;/li&gt;
+&lt;li&gt;search package选择要安装的包或者Open Terminal用pip install XXX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vscode配置python环境&#34;&gt;vscode配置python环境
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;插件市场下载python插件，名字就是python&lt;/li&gt;
+&lt;li&gt;配置Anaconda环境- &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;shift&lt;/kbd&gt;+&lt;kbd&gt;p&lt;/kbd&gt;，输入&lt;code&gt;Python: Select Interpreter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选择刚刚创建的新的环境&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
