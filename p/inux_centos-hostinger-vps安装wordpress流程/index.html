@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+<title>inux_centos&#43;hostinger vps安装wordpress流程</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E6%B5%81%E7%A8%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="inux_centos+hostinger vps安装wordpress流程">
+<meta property='og:description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+<meta property='og:url' content='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E6%B5%81%E7%A8%8B/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-14T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="inux_centos+hostinger vps安装wordpress流程">
+<meta name="twitter:description" content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#购买hostinger-vps">购买hostinger vps</a></li>
+    <li><a href="#windows下ssh和ftp连接远程linux系统">windows下ssh和ftp连接远程linux系统</a>
+      <ol>
+        <li><a href="#ssh">ssh</a>
+          <ol>
+            <li><a href="#操作流程">操作流程</a></li>
+          </ol>
+        </li>
+        <li><a href="#ftp">ftp</a></li>
+      </ol>
+    </li>
+    <li><a href="#centos一键安装wordpressopenlitespeed所需的配置文件">centos一键安装wordpress+openlitespeed所需的配置文件</a></li>
+    <li><a href="#centos手动安装wordpressopenlitespeed所需的配置文件">centos手动安装wordpress+openlitespeed所需的配置文件</a>
+      <ol>
+        <li><a href="#安装openlitespeed和lsphp">安装openlitespeed和LSPHP</a>
+          <ol>
+            <li><a href="#install-the-litespeed-repository">Install the LiteSpeed Repository</a></li>
+            <li><a href="#install-openlitespeed">Install OpenLiteSpeed</a></li>
+            <li><a href="#install-lsphp">Install LSPHP</a></li>
+            <li><a href="#access-the-webadmin-console">Access the WebAdmin Console</a></li>
+          </ol>
+        </li>
+        <li><a href="#安装配置mariadb">安装配置mariadb</a>
+          <ol>
+            <li><a href="#步骤一添加mariadb官方仓库"><strong>步骤一：添加MariaDB官方仓库</strong></a></li>
+            <li><a href="#步骤二安装mariadb"><strong>步骤二：安装MariaDB</strong></a></li>
+            <li><a href="#步骤三启动mariadb服务"><strong>步骤三：启动MariaDB服务</strong></a></li>
+            <li><a href="#步骤四设置mariadb开机自启动"><strong>步骤四：设置MariaDB开机自启动</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库</a>
+          <ol>
+            <li><a href="#生成数据库">生成数据库</a></li>
+          </ol>
+        </li>
+        <li><a href="#安装wordpress">安装wordpress</a></li>
+        <li><a href="#配置openlitespeed">配置openlitespeed</a>
+          <ol>
+            <li><a href="#打开openlitespeed-gui面板">打开openlitespeed GUI面板</a></li>
+            <li><a href="#virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置</a></li>
+            <li><a href="#listeners设置">Listeners设置</a></li>
+          </ol>
+        </li>
+        <li><a href="#配置wordpress的wp-configphp">配置wordpress的wp-config.php</a></li>
+      </ol>
+    </li>
+    <li><a href="#安装ssl">安装SSL</a>
+      <ol>
+        <li><a href="#多个网站安装ssl">多个网站安装SSL</a></li>
+        <li><a href="#ssl自动续签">SSL自动续签</a>
+          <ol>
+            <li><a href="#配置-certbot-自动续期">配置 Certbot 自动续期</a></li>
+            <li><a href="#验证-cron-任务">验证 Cron 任务</a></li>
+            <li><a href="#验证续期流程">验证续期流程</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#配置lscache">配置LSCache</a></li>
+    <li><a href="#备份与恢复">备份与恢复</a>
+      <ol>
+        <li><a href="#数据库">数据库</a></li>
+        <li><a href="#wordpress">wordpress</a></li>
+        <li><a href="#更新configuration-file">更新Configuration File</a></li>
+        <li><a href="#cron-自动化备份">Cron 自动化备份</a></li>
+      </ol>
+    </li>
+    <li><a href="#配置邮箱">配置邮箱</a>
+      <ol>
+        <li><a href="#企业微信配置邮箱">企业微信配置邮箱</a></li>
+        <li><a href="#自行在服务器上配置">自行在服务器上配置</a>
+          <ol>
+            <li><a href="#安装docker">安装docker</a></li>
+            <li><a href="#安装docker-compose">安装Docker Compose</a></li>
+            <li><a href="#dns设置">DNS设置</a></li>
+            <li><a href="#安装docker-mailserve">安装docker-mailserve</a></li>
+            <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a></li>
+            <li><a href="#邮件客户端">邮件客户端</a></li>
+          </ol>
+        </li>
+        <li><a href="#防火墙和端口">防火墙和端口</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E6%B5%81%E7%A8%8B/">inux_centos&#43;hostinger vps安装wordpress流程</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-14</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="购买hostinger-vps">购买hostinger vps
+</h2><p><a class="link" href="https://www.hostinger.com/vps-hosting"  target="_blank" rel="noopener"
+    >购买链接</a></p>
+<p>根据提示界面安装centos</p>
+<h2 id="windows下ssh和ftp连接远程linux系统">windows下ssh和ftp连接远程linux系统
+</h2><h3 id="ssh">ssh
+</h3><p>windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件</p>
+<h4 id="操作流程">操作流程
+</h4><ul>
+<li>cmd打开命令行</li>
+<li><code>ssh 用户名@服务器IP地址</code>，默认端口22</li>
+<li>按照要求输入账号密码</li>
+<li>首次连接，提示是否将服务器的公钥添加到你的本地信任列表中</li>
+</ul>
+<h5 id="脚本快捷">脚本快捷
+</h5><ul>
+<li><code>win+E</code>打开文件资源管理器</li>
+<li>在地址栏中输入 <code>%userprofile%\.ssh</code> 并按回车键</li>
+<li>如果 <code>.ssh</code> 文件夹不存在，你需要手动创建一个名为 <code>.ssh</code> 的文件夹</li>
+<li>在 <code>.ssh</code> 文件夹中，创建一个名为 <code>config</code> 的文件（没有扩展名）。如果文件已存在，则直接打开它。</li>
+<li>编辑 <code>config</code> 文件
+<ul>
+<li>添加以下代码到文件中
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Host your_alias_name
+</span></span><span class="line"><span class="cl">	Hostname XX.XX.XXX.XXX
+</span></span><span class="line"><span class="cl">	User root
+</span></span><span class="line"><span class="cl">	Port your_port_number
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>将 <code>your_alias_name</code> 替换为你想要使用的别名，例如 <code>myvps</code>、<code>france</code> 或任何你喜欢的名称。下次你将使用这个别名来连接</li>
+<li>将 <code>your_port_number</code> 替换为实际的端口号，默认端口22</li>
+<li>将<code>XX.XX.XXX.XXX</code>替换成实际的hostname</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下次连接直接<code>win+R</code>，输入<code>ssh your_alias_name</code>连接</li>
+</ul>
+<h3 id="ftp">ftp
+</h3><p>ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla</p>
+<p><a class="link" href="https://filezilla-project.org/"  target="_blank" rel="noopener"
+    >下载链接</a>，选择client下载安装</p>
+<p>打开数据主机名、用户名、密码、端口号（默认22），点击<code>快速连接</code>就好</p>
+<p>下次连接点击<code>快速连接</code>的右边下拉有历史记录</p>
+<h2 id="centos一键安装wordpressopenlitespeed所需的配置文件">centos一键安装wordpress+openlitespeed所需的配置文件
+</h2><p>openlitespeed提供的<a class="link" href="https://docs.openlitespeed.org/installation/script/https://docs.openlitespeed.org/installation/script/"  target="_blank" rel="noopener"
+    >一键安装</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span> curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh <span class="o">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wordpressplus site1.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wordpresspath Site1/ <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;password&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E site1@gmail.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lsphp <span class="m">81</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --mariadbver 10.11 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbname wordpress <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser wp_user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;password&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wpuser wp_user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wppassword <span class="s1">&#39;password&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --sitetitle site1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>site1 Site1 password  email wp_user替换成自己的</li>
+<li>lsphp mariadbver替换成想装的版本号</li>
+<li>安装完成后openlitespeed的GUI界面端口：7080</li>
+</ul>
+<h2 id="centos手动安装wordpressopenlitespeed所需的配置文件">centos手动安装wordpress+openlitespeed所需的配置文件
+</h2><p>安装 vim</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dnf install vim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装openlitespeed和lsphp">安装openlitespeed和LSPHP
+</h3><p><a class="link" href="https://docs.openlitespeed.org/installation/repo/"  target="_blank" rel="noopener"
+    >官方文档</a></p>
+<h4 id="install-the-litespeed-repository">Install the LiteSpeed Repository
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo wget -O - https://repo.litespeed.sh <span class="p">|</span> sudo bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="install-openlitespeed">Install OpenLiteSpeed
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install openlitespeed -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="install-lsphp">Install LSPHP
+</h4><p>This command will install <code>lsphp81</code> and <code>lsphp81-mysql</code> into <code>/usr/local/lsws/lsphp81/bin/lsphp</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install lsphp81 lsphp81-common lsphp81-mysqlnd
+</span></span><span class="line"><span class="cl">sudo yum search lsphp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="access-the-webadmin-console">Access the WebAdmin Console
+</h4><p>The randomly generated WebAdmin password is stored in the <code>/usr/local/lsws/adminpasswd</code> file.</p>
+<p>Run the following command to set the WebAdmin password if needed:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo /usr/local/lsws/admin/misc/admpass.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>check</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usr/local/lsws/bin/lswsctrl status
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To access the WebAdmin console, visit port <code>7080</code> of your domain (for example, <code>ip:7080/</code>) and log in using the password you just set.</p>
+<h3 id="安装配置mariadb">安装配置mariadb
+</h3><p><a class="link" href="https://segmentfault.com/a/1190000045447884"  target="_blank" rel="noopener"
+    >https://segmentfault.com/a/1190000045447884</a></p>
+<h4 id="步骤一添加mariadb官方仓库"><strong>步骤一：添加MariaDB官方仓库</strong>
+</h4><p>首先，添加MariaDB的官方YUM仓库，以获取最新版本的软件包。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/yum.repos.d/MariaDB.repo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>💡 <strong>解释</strong>：使用<code>vi</code>编辑器创建或打开<code>/etc/yum.repos.d/MariaDB.repo</code>文件，<code>sudo</code>确保有足够的权限。</p>
+<p>在打开的文件中，粘贴类似以下内容（具体看版本号）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="c1"># MariaDB 10.11 CentOS repository list - created 2025-03-19 01:02 UTC</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># https://mariadb.org/download/</span>
+</span></span><span class="line"><span class="cl"><span class="k">[mariadb]</span>
+</span></span><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">MariaDB</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># baseurl = https://rpm.mariadb.org/10.11/centos/$releasever/$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="na">baseurl</span> <span class="o">=</span> <span class="s">https://mirrors.xtom.com.hk/mariadb/yum/10.11/centos/$releasever/$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB</span>
+</span></span><span class="line"><span class="cl"><span class="na">gpgkey</span> <span class="o">=</span> <span class="s">https://mirrors.xtom.com.hk/mariadb/yum/RPM-GPG-KEY-MariaDB</span>
+</span></span><span class="line"><span class="cl"><span class="na">gpgcheck</span> <span class="o">=</span> <span class="s">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：具体版本号参考官方 <a class="link" href="https://mariadb.org/download/?t=repo-config"  target="_blank" rel="noopener"
+    >https://mariadb.org/download/?t=repo-config</a></p>
+<p>截至2025年3月，MariaDB 10.11 是最新的 LTS 版本</p>
+<p>💡 <strong>解释</strong>：这是MariaDB 10.11版本的仓库配置，<code>baseurl</code>指定了软件包的下载地址，<code>gpgkey</code>用于验证软件包的完整性。</p>
+<h4 id="步骤二安装mariadb"><strong>步骤二：安装MariaDB</strong>
+</h4><p>更新YUM缓存并安装MariaDB服务器和客户端。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum update -y
+</span></span><span class="line"><span class="cl">sudo yum install MariaDB-server MariaDB-client -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>💡 <strong>解释</strong>：</p>
+<ul>
+<li><code>sudo yum update -y</code>：更新YUM软件包缓存，<code>-y</code>自动确认更新。</li>
+<li><code>sudo yum install MariaDB-server MariaDB-client -y</code>：安装MariaDB服务器和客户端。</li>
+</ul>
+<h4 id="步骤三启动mariadb服务"><strong>步骤三：启动MariaDB服务</strong>
+</h4><p>安装完成后，启动MariaDB服务并检查其状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start mariadb
+</span></span><span class="line"><span class="cl">sudo systemctl status mariadb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>💡 <strong>解释</strong>：</p>
+<ul>
+<li><code>sudo systemctl start mariadb</code>：启动MariaDB服务。</li>
+<li><code>sudo systemctl status mariadb</code>：查看MariaDB服务的运行状态。</li>
+</ul>
+<p>✅ <strong>提示</strong>：如果服务正常运行，状态应为<font color="red">active (running)</font>。🎉</p>
+<h4 id="步骤四设置mariadb开机自启动"><strong>步骤四：设置MariaDB开机自启动</strong>
+</h4><p>为了在系统重启后自动启动MariaDB，执行以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>💡 <strong>解释</strong>：<code>sudo systemctl enable mariadb</code>设置MariaDB服务为开机自启动。</p>
+<p>mariadb默认root账号密码</p>
+<h3 id="mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库
+</h3><h4 id="生成数据库">生成数据库
+</h4><ul>
+<li>
+<p><strong>登录到 MariaDB 服务器（如果尚未登录）：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">sudo mariadb -u root -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者，如果你使用了 <code>unix_socket</code> 身份验证：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">sudo mariadb -u root
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>创建数据库：</strong></p>
+<p>为你的 WordPress 网站创建一个新的数据库。通常使用 <code>wordpress</code> 作为数据库名称，但你也可以选择其他名称。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>你可以将 <code>wordpress</code> 替换为你想要的数据库名称。</p>
+</li>
+<li>
+<p><strong>创建一个新的 MariaDB 用户：</strong></p>
+<p>为你的 WordPress 网站创建一个专门的用户。你需要选择一个用户名和一个安全的密码。将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个强密码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;your_strong_password&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>'wp_user'</code>: 这是你将用于 WordPress 连接数据库的用户名。</li>
+<li><code>'localhost'</code>: 这指定该用户只能从运行 MariaDB 服务器的同一主机连接。如果你的 WordPress 网站运行在不同的服务器上，你需要将 <code>'localhost'</code> 替换为 WordPress 服务器的 IP 地址或使用 <code>'%'</code> 允许从任何主机连接（<strong>不推荐用于生产环境，因为它不太安全</strong>）。</li>
+<li><code>'your_strong_password'</code>: 这是你为该用户设置的密码。请务必使用一个强壮且唯一的密码。</li>
+</ul>
+</li>
+<li>
+<p><strong>授予用户对数据库的权限：</strong></p>
+<p>现在，你需要将你在步骤 2 中创建的数据库的所有权限授予你在步骤 3 中创建的用户。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>wordpress.*</code>: 这表示将对 <code>wordpress</code> 数据库中的所有表授予权限。</li>
+<li><code>'wp_user'@'localhost'</code>: 这是你之前创建的用户名和主机。</li>
+</ul>
+</li>
+<li>
+<p><strong>刷新权限：</strong></p>
+<p>执行完权限授予操作后，你需要刷新 MariaDB 的权限表，以使更改生效。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>查看已有数据库和用户</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="n">mysql</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">User</span><span class="p">,</span><span class="w"> </span><span class="k">Host</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>退出 MariaDB 客户端：</strong></p>
+</li>
+</ul>
+<p>完成以上操作后，你可以退出 MariaDB 客户端：<code>QUIT;</code>
+<strong>总结一下你需要执行的 SQL 命令：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;your_strong_password&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>请务必将 <code>wordpress</code> 替换为你想要的数据库名称，将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个安全的密码。</p>
+<h3 id="安装wordpress">安装wordpress
+</h3><ul>
+<li>
+<p><strong>切换到目标目录：</strong> 使用 <code>cd</code> 命令导航到 <code>/user/local/lsws</code> 目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/lsws
+</span></span><span class="line"><span class="cl">mkdir virtual_host_root
+</span></span><span class="line"><span class="cl">mkdir virtual_host_root/wordpress
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> virtual_host_root/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>新建文件夹</strong> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir site1
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>进入 Site1</strong> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> site1
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>下载 WordPress</strong> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://wordpress.org/latest.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>解压，并删除下载的压缩包</strong> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xzvf latest.tar.gz
+</span></span><span class="line"><span class="cl">rm latest.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>将 WordPress 文件移动到站点根目录</strong> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rsync -a wordpress/ .     <span class="c1"># 将 wordpress 中的所有文件复制到当前目录</span>
+</span></span><span class="line"><span class="cl">rm -rf wordpress           <span class="c1"># 删除 wordpress 目录及其内容</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>更改目录文件的权限</strong> ：更安全，默认是755和644，一般直接用默认的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /usr/local/lsws/virtual_host_root/wordpress/site1/ -type d -exec chmod <span class="m">750</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="cl">find /usr/local/lsws/virtual_host_root/wordpress/site1/ -type f -exec chmod <span class="m">640</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="配置openlitespeed">配置openlitespeed
+</h3><h4 id="打开openlitespeed-gui面板">打开openlitespeed GUI面板
+</h4><pre><code>格式为 `ip:7080`
+如果浏览器出现提示风险，选择accept，就可以跳转
+</code></pre>
+<h4 id="virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置
+</h4><ul>
+<li>界面右上角点击add，基础配置
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Virtual Host Name = site1
+</span></span><span class="line"><span class="cl">Virtual Host Root = /usr/local/lsws/virtual_host_root/wordpress/site1/ 或者 virtual_host_root/wordpress/site1/
+</span></span><span class="line"><span class="cl">Config File = $SERVER_ROOT/conf/vhosts/$VH_NAME/vhconf.conf
+</span></span><span class="line"><span class="cl">Follow Symbolic Link = Yes # 专用服务器，可以打开提高性能，但是有风险
+</span></span><span class="line"><span class="cl">Enable Scripts/ExtApps = Yes
+</span></span><span class="line"><span class="cl">Restrained = No # 共享主机 选Yes
+</span></span><span class="line"><span class="cl">External App Set UID Mode = Server UlD
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>UID Mode</th>
+          <th>适用场景</th>
+          <th>是否适合共享主机</th>
+          <th>安全性</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Server UID</strong></td>
+          <td>单用户环境、简单部署</td>
+          <td>不推荐</td>
+          <td>较低</td>
+      </tr>
+      <tr>
+          <td><strong>CGI File UID</strong></td>
+          <td>主要使用 CGI 脚本的环境</td>
+          <td>推荐（仅限 CGI）</td>
+          <td>中等</td>
+      </tr>
+      <tr>
+          <td><strong>Doc Root UID</strong></td>
+          <td>使用 PHP（FastCGI/LSPHP）的环境</td>
+          <td>强烈推荐</td>
+          <td>高</td>
+      </tr>
+  </tbody>
+</table></div>
+<ul>
+<li>
+<p>点击完成后，打开site1虚拟主机的general配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Document Root = $VH_ROOT/
+</span></span><span class="line"><span class="cl">Domain Name = site1.com
+</span></span><span class="line"><span class="cl">Domain Aliases = www.site1.com
+</span></span><span class="line"><span class="cl">Enable GZIP Compression = Yes # - 作为 Brotli 的 **兼容性备选方案**，对不支持 Brotli 的旧浏览器（如 IE11）自动降级使用 Gzip
+</span></span><span class="line"><span class="cl">Enable Brotli Compression = Yes # Brotli压缩，减小网页资源（如 HTML、CSS、JavaScript 文件）的大小
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>index file配置(以下二选一，通常选第二个)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Use Server Index Files = Yes
+</span></span><span class="line"><span class="cl">Index Files = 
+</span></span><span class="line"><span class="cl">Auto Index = No
+</span></span><span class="line"><span class="cl">Auto Index URI = 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Use Server Index Files = No
+</span></span><span class="line"><span class="cl">Index Files = index.php
+</span></span><span class="line"><span class="cl">Auto Index = No
+</span></span><span class="line"><span class="cl">Auto Index URI = 
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>rewrite配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Enable Rewrite = Yes
+</span></span><span class="line"><span class="cl">Auto Load from .htaccess = Yes
+</span></span><span class="line"><span class="cl">Log Level = 
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Context配置</p>
+<ul>
+<li>删除所有，只保留<code>URL=/</code>这行</li>
+</ul>
+</li>
+</ul>
+<h4 id="listeners设置">Listeners设置
+</h4><ul>
+<li>界面右上角点击add，基础配置</li>
+<li>HTTP Listener
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Listener Name = HTTP
+</span></span><span class="line"><span class="cl">IP Address = ANY IPV4
+</span></span><span class="line"><span class="cl">Port = 80
+</span></span><span class="line"><span class="cl">Binding = 
+</span></span><span class="line"><span class="cl">Enable REUSEPORT = Yes
+</span></span><span class="line"><span class="cl">Secure = No
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>HTTPS Listener
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Listener Name = HTTPS
+</span></span><span class="line"><span class="cl">IP Address = ANY IPV4
+</span></span><span class="line"><span class="cl">Port = 443
+</span></span><span class="line"><span class="cl">Binding = 
+</span></span><span class="line"><span class="cl">Enable REUSEPORT = Yes
+</span></span><span class="line"><span class="cl">Secure = Yes
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>HTTP Listener和HTTPS Listener都添加Virtual Host
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Virtual Host = site1
+</span></span><span class="line"><span class="cl">Domains = site1.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="配置wordpress的wp-configphp">配置wordpress的wp-config.php
+</h3><ul>
+<li>打开wordpress安装的文件夹</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/lsws/virtual_host_root/wordpress/site1/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>打开并修改wp-config-sample.php</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi wp-config-sample.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cataoase name here = wordpress
+</span></span><span class="line"><span class="cl">username_here = wp_user
+</span></span><span class="line"><span class="cl">password_here = your_strong_password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>wp-config-sample.php重命名wp-config.php</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv wp-config-sample.php wp-config.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装ssl">安装SSL
+</h2><p>Let&rsquo;s Encrypt (免费)</p>
+<ul>
+<li>安装 Certbot
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y epel-release
+</span></span><span class="line"><span class="cl">yum install -y certbot
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>使用 Certbot 申请证书
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1 -d site1.com -d www.site1.com -m site1@gmail.com --agree-tos
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>证书存储路径
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/letsencrypt/live/site1.com/
+</span></span><span class="line"><span class="cl">├── fullchain.pem   # 证书链（包含 site1.com 和 site2.com）
+</span></span><span class="line"><span class="cl">├── privkey.pem     # 私钥
+</span></span><span class="line"><span class="cl">├── cert.pem        # 主证书
+</span></span><span class="line"><span class="cl">└── chain.pem       # 中间证书
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>使用如下命令可以查看证书的有效期
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl x509 -noout -dates -in /etc/letsencrypt/live/site1.com/cert.pem
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>openlitespeed中的HTTPS Listener设置SSL
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Private Key File = /etc/letsencrypt/live/site1.com/privkey.pem
+</span></span><span class="line"><span class="cl">Certificate File = /etc/letsencrypt/live/site1.com/fullchain.pem
+</span></span><span class="line"><span class="cl">Chained Certificate = Yes
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>openlitespeed中的Virtual Host设置Rewrite使得http流量强制转为https
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Enable Rewrite = Yes
+</span></span><span class="line"><span class="cl">Auto Load from .htaccess = Yes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">下面的代码是Rewrite Rules
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="多个网站安装ssl">多个网站安装SSL
+</h3><ul>
+<li>
+<p>安装 Certbot</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y epel-release
+</span></span><span class="line"><span class="cl">yum install -y certbot
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用 Certbot 申请证书</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot certonly --webroot <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -w /usr/local/lsws/virtual_host_root/wordpress/site1 -d site1.com -d www.site1.com <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">  -w /usr/local/lsws/virtual_host_root/wordpress/site2 -d site2.com -d www.site2.com <span class="se">\ </span> 
+</span></span><span class="line"><span class="cl">  -m site1@gmail.com <span class="se">\ </span>                                     
+</span></span><span class="line"><span class="cl">  --agree-tos
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>证书存储路径</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 证书统一存储在首个域名
+</span></span><span class="line"><span class="cl"># 无论包含多少域名，证书和私钥始终存储在首个域名（`site1.com`）的目录下。
+</span></span><span class="line"><span class="cl"># 所有绑定到该 HTTPS 监听器的虚拟主机（`site1.com` 和 `site2.com`）将共享此证书。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/etc/letsencrypt/live/site1.com/
+</span></span><span class="line"><span class="cl">├── fullchain.pem   # 证书链（包含 site1.com 和 site2.com）
+</span></span><span class="line"><span class="cl">├── privkey.pem     # 私钥
+</span></span><span class="line"><span class="cl">├── cert.pem        # 主证书
+</span></span><span class="line"><span class="cl">└── chain.pem       # 中间证书
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>openlitespeed中的HTTPS Listener设置SSL</p>
+<ul>
+<li>同上</li>
+</ul>
+</li>
+<li>
+<p>openlitespeed中的Virtual Host设置Rewrite使得http流量强制转为https</p>
+<ul>
+<li>同上</li>
+</ul>
+</li>
+</ul>
+<h3 id="ssl自动续签">SSL自动续签
+</h3><h4 id="配置-certbot-自动续期">配置 Certbot 自动续期
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e  <span class="c1"># 编辑定时任务</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每周二凌晨 3:00 续期（时差）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * <span class="m">1</span> /usr/bin/certbot renew --quiet --deploy-hook <span class="s2">&#34;/usr/local/lsws/bin/lswsctrl restart&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>--quiet</code>: 静默模式，仅输出错误信息。</li>
+<li><code>--deploy-hook</code>: 续期成功后触发 OpenLiteSpeed 重启以加载新证书。</li>
+</ul>
+<h4 id="验证-cron-任务">验证 Cron 任务
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -l  <span class="c1"># 查看已配置的定时任务</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="验证续期流程">验证续期流程
+</h4><ul>
+<li>
+<p>手动测试续期（不实际签发证书）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">certbot renew --dry-run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Congratulations, all simulated renewals succeeded
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>检查证书有效期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect site1.com:443 2&gt;/dev/null <span class="p">|</span> openssl x509 -noout -dates
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">notBefore=Mar 18 00:00:00 2024 GMT
+</span></span><span class="line"><span class="cl">notAfter=Jun 16 23:59:59 2024 GMT
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="配置lscache">配置LSCache
+</h2><blockquote>
+<p><a class="link" href="https://docs.openlitespeed.org/config/lscache/"  target="_blank" rel="noopener"
+    >参考官方连接</a></p></blockquote>
+<ul>
+<li>
+<p>查看配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/usr/local/lsws/conf/httpd_config.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>找到module cache模块</p>
+<ul>
+<li>默认的配置
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module cache {
+</span></span><span class="line"><span class="cl">  internal                1
+</span></span><span class="line"><span class="cl">#          1
+</span></span><span class="line"><span class="cl">checkPrivateCache   1
+</span></span><span class="line"><span class="cl">checkPublicCache    1
+</span></span><span class="line"><span class="cl">maxCacheObjSize     10000000
+</span></span><span class="line"><span class="cl">maxStaleAge         200
+</span></span><span class="line"><span class="cl">qsCache             1
+</span></span><span class="line"><span class="cl">reqCookieCache      1
+</span></span><span class="line"><span class="cl">respCookieCache     1
+</span></span><span class="line"><span class="cl">ignoreReqCacheCtrl  1
+</span></span><span class="line"><span class="cl">ignoreRespCacheCtrl 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">enableCache         0
+</span></span><span class="line"><span class="cl">expireInSeconds     3600
+</span></span><span class="line"><span class="cl">enablePrivateCache  0
+</span></span><span class="line"><span class="cl">privateExpireInSeconds 3600
+</span></span><span class="line"><span class="cl">  ls_enabled              1
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>修改后的配置
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module cache {
+</span></span><span class="line"><span class="cl">  internal                1
+</span></span><span class="line"><span class="cl">#          1
+</span></span><span class="line"><span class="cl">checkPrivateCache   1
+</span></span><span class="line"><span class="cl">checkPublicCache    1
+</span></span><span class="line"><span class="cl">maxCacheObjSize     10000000
+</span></span><span class="line"><span class="cl">maxStaleAge         3600
+</span></span><span class="line"><span class="cl">qsCache             0
+</span></span><span class="line"><span class="cl">reqCookieCache      1
+</span></span><span class="line"><span class="cl">respCookieCache     0
+</span></span><span class="line"><span class="cl">ignoreReqCacheCtrl  1
+</span></span><span class="line"><span class="cl">ignoreRespCacheCtrl 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">enableCache         1
+</span></span><span class="line"><span class="cl">expireInSeconds     86400
+</span></span><span class="line"><span class="cl">enablePrivateCache  0
+</span></span><span class="line"><span class="cl">privateExpireInSeconds 3600
+</span></span><span class="line"><span class="cl">  ls_enabled              1
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><strong>关键修改点</strong>：
+<ul>
+<li><code>maxStaleAge</code> 200 → 3600</li>
+<li><code>qsCache</code> 1 → 0</li>
+<li><code>respCookieCache</code> 1 → 0</li>
+<li><code>ignoreRespCacheCtrl</code> 0 → 1</li>
+<li><code>enableCache</code> 0 → 1</li>
+<li><code>expireInSeconds</code> 3600 → 86400</li>
+</ul>
+</li>
+<li>解释
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">module cache {
+</span></span><span class="line"><span class="cl">  internal                1   # 内部调试模式，保持默认值1（无需修改）
+</span></span><span class="line"><span class="cl">#          1               # 注释行，无实际作用（可能是排版占位符）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  checkPrivateCache   1   # 检查私有缓存（但enablePrivateCache=0时无效）
+</span></span><span class="line"><span class="cl">  checkPublicCache    1   # 检查公共缓存（需enableCache=1才生效）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  maxCacheObjSize     10000000  # 单个缓存文件最大10MB（适合存储含图片的页面）
+</span></span><span class="line"><span class="cl">  maxStaleAge         3600      # 允许过期缓存继续服务1小时（确保高并发时可用性）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  qsCache             0   # 不缓存带?参数的URL（避免缓存追踪链接等无效页面）
+</span></span><span class="line"><span class="cl">  reqCookieCache      1   # 带Cookie的请求仍读取缓存（适合统计工具cookie不影响内容）
+</span></span><span class="line"><span class="cl">  respCookieCache     0   # 不缓存含Set-Cookie的响应（防止缓存用户会话数据）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ignoreReqCacheCtrl  1   # 强制忽略请求的Cache-Control头（所有页面强制缓存）
+</span></span><span class="line"><span class="cl">  ignoreRespCacheCtrl 1   # 强制忽略响应的Cache-Control头（突破程序禁用缓存限制）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  enableCache         1   # 启用公共缓存（核心开关，必须为1）
+</span></span><span class="line"><span class="cl">  expireInSeconds     86400  # 缓存有效期24小时（适合企业站低频更新）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  enablePrivateCache  0   # 关闭私有缓存（无用户登录需求）
+</span></span><span class="line"><span class="cl">  privateExpireInSeconds 3600  # 私有缓存有效期（因已关闭，此参数无作用）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  ls_enabled              1   # 模块总开关（必须为1，否则所有缓存失效）
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>litespeed cache setting TTL</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 保持与服务器公共缓存时间严格 expireInSeconds=86400
+</span></span><span class="line"><span class="cl">Default Public Cache TTL = 86400 
+</span></span><span class="line"><span class="cl">Default Private Cache TTL = 默认  # 禁用私有缓存（无需用户系统）
+</span></span><span class="line"><span class="cl">Default Front Page TTL = 86400  # 首页缓存
+</span></span><span class="line"><span class="cl">Default Feed TTL = 86400    # RSS/Atom 等订阅源的缓存
+</span></span><span class="line"><span class="cl">DefauIt REST TTL = 86400    # REST API 的缓存时间
+</span></span><span class="line"><span class="cl">Default HTTP Status Code PageTTL = 默认
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="备份与恢复">备份与恢复
+</h2><h3 id="数据库">数据库
+</h3><ul>
+<li>备份
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysqldump -u username -p database_name &gt; backup_filename.sql
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>恢复
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -u username -p database_name &lt; backup_filename.sql
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="wordpress">wordpress
+</h3><ul>
+<li>备份
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -czvf backup_filename.tar.gz /path/to/wordpress_directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>恢复</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xzvf backup_filename.tar.gz -C /path/to/new_wordpress_directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="更新configuration-file">更新Configuration File
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /path/to/wordpress/wp-config.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;new_database_name&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;new_username&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;new_password&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;new_host&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cron-自动化备份">Cron 自动化备份
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每天凌晨 3 点运行备份（考虑服务器有12小时时差）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * * tar -czf /backup/wordpress-backup-<span class="k">$(</span>date +<span class="se">\%</span>F<span class="k">)</span>.tar.gz -C /path/to/wordpress .
+</span></span><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * * wp db <span class="nb">export</span> /backup/database-backup-<span class="k">$(</span>date +<span class="se">\%</span>F<span class="k">)</span>.sql --path<span class="o">=</span>/path/to/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置邮箱">配置邮箱
+</h2><p>两种方法，第一种方法简单，第二种方法可操作性大</p>
+<h3 id="企业微信配置邮箱">企业微信配置邮箱
+</h3><ul>
+<li>DNS配置MX
+<ul>
+<li>MX: <code>mxbiz1.qq.com</code> 和 <code>mxbiz2.qq.com</code></li>
+<li>参考文档：<a class="link" href="https://open.work.weixin.qq.com/help2/pc/15333"  target="_blank" rel="noopener"
+    >https://open.work.weixin.qq.com/help2/pc/15333</a></li>
+</ul>
+</li>
+<li>DNS配置TXT
+<ul>
+<li>SPF
+<ul>
+<li>主机记录：<code>@或者为空</code></li>
+<li>记录类型：<code>TXT</code></li>
+<li>TXT记录值为：<code>v=spf1 include:spf.mail.qq.com ~all</code></li>
+<li>参考文档为 <a class="link" href="https://open.work.weixin.qq.com/help2/pc/14554"  target="_blank" rel="noopener"
+    >https://open.work.weixin.qq.com/help2/pc/14554</a></li>
+</ul>
+</li>
+<li>DKIM
+<ul>
+<li>需要按照企业微信的路径”企业微信管理后台-&gt;协作-&gt;邮件-&gt;设置-&gt;DKIM验证-&gt;配置”获取配置信息</li>
+<li>参考文档为 <a class="link" href="https://open.work.weixin.qq.com/help2/pc/19647"  target="_blank" rel="noopener"
+    >https://open.work.weixin.qq.com/help2/pc/19647</a></li>
+</ul>
+</li>
+<li>DMARC
+<ul>
+<li>主机记录：<code>_dmarc</code></li>
+<li>记录类型：<code>TXT</code></li>
+<li>记录值: <code>v=DMARC1; p=none; rua=mailto:mailauth-reports@qq.com</code></li>
+<li>参考文档为 <a class="link" href="https://open.work.weixin.qq.com/help2/pc/19820"  target="_blank" rel="noopener"
+    >https://open.work.weixin.qq.com/help2/pc/19820</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="自行在服务器上配置">自行在服务器上配置
+</h3><ul>
+<li>方法
+<ul>
+<li>手动部署</li>
+<li>简单部署
+<ul>
+<li>其他</li>
+<li>docker
+<ul>
+<li><a class="link" href="docker-mailserver" >docker-mailserver</a> + <a class="link" href="https://www.thunderbird.net/en-US/"  target="_blank" rel="noopener"
+    >Thunderbird客户端</a>/移动端其他
+<ul>
+<li>轻量化</li>
+<li>代码配置</li>
+</ul>
+</li>
+<li><a class="link" href="https://mailcow.email/"  target="_blank" rel="noopener"
+    >mailcow</a>
+<ul>
+<li>集成化</li>
+<li>大部分web界面配置</li>
+<li>包含默认的webmail</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/modoboa/modoboa"  target="_blank" rel="noopener"
+    >Modoboa</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>下面以docker-mailserver为例</p>
+<h4 id="安装docker">安装docker
+</h4><p><a class="link" href="https://docs.docker.com/engine/install/"  target="_blank" rel="noopener"
+    >官方链接</a></p>
+<h4 id="安装docker-compose">安装Docker Compose
+</h4><p><a class="link" href="https://docs.docker.com/compose/install/linux/"  target="_blank" rel="noopener"
+    >官方链接</a></p>
+<h4 id="dns设置">DNS设置
+</h4><ul>
+<li>site1
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Host</th>
+          <th>Record</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>@</td>
+          <td>A</td>
+          <td>Server IP</td>
+      </tr>
+      <tr>
+          <td>mail</td>
+          <td>A</td>
+          <td>Server IP</td>
+      </tr>
+      <tr>
+          <td>@</td>
+          <td>MX</td>
+          <td>mail.site1.com priority 10</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+<li>site2
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Host</th>
+          <th>Record</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>@</td>
+          <td>A</td>
+          <td>Server IP</td>
+      </tr>
+      <tr>
+          <td>@</td>
+          <td>MX</td>
+          <td>mail.site1.com priority 10</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+<h4 id="安装docker-mailserve">安装docker-mailserve
+</h4><ul>
+<li>参考
+<a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/"  target="_blank" rel="noopener"
+    >官方链接</a>
+<a class="link" href="https://webshanks.com/setup-docker-mailserver-on-debian-12"  target="_blank" rel="noopener"
+    >参考链接-webshanks</a>
+<a class="link" href="https://www.youtube.com/watch?v=kdH5eSo3_fY"  target="_blank" rel="noopener"
+    >参考视频-webshanks</a></li>
+<li>步骤
+<ul>
+<li>创建文件夹和文件
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir /opt/mailserver
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver
+</span></span><span class="line"><span class="cl"><span class="nv">DMS_GITHUB_URL</span><span class="o">=</span><span class="s2">&#34;https://raw.githubusercontent.com/docker-mailserver/docker-mailserver/master&#34;</span>
+</span></span><span class="line"><span class="cl">wget <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DMS_GITHUB_URL</span><span class="si">}</span><span class="s2">/compose.yaml&#34;</span>
+</span></span><span class="line"><span class="cl">wget <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DMS_GITHUB_URL</span><span class="si">}</span><span class="s2">/mailserver.env&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>修改compose.yaml
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi compose.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>输入并保存，要修改其中的hostname
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">services</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mailserver</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span><span class="p">:</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="p">:</span><span class="n">latest</span>
+</span></span><span class="line"><span class="cl">    <span class="n">container_name</span><span class="p">:</span> <span class="n">mailserver</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hostname</span><span class="p">:</span> <span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env_file</span><span class="p">:</span> <span class="n">mailserver</span><span class="o">.</span><span class="n">env</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ports</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;25:25&#34;</span>    <span class="c1"># SMTP (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;143:143&#34;</span>  <span class="c1"># IMAP4 (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;465:465&#34;</span>  <span class="c1"># ESMTP (implicit TLS)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;587:587&#34;</span>  <span class="c1"># ESMTP (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;993:993&#34;</span>  <span class="c1"># IMAP4 (implicit TLS)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">volumes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">logs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span>
+</span></span><span class="line"><span class="cl">    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Uncomment if using `ENABLE_FAIL2BAN=1`:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># cap_add:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   - NET_ADMIN</span>
+</span></span><span class="line"><span class="cl">    <span class="n">healthcheck</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">test</span><span class="p">:</span> <span class="s2">&#34;ss --listening --tcp | grep -P &#39;LISTEN.+smtp&#39; || exit 1&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">timeout</span><span class="p">:</span> <span class="mi">3</span><span class="n">s</span>
+</span></span><span class="line"><span class="cl">      <span class="n">retries</span><span class="p">:</span> <span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>Mail Server Up and Running
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>创建邮箱地址
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti mailserver setup email add info@site1.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>获取DKIM key
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti mailserver setup config dkim
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>key保存的路径
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /opt/mailserver/docker-data/dms/config/opendkim/keys/site1.com/mail.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>DNS添加
+<ul>
+<li>SPF 记录用于指定哪些服务器可以代表你的域名发送电子邮件。它通过列出允许发送邮件的 IP 地址或域名来防止未经授权的服务器冒充你的域名发送邮件。</li>
+<li>DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
+<ul>
+<li><code>_dmarc</code>：这是 DMARC 记录的子域名，通常以 <code>_dmarc</code> 开头。</li>
+<li><code>v=DMARC1</code>：表示这是 DMARC 记录，版本为 1。</li>
+<li><code>p=quarantine</code>：指示收件人的邮件服务器应该将无法通过 SPF 或 DKIM 验证的邮件隔离到垃圾邮件文件夹中。</li>
+<li><code>adkim=r</code>：表示宽松的 DKIM 对齐模式，即只要 DKIM 签名的域名与发件人的域名相同即可。</li>
+<li><code>aspf=r</code>：表示宽松的 SPF 对齐模式，即只要 SPF 记录中的域名与发件人的域名相同即可。</li>
+<li><code>pct=100</code>：表示对 100% 的邮件应用 DMARC 策略。</li>
+</ul>
+</li>
+<li>DKIM 是一种基于公钥加密的技术，用于验证电子邮件的真实性。它通过在邮件头部添加签名来确保邮件没有被篡改，并且邮件确实是由你的域名发出的。
+<ul>
+<li>v= ：指定 DKIM 版本，通常是 <code>DKIM1</code>。</li>
+<li>g= ：指定签名的应用范围，默认值为 <code>*</code>，表示全局有效。</li>
+<li>k= ：指定密钥类型，通常是 <code>rsa</code>。</li>
+<li>p= ：包含公钥的 Base64 编码字符串。</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Host</th>
+          <th>Record</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>@</td>
+          <td>TXT</td>
+          <td>v=spf1 a mx ip4:XX.XX.XXX.XX -all</td>
+      </tr>
+      <tr>
+          <td>_dmarc</td>
+          <td>MX</td>
+          <td>v=DMARC1; p=quarantine; adkim=r; aspf=r; pct=100</td>
+      </tr>
+      <tr>
+          <td>mail._domainkey</td>
+          <td>TXT</td>
+          <td>v=DKlM1:h=sha256; k=rsa;p=AAABBB</td>
+      </tr>
+  </tbody>
+</table></div>
+<ul>
+<li>其中AAA是<code>opt/mailserver/docker-data/dms/config/opendkim/keys/site1.com/mail.txt</code>中的<code>p=AAA</code>；BBB是<code>p=AAA</code>的下面一行，把连接起来</li>
+<li>要先添加<code>mail._domainkey</code>在添加其他两项，否则可能会添加失败</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SSL认证
+<ul>
+<li>方法1：配置docker的SSL挂载在主系统中
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver/
+</span></span><span class="line"><span class="cl">docker run --rm -it <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 80:80 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --standalone 
+</span></span><span class="line"><span class="cl">-d mail.site1.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>方法2：上述情况适用于80端口未被使用的情况。如果80端口已经被wordpress网站占用的话，需要其他方法
+<ul>
+<li>方法2-1：通过openlitespeed暂停端口80，调用以上命令，在重新开启openlitespeed的80端口的情况</li>
+<li>方法2-2：改用Webroot验证模式
+<ul>
+<li>
+<p>利用现有Web服务器的网站目录进行验证，无需占用80端口</p>
+</li>
+<li>
+<p>openlitespeed中的Virtual Hosts中的wordpress_site1中</p>
+<ul>
+<li>General
+<ul>
+<li><code>Domain Name = site1.com, www.site1.com, mail.site1.com</code></li>
+</ul>
+</li>
+<li>Context
+<ul>
+<li>add Static</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">	URI = /.well-known/acme-challenge/
+</span></span><span class="line"><span class="cl">	Location = ${DOC_ROOT}/.well-known/acme-challenge/
+</span></span><span class="line"><span class="cl">	Accessible = Yes
+</span></span><span class="line"><span class="cl">	Enable Expires = No
+</span></span><span class="line"><span class="cl">	Header Operations = Header unset Cache-Control
+</span></span><span class="line"><span class="cl">						Header set Content-Type &#34;text/plain&#34;
+</span></span><span class="line"><span class="cl">	Auto Index = No
+</span></span><span class="line"><span class="cl">	Access Allowed = all
+</span></span><span class="line"><span class="cl">	Add Default Charset = Off	
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>openlitespeed中的Listeners中的HTTP中</p>
+<ul>
+<li>wordpress_site1添加domains
+<ul>
+<li><code>Domains = site1.com, mail.site1.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>验证配置是否生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p /usr/local/lsws/virtual_host_root/wordpress/site1/.well-known/acme-challenge
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;TEST&#34;</span> &gt; /usr/local/lsws/virtual_host_root/wordpress/site1/.well-known/acme-challenge/test
+</span></span><span class="line"><span class="cl">curl http://mail.site1.com/.well-known/acme-challenge/test
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果返回 <code>TEST</code> 表示配置成功。</p>
+</li>
+<li>
+<p>certbot配置SSL。先<code>cd /opt/mailserver/</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/site1:/var/www/site1&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --webroot <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-w /var/www/site1 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d mail.site1.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>compose.yaml新增volumes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">services</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mailserver</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># ... 其他配置保持不变 ...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">volumes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 原有挂载配置保留 ▼</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">logs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1"># 新增证书挂载配置（关键部分）▼</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">certbot</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span>  <span class="c1"># 挂载整个证书目录</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">certbot</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>  <span class="c1"># 精确挂载域名证书</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>mailserver.env设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vi /opt/mailserver/mailserver.env
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>找到SSL TYPE添加以下
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SSL TYPE=letsencrypt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>自动更新SSL</p>
+<ul>
+<li>
+<p>创建脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /opt/mailserver/renew_cert.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>复制以下内容到其中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 确保脚本在正确的目录下执行</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期命令（使用 Docker）</span>
+</span></span><span class="line"><span class="cl">docker run --rm <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/hailiangfactory:/var/www/hailiangfactory&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  certbot/certbot renew <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --quiet
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查续期日志，判断是否实际续期</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> grep -q <span class="s2">&#34;new certificate&#34;</span> /opt/mailserver/docker-data/certbot/logs/letsencrypt.log<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
+</span></span><span class="line"><span class="cl">    docker compose restart mailserver
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>&ndash;webroot 和 -w 只在<strong>初次获取证书</strong>（certonly）或<strong>更改验证方式</strong>时需要。</p>
+</li>
+<li>
+<p>赋予脚本执行权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x /opt/mailserver/renew_cert.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置 Crontab 定时任务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo crontab -e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>添加以下内容
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mi">0</span> <span class="mi">3</span> <span class="o">*</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">mailserver</span><span class="o">/</span><span class="n">renew_cert</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">certbot</span><span class="o">-</span><span class="n">renew</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="添加查看删除邮箱">添加、查看、删除邮箱
+</h4><ul>
+<li>常用命令
+<ul>
+<li>查看已有邮箱
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> mailserver setup email list
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>创建邮箱
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -ti mailserver setup email add user1@example.com MySecurePassword123
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>删除邮箱
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -ti mailserver setup email del user1@example.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h5 id="批量操作-基于脚本">批量操作-基于脚本
+</h5><p>略；后期再研究</p>
+<h4 id="邮件客户端">邮件客户端
+</h4><p>推荐使用</p>
+<ul>
+<li><a class="link" href="https://www.thunderbird.net/en-US/"  target="_blank" rel="noopener"
+    >thunderbird</a></li>
+</ul>
+<h3 id="防火墙和端口">防火墙和端口
+</h3><ul>
+<li>邮件发送：
+<ul>
+<li>25/tcp - SMTP（简单邮件传输协议）</li>
+<li>465/tcp - SMTPS（安全的 SMTP，使用 SSL/TLS）</li>
+<li>587/tcp - Submission（邮件提交端口，通常用于客户端）</li>
+</ul>
+</li>
+<li>邮件接收：
+<ul>
+<li>110/tcp - POP3（邮局协议第 3 版）</li>
+<li>143/tcp - IMAP（互联网消息访问协议）</li>
+<li>995/tcp - POP3S（安全的 POP3，使用 SSL/TLS）</li>
+<li>993/tcp - IMAPS（安全的 IMAP，使用 SSL/TLS）</li>
+</ul>
+</li>
+<li>Web 邮箱界面：
+<ul>
+<li>80/tcp - HTTP（网页访问）</li>
+<li>443/tcp - HTTPS（安全的网页访问，使用 SSL/TLS）。</li>
+</ul>
+</li>
+</ul>
+<p>系统默认没有安装防火墙，即端口全开。如需安装配置防火墙可参考以下</p>
+<ul>
+<li>安装firewalld。(或者安装静态简单版的ufw)
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install firewalld
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>启动并设置开机启动
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start firewalld
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> firewalld
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>查看已开放的端口
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --list-all
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>开启端口
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>25/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>465/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>587/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>143/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>993/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>110/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>995/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>80/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>443/tcp --permanent
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>重新加载防火墙规则
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>查看已开放的端口
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --list-all
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/shopify%E6%8F%92%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">shopify插件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E4%BB%A3%E7%A0%81%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress代码语言分类</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%8F%92%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress插件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%9E%B6%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordPress架构</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">提升wordpress网站速度</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
