@@ -2,16 +2,16 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
-<title>linux_centos&#43;hostinger vps安装wordpress和配置邮箱</title>
+<title>inux_centos-hostinger-vps安装wordpress和配置邮箱</title>
 
-<link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
+<link rel='canonical' href='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="linux_centos+hostinger vps安装wordpress和配置邮箱">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="inux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta property='og:description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
-<meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
+<meta property='og:url' content='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-14T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="linux_centos+hostinger vps安装wordpress和配置邮箱">
+<meta name="twitter:title" content="inux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta name="twitter:description" content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
     <link rel="shortcut icon" href="/001.ico" />
 
@@ -253,6 +253,7 @@
         <li><a href="#ssh">ssh</a>
           <ol>
             <li><a href="#操作流程">操作流程</a></li>
+            <li><a href="#脚本快捷">脚本快捷</a></li>
           </ol>
         </li>
         <li><a href="#ftp">ftp</a></li>
@@ -269,14 +270,7 @@
             <li><a href="#access-the-webadmin-console">Access the WebAdmin Console</a></li>
           </ol>
         </li>
-        <li><a href="#安装配置mariadb">安装配置mariadb</a>
-          <ol>
-            <li><a href="#步骤一添加mariadb官方仓库"><strong>步骤一：添加MariaDB官方仓库</strong></a></li>
-            <li><a href="#步骤二安装mariadb"><strong>步骤二：安装MariaDB</strong></a></li>
-            <li><a href="#步骤三启动mariadb服务"><strong>步骤三：启动MariaDB服务</strong></a></li>
-            <li><a href="#步骤四设置mariadb开机自启动"><strong>步骤四：设置MariaDB开机自启动</strong></a></li>
-          </ol>
-        </li>
+        <li><a href="#安装配置mariadb">安装配置mariadb</a></li>
         <li><a href="#mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库</a>
           <ol>
             <li><a href="#生成数据库">生成数据库</a></li>
@@ -295,6 +289,7 @@
     </li>
     <li><a href="#安装ssl">安装SSL</a>
       <ol>
+        <li><a href="#单个网站安装ssl">单个网站安装SSL</a></li>
         <li><a href="#多个网站安装ssl">多个网站安装SSL</a></li>
         <li><a href="#ssl自动续签">SSL自动续签</a>
           <ol>
@@ -321,9 +316,25 @@
           <ol>
             <li><a href="#安装docker">安装docker</a></li>
             <li><a href="#安装docker-compose">安装Docker Compose</a></li>
-            <li><a href="#dns设置">DNS设置</a></li>
+            <li><a href="#dns设置1-amx">DNS设置1-A、MX</a></li>
             <li><a href="#安装docker-mailserve">安装docker-mailserve</a></li>
-            <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a></li>
+            <li><a href="#dns设置2--txt">DNS设置2- TXT</a>
+              <ol>
+                <li><a href="#设置">设置</a></li>
+              </ol>
+            </li>
+            <li><a href="#ssl认证">SSL认证</a>
+              <ol>
+                <li><a href="#方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中</a></li>
+                <li><a href="#方法2-暂停和开启80端口">方法2 暂停和开启80端口</a></li>
+                <li><a href="#方法3webroot验证模式">方法3：Webroot验证模式</a></li>
+              </ol>
+            </li>
+            <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a>
+              <ol>
+                <li><a href="#批量操作-基于脚本">批量操作-基于脚本</a></li>
+              </ol>
+            </li>
             <li><a href="#邮件客户端">邮件客户端</a></li>
           </ol>
         </li>
@@ -357,7 +368,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/">linux_centos&#43;hostinger vps安装wordpress和配置邮箱</a>
+            <a href="/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/">inux_centos-hostinger-vps安装wordpress和配置邮箱</a>
         </h2>
     
         
@@ -409,8 +420,8 @@
 <li>按照要求输入账号密码</li>
 <li>首次连接，提示是否将服务器的公钥添加到你的本地信任列表中</li>
 </ul>
-<h5 id="脚本快捷">脚本快捷
-</h5><ul>
+<h4 id="脚本快捷">脚本快捷
+</h4><ul>
 <li><code>win+E</code>打开文件资源管理器</li>
 <li>在地址栏中输入 <code>%userprofile%\.ssh</code> 并按回车键</li>
 <li>如果 <code>.ssh</code> 文件夹不存在，你需要手动创建一个名为 <code>.ssh</code> 的文件夹</li>
@@ -555,10 +566,11 @@
 </div>
 </div><p>To access the WebAdmin console, visit port <code>7080</code> of your domain (for example, <code>ip:7080/</code>) and log in using the password you just set.</p>
 <h3 id="安装配置mariadb">安装配置mariadb
-</h3><p><a class="link" href="https://segmentfault.com/a/1190000045447884"  target="_blank" rel="noopener"
-    >https://segmentfault.com/a/1190000045447884</a></p>
-<h4 id="步骤一添加mariadb官方仓库"><strong>步骤一：添加MariaDB官方仓库</strong>
-</h4><p>首先，添加MariaDB的官方YUM仓库，以获取最新版本的软件包。</p>
+</h3><blockquote>
+<p><a class="link" href="https://segmentfault.com/a/1190000045447884"  target="_blank" rel="noopener"
+    >参考链接</a></p></blockquote>
+<ul>
+<li>添加MariaDB官方仓库
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -567,8 +579,8 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/yum.repos.d/MariaDB.repo
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 <strong>解释</strong>：使用<code>vi</code>编辑器创建或打开<code>/etc/yum.repos.d/MariaDB.repo</code>文件，<code>sudo</code>确保有足够的权限。</p>
-<p>在打开的文件中，粘贴类似以下内容（具体看版本号）：</p>
+</div><ul>
+<li>添加以下内容
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -583,24 +595,23 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="c1"># MariaDB 10.11 CentOS repository list - created 2025-03-19 01:02 UTC</span>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># MariaDB 10.11 CentOS repository list - created 2025-03-19 01:02 UTC</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># https://mariadb.org/download/</span>
-</span></span><span class="line"><span class="cl"><span class="k">[mariadb]</span>
-</span></span><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">MariaDB</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">mariadb</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="n">MariaDB</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># baseurl = https://rpm.mariadb.org/10.11/centos/$releasever/$basearch</span>
-</span></span><span class="line"><span class="cl"><span class="na">baseurl</span> <span class="o">=</span> <span class="s">https://mirrors.xtom.com.hk/mariadb/yum/10.11/centos/$releasever/$basearch</span>
+</span></span><span class="line"><span class="cl"><span class="n">baseurl</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">xtom</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">hk</span><span class="o">/</span><span class="n">mariadb</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="mf">10.11</span><span class="o">/</span><span class="n">centos</span><span class="o">/$</span><span class="n">releasever</span><span class="o">/$</span><span class="n">basearch</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB</span>
-</span></span><span class="line"><span class="cl"><span class="na">gpgkey</span> <span class="o">=</span> <span class="s">https://mirrors.xtom.com.hk/mariadb/yum/RPM-GPG-KEY-MariaDB</span>
-</span></span><span class="line"><span class="cl"><span class="na">gpgcheck</span> <span class="o">=</span> <span class="s">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">gpgkey</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">xtom</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">hk</span><span class="o">/</span><span class="n">mariadb</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="n">RPM</span><span class="o">-</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">MariaDB</span>
+</span></span><span class="line"><span class="cl"><span class="n">gpgcheck</span> <span class="o">=</span> <span class="mi">1</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>注意：具体版本号参考官方 <a class="link" href="https://mariadb.org/download/?t=repo-config"  target="_blank" rel="noopener"
-    >https://mariadb.org/download/?t=repo-config</a></p>
-<p>截至2025年3月，MariaDB 10.11 是最新的 LTS 版本</p>
-<p>💡 <strong>解释</strong>：这是MariaDB 10.11版本的仓库配置，<code>baseurl</code>指定了软件包的下载地址，<code>gpgkey</code>用于验证软件包的完整性。</p>
-<h4 id="步骤二安装mariadb"><strong>步骤二：安装MariaDB</strong>
-</h4><p>更新YUM缓存并安装MariaDB服务器和客户端。</p>
+</div>注意：具体版本号参考官方 <a class="link" href="https://mariadb.org/download/?t=repo-config"  target="_blank" rel="noopener"
+    >https://mariadb.org/download/?t=repo-config</a></li>
+</ul>
+</li>
+<li>安装MariaDB
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -611,13 +622,8 @@
 </span></span><span class="line"><span class="cl">sudo yum install MariaDB-server MariaDB-client -y
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 <strong>解释</strong>：</p>
-<ul>
-<li><code>sudo yum update -y</code>：更新YUM软件包缓存，<code>-y</code>自动确认更新。</li>
-<li><code>sudo yum install MariaDB-server MariaDB-client -y</code>：安装MariaDB服务器和客户端。</li>
-</ul>
-<h4 id="步骤三启动mariadb服务"><strong>步骤三：启动MariaDB服务</strong>
-</h4><p>安装完成后，启动MariaDB服务并检查其状态。</p>
+</div></li>
+<li>启动MariaDB服务
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -628,14 +634,8 @@
 </span></span><span class="line"><span class="cl">sudo systemctl status mariadb
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 <strong>解释</strong>：</p>
-<ul>
-<li><code>sudo systemctl start mariadb</code>：启动MariaDB服务。</li>
-<li><code>sudo systemctl status mariadb</code>：查看MariaDB服务的运行状态。</li>
-</ul>
-<p>✅ <strong>提示</strong>：如果服务正常运行，状态应为<font color="red">active (running)</font>。🎉</p>
-<h4 id="步骤四设置mariadb开机自启动"><strong>步骤四：设置MariaDB开机自启动</strong>
-</h4><p>为了在系统重启后自动启动MariaDB，执行以下命令：</p>
+</div></li>
+<li>设置MariaDB开机自启动
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -644,13 +644,13 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 <strong>解释</strong>：<code>sudo systemctl enable mariadb</code>设置MariaDB服务为开机自启动。</p>
-<p>mariadb默认root账号密码</p>
+</div></li>
+</ul>
 <h3 id="mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库
 </h3><h4 id="生成数据库">生成数据库
 </h4><ul>
 <li>
-<p><strong>登录到 MariaDB 服务器（如果尚未登录）：</strong></p>
+<p>登录到 MariaDB 服务器（如果尚未登录）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -670,7 +670,7 @@
 </div>
 </div></li>
 <li>
-<p><strong>创建数据库：</strong></p>
+<p>创建数据库：</p>
 <p>为你的 WordPress 网站创建一个新的数据库。通常使用 <code>wordpress</code> 作为数据库名称，但你也可以选择其他名称。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -683,7 +683,7 @@
 </div><p>你可以将 <code>wordpress</code> 替换为你想要的数据库名称。</p>
 </li>
 <li>
-<p><strong>创建一个新的 MariaDB 用户：</strong></p>
+<p>创建一个新的 MariaDB 用户：</p>
 <p>为你的 WordPress 网站创建一个专门的用户。你需要选择一个用户名和一个安全的密码。将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个强密码。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -700,7 +700,7 @@
 </ul>
 </li>
 <li>
-<p><strong>授予用户对数据库的权限：</strong></p>
+<p>授予用户对数据库的权限：</p>
 <p>现在，你需要将你在步骤 2 中创建的数据库的所有权限授予你在步骤 3 中创建的用户。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -716,7 +716,7 @@
 </ul>
 </li>
 <li>
-<p><strong>刷新权限：</strong></p>
+<p>刷新权限：</p>
 <p>执行完权限授予操作后，你需要刷新 MariaDB 的权限表，以使更改生效。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -728,7 +728,7 @@
 </div>
 </div></li>
 <li>
-<p><strong>查看已有数据库和用户</strong></p>
+<p>查看已有数据库和用户</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -743,11 +743,11 @@
 </div>
 </div></li>
 <li>
-<p><strong>退出 MariaDB 客户端：</strong></p>
+<p>退出 MariaDB 客户端：</p>
 </li>
 </ul>
 <p>完成以上操作后，你可以退出 MariaDB 客户端：<code>QUIT;</code>
-<strong>总结一下你需要执行的 SQL 命令：</strong></p>
+总结一下你需要执行的 SQL 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -765,8 +765,7 @@
 </div><p>请务必将 <code>wordpress</code> 替换为你想要的数据库名称，将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个安全的密码。</p>
 <h3 id="安装wordpress">安装wordpress
 </h3><ul>
-<li>
-<p><strong>切换到目标目录：</strong> 使用 <code>cd</code> 命令导航到 <code>/user/local/lsws</code> 目录：</p>
+<li>切换到目标目录
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -782,8 +781,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>新建文件夹</strong> ：</p>
+<li>新建文件夹
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -793,8 +791,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>进入 Site1</strong> ：</p>
+<li>进入 Site1
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -804,8 +801,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>下载 WordPress</strong> ：</p>
+<li>下载 WordPress
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -815,8 +811,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>解压，并删除下载的压缩包</strong> ：</p>
+<li>解压，并删除下载的压缩包
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -828,8 +823,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>将 WordPress 文件移动到站点根目录</strong> ：</p>
+<li>将 WordPress 文件移动到站点根目录
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -841,8 +835,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p><strong>更改目录文件的权限</strong> ：更安全，默认是755和644，一般直接用默认的</p>
+<li>更改目录文件的权限：更安全，默认是755和644，<strong>一般直接用默认，不需要修改</strong>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1105,6 +1098,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
+</ul>
+<h3 id="单个网站安装ssl">单个网站安装SSL
+</h3><ul>
 <li>使用 Certbot 申请证书
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1192,21 +1188,7 @@
 </ul>
 <h3 id="多个网站安装ssl">多个网站安装SSL
 </h3><ul>
-<li>
-<p>安装 Certbot</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y epel-release
-</span></span><span class="line"><span class="cl">yum install -y certbot
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>使用 Certbot 申请证书</p>
+<li>使用 Certbot 申请证书
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1224,41 +1206,12 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>证书存储路径</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 证书统一存储在首个域名
-</span></span><span class="line"><span class="cl"># 无论包含多少域名，证书和私钥始终存储在首个域名（`site1.com`）的目录下。
-</span></span><span class="line"><span class="cl"># 所有绑定到该 HTTPS 监听器的虚拟主机（`site1.com` 和 `site2.com`）将共享此证书。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/etc/letsencrypt/live/site1.com/
-</span></span><span class="line"><span class="cl">├── fullchain.pem   # 证书链（包含 site1.com 和 site2.com）
-</span></span><span class="line"><span class="cl">├── privkey.pem     # 私钥
-</span></span><span class="line"><span class="cl">├── cert.pem        # 主证书
-</span></span><span class="line"><span class="cl">└── chain.pem       # 中间证书
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>openlitespeed中的HTTPS Listener设置SSL</p>
+<li>openlitespeed中的HTTPS Listener设置SSL
 <ul>
 <li>同上</li>
 </ul>
 </li>
-<li>
-<p>openlitespeed中的Virtual Host设置Rewrite使得http流量强制转为https</p>
+<li>openlitespeed中的Virtual Host设置Rewrite使得http流量强制转为https
 <ul>
 <li>同上</li>
 </ul>
@@ -1717,7 +1670,7 @@
 <h4 id="安装docker-compose">安装Docker Compose
 </h4><p><a class="link" href="https://docs.docker.com/compose/install/linux/"  target="_blank" rel="noopener"
     >官方链接</a></p>
-<h4 id="dns设置">DNS设置
+<h4 id="dns设置1-amx">DNS设置1-A、MX
 </h4><ul>
 <li>site1
 <div class="table-wrapper"><table>
@@ -1748,6 +1701,9 @@
 </table></div>
 </li>
 <li>site2
+<ul>
+<li>如果不创建网站则不需要A记录。如果site2也通过Webroot验证SSL，则Server IP和site1的相同（不设置反向代理的情况下）</li>
+</ul>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -1770,17 +1726,14 @@
   </tbody>
 </table></div>
 </li>
+<li>TXT的DKIM生成的前提是MX指向正确的邮件服务器</li>
 </ul>
 <h4 id="安装docker-mailserve">安装docker-mailserve
-</h4><ul>
-<li>参考
-<a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/"  target="_blank" rel="noopener"
-    >官方链接</a>
-<a class="link" href="https://webshanks.com/setup-docker-mailserver-on-debian-12"  target="_blank" rel="noopener"
-    >参考链接-webshanks</a>
-<a class="link" href="https://www.youtube.com/watch?v=kdH5eSo3_fY"  target="_blank" rel="noopener"
-    >参考视频-webshanks</a></li>
-<li>步骤
+</h4><blockquote>
+<p><a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/"  target="_blank" rel="noopener"
+    >官方链接</a>	<a class="link" href="https://webshanks.com/setup-docker-mailserver-on-debian-12"  target="_blank" rel="noopener"
+    >参考链接-webshanks</a>	<a class="link" href="https://www.youtube.com/watch?v=kdH5eSo3_fY"  target="_blank" rel="noopener"
+    >参考视频-webshanks</a></p></blockquote>
 <ul>
 <li>创建文件夹和文件
 <div class="highlight"><div class="chroma">
@@ -1844,31 +1797,31 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">services</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">  <span class="n">mailserver</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">image</span><span class="p">:</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="p">:</span><span class="n">latest</span>
-</span></span><span class="line"><span class="cl">    <span class="n">container_name</span><span class="p">:</span> <span class="n">mailserver</span>
-</span></span><span class="line"><span class="cl">    <span class="n">hostname</span><span class="p">:</span> <span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span>
-</span></span><span class="line"><span class="cl">    <span class="n">env_file</span><span class="p">:</span> <span class="n">mailserver</span><span class="o">.</span><span class="n">env</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ports</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;25:25&#34;</span>    <span class="c1"># SMTP (explicit TLS =&gt; STARTTLS)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;143:143&#34;</span>  <span class="c1"># IMAP4 (explicit TLS =&gt; STARTTLS)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;465:465&#34;</span>  <span class="c1"># ESMTP (implicit TLS)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;587:587&#34;</span>  <span class="c1"># ESMTP (explicit TLS =&gt; STARTTLS)</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="s2">&#34;993:993&#34;</span>  <span class="c1"># IMAP4 (implicit TLS)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">volumes</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">logs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span>
-</span></span><span class="line"><span class="cl">    <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
-</span></span><span class="line"><span class="cl">    <span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># Uncomment if using `ENABLE_FAIL2BAN=1`:</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># cap_add:</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">#   - NET_ADMIN</span>
-</span></span><span class="line"><span class="cl">    <span class="n">healthcheck</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="n">test</span><span class="p">:</span> <span class="s2">&#34;ss --listening --tcp | grep -P &#39;LISTEN.+smtp&#39; || exit 1&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">timeout</span><span class="p">:</span> <span class="mi">3</span><span class="n">s</span>
-</span></span><span class="line"><span class="cl">      <span class="n">retries</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="n">image</span><span class="p">:</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="p">:</span><span class="n">latest</span>
+</span></span><span class="line"><span class="cl">	<span class="n">container_name</span><span class="p">:</span> <span class="n">mailserver</span>
+</span></span><span class="line"><span class="cl">	<span class="n">hostname</span><span class="p">:</span> <span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span>
+</span></span><span class="line"><span class="cl">	<span class="n">env_file</span><span class="p">:</span> <span class="n">mailserver</span><span class="o">.</span><span class="n">env</span>
+</span></span><span class="line"><span class="cl">	<span class="n">ports</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="s2">&#34;25:25&#34;</span>    <span class="c1"># SMTP (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="s2">&#34;143:143&#34;</span>  <span class="c1"># IMAP4 (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="s2">&#34;465:465&#34;</span>  <span class="c1"># ESMTP (implicit TLS)</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="s2">&#34;587:587&#34;</span>  <span class="c1"># ESMTP (explicit TLS =&gt; STARTTLS)</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="s2">&#34;993:993&#34;</span>  <span class="c1"># IMAP4 (implicit TLS)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">volumes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">logs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">	  <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span>
+</span></span><span class="line"><span class="cl">	<span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+</span></span><span class="line"><span class="cl">	<span class="n">stop_grace_period</span><span class="p">:</span> <span class="mi">1</span><span class="n">m</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># Uncomment if using `ENABLE_FAIL2BAN=1`:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># cap_add:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">#   - NET_ADMIN</span>
+</span></span><span class="line"><span class="cl">	<span class="n">healthcheck</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	  <span class="n">test</span><span class="p">:</span> <span class="s2">&#34;ss --listening --tcp | grep -P &#39;LISTEN.+smtp&#39; || exit 1&#34;</span>
+</span></span><span class="line"><span class="cl">	  <span class="n">timeout</span><span class="p">:</span> <span class="mi">3</span><span class="n">s</span>
+</span></span><span class="line"><span class="cl">	  <span class="n">retries</span><span class="p">:</span> <span class="mi">0</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1912,11 +1865,22 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
+<li>生成site2.com的 DKIM
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -it mailserver setup config dkim domain site2.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 </li>
-<li>DNS添加
-<ul>
-<li>SPF 记录用于指定哪些服务器可以代表你的域名发送电子邮件。它通过列出允许发送邮件的 IP 地址或域名来防止未经授权的服务器冒充你的域名发送邮件。</li>
+</ul>
+<h4 id="dns设置2--txt">DNS设置2- TXT
+</h4><ul>
+<li>SPF 记录：定义了哪些服务器被允许代表这个域名发送电子邮件</li>
 <li>DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
 <ul>
 <li><code>_dmarc</code>：这是 DMARC 记录的子域名，通常以 <code>_dmarc</code> 开头。</li>
@@ -1936,6 +1900,8 @@
 </ul>
 </li>
 </ul>
+<h5 id="设置">设置
+</h5><p><strong>site1</strong></p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -1948,11 +1914,11 @@
       <tr>
           <td>@</td>
           <td>TXT</td>
-          <td>v=spf1 a mx ip4:XX.XX.XXX.XX -all</td>
+          <td>v=spf1 mx -all</td>
       </tr>
       <tr>
           <td>_dmarc</td>
-          <td>MX</td>
+          <td>TXT</td>
           <td>v=DMARC1; p=quarantine; adkim=r; aspf=r; pct=100</td>
       </tr>
       <tr>
@@ -1964,45 +1930,59 @@
 </table></div>
 <ul>
 <li>其中AAA是<code>opt/mailserver/docker-data/dms/config/opendkim/keys/site1.com/mail.txt</code>中的<code>p=AAA</code>；BBB是<code>p=AAA</code>的下面一行，把连接起来</li>
-<li>要先添加<code>mail._domainkey</code>在添加其他两项，否则可能会添加失败</li>
+<li>要先添加<code>mail._domainkey</code>在添加其他两项，否则可能会添加失败？？</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>SSL认证
-<ul>
-<li>方法1：配置docker的SSL挂载在主系统中
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver/
-</span></span><span class="line"><span class="cl">docker run --rm -it <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 80:80 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --standalone 
-</span></span><span class="line"><span class="cl">-d mail.site1.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>方法2：上述情况适用于80端口未被使用的情况。如果80端口已经被wordpress网站占用的话，需要其他方法
-<ul>
-<li>方法2-1：通过openlitespeed暂停端口80，调用以上命令，在重新开启openlitespeed的80端口的情况</li>
-<li>方法2-2：改用Webroot验证模式
-<ul>
-<li>
-<p>利用现有Web服务器的网站目录进行验证，无需占用80端口</p>
-</li>
+<p><strong>site2</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Host</th>
+          <th>Record</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>@</td>
+          <td>TXT</td>
+          <td>v=spf1 mx -all</td>
+      </tr>
+      <tr>
+          <td>_dmarc</td>
+          <td>TXT</td>
+          <td>v=DMARC1; p=quarantine; adkim=r; aspf=r; pct=100</td>
+      </tr>
+      <tr>
+          <td>mail._domainkey</td>
+          <td>TXT</td>
+          <td>v=DKlM1:h=sha256; k=rsa;p=CCCDDD</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="ssl认证">SSL认证
+</h4><p>方法1：适用于80端口未被使用的情况
+方法2，方法3：适用于80端口已被使用的情况</p>
+<h5 id="方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中
+</h5><pre><code>```bash
+cd /opt/mailserver/
+docker run --rm -it \
+-v &quot;${PWD}/docker-data/certbot/certs/:/etc/letsencrypt/&quot; \
+-v &quot;${PWD}/docker-data/certbot/logs/:/var/log/letsencrypt/&quot; \
+-p 80:80 \
+certbot/certbot certonly --standalone 
+-d mail.site1.com \
+-m site1@gmail.com --agree-tos
+```
+</code></pre>
+<h5 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
+</h5><blockquote>
+<p>通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况</p></blockquote>
+<p>略</p>
+<h5 id="方法3webroot验证模式">方法3：Webroot验证模式
+</h5><blockquote>
+<p>利用现有Web服务器的网站目录进行验证，无需占用80端口</p></blockquote>
+<h6 id="openlitespeed配置">openlitespeed配置
+</h6><ul>
 <li>
 <p>openlitespeed中的Virtual Hosts中的wordpress_site1中</p>
 <ul>
@@ -2017,23 +1997,29 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">	URI = /.well-known/acme-challenge/
 </span></span><span class="line"><span class="cl">	Location = ${DOC_ROOT}/.well-known/acme-challenge/
 </span></span><span class="line"><span class="cl">	Accessible = Yes
 </span></span><span class="line"><span class="cl">	Enable Expires = No
-</span></span><span class="line"><span class="cl">	Header Operations = Header unset Cache-Control
-</span></span><span class="line"><span class="cl">						Header set Content-Type &#34;text/plain&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	Header Operations = 
+</span></span><span class="line"><span class="cl">	Header unset Cache-Control
+</span></span><span class="line"><span class="cl">	Header set Content-Type &#34;text/plain&#34;
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	Auto Index = No
 </span></span><span class="line"><span class="cl">	Access Allowed = all
 </span></span><span class="line"><span class="cl">	Add Default Charset = Off	
@@ -2068,8 +2054,9 @@
 </div>
 </div><p>如果返回 <code>TEST</code> 表示配置成功。</p>
 </li>
-<li>
-<p>certbot配置SSL。先<code>cd /opt/mailserver/</code></p>
+</ul>
+<h6 id="certbot配置ssl">certbot配置SSL
+</h6><p>先<code>cd /opt/mailserver/</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2092,10 +2079,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>compose.yaml新增volumes</p>
-<div class="highlight"><div class="chroma">
+</div><ul>
+<li>注意：这个的前提是检查<code>/etc/letsencrypt/live/mail.site1.com/</code>中有没有安装SSL，参考<a class="link" href="#%e5%ae%89%e8%a3%85ssl" >安装ssl</a></li>
+</ul>
+<h6 id="修改composeyaml新增volumes">修改compose.yaml新增volumes
+</h6><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2113,26 +2101,24 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">services</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mailserver</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># ... 其他配置保持不变 ...</span>
-</span></span><span class="line"><span class="cl">    <span class="n">volumes</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">      <span class="c1"># 原有挂载配置保留 ▼</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">state</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">mail</span><span class="o">-</span><span class="n">logs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">mail</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">dms</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">mailserver</span><span class="o">/</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="c1"># 新增证书挂载配置（关键部分）▼</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">certbot</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span>  <span class="c1"># 挂载整个证书目录</span>
-</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="o">./</span><span class="n">docker</span><span class="o">-</span><span class="n">data</span><span class="o">/</span><span class="n">certbot</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">site1</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>  <span class="c1"># 精确挂载域名证书</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mailserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c"># ... 其他配置保持不变 ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 原有挂载配置保留 ▼</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-data/:/var/mail/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-state/:/var/mail-state/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-logs/:/var/log/mail/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/config/:/tmp/docker-mailserver/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 新增证书挂载配置（关键部分）▼</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/:/etc/letsencrypt/ </span><span class="w"> </span><span class="c"># 挂载整个证书目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>mailserver.env设置</p>
-<div class="highlight"><div class="chroma">
+</div><h6 id="mailserverenv设置">mailserver.env设置
+</h6><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -2152,10 +2138,8 @@
 </div>
 </div></li>
 </ul>
-</li>
-<li>
-<p>启动</p>
-<div class="highlight"><div class="chroma">
+<h6 id="更新">更新
+</h6><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -2163,7 +2147,65 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h6 id="多域名的情况">多域名的情况
+</h6><ul>
+<li>
+<p>openlitespeed配置：用site2替代site1</p>
+</li>
+<li>
+<p>ertbot配置SSL：用site2替代site1</p>
+</li>
+<li>
+<p>compose.yaml：如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mailserver</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c"># ... 其他配置保持不变 ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 原有挂载配置保留 ▼</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-data/:/var/mail/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-state/:/var/mail-state/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-logs/:/var/log/mail/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/config/:/tmp/docker-mailserver/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 新增证书挂载配置（关键部分）▼</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/:/etc/letsencrypt/ </span><span class="w"> </span><span class="c"># 挂载整个证书目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site2.com/:/etc/letsencrypt/live/mail.site2.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
 </div></li>
+<li>
+<p>多域名配置</p>
+<ul>
+<li>前提
+<ul>
+<li>DNS配置好了</li>
+<li>测试单域名是可行的</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
 <li>
 <p>自动更新SSL</p>
 <ul>
@@ -2219,10 +2261,10 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 检查续期日志，判断是否实际续期</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> grep -q <span class="s2">&#34;new certificate&#34;</span> /opt/mailserver/docker-data/certbot/logs/letsencrypt.log<span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
-</span></span><span class="line"><span class="cl">    docker compose restart mailserver
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
+</span></span><span class="line"><span class="cl">	docker compose restart mailserver
 </span></span><span class="line"><span class="cl"><span class="k">else</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="k">fi</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -2264,12 +2306,6 @@
 </li>
 <li>
 <p>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 </li>
 </ul>
 </li>

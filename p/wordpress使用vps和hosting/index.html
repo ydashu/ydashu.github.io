@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="wordpress使用VPS和Hosting">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="wordpress使用VPS和Hosting">
 <meta property='og:description' content=" 备注：Hosting以honstinger为例，其他的Hosting博主目前还未使用\nVPS vs Hosting 内容 VPS Hosting 适用于 更强的代码能力、更强的主机配置能力；更加自主可控、VPS参数可选更多、预算充足 更快的建站、托管式安装wordpress和cpanel或hpanel(honstinger)等、预算有限 后台界面UI 相对复杂；纯linux代码或者安装cpanel 相对简单；自动安装hpanel(hongstinger)或cpanel(其他的) 网站速度 取决于VPS的参数、带宽的参数、CDN等。 一般来说比Hosting快 一般来说速度如下： wordpress(VPS &gt; Hosting) &gt; shopify 数据库 需要手动配置 自动配置好 费用 较高 较低 优势 主机配置更高、更加自主可控、一般固定ip 一键安装、每日备份、可视化创建邮箱、可视化文件管理、自动配置dns、自动SSL 劣势 很多功能需要手动设置，对建站人的要求高 低配版无固定ip、主机配置低 VPS搭建wordpress的方法 参考如下两个链接：\n">
 <meta property='og:url' content='https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/'>
 <meta property='og:site_name' content='ydashu'>
@@ -262,14 +262,23 @@
           <ol>
             <li><a href="#域名配置">域名配置</a></li>
             <li><a href="#服务器位置选择">服务器位置选择</a></li>
-            <li><a href="#dns配置">DNS配置</a></li>
+            <li><a href="#dns配置">DNS配置</a>
+              <ol>
+                <li><a href="#dns-check网站">Dns check网站</a></li>
+              </ol>
+            </li>
             <li><a href="#安装ssl">安装SSL</a></li>
           </ol>
         </li>
         <li><a href="#邮箱配置">邮箱配置</a>
           <ol>
             <li><a href="#hostinger自带邮箱">hostinger自带邮箱</a></li>
-            <li><a href="#配置其他邮箱以企业微信邮箱为例">配置其他邮箱：以企业微信邮箱为例</a></li>
+            <li><a href="#配置其他邮箱以企业微信邮箱为例">配置其他邮箱：以企业微信邮箱为例</a>
+              <ol>
+                <li><a href="#配置mx">配置MX</a></li>
+                <li><a href="#配置txt">配置TXT</a></li>
+              </ol>
+            </li>
           </ol>
         </li>
       </ol>
