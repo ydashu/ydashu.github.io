@@ -1196,9 +1196,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;配置邮箱&#34;&gt;配置邮箱
-&lt;/h2&gt;&lt;p&gt;两种方法，第一种方法简单，第二种方法可操作性大&lt;/p&gt;
-&lt;h3 id=&#34;企业微信配置邮箱&#34;&gt;企业微信配置邮箱
-&lt;/h3&gt;&lt;ul&gt;
+&lt;/h2&gt;&lt;p&gt;方法一：企业微信配置邮箱&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;DNS配置MX
 &lt;ul&gt;
 &lt;li&gt;MX: &lt;code&gt;mxbiz1.qq.com&lt;/code&gt; 和 &lt;code&gt;mxbiz2.qq.com&lt;/code&gt;&lt;/li&gt;
@@ -1236,9 +1235,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;自行在服务器上配置&#34;&gt;自行在服务器上配置
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;方法
+&lt;hr&gt;
+&lt;p&gt;方法二：自行在服务器上配置&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;手动部署&lt;/li&gt;
 &lt;li&gt;简单部署
@@ -1268,17 +1266,15 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下面以docker-mailserver为例&lt;/p&gt;
-&lt;h4 id=&#34;安装docker&#34;&gt;安装docker
-&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/install/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;下面以docker-mailserver为例的步骤&lt;/p&gt;
+&lt;h3 id=&#34;安装docker&#34;&gt;安装docker
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/install/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方链接&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;安装docker-compose&#34;&gt;安装Docker Compose
-&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/install/linux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;安装docker-compose&#34;&gt;安装Docker Compose
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/install/linux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方链接&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;dns设置1-amx&#34;&gt;DNS设置1-A、MX
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;dns设置1-amx&#34;&gt;DNS设置1-A、MX
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;site1
 &lt;table&gt;
   &lt;thead&gt;
@@ -1335,8 +1331,8 @@
 &lt;/li&gt;
 &lt;li&gt;TXT的DKIM生成的前提是MX指向正确的邮件服务器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;安装docker-mailserve&#34;&gt;安装docker-mailserve
-&lt;/h4&gt;&lt;blockquote&gt;
+&lt;h3 id=&#34;安装docker-mailserve&#34;&gt;安装docker-mailserve
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方链接&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://webshanks.com/setup-docker-mailserver-on-debian-12&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接-webshanks&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=kdH5eSo3_fY&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1485,8 +1481,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;dns设置2--txt&#34;&gt;DNS设置2- TXT
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;dns设置2--txt&#34;&gt;DNS设置2- TXT
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;SPF 记录：定义了哪些服务器被允许代表这个域名发送电子邮件&lt;/li&gt;
 &lt;li&gt;DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
 &lt;ul&gt;
@@ -1507,8 +1503,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;设置&#34;&gt;设置
-&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;site1&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;设置&#34;&gt;设置
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;site1&lt;/strong&gt;&lt;/p&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -1566,11 +1562,11 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;ssl认证&#34;&gt;SSL认证
-&lt;/h4&gt;&lt;p&gt;方法1：适用于80端口未被使用的情况
+&lt;h3 id=&#34;ssl认证&#34;&gt;SSL认证
+&lt;/h3&gt;&lt;p&gt;方法1：适用于80端口未被使用的情况
 方法2，方法3：适用于80端口已被使用的情况&lt;/p&gt;
-&lt;h5 id=&#34;方法1配置docker的ssl挂载在主系统中&#34;&gt;方法1：配置docker的SSL挂载在主系统中
-&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;```bash
+&lt;h4 id=&#34;方法1配置docker的ssl挂载在主系统中&#34;&gt;方法1：配置docker的SSL挂载在主系统中
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;```bash
 cd /opt/mailserver/
 docker run --rm -it \
 -v &amp;quot;${PWD}/docker-data/certbot/certs/:/etc/letsencrypt/&amp;quot; \
@@ -1581,15 +1577,15 @@ certbot/certbot certonly --standalone
 -m site1@gmail.com --agree-tos
 ```
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h5 id=&#34;方法2-暂停和开启80端口&#34;&gt;方法2 暂停和开启80端口
-&lt;/h5&gt;&lt;blockquote&gt;
+&lt;h4 id=&#34;方法2-暂停和开启80端口&#34;&gt;方法2 暂停和开启80端口
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;略&lt;/p&gt;
-&lt;h5 id=&#34;方法3webroot验证模式&#34;&gt;方法3：Webroot验证模式
-&lt;/h5&gt;&lt;blockquote&gt;
+&lt;h4 id=&#34;方法3webroot验证模式&#34;&gt;方法3：Webroot验证模式
+&lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;利用现有Web服务器的网站目录进行验证，无需占用80端口&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h6 id=&#34;openlitespeed配置&#34;&gt;openlitespeed配置
-&lt;/h6&gt;&lt;ul&gt;
+&lt;h5 id=&#34;openlitespeed配置&#34;&gt;openlitespeed配置
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;openlitespeed中的Virtual Hosts中的wordpress_site1中&lt;/p&gt;
 &lt;ul&gt;
@@ -1662,8 +1658,8 @@ certbot/certbot certonly --standalone
 &lt;/div&gt;&lt;p&gt;如果返回 &lt;code&gt;TEST&lt;/code&gt; 表示配置成功。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&#34;certbot配置ssl&#34;&gt;certbot配置SSL
-&lt;/h6&gt;&lt;p&gt;先&lt;code&gt;cd /opt/mailserver/&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;certbot配置ssl&#34;&gt;certbot配置SSL
+&lt;/h5&gt;&lt;p&gt;先&lt;code&gt;cd /opt/mailserver/&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1689,8 +1685,8 @@ certbot/certbot certonly --standalone
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;注意：这个的前提是检查&lt;code&gt;/etc/letsencrypt/live/mail.site1.com/&lt;/code&gt;中有没有安装SSL，参考&lt;a class=&#34;link&#34; href=&#34;#%e5%ae%89%e8%a3%85ssl&#34; &gt;安装ssl&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&#34;修改composeyaml新增volumes&#34;&gt;修改compose.yaml新增volumes
-&lt;/h6&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;修改composeyaml&#34;&gt;修改compose.yaml
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -1724,8 +1720,8 @@ certbot/certbot certonly --standalone
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;	  &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ &lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 精确挂载域名证书&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h6 id=&#34;mailserverenv设置&#34;&gt;mailserver.env设置
-&lt;/h6&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h5 id=&#34;mailserverenv设置&#34;&gt;mailserver.env设置
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -1745,8 +1741,8 @@ certbot/certbot certonly --standalone
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h6 id=&#34;更新&#34;&gt;更新
-&lt;/h6&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;更新&#34;&gt;更新
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -1754,8 +1750,8 @@ certbot/certbot certonly --standalone
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h6 id=&#34;多域名的情况&#34;&gt;多域名的情况
-&lt;/h6&gt;&lt;ul&gt;
+&lt;/div&gt;&lt;h5 id=&#34;多域名的情况&#34;&gt;多域名的情况
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;openlitespeed配置：用site2替代site1&lt;/p&gt;
 &lt;/li&gt;
@@ -1917,8 +1913,8 @@ certbot/certbot certonly --standalone
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;添加查看删除邮箱&#34;&gt;添加、查看、删除邮箱
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;添加查看删除邮箱&#34;&gt;添加、查看、删除邮箱
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;常用命令
 &lt;ul&gt;
 &lt;li&gt;查看已有邮箱
@@ -1954,16 +1950,16 @@ certbot/certbot certonly --standalone
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;批量操作-基于脚本&#34;&gt;批量操作-基于脚本
-&lt;/h5&gt;&lt;p&gt;略；后期再研究&lt;/p&gt;
-&lt;h4 id=&#34;邮件客户端&#34;&gt;邮件客户端
-&lt;/h4&gt;&lt;p&gt;推荐使用&lt;/p&gt;
+&lt;h4 id=&#34;批量操作-基于脚本&#34;&gt;批量操作-基于脚本
+&lt;/h4&gt;&lt;p&gt;略；后期再研究&lt;/p&gt;
+&lt;h3 id=&#34;邮件客户端&#34;&gt;邮件客户端
+&lt;/h3&gt;&lt;p&gt;推荐使用&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.thunderbird.net/en-US/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;thunderbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;防火墙和端口&#34;&gt;防火墙和端口
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h2 id=&#34;防火墙和端口&#34;&gt;防火墙和端口
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;邮件发送：
 &lt;ul&gt;
 &lt;li&gt;25/tcp - SMTP（简单邮件传输协议）&lt;/li&gt;

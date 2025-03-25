@@ -311,36 +311,40 @@
     </li>
     <li><a href="#配置邮箱">配置邮箱</a>
       <ol>
-        <li><a href="#企业微信配置邮箱">企业微信配置邮箱</a></li>
-        <li><a href="#自行在服务器上配置">自行在服务器上配置</a>
+        <li><a href="#安装docker">安装docker</a></li>
+        <li><a href="#安装docker-compose">安装Docker Compose</a></li>
+        <li><a href="#dns设置1-amx">DNS设置1-A、MX</a></li>
+        <li><a href="#安装docker-mailserve">安装docker-mailserve</a></li>
+        <li><a href="#dns设置2--txt">DNS设置2- TXT</a>
           <ol>
-            <li><a href="#安装docker">安装docker</a></li>
-            <li><a href="#安装docker-compose">安装Docker Compose</a></li>
-            <li><a href="#dns设置1-amx">DNS设置1-A、MX</a></li>
-            <li><a href="#安装docker-mailserve">安装docker-mailserve</a></li>
-            <li><a href="#dns设置2--txt">DNS设置2- TXT</a>
-              <ol>
-                <li><a href="#设置">设置</a></li>
-              </ol>
-            </li>
-            <li><a href="#ssl认证">SSL认证</a>
-              <ol>
-                <li><a href="#方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中</a></li>
-                <li><a href="#方法2-暂停和开启80端口">方法2 暂停和开启80端口</a></li>
-                <li><a href="#方法3webroot验证模式">方法3：Webroot验证模式</a></li>
-              </ol>
-            </li>
-            <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a>
-              <ol>
-                <li><a href="#批量操作-基于脚本">批量操作-基于脚本</a></li>
-              </ol>
-            </li>
-            <li><a href="#邮件客户端">邮件客户端</a></li>
+            <li><a href="#设置">设置</a></li>
           </ol>
         </li>
-        <li><a href="#防火墙和端口">防火墙和端口</a></li>
+        <li><a href="#ssl认证">SSL认证</a>
+          <ol>
+            <li><a href="#方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中</a></li>
+            <li><a href="#方法2-暂停和开启80端口">方法2 暂停和开启80端口</a></li>
+            <li><a href="#方法3webroot验证模式">方法3：Webroot验证模式</a>
+              <ol>
+                <li><a href="#openlitespeed配置">openlitespeed配置</a></li>
+                <li><a href="#certbot配置ssl">certbot配置SSL</a></li>
+                <li><a href="#修改composeyaml">修改compose.yaml</a></li>
+                <li><a href="#mailserverenv设置">mailserver.env设置</a></li>
+                <li><a href="#更新">更新</a></li>
+                <li><a href="#多域名的情况">多域名的情况</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a>
+          <ol>
+            <li><a href="#批量操作-基于脚本">批量操作-基于脚本</a></li>
+          </ol>
+        </li>
+        <li><a href="#邮件客户端">邮件客户端</a></li>
       </ol>
     </li>
+    <li><a href="#防火墙和端口">防火墙和端口</a></li>
   </ol>
 </nav>
         </div>
@@ -1589,9 +1593,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="配置邮箱">配置邮箱
-</h2><p>两种方法，第一种方法简单，第二种方法可操作性大</p>
-<h3 id="企业微信配置邮箱">企业微信配置邮箱
-</h3><ul>
+</h2><p>方法一：企业微信配置邮箱</p>
+<ul>
 <li>DNS配置MX
 <ul>
 <li>MX: <code>mxbiz1.qq.com</code> 和 <code>mxbiz2.qq.com</code></li>
@@ -1629,9 +1632,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="自行在服务器上配置">自行在服务器上配置
-</h3><ul>
-<li>方法
+<hr>
+<p>方法二：自行在服务器上配置</p>
 <ul>
 <li>手动部署</li>
 <li>简单部署
@@ -1661,17 +1663,15 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p>下面以docker-mailserver为例</p>
-<h4 id="安装docker">安装docker
-</h4><p><a class="link" href="https://docs.docker.com/engine/install/"  target="_blank" rel="noopener"
+<p>下面以docker-mailserver为例的步骤</p>
+<h3 id="安装docker">安装docker
+</h3><p><a class="link" href="https://docs.docker.com/engine/install/"  target="_blank" rel="noopener"
     >官方链接</a></p>
-<h4 id="安装docker-compose">安装Docker Compose
-</h4><p><a class="link" href="https://docs.docker.com/compose/install/linux/"  target="_blank" rel="noopener"
+<h3 id="安装docker-compose">安装Docker Compose
+</h3><p><a class="link" href="https://docs.docker.com/compose/install/linux/"  target="_blank" rel="noopener"
     >官方链接</a></p>
-<h4 id="dns设置1-amx">DNS设置1-A、MX
-</h4><ul>
+<h3 id="dns设置1-amx">DNS设置1-A、MX
+</h3><ul>
 <li>site1
 <div class="table-wrapper"><table>
   <thead>
@@ -1728,8 +1728,8 @@
 </li>
 <li>TXT的DKIM生成的前提是MX指向正确的邮件服务器</li>
 </ul>
-<h4 id="安装docker-mailserve">安装docker-mailserve
-</h4><blockquote>
+<h3 id="安装docker-mailserve">安装docker-mailserve
+</h3><blockquote>
 <p><a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/"  target="_blank" rel="noopener"
     >官方链接</a>	<a class="link" href="https://webshanks.com/setup-docker-mailserver-on-debian-12"  target="_blank" rel="noopener"
     >参考链接-webshanks</a>	<a class="link" href="https://www.youtube.com/watch?v=kdH5eSo3_fY"  target="_blank" rel="noopener"
@@ -1878,8 +1878,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="dns设置2--txt">DNS设置2- TXT
-</h4><ul>
+<h3 id="dns设置2--txt">DNS设置2- TXT
+</h3><ul>
 <li>SPF 记录：定义了哪些服务器被允许代表这个域名发送电子邮件</li>
 <li>DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
 <ul>
@@ -1900,8 +1900,8 @@
 </ul>
 </li>
 </ul>
-<h5 id="设置">设置
-</h5><p><strong>site1</strong></p>
+<h4 id="设置">设置
+</h4><p><strong>site1</strong></p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -1959,11 +1959,11 @@
       </tr>
   </tbody>
 </table></div>
-<h4 id="ssl认证">SSL认证
-</h4><p>方法1：适用于80端口未被使用的情况
+<h3 id="ssl认证">SSL认证
+</h3><p>方法1：适用于80端口未被使用的情况
 方法2，方法3：适用于80端口已被使用的情况</p>
-<h5 id="方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中
-</h5><pre><code>```bash
+<h4 id="方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中
+</h4><pre><code>```bash
 cd /opt/mailserver/
 docker run --rm -it \
 -v &quot;${PWD}/docker-data/certbot/certs/:/etc/letsencrypt/&quot; \
@@ -1974,15 +1974,15 @@ certbot/certbot certonly --standalone
 -m site1@gmail.com --agree-tos
 ```
 </code></pre>
-<h5 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
-</h5><blockquote>
+<h4 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
+</h4><blockquote>
 <p>通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况</p></blockquote>
 <p>略</p>
-<h5 id="方法3webroot验证模式">方法3：Webroot验证模式
-</h5><blockquote>
+<h4 id="方法3webroot验证模式">方法3：Webroot验证模式
+</h4><blockquote>
 <p>利用现有Web服务器的网站目录进行验证，无需占用80端口</p></blockquote>
-<h6 id="openlitespeed配置">openlitespeed配置
-</h6><ul>
+<h5 id="openlitespeed配置">openlitespeed配置
+</h5><ul>
 <li>
 <p>openlitespeed中的Virtual Hosts中的wordpress_site1中</p>
 <ul>
@@ -2055,8 +2055,8 @@ certbot/certbot certonly --standalone
 </div><p>如果返回 <code>TEST</code> 表示配置成功。</p>
 </li>
 </ul>
-<h6 id="certbot配置ssl">certbot配置SSL
-</h6><p>先<code>cd /opt/mailserver/</code></p>
+<h5 id="certbot配置ssl">certbot配置SSL
+</h5><p>先<code>cd /opt/mailserver/</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2082,8 +2082,8 @@ certbot/certbot certonly --standalone
 </div><ul>
 <li>注意：这个的前提是检查<code>/etc/letsencrypt/live/mail.site1.com/</code>中有没有安装SSL，参考<a class="link" href="#%e5%ae%89%e8%a3%85ssl" >安装ssl</a></li>
 </ul>
-<h6 id="修改composeyaml新增volumes">修改compose.yaml新增volumes
-</h6><div class="highlight"><div class="chroma">
+<h5 id="修改composeyaml">修改compose.yaml
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2117,8 +2117,8 @@ certbot/certbot certonly --standalone
 </span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h6 id="mailserverenv设置">mailserver.env设置
-</h6><div class="highlight"><div class="chroma">
+</div><h5 id="mailserverenv设置">mailserver.env设置
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -2138,8 +2138,8 @@ certbot/certbot certonly --standalone
 </div>
 </div></li>
 </ul>
-<h6 id="更新">更新
-</h6><div class="highlight"><div class="chroma">
+<h5 id="更新">更新
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -2147,8 +2147,8 @@ certbot/certbot certonly --standalone
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h6 id="多域名的情况">多域名的情况
-</h6><ul>
+</div><h5 id="多域名的情况">多域名的情况
+</h5><ul>
 <li>
 <p>openlitespeed配置：用site2替代site1</p>
 </li>
@@ -2310,8 +2310,8 @@ certbot/certbot certonly --standalone
 </ul>
 </li>
 </ul>
-<h4 id="添加查看删除邮箱">添加、查看、删除邮箱
-</h4><ul>
+<h3 id="添加查看删除邮箱">添加、查看、删除邮箱
+</h3><ul>
 <li>常用命令
 <ul>
 <li>查看已有邮箱
@@ -2347,16 +2347,16 @@ certbot/certbot certonly --standalone
 </ul>
 </li>
 </ul>
-<h5 id="批量操作-基于脚本">批量操作-基于脚本
-</h5><p>略；后期再研究</p>
-<h4 id="邮件客户端">邮件客户端
-</h4><p>推荐使用</p>
+<h4 id="批量操作-基于脚本">批量操作-基于脚本
+</h4><p>略；后期再研究</p>
+<h3 id="邮件客户端">邮件客户端
+</h3><p>推荐使用</p>
 <ul>
 <li><a class="link" href="https://www.thunderbird.net/en-US/"  target="_blank" rel="noopener"
     >thunderbird</a></li>
 </ul>
-<h3 id="防火墙和端口">防火墙和端口
-</h3><ul>
+<h2 id="防火墙和端口">防火墙和端口
+</h2><ul>
 <li>邮件发送：
 <ul>
 <li>25/tcp - SMTP（简单邮件传输协议）</li>
