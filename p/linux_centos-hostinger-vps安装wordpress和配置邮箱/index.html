@@ -2,16 +2,16 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
-<title>inux_centos-hostinger-vps安装wordpress和配置邮箱</title>
+<title>linux_centos-hostinger-vps安装wordpress和配置邮箱</title>
 
-<link rel='canonical' href='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
+<link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="inux_centos-hostinger-vps安装wordpress和配置邮箱">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta property='og:description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
-<meta property='og:url' content='https://ydashu.github.io/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
+<meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-14T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="inux_centos-hostinger-vps安装wordpress和配置邮箱">
+<meta name="twitter:title" content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta name="twitter:description" content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
     <link rel="shortcut icon" href="/001.ico" />
 
@@ -327,11 +327,12 @@
             <li><a href="#方法3webroot验证模式">方法3：Webroot验证模式</a>
               <ol>
                 <li><a href="#openlitespeed配置">openlitespeed配置</a></li>
-                <li><a href="#certbot配置ssl">certbot配置SSL</a></li>
+                <li><a href="#certbot配置邮箱的ssl">certbot配置邮箱的SSL</a></li>
                 <li><a href="#修改composeyaml">修改compose.yaml</a></li>
                 <li><a href="#mailserverenv设置">mailserver.env设置</a></li>
                 <li><a href="#更新">更新</a></li>
                 <li><a href="#多域名的情况">多域名的情况</a></li>
+                <li><a href="#ssl自动续签-1">SSL自动续签</a></li>
               </ol>
             </li>
           </ol>
@@ -341,7 +342,11 @@
             <li><a href="#批量操作-基于脚本">批量操作-基于脚本</a></li>
           </ol>
         </li>
-        <li><a href="#邮件客户端">邮件客户端</a></li>
+        <li><a href="#邮件客户端">邮件客户端</a>
+          <ol>
+            <li><a href="#实现邮件已读">实现邮件“已读”</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#防火墙和端口">防火墙和端口</a></li>
@@ -372,7 +377,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/inux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/">inux_centos-hostinger-vps安装wordpress和配置邮箱</a>
+            <a href="/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/">linux_centos-hostinger-vps安装wordpress和配置邮箱</a>
         </h2>
     
         
@@ -1157,42 +1162,54 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>openlitespeed中的Virtual Host设置Rewrite使得http流量强制转为https
+<li>openlitespeed中的Virtual Host设置Rewrite
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Enable Rewrite = Yes
-</span></span><span class="line"><span class="cl">Auto Load from .htaccess = Yes
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">下面的代码是Rewrite Rules
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
 </span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
 </span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
+</div>具体根据情况考虑要不要<code>强制 HTTP 到 HTTPS</code>和<code>将 www 重定向到非 www（根域名）</code></li>
 </ul>
 <h3 id="多个网站安装ssl">多个网站安装SSL
 </h3><ul>
-<li>使用 Certbot 申请证书
+<li>安装SSL：更推荐方法二，方便后续单独设置
+<ul>
+<li>方法一：合并Certbot，合并后证书统一保存在<code>/etc/letsencrypt/live/site1.com/</code>中
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1210,6 +1227,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
+<li>方法二：重复<code>单个网站安装SSL</code>的步骤，certbot不合并代码，而是分多次</li>
+</ul>
+</li>
 <li>openlitespeed中的HTTPS Listener设置SSL
 <ul>
 <li>同上</li>
@@ -1237,12 +1257,13 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * <span class="m">1</span> /usr/bin/certbot renew --quiet --deploy-hook <span class="s2">&#34;/usr/local/lsws/bin/lswsctrl restart&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * <span class="m">1</span> /usr/bin/certbot renew --deploy-hook <span class="s2">&#34;/usr/local/lsws/bin/lswsctrl restart&#34;</span> &gt;&gt; /var/log/certbot-renew.log 2&gt;<span class="p">&amp;</span><span class="m">1</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
+<li><code>/var/log/certbot-renew.log</code>为log日志地址</li>
 <li><code>--quiet</code>: 静默模式，仅输出错误信息。</li>
-<li><code>--deploy-hook</code>: 续期成功后触发 OpenLiteSpeed 重启以加载新证书。</li>
+<li><code>--deploy-hook</code>: 证书成功更新才会触发后续操作</li>
 </ul>
 <h4 id="验证-cron-任务">验证 Cron 任务
 </h4><div class="highlight"><div class="chroma">
@@ -1963,37 +1984,48 @@
 </h3><p>方法1：适用于80端口未被使用的情况
 方法2，方法3：适用于80端口已被使用的情况</p>
 <h4 id="方法1配置docker的ssl挂载在主系统中">方法1：配置docker的SSL挂载在主系统中
-</h4><pre><code>```bash
-cd /opt/mailserver/
-docker run --rm -it \
--v &quot;${PWD}/docker-data/certbot/certs/:/etc/letsencrypt/&quot; \
--v &quot;${PWD}/docker-data/certbot/logs/:/var/log/letsencrypt/&quot; \
--p 80:80 \
-certbot/certbot certonly --standalone 
--d mail.site1.com \
--m site1@gmail.com --agree-tos
-```
-</code></pre>
-<h4 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver/
+</span></span><span class="line"><span class="cl">docker run --rm -it <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-p 80:80 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --standalone 
+</span></span><span class="line"><span class="cl">-d mail.site1.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
 </h4><blockquote>
 <p>通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况</p></blockquote>
 <p>略</p>
 <h4 id="方法3webroot验证模式">方法3：Webroot验证模式
 </h4><blockquote>
-<p>利用现有Web服务器的网站目录进行验证，无需占用80端口</p></blockquote>
+<p>和网站的逻辑一样，只是添加了挂载docker步骤</p></blockquote>
 <h5 id="openlitespeed配置">openlitespeed配置
 </h5><ul>
 <li>
-<p>openlitespeed中的Virtual Hosts中的wordpress_site1中</p>
+<p>Virtual Hosts中的wordpress_site1中</p>
 <ul>
 <li>General
 <ul>
 <li><code>Domain Name = site1.com, www.site1.com, mail.site1.com</code></li>
 </ul>
 </li>
-<li>Context
+<li>Context添加
 <ul>
-<li>add Static</li>
+<li>add Static：注意，这个可以<strong>不用手动添加</strong>，后续使用certbot命令的时候会自动生成这个</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2029,9 +2061,9 @@ certbot/certbot certonly --standalone
 </ul>
 </li>
 <li>
-<p>openlitespeed中的Listeners中的HTTP中</p>
+<p>Listeners中的HTTP中</p>
 <ul>
-<li>wordpress_site1添加domains
+<li>wordpress_site1添加domains：certbot通过HTTP，不用HTTPS
 <ul>
 <li><code>Domains = site1.com, mail.site1.com</code></li>
 </ul>
@@ -2039,7 +2071,7 @@ certbot/certbot certonly --standalone
 </ul>
 </li>
 <li>
-<p>验证配置是否生效</p>
+<p>验证配置是否生效：和context中配套的，一般也<strong>用不上</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2055,34 +2087,16 @@ certbot/certbot certonly --standalone
 </div><p>如果返回 <code>TEST</code> 表示配置成功。</p>
 </li>
 </ul>
-<h5 id="certbot配置ssl">certbot配置SSL
-</h5><p>先<code>cd /opt/mailserver/</code></p>
-<div class="highlight"><div class="chroma">
+<h5 id="certbot配置邮箱的ssl">certbot配置邮箱的SSL
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/site1:/var/www/site1&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --webroot <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-w /var/www/site1 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d mail.site1.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m site1@gmail.com --agree-tos
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1_mail -d mail.site1.com -m site1@gmail.com --agree-tos
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>注意：这个的前提是检查<code>/etc/letsencrypt/live/mail.site1.com/</code>中有没有安装SSL，参考<a class="link" href="#%e5%ae%89%e8%a3%85ssl" >安装ssl</a></li>
-</ul>
-<h5 id="修改composeyaml">修改compose.yaml
+</div><h5 id="修改composeyaml">修改compose.yaml
 </h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2097,8 +2111,6 @@ certbot/certbot certonly --standalone
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
@@ -2112,12 +2124,11 @@ certbot/certbot certonly --standalone
 </span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/config/:/tmp/docker-mailserver/</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	  
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 新增证书挂载配置（关键部分）▼</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/:/etc/letsencrypt/ </span><span class="w"> </span><span class="c"># 挂载整个证书目录</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/:ro </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="mailserverenv设置">mailserver.env设置
+</div><p>可以不用挂载挂载整个证书目录，不用挂载如下：<code>- ./docker-data/certbot/certs/:/etc/letsencrypt/:ro</code></p>
+<h5 id="mailserverenv设置">mailserver.env设置
 </h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2147,169 +2158,102 @@ certbot/certbot certonly --standalone
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="多域名的情况">多域名的情况
+</div><p>重新创建受影响的容器</p>
+<h5 id="多域名的情况">多域名的情况
 </h5><ul>
-<li>
-<p>openlitespeed配置：用site2替代site1</p>
-</li>
-<li>
-<p>ertbot配置SSL：用site2替代site1</p>
-</li>
-<li>
-<p>compose.yaml：如下</p>
+<li>openlitespeed配置：用site2替代site1</li>
+<li>ertbot配置SSL：用site2替代site1</li>
+<li>compose.yaml：在以上基础上多添加一行如下
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mailserver</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c"># ... 其他配置保持不变 ...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 原有挂载配置保留 ▼</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-data/:/var/mail/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-state/:/var/mail-state/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/mail-logs/:/var/log/mail/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/dms/config/:/tmp/docker-mailserver/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="c"># 新增证书挂载配置（关键部分）▼</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/:/etc/letsencrypt/ </span><span class="w"> </span><span class="c"># 挂载整个证书目录</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site1.com/:/etc/letsencrypt/live/mail.site1.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	  </span>- <span class="l">./docker-data/certbot/certs/live/mail.site2.com/:/etc/letsencrypt/live/mail.site2.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="l">./docker-data/certbot/certs/live/mail.site2.com/:/etc/letsencrypt/live/mail.site2.com/ </span><span class="w"> </span><span class="c"># 精确挂载域名证书</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>多域名配置</p>
-<ul>
-<li>前提
-<ul>
-<li>DNS配置好了</li>
-<li>测试单域名是可行的</li>
 </ul>
-</li>
-<li></li>
-</ul>
-</li>
-<li>
-<p>自动更新SSL</p>
-<ul>
-<li>
-<p>创建脚本</p>
+<h5 id="ssl自动续签-1">SSL自动续签
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e  <span class="c1"># 编辑定时任务</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每周二凌晨 3:00 续期（时差）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /opt/mailserver/renew_cert.sh
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">15</span> * * <span class="m">1</span> /usr/bin/certbot renew --deploy-hook <span class="s2">&#34;/usr/local/lsws/bin/lswsctrl restart &amp;&amp; docker exec mailserver postfix reload &amp;&amp; docker exec mailserver doveadm reload&#34;</span> &gt;&gt; /var/log/certbot-renew.log 2&gt;<span class="p">&amp;</span><span class="m">1</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>复制以下内容到其中</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 确保脚本在正确的目录下执行</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期命令（使用 Docker）</span>
-</span></span><span class="line"><span class="cl">docker run --rm <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/hailiangfactory:/var/www/hailiangfactory&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  certbot/certbot renew <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --quiet
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 检查续期日志，判断是否实际续期</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> grep -q <span class="s2">&#34;new certificate&#34;</span> /opt/mailserver/docker-data/certbot/logs/letsencrypt.log<span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
-</span></span><span class="line"><span class="cl">	docker compose restart mailserver
-</span></span><span class="line"><span class="cl"><span class="k">else</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">fi</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>&ndash;webroot 和 -w 只在<strong>初次获取证书</strong>（certonly）或<strong>更改验证方式</strong>时需要。</p>
-</li>
-<li>
-<p>赋予脚本执行权限</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x /opt/mailserver/renew_cert.sh
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>配置 Crontab 定时任务</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo crontab -e
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>添加以下内容
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mi">0</span> <span class="mi">3</span> <span class="o">*</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">mailserver</span><span class="o">/</span><span class="n">renew_cert</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">certbot</span><span class="o">-</span><span class="n">renew</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-</li>
-<li>
-<p>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</p>
-</li>
-</ul>
-</li>
-</ul>
+</div><p>上述用的是第二种方法，后续证书更新时测试方法二是否可行，不可行的话切换其他方法</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th><code>docker restart mailserver</code></th>
+          <th><code>postfix reload</code> / <code>doveadm reload</code></th>
+          <th><code>service postfix restart</code> 等</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>服务中断时间</strong></td>
+          <td>中等（几秒到十几秒，取决于容器启动时间）</td>
+          <td>几乎无中断（平滑重载）</td>
+          <td>短暂中断（服务重启时间，1-5秒）</td>
+      </tr>
+      <tr>
+          <td><strong>一致性</strong></td>
+          <td>高（所有服务重新初始化）</td>
+          <td>中（仅重载指定服务，可能遗漏其他服务）</td>
+          <td>中（仅重启指定服务）</td>
+      </tr>
+      <tr>
+          <td><strong>复杂度</strong></td>
+          <td>低（一步操作）</td>
+          <td>中（需分别执行多个命令）</td>
+          <td>中（需分别管理每个服务）</td>
+      </tr>
+      <tr>
+          <td><strong>适用范围</strong></td>
+          <td>全面（所有配置和证书变更）</td>
+          <td>部分（仅 Postfix/Dovecot 配置）</td>
+          <td>部分（仅针对特定服务）</td>
+      </tr>
+      <tr>
+          <td><strong>Docker 兼容性</strong></td>
+          <td>高（符合容器化理念）</td>
+          <td>中（更像传统服务器操作）</td>
+          <td>中（容器内服务管理）</td>
+      </tr>
+      <tr>
+          <td><strong>证书更新支持</strong></td>
+          <td>完全支持</td>
+          <td>支持（需确保路径正确）</td>
+          <td>支持（但可能需额外步骤）</td>
+      </tr>
+      <tr>
+          <td><strong>推荐场景</strong></td>
+          <td>生产环境、配置大改、证书更新</td>
+          <td>高可用性需求、轻量变更</td>
+          <td>调试或特定服务调整</td>
+      </tr>
+      <tr>
+          <td><strong>潜在风险</strong></td>
+          <td>服务短暂不可用</td>
+          <td>可能遗漏其他服务（如 OpenDKIM）</td>
+          <td>服务间不一致风险</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>查看已配置的定时任务、验证续期流程等操作：同网站</p>
 <h3 id="添加查看删除邮箱">添加、查看、删除邮箱
 </h3><ul>
 <li>常用命令
@@ -2355,6 +2299,50 @@ certbot/certbot certonly --standalone
 <li><a class="link" href="https://www.thunderbird.net/en-US/"  target="_blank" rel="noopener"
     >thunderbird</a></li>
 </ul>
+<h4 id="实现邮件已读">实现邮件“已读”
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>方法</strong></th>
+          <th><strong>实现原理</strong></th>
+          <th><strong>前提条件</strong></th>
+          <th><strong>可能存在的风险</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>传统阅读回执</strong></td>
+          <td>邮件头部添加回执请求，收件人客户端发送回执邮件</td>
+          <td>1. 发件人和收件人客户端都支持回执功能（如 Outlook）<br>2. 收件人同意发送回执</td>
+          <td>1. 收件人拒绝发送回执导致失效<br>2. 不支持回执的客户端无法触发（如 Gmail 个人版）</td>
+      </tr>
+      <tr>
+          <td><strong>嵌入式追踪技术（如追踪像素）</strong></td>
+          <td>在邮件中嵌入不可见图片或链接，收件人打开时触发服务器请求</td>
+          <td>1. 收件人客户端支持 HTML 邮件<br>2. 图片或链接未被禁用</td>
+          <td>1. 被反垃圾邮件系统标记为垃圾邮件<br>2. 图片加载禁用导致失效<br>3. 用户隐私投诉或屏蔽（如反追踪插件）</td>
+      </tr>
+      <tr>
+          <td><strong>服务器端状态同步</strong></td>
+          <td>服务器通过实时协议（如 IMAP IDLE）记录邮件状态并推送给发件人</td>
+          <td>1. 双方使用支持实时同步的邮件系统（如 Exchange）<br>2. 服务器与客户端保持实时连接</td>
+          <td>1. 不同客户端间兼容性差<br>2. 服务器负载增加<br>3. 非实时系统无法实现</td>
+      </tr>
+      <tr>
+          <td><strong>专用协议或客户端控制</strong></td>
+          <td>定制客户端在接收或打开邮件时主动报告状态</td>
+          <td>1. 发件人和收件人使用同一系统或客户端（如企业内部工具）<br>2. 客户端内置状态反馈功能</td>
+          <td>1. 仅限封闭系统有效，跨客户端不可用<br>2. 开发和维护成本高<br>3. 用户可能禁用反馈功能</td>
+      </tr>
+      <tr>
+          <td><strong>客户端本地触发与验证</strong></td>
+          <td>收件人客户端自动执行状态更新并通过服务器验证</td>
+          <td>1. 收件人客户端支持自动触发功能<br>2. 与服务器有稳定的 API 或协议支持</td>
+          <td>1. 依赖特定客户端配置，兼容性有限<br>2. 可能被视为侵入性行为引发隐私争议<br>3. 客户端更新可能导致功能失效</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>ps：没有既没有风险又稳定好用的方法</p>
 <h2 id="防火墙和端口">防火墙和端口
 </h2><ul>
 <li>邮件发送：
