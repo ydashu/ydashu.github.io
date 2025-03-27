@@ -3,10 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ydashu.github.io/</loc>
-    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
-    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/post/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E6%80%BB/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/tags/git/</loc>
     <lastmod>2025-03-24T00:00:00+00:00</lastmod>
@@ -15,9 +24,6 @@
     <lastmod>2025-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/it/</loc>
-    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/post/</loc>
     <lastmod>2025-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/tags/</loc>
@@ -263,14 +269,13 @@
     <loc>https://ydashu.github.io/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2024-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ydashu.github.io/categories/%E6%80%BB/</loc>
-    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ydashu.github.io/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/</loc>
   </url><url>
     <loc>https://ydashu.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
