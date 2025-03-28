@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" certbot配置邮箱的SSL\n同时添加根域名和www，并将/site1_mail改成/site1,并删除mail.site1.com。mail.site.com容器配置 1 sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1_mail -d site1.com -d www.site1.com -d mail.site1.com -m site1@gmail.com --agree-tos 添加Cron 自动化备份\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 添加脚本和Cron 自动化备份数据库、wordpress和邮箱 ">
 <title>待完成</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/'>
 
 <link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="待完成">
-<meta property='og:description' content=" certbot配置邮箱的SSL\n同时添加根域名和www，并将/site1_mail改成/site1,并删除mail.site1.com。mail.site.com容器配置 1 sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1_mail -d site1.com -d www.site1.com -d mail.site1.com -m site1@gmail.com --agree-tos 添加Cron 自动化备份\n">
+<meta property='og:description' content=" 添加脚本和Cron 自动化备份数据库、wordpress和邮箱 ">
 <meta property='og:url' content='https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-27T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="待完成">
-<meta name="twitter:description" content=" certbot配置邮箱的SSL\n同时添加根域名和www，并将/site1_mail改成/site1,并删除mail.site1.com。mail.site.com容器配置 1 sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1_mail -d site1.com -d www.site1.com -d mail.site1.com -m site1@gmail.com --agree-tos 添加Cron 自动化备份\n">
+<meta name="twitter:description" content=" 添加脚本和Cron 自动化备份数据库、wordpress和邮箱 ">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -283,126 +283,9 @@
     
     
     <ul>
-<li>
-<p>certbot配置邮箱的SSL</p>
-<ul>
-<li>同时添加根域名和www，并将/site1_mail改成/site1,并删除mail.site1.com。mail.site.com容器配置
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/site1_mail -d site1.com -d www.site1.com -d mail.site1.com -m site1@gmail.com --agree-tos
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
+<li>添加脚本和Cron 自动化备份数据库、wordpress和邮箱</li>
+<li></li>
 </ul>
-</li>
-<li>
-<p>添加<code>Cron 自动化备份</code></p>
-</li>
-<li>
-<p><code>certbot配置邮箱的SSL</code></p>
-<ul>
-<li>
-<p>还是用之前的方法：临时容器生成证书</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/haiyuemetals:/var/www/temp_site&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --webroot <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-w /var/www/temp_site <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d mail.haiyuemetals.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m yuanshine0824@gmail.com --agree-tos
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/hailiangfactory:/var/www/temp_site&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --webroot <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-w /var/www/temp_site <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d mail.hailiangfactory.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m yuanshine0824@gmail.com --agree-tos
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/test:/var/www/temp_site&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>certbot/certbot certonly --webroot <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-w /var/www/temp_site <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d mail.yuanshineshine.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>-m yuanshine0824@gmail.com --agree-tos
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-</li>
-</ul>
-<hr>
-<pre><code>	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/haiyuemetals -d haiyuemetals.com -d www.haiyuemetals.com -m yuanshine0824@gmail.com --agree-tos
-	```
-	
-	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/hailiangfactory -d hailiangfactory.com -d www.hailiangfactory.com -m yuanshine0824@gmail.com --agree-tos
-	```
-	
-	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/test -d yuanshineshine.com -d www.yuanshineshine.com -m yuanshine0824@gmail.com --agree-tos
-	```
-</code></pre>
-<hr>
-<pre><code>	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/haiyuemetals -d haiyuemetals.com -d www.haiyuemetals.com -m yuanshine0824@gmail.com --agree-tos
-	```
-
-
-	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/hailiangfactory -d hailiangfactory.com -d www.hailiangfactory.com -d mail.hailiangfactory.com -m yuanshine0824@gmail.com --agree-tos
-	```
-
-	```
-	sudo certbot certonly --webroot -w /usr/local/lsws/virtual_host_root/wordpress/test -d yuanshineshine.com -d www.yuanshineshine.com -d mail.yuanshineshine.com -m yuanshine0824@gmail.com --agree-tos
-	```
-</code></pre>
 
 </section>
 

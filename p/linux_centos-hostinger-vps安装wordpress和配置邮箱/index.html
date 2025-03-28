@@ -2187,7 +2187,6 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
@@ -2195,19 +2194,18 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># 确保脚本在正确的目录下执行</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期命令（使用 Docker）</span>
-</span></span><span class="line"><span class="cl">docker run --rm <span class="se">\
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期并捕获所有输出（包括错误流）</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OUTPUT</span><span class="o">=</span><span class="k">$(</span>docker run --rm <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  certbot/certbot renew <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --quiet
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  certbot/certbot renew 2&gt;<span class="p">&amp;</span>1<span class="k">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 检查续期日志，判断是否实际续期</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> grep -q <span class="s2">&#34;new certificate&#34;</span> /opt/mailserver/docker-data/certbot/logs/letsencrypt.log<span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
-</span></span><span class="line"><span class="cl">	docker compose restart mailserver
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查输出中是否包含 &#34;renewed&#34; 或 &#34;successfully&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qiE <span class="s2">&#34;(renewed|successfully)&#34;</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
+</span></span><span class="line"><span class="cl">    docker compose restart mailserver
 </span></span><span class="line"><span class="cl"><span class="k">else</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="k">fi</span>
 </span></span></code></pre></td></tr></table>
 </div>
