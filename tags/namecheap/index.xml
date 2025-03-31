@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Namecheap on ydashu</title>
+        <link>https://ydashu.github.io/tags/namecheap/</link>
+        <description>Recent content in Namecheap on ydashu</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ydashu</copyright>
+        <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/namecheap/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>namecheap whois验证邮箱</title>
+        <link>https://ydashu.github.io/p/namecheap-whois%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1/</link>
+        <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/namecheap-whois%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1/</guid>
+        <description>&lt;h2 id=&#34;whois-验证要求&#34;&gt;WHOIS 验证要求
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;ICANN 政策
+&lt;ul&gt;
+&lt;li&gt;自 2014 年起，ICANN 要求所有注册商验证新注册域名或注册人信息变更的邮箱地址。&lt;/li&gt;
+&lt;li&gt;未验证的域名可能被暂停或限制功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Namecheap 的实现
+&lt;ul&gt;
+&lt;li&gt;注册域名后，Namecheap 会向注册人邮箱发送验证邮件，要求点击链接确认。&lt;/li&gt;
+&lt;li&gt;截止日期通常为注册后 15 天，或信息变更后的特定时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;未验证可能导致的后果&#34;&gt;未验证可能导致的后果
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;域名功能受限
+&lt;ul&gt;
+&lt;li&gt;现象：
+&lt;ul&gt;
+&lt;li&gt;域名的正常功能（如自定义 DNS 设置）会被限制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;具体表现：
+&lt;ul&gt;
+&lt;li&gt;Namecheap 会将域名的名字服务器（NS）强制改为占位服务器，例如：	     &lt;br&gt;
+&lt;code&gt;failed-whois-verification.namecheap.com verify-contact-details.namecheap.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;这会导致域名解析到 Namecheap 的默认服务器，而不是你设置的服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;网站无法正常访问&lt;/li&gt;
+&lt;li&gt;邮件服务中断&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
