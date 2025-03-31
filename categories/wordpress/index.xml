@@ -7,7 +7,45 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 31 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>wordPress架构2</title>
+        <link>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%842/</link>
+        <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%842/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;个人看法，仅供参考&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;b2b网站非电商&#34;&gt;B2B网站（非电商）
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;主题
+&lt;ul&gt;
+&lt;li&gt;GeneratePress pro&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;主要插件
+&lt;ul&gt;
+&lt;li&gt;GenerateBlocks pro ：编辑器&lt;/li&gt;
+&lt;li&gt;Wicked Folders pro ：文件管理&lt;/li&gt;
+&lt;li&gt;Intuitive Custom Post Order ：手动排序&lt;/li&gt;
+&lt;li&gt;LiteSpeed Cache ：缓存&lt;/li&gt;
+&lt;li&gt;Fluent Forms Pro ：表单&lt;/li&gt;
+&lt;li&gt;FluentSMTP ： 配置SMTP邮箱&lt;/li&gt;
+&lt;li&gt;Fluent Snippets ：snippets&lt;/li&gt;
+&lt;li&gt;Meow(Gallery&amp;amp;lightbox) ：gallery和lightbox&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;非必要插件
+&lt;ul&gt;
+&lt;li&gt;Header Footer Code Manager pro ：header和footer的snippets&lt;/li&gt;
+&lt;li&gt;Easy Table of Contents ：目录&lt;/li&gt;
+&lt;li&gt;Animate it ：动态效果&lt;/li&gt;
+&lt;li&gt;polylang ：翻译&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>wordpress插件</title>
         <link>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6/</link>
         <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>

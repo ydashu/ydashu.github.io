@@ -3,13 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ydashu.github.io/</loc>
-    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
-    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/post/</loc>
-    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/wordpress/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%842/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/</loc>
     <lastmod>2025-03-27T00:00:00+00:00</lastmod>
@@ -30,9 +39,6 @@
     <lastmod>2025-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/</loc>
-    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
     <lastmod>2025-03-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/tags/anaconda/</loc>
@@ -135,9 +141,6 @@
     <lastmod>2024-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/shopify%E6%8F%92%E4%BB%B6/</loc>
-    <lastmod>2024-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/categories/wordpress/</loc>
     <lastmod>2024-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6/</loc>
