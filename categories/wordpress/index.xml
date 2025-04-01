@@ -7,7 +7,226 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>wordpress配置SMTP</title>
+        <link>https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/</link>
+        <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/</guid>
+        <description>&lt;h2 id=&#34;插件&#34;&gt;插件
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;轻量级
+&lt;ul&gt;
+&lt;li&gt;SMTP Mailer
+&lt;ul&gt;
+&lt;li&gt;推荐&lt;code&gt;1.15&lt;/code&gt;版本，无pro&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SMTP Connector&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;常用
+&lt;ul&gt;
+&lt;li&gt;FluentSMTP&lt;/li&gt;
+&lt;li&gt;WP Mail SMTP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;smtp常用字段&#34;&gt;SMTP常用字段
+&lt;/h2&gt;&lt;h3 id=&#34;1-smtp-host&#34;&gt;1. SMTP Host
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入邮件服务提供商提供的 SMTP 服务器地址。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail：&lt;code&gt;smtp.gmail.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Outlook：&lt;code&gt;smtp-mail.outlook.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SendGrid：&lt;code&gt;smtp.sendgrid.net&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自有服务器：可能是 &lt;code&gt;mail.yourdomain.com&lt;/code&gt;（需咨询主机提供商）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：确保准确无误，通常在邮件服务商的帮助文档中可以找到。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-smtp-authentication&#34;&gt;2. SMTP Authentication
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：通常选择“Yes”或“Enabled”（是/启用）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。&lt;/li&gt;
+&lt;li&gt;如果是本地未加密服务器，可能选“No”（极少见）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：除非明确知道服务器不需要认证，默认选“Yes”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-smtp-username&#34;&gt;3. SMTP Username
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入完整的邮箱地址或服务分配的用户名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail：&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SendGrid：通常是 &lt;code&gt;apikey&lt;/code&gt;（而不是邮箱）。&lt;/li&gt;
+&lt;li&gt;自有服务器：可能是 &lt;code&gt;user@yourdomain.com&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：与密码配对使用，区分大小写。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-smtp-password&#34;&gt;4. SMTP Password
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 用户名的对应密码，用于身份验证。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;输入你的邮箱密码（传统方式）。&lt;/li&gt;
+&lt;li&gt;对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail：
+&lt;ul&gt;
+&lt;li&gt;普通密码：&lt;code&gt;yourpassword&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;双重验证：前往 &lt;a class=&#34;link&#34; href=&#34;https://myaccount.google.com/security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google 账户安全设置&lt;/a&gt;，生成 16 位应用专用密码（如 &lt;code&gt;abcd efgh ijkl mnop&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SendGrid：输入 API Key（而不是密码）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：不要使用空格，确保密码正确。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-type-of-encryption&#34;&gt;5. Type of Encryption
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：根据邮件服务商的要求选择。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail：&lt;code&gt;TLS&lt;/code&gt;（推荐）或 &lt;code&gt;SSL&lt;/code&gt;（较老）。&lt;/li&gt;
+&lt;li&gt;Outlook：&lt;code&gt;TLS&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;SendGrid：&lt;code&gt;TLS&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;无加密：&lt;code&gt;None&lt;/code&gt;（不安全，仅限本地测试）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TLS&lt;/code&gt; 是现代标准，优先选择。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SSL&lt;/code&gt; 是较老的协议，端口不同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-smtp-port&#34;&gt;6. SMTP Port
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 服务器监听的端口号，与加密方式相关。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：根据服务商和加密类型选择对应端口。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;587&lt;/code&gt;：TLS 加密的常用端口（Gmail、Outlook）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;465&lt;/code&gt;：SSL 加密的端口（Gmail 备用）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;25&lt;/code&gt;：无加密的默认端口（不推荐）。&lt;/li&gt;
+&lt;li&gt;SendGrid：&lt;code&gt;587&lt;/code&gt;（TLS）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：端口错误会导致连接失败，需与加密类型匹配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;7-from-email-address&#34;&gt;7. From Email Address
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件显示的发件人邮箱地址，收件人会看到这个地址。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入一个有效的邮箱地址，通常与 SMTP Username 一致。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail：&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自有域名：&lt;code&gt;contact@yourdomain.com&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。&lt;/li&gt;
+&lt;li&gt;自有域名需确保与服务器配置一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-from-name&#34;&gt;8. From Name
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件显示的发件人名称，个性化邮件的发送者身份。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入你希望收件人看到的名称，可以是人名或品牌名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;John Doe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;My Website Team&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Your Company Name&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：随意填写，但保持专业性，避免过长。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;9-disable-ssl-certificate-verification&#34;&gt;9. Disable SSL Certificate Verification
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;默认：&lt;code&gt;No&lt;/code&gt; 或 &lt;code&gt;Disabled&lt;/code&gt;（不禁用）。&lt;/li&gt;
+&lt;li&gt;如果连接失败且确认是证书问题：选 &lt;code&gt;Yes&lt;/code&gt; 或 &lt;code&gt;Enabled&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Gmail、SendGrid 等正规服务：&lt;code&gt;No&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;本地测试服务器或自签名证书：&lt;code&gt;Yes&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：启用此选项会降低安全性，仅用于调试或特殊情况。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;示例配置使用-gmail-smtp&#34;&gt;示例配置：使用 Gmail SMTP
+&lt;/h3&gt;&lt;p&gt;假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;字段&lt;/th&gt;
+          &lt;th&gt;填写内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SMTP Host&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;smtp.gmail.com&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SMTP Authentication&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;Yes&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SMTP Username&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SMTP Password&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;abcd efgh ijkl mnop&lt;/code&gt;（应用专用密码）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Type of Encryption&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;TLS&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SMTP Port&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;587&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;From Email Address&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;From Name&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;John Doe&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Disable SSL Certificate Verification&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;No&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>wordPress架构2</title>
         <link>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%842/</link>
         <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
@@ -28,8 +247,8 @@
 &lt;li&gt;Wicked Folders pro ：文件管理&lt;/li&gt;
 &lt;li&gt;Intuitive Custom Post Order ：手动排序&lt;/li&gt;
 &lt;li&gt;LiteSpeed Cache ：缓存&lt;/li&gt;
-&lt;li&gt;Fluent Forms Pro ：表单&lt;/li&gt;
-&lt;li&gt;FluentSMTP ： 配置SMTP邮箱&lt;/li&gt;
+&lt;li&gt;Contact Form 7 ：表单&lt;/li&gt;
+&lt;li&gt;SMTP Mailer ： 配置SMTP邮箱&lt;/li&gt;
 &lt;li&gt;Fluent Snippets ：snippets&lt;/li&gt;
 &lt;li&gt;Meow(Gallery&amp;amp;lightbox) ：gallery和lightbox&lt;/li&gt;
 &lt;/ul&gt;
@@ -46,43 +265,13 @@
 </description>
         </item>
         <item>
-        <title>wordpress插件</title>
-        <link>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6/</link>
+        <title>wordpress插件推荐和获取渠道</title>
+        <link>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%92%8C%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93/</link>
         <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6/</guid>
+        <guid>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%92%8C%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;wordpress插件遵循非必要不安装和有必要尽可能安装轻量化的插件的原则&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h2 id=&#34;插件主题的渠道&#34;&gt;插件/主题的渠道
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;官方
-&lt;ul&gt;
-&lt;li&gt;wordpress后台中相关插件或主题有各自的官网，官网购买即可&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;第三方
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://themeforest.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;themeforest&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;破解版：不确定会不会有安全问题，后门之类的问题
-&lt;ul&gt;
-&lt;li&gt;免费&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freewplugin.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;freewplugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.wplocker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;wplocker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cheshirex.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;柴郡猫&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;付费&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mangoecom.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;芒果&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.banzhuti.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;搬主题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h2 id=&#34;插件推荐&#34;&gt;插件推荐
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -615,6 +804,100 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 id=&#34;插件主题的渠道&#34;&gt;插件/主题的渠道
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;官方
+&lt;ul&gt;
+&lt;li&gt;官网或wordpress后台&lt;/li&gt;
+&lt;li&gt;SVN -详细见下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;第三方
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://themeforest.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;themeforest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;破解版：不确定会不会有安全问题，后门之类的问题
+&lt;ul&gt;
+&lt;li&gt;免费&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freewplugin.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;freewplugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.wplocker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;wplocker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cheshirex.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;柴郡猫&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;付费&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mangoecom.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;芒果&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.banzhuti.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;搬主题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;svn&#34;&gt;SVN
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;https://plugins.svn.wordpress.org/&lt;/code&gt; 是 WordPress 官方插件的 Subversion（SVN）仓库，用于托管所有 WordPress 插件的开源代码。要从这个地址下载插件（如前面提到的 SMTP Connector），你需要使用 SVN 客户端或通过浏览器手动下载特定文件。以下是详细步骤：&lt;/p&gt;
+&lt;p&gt;SVN 是一种版本控制系统，WordPress 使用它来管理插件代码。你需要安装 SVN 客户端（如 TortoiseSVN、命令行 SVN）并执行以下步骤：&lt;/p&gt;
+&lt;h4 id=&#34;1-安装-svn-客户端&#34;&gt;1. 安装 SVN 客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;：下载并安装 &lt;a class=&#34;link&#34; href=&#34;https://tortoisesvn.net/downloads.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TortoiseSVN&lt;/a&gt;，这是一个图形化 SVN 工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mac/Linux&lt;/strong&gt;：通常自带 SVN 命令行工具，或通过包管理器安装：
+&lt;ul&gt;
+&lt;li&gt;Mac（Homebrew）：&lt;code&gt;brew install subversion&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Ubuntu/Debian：&lt;code&gt;sudo apt-get install subversion&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-确定插件的-svn-地址&#34;&gt;2. 确定插件的 SVN 地址
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;WordPress SVN 仓库的结构为：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;https://plugins.svn.wordpress.org/&amp;lt;插件名称&amp;gt;/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;例如，SMTP Connector 的地址是 &lt;code&gt;https://plugins.svn.wordpress.org/smtp-connector/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;仓库内通常有以下子目录：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/trunk/&lt;/code&gt;：最新开发版本。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/tags/&lt;/code&gt;：已发布的稳定版本（如 &lt;code&gt;/tags/1.0.0/&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/branches/&lt;/code&gt;：开发分支（不常用）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-使用命令行下载&#34;&gt;3. 使用命令行下载
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;打开终端（Windows 可使用 CMD、PowerShell，或 TortoiseSVN 的右键菜单）。&lt;/li&gt;
+&lt;li&gt;输入以下命令以下载整个插件的最新版本（trunk）：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;svn checkout https://plugins.svn.wordpress.org/smtp-connector/trunk/ smtp-connector
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;这会在当前目录下创建一个名为 &lt;code&gt;smtp-connector&lt;/code&gt; 的文件夹，包含最新代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果需要特定版本（如 1.0.0），使用 tags：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;svn checkout https://plugins.svn.wordpress.org/smtp-connector/tags/1.0.0/ smtp-connector-1.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-使用-tortoisesvnwindows&#34;&gt;4. 使用 TortoiseSVN（Windows）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;右键文件夹空白处，选择 “SVN Checkout”。&lt;/li&gt;
+&lt;li&gt;在 “URL of repository” 中输入插件地址（如 &lt;code&gt;https://plugins.svn.wordpress.org/smtp-connector/trunk/&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;选择本地保存路径，点击 “OK” 下载。&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>

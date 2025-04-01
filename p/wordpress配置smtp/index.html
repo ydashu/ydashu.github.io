@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="插件 轻量级 SMTP Mailer 推荐1.15版本，无pro SMTP Connector 常用 FluentSMTP WP Mail SMTP SMTP常用字段 1. SMTP Host 解释：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。 如何填写：输入邮件服务提供商提供的 SMTP 服务器地址。 示例： Gmail：smtp.gmail.com Outlook：smtp-mail.outlook.com SendGrid：smtp.sendgrid.net 自有服务器：可能是 mail.yourdomain.com（需咨询主机提供商）。 注意：确保准确无误，通常在邮件服务商的帮助文档中可以找到。 2. SMTP Authentication 解释：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。 如何填写：通常选择“Yes”或“Enabled”（是/启用）。 示例： Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。 如果是本地未加密服务器，可能选“No”（极少见）。 注意：除非明确知道服务器不需要认证，默认选“Yes”。 3. SMTP Username 解释：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。 如何填写：输入完整的邮箱地址或服务分配的用户名。 示例： Gmail：yourname@gmail.com SendGrid：通常是 apikey（而不是邮箱）。 自有服务器：可能是 user@yourdomain.com。 注意：与密码配对使用，区分大小写。 4. SMTP Password 解释：SMTP 用户名的对应密码，用于身份验证。 如何填写： 输入你的邮箱密码（传统方式）。 对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。 示例： Gmail： 普通密码：yourpassword 双重验证：前往 Google 账户安全设置，生成 16 位应用专用密码（如 abcd efgh ijkl mnop）。 SendGrid：输入 API Key（而不是密码）。 注意：不要使用空格，确保密码正确。 5. Type of Encryption 解释：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。 如何填写：根据邮件服务商的要求选择。 示例： Gmail：TLS（推荐）或 SSL（较老）。 Outlook：TLS。 SendGrid：TLS。 无加密：None（不安全，仅限本地测试）。 注意： TLS 是现代标准，优先选择。 SSL 是较老的协议，端口不同。 6. SMTP Port 解释：SMTP 服务器监听的端口号，与加密方式相关。 如何填写：根据服务商和加密类型选择对应端口。 示例： 587：TLS 加密的常用端口（Gmail、Outlook）。 465：SSL 加密的端口（Gmail 备用）。 25：无加密的默认端口（不推荐）。 SendGrid：587（TLS）。 注意：端口错误会导致连接失败，需与加密类型匹配。 7. From Email Address 解释：邮件显示的发件人邮箱地址，收件人会看到这个地址。 如何填写：输入一个有效的邮箱地址，通常与 SMTP Username 一致。 示例： Gmail：yourname@gmail.com 自有域名：contact@yourdomain.com。 注意： 某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。 自有域名需确保与服务器配置一致。 8. From Name 解释：邮件显示的发件人名称，个性化邮件的发送者身份。 如何填写：输入你希望收件人看到的名称，可以是人名或品牌名。 示例： John Doe My Website Team Your Company Name 注意：随意填写，但保持专业性，避免过长。 9. Disable SSL Certificate Verification 解释：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。 如何填写： 默认：No 或 Disabled（不禁用）。 如果连接失败且确认是证书问题：选 Yes 或 Enabled。 示例： Gmail、SendGrid 等正规服务：No。 本地测试服务器或自签名证书：Yes。 注意：启用此选项会降低安全性，仅用于调试或特殊情况。 示例配置：使用 Gmail SMTP 假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：\n">
+<title>wordpress配置SMTP</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/'>
+
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="wordpress配置SMTP">
+<meta property='og:description' content="插件 轻量级 SMTP Mailer 推荐1.15版本，无pro SMTP Connector 常用 FluentSMTP WP Mail SMTP SMTP常用字段 1. SMTP Host 解释：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。 如何填写：输入邮件服务提供商提供的 SMTP 服务器地址。 示例： Gmail：smtp.gmail.com Outlook：smtp-mail.outlook.com SendGrid：smtp.sendgrid.net 自有服务器：可能是 mail.yourdomain.com（需咨询主机提供商）。 注意：确保准确无误，通常在邮件服务商的帮助文档中可以找到。 2. SMTP Authentication 解释：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。 如何填写：通常选择“Yes”或“Enabled”（是/启用）。 示例： Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。 如果是本地未加密服务器，可能选“No”（极少见）。 注意：除非明确知道服务器不需要认证，默认选“Yes”。 3. SMTP Username 解释：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。 如何填写：输入完整的邮箱地址或服务分配的用户名。 示例： Gmail：yourname@gmail.com SendGrid：通常是 apikey（而不是邮箱）。 自有服务器：可能是 user@yourdomain.com。 注意：与密码配对使用，区分大小写。 4. SMTP Password 解释：SMTP 用户名的对应密码，用于身份验证。 如何填写： 输入你的邮箱密码（传统方式）。 对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。 示例： Gmail： 普通密码：yourpassword 双重验证：前往 Google 账户安全设置，生成 16 位应用专用密码（如 abcd efgh ijkl mnop）。 SendGrid：输入 API Key（而不是密码）。 注意：不要使用空格，确保密码正确。 5. Type of Encryption 解释：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。 如何填写：根据邮件服务商的要求选择。 示例： Gmail：TLS（推荐）或 SSL（较老）。 Outlook：TLS。 SendGrid：TLS。 无加密：None（不安全，仅限本地测试）。 注意： TLS 是现代标准，优先选择。 SSL 是较老的协议，端口不同。 6. SMTP Port 解释：SMTP 服务器监听的端口号，与加密方式相关。 如何填写：根据服务商和加密类型选择对应端口。 示例： 587：TLS 加密的常用端口（Gmail、Outlook）。 465：SSL 加密的端口（Gmail 备用）。 25：无加密的默认端口（不推荐）。 SendGrid：587（TLS）。 注意：端口错误会导致连接失败，需与加密类型匹配。 7. From Email Address 解释：邮件显示的发件人邮箱地址，收件人会看到这个地址。 如何填写：输入一个有效的邮箱地址，通常与 SMTP Username 一致。 示例： Gmail：yourname@gmail.com 自有域名：contact@yourdomain.com。 注意： 某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。 自有域名需确保与服务器配置一致。 8. From Name 解释：邮件显示的发件人名称，个性化邮件的发送者身份。 如何填写：输入你希望收件人看到的名称，可以是人名或品牌名。 示例： John Doe My Website Team Your Company Name 注意：随意填写，但保持专业性，避免过长。 9. Disable SSL Certificate Verification 解释：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。 如何填写： 默认：No 或 Disabled（不禁用）。 如果连接失败且确认是证书问题：选 Yes 或 Enabled。 示例： Gmail、SendGrid 等正规服务：No。 本地测试服务器或自签名证书：Yes。 注意：启用此选项会降低安全性，仅用于调试或特殊情况。 示例配置：使用 Gmail SMTP 假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：\n">
+<meta property='og:url' content='https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SMTP' /><meta property='article:published_time' content='2025-04-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="wordpress配置SMTP">
+<meta name="twitter:description" content="插件 轻量级 SMTP Mailer 推荐1.15版本，无pro SMTP Connector 常用 FluentSMTP WP Mail SMTP SMTP常用字段 1. SMTP Host 解释：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。 如何填写：输入邮件服务提供商提供的 SMTP 服务器地址。 示例： Gmail：smtp.gmail.com Outlook：smtp-mail.outlook.com SendGrid：smtp.sendgrid.net 自有服务器：可能是 mail.yourdomain.com（需咨询主机提供商）。 注意：确保准确无误，通常在邮件服务商的帮助文档中可以找到。 2. SMTP Authentication 解释：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。 如何填写：通常选择“Yes”或“Enabled”（是/启用）。 示例： Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。 如果是本地未加密服务器，可能选“No”（极少见）。 注意：除非明确知道服务器不需要认证，默认选“Yes”。 3. SMTP Username 解释：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。 如何填写：输入完整的邮箱地址或服务分配的用户名。 示例： Gmail：yourname@gmail.com SendGrid：通常是 apikey（而不是邮箱）。 自有服务器：可能是 user@yourdomain.com。 注意：与密码配对使用，区分大小写。 4. SMTP Password 解释：SMTP 用户名的对应密码，用于身份验证。 如何填写： 输入你的邮箱密码（传统方式）。 对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。 示例： Gmail： 普通密码：yourpassword 双重验证：前往 Google 账户安全设置，生成 16 位应用专用密码（如 abcd efgh ijkl mnop）。 SendGrid：输入 API Key（而不是密码）。 注意：不要使用空格，确保密码正确。 5. Type of Encryption 解释：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。 如何填写：根据邮件服务商的要求选择。 示例： Gmail：TLS（推荐）或 SSL（较老）。 Outlook：TLS。 SendGrid：TLS。 无加密：None（不安全，仅限本地测试）。 注意： TLS 是现代标准，优先选择。 SSL 是较老的协议，端口不同。 6. SMTP Port 解释：SMTP 服务器监听的端口号，与加密方式相关。 如何填写：根据服务商和加密类型选择对应端口。 示例： 587：TLS 加密的常用端口（Gmail、Outlook）。 465：SSL 加密的端口（Gmail 备用）。 25：无加密的默认端口（不推荐）。 SendGrid：587（TLS）。 注意：端口错误会导致连接失败，需与加密类型匹配。 7. From Email Address 解释：邮件显示的发件人邮箱地址，收件人会看到这个地址。 如何填写：输入一个有效的邮箱地址，通常与 SMTP Username 一致。 示例： Gmail：yourname@gmail.com 自有域名：contact@yourdomain.com。 注意： 某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。 自有域名需确保与服务器配置一致。 8. From Name 解释：邮件显示的发件人名称，个性化邮件的发送者身份。 如何填写：输入你希望收件人看到的名称，可以是人名或品牌名。 示例： John Doe My Website Team Your Company Name 注意：随意填写，但保持专业性，避免过长。 9. Disable SSL Certificate Verification 解释：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。 如何填写： 默认：No 或 Disabled（不禁用）。 如果连接失败且确认是证书问题：选 Yes 或 Enabled。 示例： Gmail、SendGrid 等正规服务：No。 本地测试服务器或自签名证书：Yes。 注意：启用此选项会降低安全性，仅用于调试或特殊情况。 示例配置：使用 Gmail SMTP 假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#插件">插件</a></li>
+    <li><a href="#smtp常用字段">SMTP常用字段</a>
+      <ol>
+        <li><a href="#1-smtp-host">1. SMTP Host</a></li>
+        <li><a href="#2-smtp-authentication">2. SMTP Authentication</a></li>
+        <li><a href="#3-smtp-username">3. SMTP Username</a></li>
+        <li><a href="#4-smtp-password">4. SMTP Password</a></li>
+        <li><a href="#5-type-of-encryption">5. Type of Encryption</a></li>
+        <li><a href="#6-smtp-port">6. SMTP Port</a></li>
+        <li><a href="#7-from-email-address">7. From Email Address</a></li>
+        <li><a href="#8-from-name">8. From Name</a></li>
+        <li><a href="#9-disable-ssl-certificate-verification">9. Disable SSL Certificate Verification</a></li>
+        <li><a href="#示例配置使用-gmail-smtp">示例配置：使用 Gmail SMTP</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+            <a href="/categories/wordpress/" >
+                Wordpress
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/wordpress%E9%85%8D%E7%BD%AEsmtp/">wordpress配置SMTP</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-01</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="插件">插件
+</h2><ul>
+<li>轻量级
+<ul>
+<li>SMTP Mailer
+<ul>
+<li>推荐<code>1.15</code>版本，无pro</li>
+</ul>
+</li>
+<li>SMTP Connector</li>
+</ul>
+</li>
+<li>常用
+<ul>
+<li>FluentSMTP</li>
+<li>WP Mail SMTP</li>
+</ul>
+</li>
+</ul>
+<h2 id="smtp常用字段">SMTP常用字段
+</h2><h3 id="1-smtp-host">1. SMTP Host
+</h3><ul>
+<li><strong>解释</strong>：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。</li>
+<li><strong>如何填写</strong>：输入邮件服务提供商提供的 SMTP 服务器地址。</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail：<code>smtp.gmail.com</code></li>
+<li>Outlook：<code>smtp-mail.outlook.com</code></li>
+<li>SendGrid：<code>smtp.sendgrid.net</code></li>
+<li>自有服务器：可能是 <code>mail.yourdomain.com</code>（需咨询主机提供商）。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：确保准确无误，通常在邮件服务商的帮助文档中可以找到。</li>
+</ul>
+<h3 id="2-smtp-authentication">2. SMTP Authentication
+</h3><ul>
+<li><strong>解释</strong>：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。</li>
+<li><strong>如何填写</strong>：通常选择“Yes”或“Enabled”（是/启用）。</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。</li>
+<li>如果是本地未加密服务器，可能选“No”（极少见）。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：除非明确知道服务器不需要认证，默认选“Yes”。</li>
+</ul>
+<h3 id="3-smtp-username">3. SMTP Username
+</h3><ul>
+<li><strong>解释</strong>：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。</li>
+<li><strong>如何填写</strong>：输入完整的邮箱地址或服务分配的用户名。</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail：<code>yourname@gmail.com</code></li>
+<li>SendGrid：通常是 <code>apikey</code>（而不是邮箱）。</li>
+<li>自有服务器：可能是 <code>user@yourdomain.com</code>。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：与密码配对使用，区分大小写。</li>
+</ul>
+<h3 id="4-smtp-password">4. SMTP Password
+</h3><ul>
+<li><strong>解释</strong>：SMTP 用户名的对应密码，用于身份验证。</li>
+<li><strong>如何填写</strong>：
+<ul>
+<li>输入你的邮箱密码（传统方式）。</li>
+<li>对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail：
+<ul>
+<li>普通密码：<code>yourpassword</code></li>
+<li>双重验证：前往 <a class="link" href="https://myaccount.google.com/security"  target="_blank" rel="noopener"
+    >Google 账户安全设置</a>，生成 16 位应用专用密码（如 <code>abcd efgh ijkl mnop</code>）。</li>
+</ul>
+</li>
+<li>SendGrid：输入 API Key（而不是密码）。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：不要使用空格，确保密码正确。</li>
+</ul>
+<h3 id="5-type-of-encryption">5. Type of Encryption
+</h3><ul>
+<li><strong>解释</strong>：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。</li>
+<li><strong>如何填写</strong>：根据邮件服务商的要求选择。</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail：<code>TLS</code>（推荐）或 <code>SSL</code>（较老）。</li>
+<li>Outlook：<code>TLS</code>。</li>
+<li>SendGrid：<code>TLS</code>。</li>
+<li>无加密：<code>None</code>（不安全，仅限本地测试）。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：
+<ul>
+<li><code>TLS</code> 是现代标准，优先选择。</li>
+<li><code>SSL</code> 是较老的协议，端口不同。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-smtp-port">6. SMTP Port
+</h3><ul>
+<li><strong>解释</strong>：SMTP 服务器监听的端口号，与加密方式相关。</li>
+<li><strong>如何填写</strong>：根据服务商和加密类型选择对应端口。</li>
+<li><strong>示例</strong>：
+<ul>
+<li><code>587</code>：TLS 加密的常用端口（Gmail、Outlook）。</li>
+<li><code>465</code>：SSL 加密的端口（Gmail 备用）。</li>
+<li><code>25</code>：无加密的默认端口（不推荐）。</li>
+<li>SendGrid：<code>587</code>（TLS）。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：端口错误会导致连接失败，需与加密类型匹配。</li>
+</ul>
+<h3 id="7-from-email-address">7. From Email Address
+</h3><ul>
+<li><strong>解释</strong>：邮件显示的发件人邮箱地址，收件人会看到这个地址。</li>
+<li><strong>如何填写</strong>：输入一个有效的邮箱地址，通常与 SMTP Username 一致。</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail：<code>yourname@gmail.com</code></li>
+<li>自有域名：<code>contact@yourdomain.com</code>。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：
+<ul>
+<li>某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。</li>
+<li>自有域名需确保与服务器配置一致。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-from-name">8. From Name
+</h3><ul>
+<li><strong>解释</strong>：邮件显示的发件人名称，个性化邮件的发送者身份。</li>
+<li><strong>如何填写</strong>：输入你希望收件人看到的名称，可以是人名或品牌名。</li>
+<li><strong>示例</strong>：
+<ul>
+<li><code>John Doe</code></li>
+<li><code>My Website Team</code></li>
+<li><code>Your Company Name</code></li>
+</ul>
+</li>
+<li><strong>注意</strong>：随意填写，但保持专业性，避免过长。</li>
+</ul>
+<h3 id="9-disable-ssl-certificate-verification">9. Disable SSL Certificate Verification
+</h3><ul>
+<li><strong>解释</strong>：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。</li>
+<li><strong>如何填写</strong>：
+<ul>
+<li>默认：<code>No</code> 或 <code>Disabled</code>（不禁用）。</li>
+<li>如果连接失败且确认是证书问题：选 <code>Yes</code> 或 <code>Enabled</code>。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：
+<ul>
+<li>Gmail、SendGrid 等正规服务：<code>No</code>。</li>
+<li>本地测试服务器或自签名证书：<code>Yes</code>。</li>
+</ul>
+</li>
+<li><strong>注意</strong>：启用此选项会降低安全性，仅用于调试或特殊情况。</li>
+</ul>
+<hr>
+<h3 id="示例配置使用-gmail-smtp">示例配置：使用 Gmail SMTP
+</h3><p>假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>填写内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SMTP Host</td>
+          <td><code>smtp.gmail.com</code></td>
+      </tr>
+      <tr>
+          <td>SMTP Authentication</td>
+          <td><code>Yes</code></td>
+      </tr>
+      <tr>
+          <td>SMTP Username</td>
+          <td><code>yourname@gmail.com</code></td>
+      </tr>
+      <tr>
+          <td>SMTP Password</td>
+          <td><code>abcd efgh ijkl mnop</code>（应用专用密码）</td>
+      </tr>
+      <tr>
+          <td>Type of Encryption</td>
+          <td><code>TLS</code></td>
+      </tr>
+      <tr>
+          <td>SMTP Port</td>
+          <td><code>587</code></td>
+      </tr>
+      <tr>
+          <td>From Email Address</td>
+          <td><code>yourname@gmail.com</code></td>
+      </tr>
+      <tr>
+          <td>From Name</td>
+          <td><code>John Doe</code></td>
+      </tr>
+      <tr>
+          <td>Disable SSL Certificate Verification</td>
+          <td><code>No</code></td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/smtp/">SMTP</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%9E%B6%E6%9E%842/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordPress架构2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E4%BB%A3%E7%A0%81%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress代码语言分类</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%92%8C%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress插件推荐和获取渠道</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%9E%B6%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordPress架构</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%8F%90%E5%8D%87wordpress%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">提升wordpress网站速度</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
