@@ -7,7 +7,48 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 24 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>windows换ubuntu</title>
+        <link>https://ydashu.github.io/p/windows%E6%8D%A2ubuntu/</link>
+        <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/windows%E6%8D%A2ubuntu/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;windows换ubuntu &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/download/desktop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ubuntu.com/download/desktop&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;先备份&lt;/li&gt;
+&lt;li&gt;u盘闪存
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pbatard/rufus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Rufus&lt;/a&gt; Ventoy 等工具安装：
+&lt;ul&gt;
+&lt;li&gt;Ventoy
+&lt;ul&gt;
+&lt;li&gt;支持多ISO系统&lt;/li&gt;
+&lt;li&gt;U 盘可保留其他文件（如文档、工具），只需不覆盖 ISO 存储分区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;视频软件用MPV or VLC ：MPV更极客
+&lt;ul&gt;
+&lt;li&gt;MPV教学
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/623849465&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/623849465&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>git push失败问题</title>
         <link>https://ydashu.github.io/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</link>
         <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>

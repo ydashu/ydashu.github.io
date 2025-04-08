@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 基于generatepress\n颜色分类和设计 base和background参考的apple.com，contrast自定义\n类别 名称 颜色代码 用途 Base Base1 #1D1D1F 主要文本内容，如正文、描述、默认字体颜色。接近黑色的深灰色，柔和且易读 Base2 #000000 大标题、强调性文本（如H1标题或关键标语），提供最高对比度 Base3 #6E6E73 次级文本，如注释、标签、小字说明（页脚、版权信息），降低视觉重要性 Background Background1 #F5F5F7 页面主背景色，微暖白，与Base和Contrast形成高对比度 Background2 #FFFFFF 局部区域背景，如卡片、导航栏默认态，纯白增加明亮感 Background3 #EDEDED 次级区域背景，如页脚或侧边栏的区分区域，浅灰白提供柔和的层次感 Contrast Contrast1 #491C1C 主要交互元素，如链接、主要按钮（CTA，如“购买”）、高亮文本。深红棕色，低调而温暖 Contrast2 #6B2D2D 交互元素的悬停（hover）状态或次级高亮，比Contrast1稍亮，用于动态反馈 Contrast3 #3A1515 次级链接或低调交互元素（如“了解更多”），比Contrast1稍暗，区分主次 color分类 wordpress generatepress\n">
+<title>wordpress字体颜色设计</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/wordpress%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E8%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="wordpress字体颜色设计">
+<meta property='og:description' content=" 基于generatepress\n颜色分类和设计 base和background参考的apple.com，contrast自定义\n类别 名称 颜色代码 用途 Base Base1 #1D1D1F 主要文本内容，如正文、描述、默认字体颜色。接近黑色的深灰色，柔和且易读 Base2 #000000 大标题、强调性文本（如H1标题或关键标语），提供最高对比度 Base3 #6E6E73 次级文本，如注释、标签、小字说明（页脚、版权信息），降低视觉重要性 Background Background1 #F5F5F7 页面主背景色，微暖白，与Base和Contrast形成高对比度 Background2 #FFFFFF 局部区域背景，如卡片、导航栏默认态，纯白增加明亮感 Background3 #EDEDED 次级区域背景，如页脚或侧边栏的区分区域，浅灰白提供柔和的层次感 Contrast Contrast1 #491C1C 主要交互元素，如链接、主要按钮（CTA，如“购买”）、高亮文本。深红棕色，低调而温暖 Contrast2 #6B2D2D 交互元素的悬停（hover）状态或次级高亮，比Contrast1稍亮，用于动态反馈 Contrast3 #3A1515 次级链接或低调交互元素（如“了解更多”），比Contrast1稍暗，区分主次 color分类 wordpress generatepress\n">
+<meta property='og:url' content='https://ydashu.github.io/p/wordpress%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E8%AE%A1/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-08T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-08T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="wordpress字体颜色设计">
+<meta name="twitter:description" content=" 基于generatepress\n颜色分类和设计 base和background参考的apple.com，contrast自定义\n类别 名称 颜色代码 用途 Base Base1 #1D1D1F 主要文本内容，如正文、描述、默认字体颜色。接近黑色的深灰色，柔和且易读 Base2 #000000 大标题、强调性文本（如H1标题或关键标语），提供最高对比度 Base3 #6E6E73 次级文本，如注释、标签、小字说明（页脚、版权信息），降低视觉重要性 Background Background1 #F5F5F7 页面主背景色，微暖白，与Base和Contrast形成高对比度 Background2 #FFFFFF 局部区域背景，如卡片、导航栏默认态，纯白增加明亮感 Background3 #EDEDED 次级区域背景，如页脚或侧边栏的区分区域，浅灰白提供柔和的层次感 Contrast Contrast1 #491C1C 主要交互元素，如链接、主要按钮（CTA，如“购买”）、高亮文本。深红棕色，低调而温暖 Contrast2 #6B2D2D 交互元素的悬停（hover）状态或次级高亮，比Contrast1稍亮，用于动态反馈 Contrast3 #3A1515 次级链接或低调交互元素（如“了解更多”），比Contrast1稍暗，区分主次 color分类 wordpress generatepress\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#颜色分类和设计">颜色分类和设计</a></li>
+    <li><a href="#color分类">color分类</a></li>
+    <li><a href="#具体参数设置">具体参数设置</a></li>
+    <li><a href="#上述内容非表格输出">上述内容非表格输出</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+            <a href="/categories/wordpress/" >
+                Wordpress
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/wordpress%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E8%AE%A1/">wordpress字体颜色设计</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-08</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>基于generatepress</p></blockquote>
+<h2 id="颜色分类和设计">颜色分类和设计
+</h2><blockquote>
+<p>base和background参考的apple.com，contrast自定义</p></blockquote>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>类别</strong></th>
+          <th><strong>名称</strong></th>
+          <th><strong>颜色代码</strong></th>
+          <th><strong>用途</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Base</strong></td>
+          <td>Base1</td>
+          <td><code>#1D1D1F</code></td>
+          <td>主要文本内容，如正文、描述、默认字体颜色。接近黑色的深灰色，柔和且易读</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Base2</td>
+          <td><code>#000000</code></td>
+          <td>大标题、强调性文本（如H1标题或关键标语），提供最高对比度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Base3</td>
+          <td><code>#6E6E73</code></td>
+          <td>次级文本，如注释、标签、小字说明（页脚、版权信息），降低视觉重要性</td>
+      </tr>
+      <tr>
+          <td><strong>Background</strong></td>
+          <td>Background1</td>
+          <td><code>#F5F5F7</code></td>
+          <td>页面主背景色，微暖白，与Base和Contrast形成高对比度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Background2</td>
+          <td><code>#FFFFFF</code></td>
+          <td>局部区域背景，如卡片、导航栏默认态，纯白增加明亮感</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Background3</td>
+          <td><code>#EDEDED</code></td>
+          <td>次级区域背景，如页脚或侧边栏的区分区域，浅灰白提供柔和的层次感</td>
+      </tr>
+      <tr>
+          <td><strong>Contrast</strong></td>
+          <td>Contrast1</td>
+          <td><code>#491C1C</code></td>
+          <td>主要交互元素，如链接、主要按钮（CTA，如“购买”）、高亮文本。深红棕色，低调而温暖</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Contrast2</td>
+          <td><code>#6B2D2D</code></td>
+          <td>交互元素的悬停（hover）状态或次级高亮，比Contrast1稍亮，用于动态反馈</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Contrast3</td>
+          <td><code>#3A1515</code></td>
+          <td>次级链接或低调交互元素（如“了解更多”），比Contrast1稍暗，区分主次</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="color分类">color分类
+</h2><blockquote>
+<p>wordpress generatepress</p></blockquote>
+<ul>
+<li>Color
+<ul>
+<li>Initial Color</li>
+<li>Hover Color</li>
+<li>Current Color</li>
+<li>Focus Color</li>
+</ul>
+</li>
+</ul>
+<h2 id="具体参数设置">具体参数设置
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>类别</strong></th>
+          <th><strong>子类别</strong></th>
+          <th><strong>属性</strong></th>
+          <th><strong>值</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Body</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td><strong>Top Bar</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td><strong>Head</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Site Title</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Tagline</td>
+          <td></td>
+          <td>Base3</td>
+      </tr>
+      <tr>
+          <td><strong>Primary Navigation</strong></td>
+          <td>Navigation Background</td>
+          <td>Initial Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Navigation Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Background</td>
+          <td>Initial Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td><strong>Secondary Navigation</strong></td>
+          <td>Navigation Background</td>
+          <td>Initial Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Navigation Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Background</td>
+          <td>Initial Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td><strong>Off Canvas Panel</strong></td>
+          <td>Navigation Background</td>
+          <td>Initial Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Navigation Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Background</td>
+          <td>Initial Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Sub-Menu Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Current Color</td>
+          <td>Contrast3</td>
+      </tr>
+      <tr>
+          <td><strong>Buttons</strong></td>
+          <td>Background</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td>Initial Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td><strong>Content</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Content Title</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Archive Content Title</td>
+          <td>Initial Color</td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Entry Meta Text</td>
+          <td></td>
+          <td>Base3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Entry Meta Links</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 1 (H1) Color</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 2 (H2) Color</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 3 (H3) Color</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 4 (H4) Color</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 5 (H5) Color</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Heading 6 (H6) Color</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td><strong>Forms</strong></td>
+          <td>Background</td>
+          <td>Initial Color</td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Focus Color</td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td>Initial Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Focus Color</td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Border</td>
+          <td>Initial Color</td>
+          <td>Base3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Focus Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td><strong>Sidebar Widgets</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Widget Title</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td><strong>Footer Widgets</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Widget Title</td>
+          <td></td>
+          <td>Base2</td>
+      </tr>
+      <tr>
+          <td><strong>Footer Bar</strong></td>
+          <td>Background</td>
+          <td></td>
+          <td>Background3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Text</td>
+          <td></td>
+          <td>Base3</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Link</td>
+          <td>Initial Color</td>
+          <td>Contrast1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td>Hover Color</td>
+          <td>Contrast2</td>
+      </tr>
+      <tr>
+          <td><strong>Search Modal</strong></td>
+          <td>Field Background</td>
+          <td></td>
+          <td>Background2</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Field Text</td>
+          <td></td>
+          <td>Base1</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Overlay Background</td>
+          <td></td>
+          <td>NULL</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="上述内容非表格输出">上述内容非表格输出
+</h2><ul>
+<li>字体颜色设计
+<ul>
+<li>base
+<ul>
+<li>base1: <code>#1D1D1F</code>
+<ul>
+<li>用途：主要文本内容，如正文、描述、默认字体颜色。接近黑色的深灰色，柔和且易读</li>
+</ul>
+</li>
+<li>base2: <code>#000000</code>
+<ul>
+<li>用途: 大标题、强调性文本（如H1标题或关键标语），提供最高对比度</li>
+</ul>
+</li>
+<li>base3: <code>#6E6E73</code>
+<ul>
+<li>用途: 次级文本，如注释、标签、小字说明（页脚、版权信息），降低视觉重要性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>background
+<ul>
+<li>backgound1: <code>#F5F5F7</code>
+<ul>
+<li>用途: 页面主背景色，微暖白，与Base和Contrast形成高对比度</li>
+</ul>
+</li>
+<li>backgound2: <code>#FFFFFF</code>
+<ul>
+<li>用途: 局部区域背景，如卡片、导航栏默认态，纯白增加明亮感</li>
+</ul>
+</li>
+<li>backgound3: <code>#EDEDED</code>
+<ul>
+<li>用途: 次级区域背景，如页脚或侧边栏的区分区域，浅灰白提供柔和的层次感</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>contrast
+<ul>
+<li>contrast1: <code>#491C1C</code>
+<ul>
+<li>用途: 主要交互元素，如链接、主要按钮（CTA，如“购买”）、高亮文本。深红棕色，低调而温暖</li>
+</ul>
+</li>
+<li>contrast2: <code>#6B2D2D</code>
+<ul>
+<li>用途: 交互元素的悬停（hover）状态或次级高亮，比Contrast1稍亮，用于动态反馈</li>
+</ul>
+</li>
+<li>contrast3: <code>#3A1515</code>
+<ul>
+<li>用途: 次级链接或低调交互元素（如“了解更多”），比Contrast1稍暗，区分主次</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Color
+<ul>
+<li>Initial Color</li>
+<li>Hover Color</li>
+<li>Current Color</li>
+<li>Focus Color</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>Body</p>
+<ul>
+<li>Background: background1</li>
+<li>Text: base1</li>
+<li>Link
+<ul>
+<li>Initial Color: contrast1</li>
+<li>Hover Color: contrast2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Top Bar</p>
+<ul>
+<li>Background: background2</li>
+<li>Text: base2</li>
+<li>Link
+<ul>
+<li>Initial Color: contrast1</li>
+<li>Hover Color: contrast2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Head</p>
+<ul>
+<li>Background: Background2</li>
+<li>Text: Base1</li>
+<li>Link
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Site Title: Base2</li>
+<li>Tagline: Base3</li>
+</ul>
+</li>
+<li>
+<p>Primary Navigation</p>
+<ul>
+<li>Navigation Background
+<ul>
+<li>Initial Color: Background1</li>
+<li>Hover Color: Background2</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Navigation Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+<li>Sub-Menu Background
+<ul>
+<li>Initial Color: Background2</li>
+<li>Hover Color: Background1</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Sub-Menu Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Secondary Navigation</p>
+<ul>
+<li>Navigation Background
+<ul>
+<li>Initial Color: Background1</li>
+<li>Hover Color: Background2</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Navigation Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+<li>Sub-Menu Background
+<ul>
+<li>Initial Color: Background2</li>
+<li>Hover Color: Background1</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Sub-Menu Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Off Canvas Panel</p>
+<ul>
+<li>Navigation Background
+<ul>
+<li>Initial Color: Background1</li>
+<li>Hover Color: Background2</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Navigation Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+<li>Sub-Menu Background
+<ul>
+<li>Initial Color: Background2</li>
+<li>Hover Color: Background1</li>
+<li>Current Color: Background1</li>
+</ul>
+</li>
+<li>Sub-Menu Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Hover Color: Contrast2</li>
+<li>Current Color: Contrast3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Buttons</p>
+<ul>
+<li>Background
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Text
+<ul>
+<li>Initial Color: Background2</li>
+<li>Hover Color: Background2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Content</p>
+<ul>
+<li>Background: Background1</li>
+<li>Text: Base1</li>
+<li>Link
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Content Title: Base2</li>
+<li>Archive Content Title
+<ul>
+<li>Initial Color: Base2</li>
+<li>Hover Color: Contrast1</li>
+</ul>
+</li>
+<li>Entry Meta Text: Base3</li>
+<li>Entry Meta Links
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Heading 1 (H1) Color: Base2</li>
+<li>Heading 2 (H2) Color: Base2</li>
+<li>Heading 3 (H3) Color: Base1</li>
+<li>Heading 4 (H4) Color: Base1</li>
+<li>Heading 5 (H5) Color: Base1</li>
+<li>Heading 6 (H6) Color: Base1</li>
+</ul>
+</li>
+<li>
+<p>Forms</p>
+<ul>
+<li>Background
+<ul>
+<li>Initial Color: Background2</li>
+<li>Focus Color: Background1</li>
+</ul>
+</li>
+<li>Text
+<ul>
+<li>Initial Color: Base1</li>
+<li>Focus Color: Base1</li>
+</ul>
+</li>
+<li>Border
+<ul>
+<li>Initial Color: Base3</li>
+<li>Focus Color: Contrast1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Sidebar Widgets</p>
+<ul>
+<li>Background: Background1</li>
+<li>Text: Base1</li>
+<li>Link:
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Widget Title: Base2</li>
+</ul>
+</li>
+<li>
+<p>Footer Widgets</p>
+<ul>
+<li>Background: Background3</li>
+<li>Text: Base3</li>
+<li>Link:
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+<li>Widget Title: Base2</li>
+</ul>
+</li>
+<li>
+<p>Footer Bar</p>
+<ul>
+<li>Background: Background3</li>
+<li>Text: Base3</li>
+<li>Link
+<ul>
+<li>Initial Color: Contrast1</li>
+<li>Hover Color: Contrast2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Search Modal</p>
+<ul>
+<li>Field Background: Background2</li>
+<li>Field Text: Base1</li>
+<li>Overlay Background: NULL</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/wordpress%E9%85%8D%E7%BD%AEsmtp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress配置SMTP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%9E%B6%E6%9E%842/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordPress架构2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E4%BB%A3%E7%A0%81%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress代码语言分类</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%92%8C%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress插件推荐和获取渠道</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%9E%B6%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordPress架构</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
