@@ -7,7 +7,885 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 08 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux的常用软件</title>
+        <link>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
+        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类目&lt;/th&gt;
+          &lt;th&gt;Windows 软件及 Linux 替代品&lt;/th&gt;
+          &lt;th&gt;说明或补充信息&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;视频播放&lt;/td&gt;
+          &lt;td&gt;PotPlayer → MPV / VLC&lt;/td&gt;
+          &lt;td&gt;MPV 轻量可定制，VLC 功能全面，支持硬件加速，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;办公套件&lt;/td&gt;
+          &lt;td&gt;onlyoffice/LibreOffice/WPS2019 → Microsoft Office&lt;/td&gt;
+          &lt;td&gt;WPS Linux 版有广告，推荐 WPS 2019（较旧但无广告）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文本编辑&lt;/td&gt;
+          &lt;td&gt;Notepad++ → Gedit / Nano / Vim&lt;/td&gt;
+          &lt;td&gt;Gedit 简单图形化，Nano 命令行轻量，Vim 强大但需学习&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文件搜索&lt;/td&gt;
+          &lt;td&gt;Everything → FSearch&lt;/td&gt;
+          &lt;td&gt;FSearch 开源快速，需从官网或 PPA 安装&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;浏览器&lt;/td&gt;
+          &lt;td&gt;Chrome / Edge → Firefox / Chromium&lt;/td&gt;
+          &lt;td&gt;Firefox 注重隐私，Chromium 开源，洋葱（Tor）需单独配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;搜索引擎&lt;/td&gt;
+          &lt;td&gt;Google → DuckDuckGo&lt;/td&gt;
+          &lt;td&gt;DuckDuckGo 隐私优先，无跟踪，需调整搜索习惯&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;代理工具&lt;/td&gt;
+          &lt;td&gt;Clash for Windows → Clash Verge&lt;/td&gt;
+          &lt;td&gt;Clash Verge 开源，支持 Clash 核心，需从官网下载&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;下载工具&lt;/td&gt;
+          &lt;td&gt;迅雷 → Motrix / qBittorrent&lt;/td&gt;
+          &lt;td&gt;Motrix 全能（BT+HTTP），qBittorrent 专注 BT，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>网络优化</title>
+        <link>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</link>
+        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</guid>
+        <description>&lt;h2 id=&#34;光猫路由模式改桥接模式&#34;&gt;光猫路由模式改桥接模式
+&lt;/h2&gt;&lt;p&gt;待完成&lt;/p&gt;
+&lt;h2 id=&#34;路由器&#34;&gt;路由器
+&lt;/h2&gt;&lt;h3 id=&#34;软路由or硬路由&#34;&gt;软路由or硬路由
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;软路由的可拓展等性能是比硬路由要好的&lt;/li&gt;
+&lt;li&gt;wifi性是软路由的硬伤&lt;/li&gt;
+&lt;li&gt;有没有哪种方案可以两者兼具
+&lt;ul&gt;
+&lt;li&gt;方案一：软路由挂载硬路由
+&lt;ul&gt;
+&lt;li&gt;网络结构复杂&lt;/li&gt;
+&lt;li&gt;可操控性大&lt;/li&gt;
+&lt;li&gt;硬路由设为 AP 模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方案二：硬路由刷OpenWRT
+&lt;ul&gt;
+&lt;li&gt;网络结构简单&lt;/li&gt;
+&lt;li&gt;可操控性较小&lt;/li&gt;
+&lt;li&gt;对硬路由的硬件有要求
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://openwrt.org/toh/start&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;支持的路由器列表&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;刷机风险：可能变砖&lt;/li&gt;
+&lt;li&gt;OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定&lt;/li&gt;
+&lt;li&gt;当前性价比较高的几款支持openWRT的路由器
+&lt;ul&gt;
+&lt;li&gt;红米 AX6000&lt;/li&gt;
+&lt;li&gt;Netgear RAX50&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方案三：
+&lt;ul&gt;
+&lt;li&gt;网络结构简单&lt;/li&gt;
+&lt;li&gt;可操控性小&lt;/li&gt;
+&lt;li&gt;如安装clash对硬件有要求&lt;/li&gt;
+&lt;li&gt;稳定&lt;/li&gt;
+&lt;li&gt;通过插件（如 Merlin 固件）运行 Clash
+&lt;ul&gt;
+&lt;li&gt;支持梅林的路由器
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.asuswrt-merlin.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;华硕&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Clash 高负载可能影响性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ax6000刷openwrt&#34;&gt;AX6000刷OpenWRT
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kjfx/AX6000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kjfx/AX6000&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;刷openwrt&#34;&gt;刷OpenWRT
+&lt;/h3&gt;&lt;h3 id=&#34;安装插件&#34;&gt;安装插件
+&lt;/h3&gt;&lt;h4 id=&#34;openclash&#34;&gt;OpenClash
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openclash.org/openwrt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://openclash.org/openwrt/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>clash</title>
+        <link>https://ydashu.github.io/p/clash/</link>
+        <pubDate>Wed, 09 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/clash/</guid>
+        <description>&lt;h2 id=&#34;发展历史&#34;&gt;发展历史
+&lt;/h2&gt;&lt;h3 id=&#34;起源与诞生2018-2019&#34;&gt;起源与诞生（2018-2019）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;开发者&lt;/strong&gt;：Clash 由 Dreamacro（一位 GitHub 用户）于 2018 年发起，最初是一个基于 Go 语言开发的代理工具。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标&lt;/strong&gt;：Clash 的设计初衷是提供一个支持多种代理协议的统一客户端，解决当时代理工具（如 Shadowsocks、V2Ray）功能分散、配置繁琐的问题。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;早期版本&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;2018 年底，Clash 项目在 GitHub 上发布，最初仅支持 Shadowsocks 协议。&lt;/li&gt;
+&lt;li&gt;2019 年，陆续增加了对 V2Ray（VMess）、HTTP/HTTPS 等协议的支持。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特色&lt;/strong&gt;：Clash 引入了基于 YAML 的配置文件，支持灵活的分流规则（例如按域名或 GeoIP 路由），这在当时是创新性的设计。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;快速成长与社区认可2019-2020&#34;&gt;快速成长与社区认可（2019-2020）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能扩展&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;2019 年中，Clash 添加了对 Trojan 协议的支持，进一步扩大了适用范围。&lt;/li&gt;
+&lt;li&gt;引入 RESTful API（外部控制器）和 Web Dashboard，允许用户动态管理代理规则。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨平台支持&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 被设计为跨平台工具，支持 Linux、Windows、macOS，甚至可以在 OpenWrt（路由器固件）上运行。&lt;/li&gt;
+&lt;li&gt;社区开发了 Clash for Windows 和 ClashX（macOS）等第三方 GUI 客户端，大幅降低了使用门槛。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区活跃&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 凭借其强大的分流功能和易扩展性，迅速在代理用户中流行，尤其受到中国大陆用户欢迎，用于科学上网。&lt;/li&gt;
+&lt;li&gt;GitHub 上 Star 数量快速增长，教程和配置文件分享社区（如 Clash 订阅服务）随之兴起。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;成熟与巅峰2020-2022&#34;&gt;成熟与巅峰（2020-2022）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;关键特性&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;2020 年，Clash 引入 TUN 模式（虚拟网卡），支持透明代理，使其从应用层代理升级为系统级解决方案。&lt;/li&gt;
+&lt;li&gt;支持 GeoIP 和 Geosite 数据库，增强了分流精度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;版本迭代&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;2021 年，Clash 发布 v1.0.0，标志着项目进入稳定阶段。&lt;/li&gt;
+&lt;li&gt;到 2022 年，版本更新至 v1.18.0，修复了大量 Bug 并优化了性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生态系统&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash Premium（闭源付费版）推出，提供高级功能（如更强的 TUN 支持和性能优化），但开源版本仍为主流。&lt;/li&gt;
+&lt;li&gt;第三方工具（如 Clash for Android）进一步扩展了其生态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;停更与分裂2023&#34;&gt;停更与分裂（2023）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;停止更新&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;2023 年初，Dreamacro 宣布停止维护开源 Clash 项目（Dreamacro/clash），最后一个版本为 v1.18.0。&lt;/li&gt;
+&lt;li&gt;具体原因未公开，可能与开发者个人精力、法律压力或商业化转向（如 Clash Premium）有关。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区反应&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 的停更引发社区震动，但其代码开源（MIT 许可）为后续发展留下了空间。&lt;/li&gt;
+&lt;li&gt;多个分支项目迅速涌现，试图接手维护和改进。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;分支与新生2023-至今&#34;&gt;分支与新生（2023-至今）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clash Premium&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Dreamacro 推出了闭源的 Clash Premium，作为官方付费替代品，增加了企业级功能，但未开源，社区接受度有限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clash.Meta / Mihomo&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;由 MetaCubeX 团队接手，基于 Clash 的一个分支（Clash.Meta）发展为 Mihomo。&lt;/li&gt;
+&lt;li&gt;新增支持 Hysteria、TUIC 等新兴协议，优化性能，并提供 Mihomo Party（GUI 客户端）。&lt;/li&gt;
+&lt;li&gt;截至 2025 年 4 月，Mihomo 仍在积极维护，成为开源 Clash 的主要继承者。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;其他分支&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash Verge：一个带 GUI 的客户端，整合 Clash 核心，适合桌面用户。&lt;/li&gt;
+&lt;li&gt;Clash Rust：尝试用 Rust 重写 Clash，但进展较慢。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生态延续&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 的配置文件格式（YAML）和分流逻辑已成为行业标准，被 Sing-box 等新工具兼容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;技术与文化影响&#34;&gt;技术与文化影响
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;技术贡献&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 推动了代理工具的模块化和规则化设计，其分流机制被广泛模仿。&lt;/li&gt;
+&lt;li&gt;TUN 模式和外部控制 API 为后续工具（如 Mihomo、Sing-box）奠定了基础。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文化意义&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;Clash 成为科学上网的代名词，象征着开源社区对抗封锁的努力。&lt;/li&gt;
+&lt;li&gt;其停更与分支发展也反映了开源项目生命周期的典型模式：从个人驱动到社区接力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;客户端列表&#34;&gt;客户端列表
+&lt;/h2&gt;&lt;p&gt;参考 &lt;a class=&#34;link&#34; href=&#34;https://openclash.org/all-proxy-client/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;openclash.org&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;客户端&lt;/th&gt;
+          &lt;th&gt;Windows&lt;/th&gt;
+          &lt;th&gt;macOS&lt;/th&gt;
+          &lt;th&gt;Linux&lt;/th&gt;
+          &lt;th&gt;iOS&lt;/th&gt;
+          &lt;th&gt;Android&lt;/th&gt;
+          &lt;th&gt;路由器&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforandroid.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Android&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforwindows.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Windows&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://getclashn.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashN&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashverge.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashvergerev.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge Rev&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashX&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashxpro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashX Pro&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashnyanpasu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Nyanpasu&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://getflclash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FlClash&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://hiddifynext.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hiddify Next&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://nekobox.tools/nekoboxforandroid/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NekoBox for Android&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://nekobox.tools/nekoray/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NekoRay&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://openclash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenClash&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://passwall2.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PassWall2&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://potatso.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Potatso Lite&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumult.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumultx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult X&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://shadowrocketios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shadowrocket&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://ssrplus.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ShadowsocksR Plus+&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashstash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stash&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://getsurfboard.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surfboard&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://surgeios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surge iOS&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://surgemac.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surge Mac&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayn.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;v2rayN&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayng.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;v2rayNG&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;V2rayU&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://winxray.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WinXray&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;✔&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;桌面设备&#34;&gt;桌面设备
+&lt;/h3&gt;&lt;h4 id=&#34;windows-平台客户端&#34;&gt;Windows 平台客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashverge.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clsah Verge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashvergerev.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge Rev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashnyanpasu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Nyanpasu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforwindows.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://getclashn.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayn.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;v2rayN&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://winxray.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WinXray&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nekobox.tools/nekoray/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NekoRay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qv2ray.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qv2ray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;os-x-平台客户端&#34;&gt;OS X 平台客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashverge.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashvergerev.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge Rev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashnyanpasu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Nyanpasu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforwindows.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashxpro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ClashX Pro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashstash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;V2rayU&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumultx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qv2ray.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qv2ray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;浏览器代理扩展插件&#34;&gt;浏览器代理扩展插件
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://switchyomega.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SwitchyOmega&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;linux-平台客户端&#34;&gt;Linux 平台客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashverge.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clsah Verge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashvergerev.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Verge Rev&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashnyanpasu.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash Nyanpasu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforwindows.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nekobox.tools/nekoray/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NekoRay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qv2ray.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Qv2ray&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;移动设备&#34;&gt;移动设备
+&lt;/h3&gt;&lt;h4 id=&#34;android-平台客户端&#34;&gt;Android 平台客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://v2rayng.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;v2rayNG&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashforandroid.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Clash for Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://nekobox.tools/nekoboxforandroid/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;NekoBox for Android&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://getsurfboard.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surfboard&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;ios-平台客户端&#34;&gt;iOS 平台客户端
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://shadowrocketios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shadowrocket&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumult.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumultx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashstash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://potatso.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Potatso Lite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;路由设备&#34;&gt;路由设备
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://opwrt.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenWrt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://openclash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenClash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ssrplus.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SSRplus&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://passwall2.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PassWall2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;apple-tv&#34;&gt;Apple TV
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://shadowrocketios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shadowrocket&lt;/a&gt; [推荐]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://quantumultx.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Quantumult X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://clashstash.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Stash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sing-box.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sing-box&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>安装windows-Linux双系统</title>
+        <link>https://ydashu.github.io/p/%E5%AE%89%E8%A3%85windows-linux%E5%8F%8C%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Wed, 09 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E5%AE%89%E8%A3%85windows-linux%E5%8F%8C%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;p&gt;在windows的基础上加装linux&lt;/p&gt;
+&lt;p&gt;ubuntu或者Linux Mint&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载ubuntu &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/download/desktop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载Linux Mint &lt;a class=&#34;link&#34; href=&#34;https://www.linuxmint.com/download.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ventory制作可启动u盘&#34;&gt;ventory制作可启动U盘
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ventoy.net/cn/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载ventory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ventoy.net/cn/doc_start.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;解压&lt;/li&gt;
+&lt;li&gt;插入U盘&lt;/li&gt;
+&lt;li&gt;打开解压后的文件夹，双击 Ventoy2Disk.exe&lt;/li&gt;
+&lt;li&gt;设备选择：下拉菜单会显示检测到的 U盘（例如 USB: SanDisk 32GB），确认无误。&lt;/li&gt;
+&lt;li&gt;选项（可选）：
+&lt;ul&gt;
+&lt;li&gt;分区设置保留空间大小&lt;/li&gt;
+&lt;li&gt;默认选择 MBR 分区方案（兼容 BIOS 和部分 UEFI）&lt;/li&gt;
+&lt;li&gt;若目标设备仅支持 UEFI，可点击“选项” &amp;gt; “分区类型” &amp;gt; 选择 MRB或GPT
+&lt;ul&gt;
+&lt;li&gt;具体参考&lt;a class=&#34;link&#34; href=&#34;https://www.ventoy.net/cn/doc_mbr_vs_gpt.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ventoy MBR &amp;amp; GPT 格式对比&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可勾选“安全启动支持”（Secure Boot Support），若目标设备启用此功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;点击“安装”按钮：&lt;/li&gt;
+&lt;li&gt;会弹出警告，提示 U盘数据将被清除，确认后继续。&lt;/li&gt;
+&lt;li&gt;U盘分区：&lt;a class=&#34;link&#34; href=&#34;https://www.ventoy.net/cn/doc_disk_layout.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MBR分区参考链接&lt;/a&gt;，&lt;a class=&#34;link&#34; href=&#34;https://www.ventoy.net/cn/doc_disk_layout_gpt.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GPT分区参考链接&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;分区 1：Ventoy 引导分区（几 MB，FAT32 格式，含引导文件），Windows 下显示为一个小的可访问盘符（如 F:）。&lt;/li&gt;
+&lt;li&gt;分区 2：数据分区（剩余空间，用于存放 ISO 文件），默认不挂载，需手动分配盘符&lt;/li&gt;
+&lt;li&gt;从 1.0.14 版本开始，Ventoy支持在安装时在磁盘最后保留一部分空间。在安装时可以在 “选项配置” &amp;mdash;&amp;gt; “分区设置” 中设置要保留的空间大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;U盘的第二个分区添加ISO文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mbr-vs-gpt&#34;&gt;MBR vs GPT
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;MBR 需要 Legacy/CSM：因为 BIOS 和 CSM 只能识别 MBR 的引导代码。&lt;/li&gt;
+&lt;li&gt;GPT 需要 UEFI：因为 GPT 依赖 EFI 分区和 UEFI 的高级引导机制。&lt;/li&gt;
+&lt;li&gt;BIOS vs UEFI：BIOS 是老技术，仅支持 MBR；UEFI 是新技术，支持 GPT 和更多功能。&lt;/li&gt;
+&lt;li&gt;Ventoy 灵活性：根据目标设备选择 MBR 或 GPT，确保固件模式匹配即可&lt;/li&gt;
+&lt;li&gt;老主板（2010 年前）多为 BIOS。&lt;/li&gt;
+&lt;li&gt;新主板（2012 年后，尤其是 Intel 6 系列芯片组或 AMD AM3+ 之后）几乎都支持 UEFI。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装流程&#34;&gt;安装流程
+&lt;/h2&gt;&lt;h3 id=&#34;windows利用磁盘空间划分空间&#34;&gt;windows利用磁盘空间划分空间
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;打开磁盘管理&lt;/li&gt;
+&lt;li&gt;选择一个空间较多的盘，右键点击它，选择压缩&lt;/li&gt;
+&lt;li&gt;压缩完了以后，底下会多出一块显示为“&lt;strong&gt;未分配&lt;/strong&gt;”的空间，假设是100G&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;准备工作&#34;&gt;准备工作
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;关闭BitLocker
+&lt;ul&gt;
+&lt;li&gt;bitlocker是微软出品的用于保护硬盘的加密系统，按下win+S搜索BitLocker，点击进入后将其关闭，否则它将禁止任何非windows的系统或设备对硬盘进行写入操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;禁用快速启动：
+&lt;ul&gt;
+&lt;li&gt;控制面板 &amp;gt; “电源选项” &amp;gt; “选择电源按钮的功能” &amp;gt; 取消勾选“启用快速启动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BIOS/UEFI禁用安全模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;流程&#34;&gt;流程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;重启电脑，插入 U盘。&lt;/li&gt;
+&lt;li&gt;进入 BIOS/UEFI 设置（通常按 F2、Del 或 Esc）：
+&lt;ul&gt;
+&lt;li&gt;设置 U盘为第一启动项。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;保存并重启，进入 Ventoy 启动菜单：
+&lt;ul&gt;
+&lt;li&gt;显示所有 ISO 文件列表，用方向键选择，回车启动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装 Ubuntu/Linux Mint
+&lt;ul&gt;
+&lt;li&gt;语言、键盘、网络连接等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;选择安装类型
+&lt;ul&gt;
+&lt;li&gt;安装程序检测到 Windows，提示&lt;code&gt;你想安装ubuntu吗？&lt;/code&gt;，选择手动安装，一定不要选择第二项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;设置挂载
+&lt;ul&gt;
+&lt;li&gt;根&lt;code&gt;/&lt;/code&gt;分区
+&lt;ul&gt;
+&lt;li&gt;大小：输入 40000（即 40GB，足够系统和软件使用）。&lt;/li&gt;
+&lt;li&gt;类型：选择“主分区”（Primary）。&lt;/li&gt;
+&lt;li&gt;位置：选择“开头”（Beginning）。&lt;/li&gt;
+&lt;li&gt;使用为：选择“Ext4 日志文件系统”（Ext4 journaling file system）。&lt;/li&gt;
+&lt;li&gt;挂载点：选择 /（根目录）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/home&lt;/code&gt;分区
+&lt;ul&gt;
+&lt;li&gt;回到分区列表，选中剩余的未分配空间（现在应该是 60GB），点击“+”按钮。&lt;/li&gt;
+&lt;li&gt;设置参数：
+&lt;ul&gt;
+&lt;li&gt;大小：保持默认（使用剩余的 60GB）。&lt;/li&gt;
+&lt;li&gt;类型：选择“主分区”（Primary）。&lt;/li&gt;
+&lt;li&gt;位置：选择“开头”（Beginning）。&lt;/li&gt;
+&lt;li&gt;使用为：选择“Ext4 日志文件系统”（Ext4 journaling file system）。&lt;/li&gt;
+&lt;li&gt;挂载点：选择 /home。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;备注
+&lt;ul&gt;
+&lt;li&gt;内存16g，并且一般情况下不会超内存，没必要设置交换空间 swap area&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/boot&lt;/code&gt;分区暂时也不需要&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装完成，选择“立即重启”，移除 U盘
+&lt;ul&gt;
+&lt;li&gt;如果由于网络问题安装失败，可以离线安装，代安装完ubuntu之后再设置代理等方式安装额外的软件、包和驱动等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;重启后，进入 GRUB 菜单
+&lt;ul&gt;
+&lt;li&gt;若重启未见 GRUB，进入 UEFI 设置，调整启动顺序至 Ubuntu/Linux Mint&lt;/li&gt;
+&lt;li&gt;若 Windows 未显示，进 Ubuntu 运行 &lt;code&gt;sudo update-grub&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考链接&#34;&gt;参考链接
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/NeoZng/article/details/122779035&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/NeoZng/article/details/122779035&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;linux的常用软件替代windows的常用软件&#34;&gt;Linux的常用软件替代windows的常用软件
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类目&lt;/th&gt;
+          &lt;th&gt;Windows 软件及 Linux 替代品&lt;/th&gt;
+          &lt;th&gt;说明或补充信息&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;视频播放&lt;/td&gt;
+          &lt;td&gt;PotPlayer → MPV / VLC&lt;/td&gt;
+          &lt;td&gt;MPV 轻量可定制，VLC 功能全面，支持硬件加速，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;办公套件&lt;/td&gt;
+          &lt;td&gt;onlyoffice/LibreOffice/WPS2019 → Microsoft Office&lt;/td&gt;
+          &lt;td&gt;WPS Linux 版有广告，推荐 WPS 2019（较旧但无广告）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文本编辑&lt;/td&gt;
+          &lt;td&gt;Notepad++ → Gedit / Nano / Vim&lt;/td&gt;
+          &lt;td&gt;Gedit 简单图形化，Nano 命令行轻量，Vim 强大但需学习&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文件搜索&lt;/td&gt;
+          &lt;td&gt;Everything → FSearch&lt;/td&gt;
+          &lt;td&gt;FSearch 开源快速，需从官网或 PPA 安装&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;浏览器&lt;/td&gt;
+          &lt;td&gt;Chrome / Edge → Firefox / Chromium&lt;/td&gt;
+          &lt;td&gt;Firefox 注重隐私，Chromium 开源，洋葱（Tor）需单独配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;搜索引擎&lt;/td&gt;
+          &lt;td&gt;Google → DuckDuckGo&lt;/td&gt;
+          &lt;td&gt;DuckDuckGo 隐私优先，无跟踪，需调整搜索习惯&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;代理工具&lt;/td&gt;
+          &lt;td&gt;Clash for Windows → Clash Verge&lt;/td&gt;
+          &lt;td&gt;Clash Verge 开源，支持 Clash 核心，需从官网下载&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;下载工具&lt;/td&gt;
+          &lt;td&gt;迅雷 → Motrix / qBittorrent&lt;/td&gt;
+          &lt;td&gt;Motrix 全能（BT+HTTP），qBittorrent 专注 BT，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>windows换ubuntu</title>
         <link>https://ydashu.github.io/p/windows%E6%8D%A2ubuntu/</link>
         <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>

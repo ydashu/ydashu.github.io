@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="发展历史 起源与诞生（2018-2019） 开发者：Clash 由 Dreamacro（一位 GitHub 用户）于 2018 年发起，最初是一个基于 Go 语言开发的代理工具。 目标：Clash 的设计初衷是提供一个支持多种代理协议的统一客户端，解决当时代理工具（如 Shadowsocks、V2Ray）功能分散、配置繁琐的问题。 早期版本： 2018 年底，Clash 项目在 GitHub 上发布，最初仅支持 Shadowsocks 协议。 2019 年，陆续增加了对 V2Ray（VMess）、HTTP/HTTPS 等协议的支持。 特色：Clash 引入了基于 YAML 的配置文件，支持灵活的分流规则（例如按域名或 GeoIP 路由），这在当时是创新性的设计。 快速成长与社区认可（2019-2020） 功能扩展： 2019 年中，Clash 添加了对 Trojan 协议的支持，进一步扩大了适用范围。 引入 RESTful API（外部控制器）和 Web Dashboard，允许用户动态管理代理规则。 跨平台支持： Clash 被设计为跨平台工具，支持 Linux、Windows、macOS，甚至可以在 OpenWrt（路由器固件）上运行。 社区开发了 Clash for Windows 和 ClashX（macOS）等第三方 GUI 客户端，大幅降低了使用门槛。 社区活跃： Clash 凭借其强大的分流功能和易扩展性，迅速在代理用户中流行，尤其受到中国大陆用户欢迎，用于科学上网。 GitHub 上 Star 数量快速增长，教程和配置文件分享社区（如 Clash 订阅服务）随之兴起。 成熟与巅峰（2020-2022） 关键特性： 2020 年，Clash 引入 TUN 模式（虚拟网卡），支持透明代理，使其从应用层代理升级为系统级解决方案。 支持 GeoIP 和 Geosite 数据库，增强了分流精度。 版本迭代： 2021 年，Clash 发布 v1.0.0，标志着项目进入稳定阶段。 到 2022 年，版本更新至 v1.18.0，修复了大量 Bug 并优化了性能。 生态系统： Clash Premium（闭源付费版）推出，提供高级功能（如更强的 TUN 支持和性能优化），但开源版本仍为主流。 第三方工具（如 Clash for Android）进一步扩展了其生态。 停更与分裂（2023） 停止更新： 2023 年初，Dreamacro 宣布停止维护开源 Clash 项目（Dreamacro/clash），最后一个版本为 v1.18.0。 具体原因未公开，可能与开发者个人精力、法律压力或商业化转向（如 Clash Premium）有关。 社区反应： Clash 的停更引发社区震动，但其代码开源（MIT 许可）为后续发展留下了空间。 多个分支项目迅速涌现，试图接手维护和改进。 分支与新生（2023-至今） Clash Premium： Dreamacro 推出了闭源的 Clash Premium，作为官方付费替代品，增加了企业级功能，但未开源，社区接受度有限。 Clash.Meta / Mihomo： 由 MetaCubeX 团队接手，基于 Clash 的一个分支（Clash.Meta）发展为 Mihomo。 新增支持 Hysteria、TUIC 等新兴协议，优化性能，并提供 Mihomo Party（GUI 客户端）。 截至 2025 年 4 月，Mihomo 仍在积极维护，成为开源 Clash 的主要继承者。 其他分支： Clash Verge：一个带 GUI 的客户端，整合 Clash 核心，适合桌面用户。 Clash Rust：尝试用 Rust 重写 Clash，但进展较慢。 生态延续： Clash 的配置文件格式（YAML）和分流逻辑已成为行业标准，被 Sing-box 等新工具兼容。 技术与文化影响 技术贡献： Clash 推动了代理工具的模块化和规则化设计，其分流机制被广泛模仿。 TUN 模式和外部控制 API 为后续工具（如 Mihomo、Sing-box）奠定了基础。 文化意义： Clash 成为科学上网的代名词，象征着开源社区对抗封锁的努力。 其停更与分支发展也反映了开源项目生命周期的典型模式：从个人驱动到社区接力 客户端列表 参考 openclash.org\n">
+<title>clash</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/clash/'>
+
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="clash">
+<meta property='og:description' content="发展历史 起源与诞生（2018-2019） 开发者：Clash 由 Dreamacro（一位 GitHub 用户）于 2018 年发起，最初是一个基于 Go 语言开发的代理工具。 目标：Clash 的设计初衷是提供一个支持多种代理协议的统一客户端，解决当时代理工具（如 Shadowsocks、V2Ray）功能分散、配置繁琐的问题。 早期版本： 2018 年底，Clash 项目在 GitHub 上发布，最初仅支持 Shadowsocks 协议。 2019 年，陆续增加了对 V2Ray（VMess）、HTTP/HTTPS 等协议的支持。 特色：Clash 引入了基于 YAML 的配置文件，支持灵活的分流规则（例如按域名或 GeoIP 路由），这在当时是创新性的设计。 快速成长与社区认可（2019-2020） 功能扩展： 2019 年中，Clash 添加了对 Trojan 协议的支持，进一步扩大了适用范围。 引入 RESTful API（外部控制器）和 Web Dashboard，允许用户动态管理代理规则。 跨平台支持： Clash 被设计为跨平台工具，支持 Linux、Windows、macOS，甚至可以在 OpenWrt（路由器固件）上运行。 社区开发了 Clash for Windows 和 ClashX（macOS）等第三方 GUI 客户端，大幅降低了使用门槛。 社区活跃： Clash 凭借其强大的分流功能和易扩展性，迅速在代理用户中流行，尤其受到中国大陆用户欢迎，用于科学上网。 GitHub 上 Star 数量快速增长，教程和配置文件分享社区（如 Clash 订阅服务）随之兴起。 成熟与巅峰（2020-2022） 关键特性： 2020 年，Clash 引入 TUN 模式（虚拟网卡），支持透明代理，使其从应用层代理升级为系统级解决方案。 支持 GeoIP 和 Geosite 数据库，增强了分流精度。 版本迭代： 2021 年，Clash 发布 v1.0.0，标志着项目进入稳定阶段。 到 2022 年，版本更新至 v1.18.0，修复了大量 Bug 并优化了性能。 生态系统： Clash Premium（闭源付费版）推出，提供高级功能（如更强的 TUN 支持和性能优化），但开源版本仍为主流。 第三方工具（如 Clash for Android）进一步扩展了其生态。 停更与分裂（2023） 停止更新： 2023 年初，Dreamacro 宣布停止维护开源 Clash 项目（Dreamacro/clash），最后一个版本为 v1.18.0。 具体原因未公开，可能与开发者个人精力、法律压力或商业化转向（如 Clash Premium）有关。 社区反应： Clash 的停更引发社区震动，但其代码开源（MIT 许可）为后续发展留下了空间。 多个分支项目迅速涌现，试图接手维护和改进。 分支与新生（2023-至今） Clash Premium： Dreamacro 推出了闭源的 Clash Premium，作为官方付费替代品，增加了企业级功能，但未开源，社区接受度有限。 Clash.Meta / Mihomo： 由 MetaCubeX 团队接手，基于 Clash 的一个分支（Clash.Meta）发展为 Mihomo。 新增支持 Hysteria、TUIC 等新兴协议，优化性能，并提供 Mihomo Party（GUI 客户端）。 截至 2025 年 4 月，Mihomo 仍在积极维护，成为开源 Clash 的主要继承者。 其他分支： Clash Verge：一个带 GUI 的客户端，整合 Clash 核心，适合桌面用户。 Clash Rust：尝试用 Rust 重写 Clash，但进展较慢。 生态延续： Clash 的配置文件格式（YAML）和分流逻辑已成为行业标准，被 Sing-box 等新工具兼容。 技术与文化影响 技术贡献： Clash 推动了代理工具的模块化和规则化设计，其分流机制被广泛模仿。 TUN 模式和外部控制 API 为后续工具（如 Mihomo、Sing-box）奠定了基础。 文化意义： Clash 成为科学上网的代名词，象征着开源社区对抗封锁的努力。 其停更与分支发展也反映了开源项目生命周期的典型模式：从个人驱动到社区接力 客户端列表 参考 openclash.org\n">
+<meta property='og:url' content='https://ydashu.github.io/p/clash/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-09T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="clash">
+<meta name="twitter:description" content="发展历史 起源与诞生（2018-2019） 开发者：Clash 由 Dreamacro（一位 GitHub 用户）于 2018 年发起，最初是一个基于 Go 语言开发的代理工具。 目标：Clash 的设计初衷是提供一个支持多种代理协议的统一客户端，解决当时代理工具（如 Shadowsocks、V2Ray）功能分散、配置繁琐的问题。 早期版本： 2018 年底，Clash 项目在 GitHub 上发布，最初仅支持 Shadowsocks 协议。 2019 年，陆续增加了对 V2Ray（VMess）、HTTP/HTTPS 等协议的支持。 特色：Clash 引入了基于 YAML 的配置文件，支持灵活的分流规则（例如按域名或 GeoIP 路由），这在当时是创新性的设计。 快速成长与社区认可（2019-2020） 功能扩展： 2019 年中，Clash 添加了对 Trojan 协议的支持，进一步扩大了适用范围。 引入 RESTful API（外部控制器）和 Web Dashboard，允许用户动态管理代理规则。 跨平台支持： Clash 被设计为跨平台工具，支持 Linux、Windows、macOS，甚至可以在 OpenWrt（路由器固件）上运行。 社区开发了 Clash for Windows 和 ClashX（macOS）等第三方 GUI 客户端，大幅降低了使用门槛。 社区活跃： Clash 凭借其强大的分流功能和易扩展性，迅速在代理用户中流行，尤其受到中国大陆用户欢迎，用于科学上网。 GitHub 上 Star 数量快速增长，教程和配置文件分享社区（如 Clash 订阅服务）随之兴起。 成熟与巅峰（2020-2022） 关键特性： 2020 年，Clash 引入 TUN 模式（虚拟网卡），支持透明代理，使其从应用层代理升级为系统级解决方案。 支持 GeoIP 和 Geosite 数据库，增强了分流精度。 版本迭代： 2021 年，Clash 发布 v1.0.0，标志着项目进入稳定阶段。 到 2022 年，版本更新至 v1.18.0，修复了大量 Bug 并优化了性能。 生态系统： Clash Premium（闭源付费版）推出，提供高级功能（如更强的 TUN 支持和性能优化），但开源版本仍为主流。 第三方工具（如 Clash for Android）进一步扩展了其生态。 停更与分裂（2023） 停止更新： 2023 年初，Dreamacro 宣布停止维护开源 Clash 项目（Dreamacro/clash），最后一个版本为 v1.18.0。 具体原因未公开，可能与开发者个人精力、法律压力或商业化转向（如 Clash Premium）有关。 社区反应： Clash 的停更引发社区震动，但其代码开源（MIT 许可）为后续发展留下了空间。 多个分支项目迅速涌现，试图接手维护和改进。 分支与新生（2023-至今） Clash Premium： Dreamacro 推出了闭源的 Clash Premium，作为官方付费替代品，增加了企业级功能，但未开源，社区接受度有限。 Clash.Meta / Mihomo： 由 MetaCubeX 团队接手，基于 Clash 的一个分支（Clash.Meta）发展为 Mihomo。 新增支持 Hysteria、TUIC 等新兴协议，优化性能，并提供 Mihomo Party（GUI 客户端）。 截至 2025 年 4 月，Mihomo 仍在积极维护，成为开源 Clash 的主要继承者。 其他分支： Clash Verge：一个带 GUI 的客户端，整合 Clash 核心，适合桌面用户。 Clash Rust：尝试用 Rust 重写 Clash，但进展较慢。 生态延续： Clash 的配置文件格式（YAML）和分流逻辑已成为行业标准，被 Sing-box 等新工具兼容。 技术与文化影响 技术贡献： Clash 推动了代理工具的模块化和规则化设计，其分流机制被广泛模仿。 TUN 模式和外部控制 API 为后续工具（如 Mihomo、Sing-box）奠定了基础。 文化意义： Clash 成为科学上网的代名词，象征着开源社区对抗封锁的努力。 其停更与分支发展也反映了开源项目生命周期的典型模式：从个人驱动到社区接力 客户端列表 参考 openclash.org\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#发展历史">发展历史</a>
+      <ol>
+        <li><a href="#起源与诞生2018-2019">起源与诞生（2018-2019）</a></li>
+        <li><a href="#快速成长与社区认可2019-2020">快速成长与社区认可（2019-2020）</a></li>
+        <li><a href="#成熟与巅峰2020-2022">成熟与巅峰（2020-2022）</a></li>
+        <li><a href="#停更与分裂2023">停更与分裂（2023）</a>
+          <ol>
+            <li><a href="#分支与新生2023-至今">分支与新生（2023-至今）</a></li>
+            <li><a href="#技术与文化影响">技术与文化影响</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#客户端列表">客户端列表</a>
+      <ol>
+        <li><a href="#桌面设备">桌面设备</a>
+          <ol>
+            <li><a href="#windows-平台客户端">Windows 平台客户端</a></li>
+            <li><a href="#os-x-平台客户端">OS X 平台客户端</a></li>
+            <li><a href="#浏览器代理扩展插件">浏览器代理扩展插件</a></li>
+            <li><a href="#linux-平台客户端">Linux 平台客户端</a></li>
+          </ol>
+        </li>
+        <li><a href="#移动设备">移动设备</a>
+          <ol>
+            <li><a href="#android-平台客户端">Android 平台客户端</a></li>
+            <li><a href="#ios-平台客户端">iOS 平台客户端</a></li>
+          </ol>
+        </li>
+        <li><a href="#路由设备">路由设备</a></li>
+        <li><a href="#apple-tv">Apple TV</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/clash/">clash</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-09</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="发展历史">发展历史
+</h2><h3 id="起源与诞生2018-2019">起源与诞生（2018-2019）
+</h3><ul>
+<li><strong>开发者</strong>：Clash 由 Dreamacro（一位 GitHub 用户）于 2018 年发起，最初是一个基于 Go 语言开发的代理工具。</li>
+<li><strong>目标</strong>：Clash 的设计初衷是提供一个支持多种代理协议的统一客户端，解决当时代理工具（如 Shadowsocks、V2Ray）功能分散、配置繁琐的问题。</li>
+<li><strong>早期版本</strong>：
+<ul>
+<li>2018 年底，Clash 项目在 GitHub 上发布，最初仅支持 Shadowsocks 协议。</li>
+<li>2019 年，陆续增加了对 V2Ray（VMess）、HTTP/HTTPS 等协议的支持。</li>
+</ul>
+</li>
+<li><strong>特色</strong>：Clash 引入了基于 YAML 的配置文件，支持灵活的分流规则（例如按域名或 GeoIP 路由），这在当时是创新性的设计。</li>
+</ul>
+<h3 id="快速成长与社区认可2019-2020">快速成长与社区认可（2019-2020）
+</h3><ul>
+<li><strong>功能扩展</strong>：
+<ul>
+<li>2019 年中，Clash 添加了对 Trojan 协议的支持，进一步扩大了适用范围。</li>
+<li>引入 RESTful API（外部控制器）和 Web Dashboard，允许用户动态管理代理规则。</li>
+</ul>
+</li>
+<li><strong>跨平台支持</strong>：
+<ul>
+<li>Clash 被设计为跨平台工具，支持 Linux、Windows、macOS，甚至可以在 OpenWrt（路由器固件）上运行。</li>
+<li>社区开发了 Clash for Windows 和 ClashX（macOS）等第三方 GUI 客户端，大幅降低了使用门槛。</li>
+</ul>
+</li>
+<li><strong>社区活跃</strong>：
+<ul>
+<li>Clash 凭借其强大的分流功能和易扩展性，迅速在代理用户中流行，尤其受到中国大陆用户欢迎，用于科学上网。</li>
+<li>GitHub 上 Star 数量快速增长，教程和配置文件分享社区（如 Clash 订阅服务）随之兴起。</li>
+</ul>
+</li>
+</ul>
+<h3 id="成熟与巅峰2020-2022">成熟与巅峰（2020-2022）
+</h3><ul>
+<li><strong>关键特性</strong>：
+<ul>
+<li>2020 年，Clash 引入 TUN 模式（虚拟网卡），支持透明代理，使其从应用层代理升级为系统级解决方案。</li>
+<li>支持 GeoIP 和 Geosite 数据库，增强了分流精度。</li>
+</ul>
+</li>
+<li><strong>版本迭代</strong>：
+<ul>
+<li>2021 年，Clash 发布 v1.0.0，标志着项目进入稳定阶段。</li>
+<li>到 2022 年，版本更新至 v1.18.0，修复了大量 Bug 并优化了性能。</li>
+</ul>
+</li>
+<li><strong>生态系统</strong>：
+<ul>
+<li>Clash Premium（闭源付费版）推出，提供高级功能（如更强的 TUN 支持和性能优化），但开源版本仍为主流。</li>
+<li>第三方工具（如 Clash for Android）进一步扩展了其生态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="停更与分裂2023">停更与分裂（2023）
+</h3><ul>
+<li><strong>停止更新</strong>：
+<ul>
+<li>2023 年初，Dreamacro 宣布停止维护开源 Clash 项目（Dreamacro/clash），最后一个版本为 v1.18.0。</li>
+<li>具体原因未公开，可能与开发者个人精力、法律压力或商业化转向（如 Clash Premium）有关。</li>
+</ul>
+</li>
+<li><strong>社区反应</strong>：
+<ul>
+<li>Clash 的停更引发社区震动，但其代码开源（MIT 许可）为后续发展留下了空间。</li>
+<li>多个分支项目迅速涌现，试图接手维护和改进。</li>
+</ul>
+</li>
+</ul>
+<h4 id="分支与新生2023-至今">分支与新生（2023-至今）
+</h4><ul>
+<li><strong>Clash Premium</strong>：
+<ul>
+<li>Dreamacro 推出了闭源的 Clash Premium，作为官方付费替代品，增加了企业级功能，但未开源，社区接受度有限。</li>
+</ul>
+</li>
+<li><strong>Clash.Meta / Mihomo</strong>：
+<ul>
+<li>由 MetaCubeX 团队接手，基于 Clash 的一个分支（Clash.Meta）发展为 Mihomo。</li>
+<li>新增支持 Hysteria、TUIC 等新兴协议，优化性能，并提供 Mihomo Party（GUI 客户端）。</li>
+<li>截至 2025 年 4 月，Mihomo 仍在积极维护，成为开源 Clash 的主要继承者。</li>
+</ul>
+</li>
+<li><strong>其他分支</strong>：
+<ul>
+<li>Clash Verge：一个带 GUI 的客户端，整合 Clash 核心，适合桌面用户。</li>
+<li>Clash Rust：尝试用 Rust 重写 Clash，但进展较慢。</li>
+</ul>
+</li>
+<li><strong>生态延续</strong>：
+<ul>
+<li>Clash 的配置文件格式（YAML）和分流逻辑已成为行业标准，被 Sing-box 等新工具兼容。</li>
+</ul>
+</li>
+</ul>
+<h4 id="技术与文化影响">技术与文化影响
+</h4><ul>
+<li><strong>技术贡献</strong>：
+<ul>
+<li>Clash 推动了代理工具的模块化和规则化设计，其分流机制被广泛模仿。</li>
+<li>TUN 模式和外部控制 API 为后续工具（如 Mihomo、Sing-box）奠定了基础。</li>
+</ul>
+</li>
+<li><strong>文化意义</strong>：
+<ul>
+<li>Clash 成为科学上网的代名词，象征着开源社区对抗封锁的努力。</li>
+<li>其停更与分支发展也反映了开源项目生命周期的典型模式：从个人驱动到社区接力</li>
+</ul>
+</li>
+</ul>
+<h2 id="客户端列表">客户端列表
+</h2><p>参考 <a class="link" href="https://openclash.org/all-proxy-client/"  target="_blank" rel="noopener"
+    >openclash.org</a></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>客户端</th>
+          <th>Windows</th>
+          <th>macOS</th>
+          <th>Linux</th>
+          <th>iOS</th>
+          <th>Android</th>
+          <th>路由器</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a class="link" href="https://clashforandroid.org/"  target="_blank" rel="noopener"
+    >Clash for Android</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashforwindows.org/"  target="_blank" rel="noopener"
+    >Clash for Windows</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://getclashn.org/"  target="_blank" rel="noopener"
+    >ClashN</a></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashverge.org/"  target="_blank" rel="noopener"
+    >Clash Verge</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashvergerev.org/"  target="_blank" rel="noopener"
+    >Clash Verge Rev</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashx.org/"  target="_blank" rel="noopener"
+    >ClashX</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashxpro.org/"  target="_blank" rel="noopener"
+    >ClashX Pro</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashnyanpasu.org/"  target="_blank" rel="noopener"
+    >Clash Nyanpasu</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://getflclash.org/"  target="_blank" rel="noopener"
+    >FlClash</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://hiddifynext.org/"  target="_blank" rel="noopener"
+    >Hiddify Next</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://nekobox.tools/nekoboxforandroid/"  target="_blank" rel="noopener"
+    >NekoBox for Android</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://nekobox.tools/nekoray/"  target="_blank" rel="noopener"
+    >NekoRay</a></td>
+          <td>✔</td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://openclash.org/"  target="_blank" rel="noopener"
+    >OpenClash</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://passwall2.org/"  target="_blank" rel="noopener"
+    >PassWall2</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://potatso.org/"  target="_blank" rel="noopener"
+    >Potatso Lite</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://quantumult.org/"  target="_blank" rel="noopener"
+    >Quantumult</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://quantumultx.org/"  target="_blank" rel="noopener"
+    >Quantumult X</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://shadowrocketios.org/"  target="_blank" rel="noopener"
+    >Shadowrocket</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://ssrplus.org/"  target="_blank" rel="noopener"
+    >ShadowsocksR Plus+</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://clashstash.org/"  target="_blank" rel="noopener"
+    >Stash</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://getsurfboard.org/"  target="_blank" rel="noopener"
+    >Surfboard</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://surgeios.org/"  target="_blank" rel="noopener"
+    >Surge iOS</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://surgemac.org/"  target="_blank" rel="noopener"
+    >Surge Mac</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://v2rayn.org/"  target="_blank" rel="noopener"
+    >v2rayN</a></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://v2rayng.org/"  target="_blank" rel="noopener"
+    >v2rayNG</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://v2rayu.org/"  target="_blank" rel="noopener"
+    >V2rayU</a></td>
+          <td></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><a class="link" href="https://winxray.org/"  target="_blank" rel="noopener"
+    >WinXray</a></td>
+          <td>✔</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="桌面设备">桌面设备
+</h3><h4 id="windows-平台客户端">Windows 平台客户端
+</h4><ul>
+<li><a class="link" href="https://clashverge.org/"  target="_blank" rel="noopener"
+    >Clsah Verge</a></li>
+<li><a class="link" href="https://clashvergerev.org/"  target="_blank" rel="noopener"
+    >Clash Verge Rev</a></li>
+<li><a class="link" href="https://clashnyanpasu.org/"  target="_blank" rel="noopener"
+    >Clash Nyanpasu</a></li>
+<li><a class="link" href="https://clashforwindows.org/"  target="_blank" rel="noopener"
+    >Clash for Windows</a></li>
+<li><a class="link" href="https://getclashn.org/"  target="_blank" rel="noopener"
+    >ClashN</a></li>
+<li><a class="link" href="https://v2rayn.org/"  target="_blank" rel="noopener"
+    >v2rayN</a> [推荐]</li>
+<li><a class="link" href="https://winxray.org/"  target="_blank" rel="noopener"
+    >WinXray</a></li>
+<li><a class="link" href="https://nekobox.tools/nekoray/"  target="_blank" rel="noopener"
+    >NekoRay</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+<li><a class="link" href="https://qv2ray.org/"  target="_blank" rel="noopener"
+    >Qv2ray</a></li>
+</ul>
+<h4 id="os-x-平台客户端">OS X 平台客户端
+</h4><ul>
+<li><a class="link" href="https://clashverge.org/"  target="_blank" rel="noopener"
+    >Clash Verge</a></li>
+<li><a class="link" href="https://clashvergerev.org/"  target="_blank" rel="noopener"
+    >Clash Verge Rev</a></li>
+<li><a class="link" href="https://clashnyanpasu.org/"  target="_blank" rel="noopener"
+    >Clash Nyanpasu</a></li>
+<li><a class="link" href="https://clashforwindows.org/"  target="_blank" rel="noopener"
+    >Clash for Windows</a></li>
+<li><a class="link" href="https://clashx.org/"  target="_blank" rel="noopener"
+    >ClashX</a></li>
+<li><a class="link" href="https://clashxpro.org/"  target="_blank" rel="noopener"
+    >ClashX Pro</a></li>
+<li><a class="link" href="https://clashstash.org/"  target="_blank" rel="noopener"
+    >Stash</a></li>
+<li><a class="link" href="https://v2rayu.org/"  target="_blank" rel="noopener"
+    >V2rayU</a> [推荐]</li>
+<li><a class="link" href="https://quantumultx.org/"  target="_blank" rel="noopener"
+    >Quantumult X</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+<li><a class="link" href="https://qv2ray.org/"  target="_blank" rel="noopener"
+    >Qv2ray</a></li>
+</ul>
+<h4 id="浏览器代理扩展插件">浏览器代理扩展插件
+</h4><ul>
+<li><a class="link" href="https://switchyomega.org/"  target="_blank" rel="noopener"
+    >SwitchyOmega</a></li>
+</ul>
+<h4 id="linux-平台客户端">Linux 平台客户端
+</h4><ul>
+<li><a class="link" href="https://clashverge.org/"  target="_blank" rel="noopener"
+    >Clsah Verge</a></li>
+<li><a class="link" href="https://clashvergerev.org/"  target="_blank" rel="noopener"
+    >Clash Verge Rev</a> [推荐]</li>
+<li><a class="link" href="https://clashnyanpasu.org/"  target="_blank" rel="noopener"
+    >Clash Nyanpasu</a></li>
+<li><a class="link" href="https://clashforwindows.org/"  target="_blank" rel="noopener"
+    >Clash for Windows</a></li>
+<li><a class="link" href="https://nekobox.tools/nekoray/"  target="_blank" rel="noopener"
+    >NekoRay</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+<li><a class="link" href="https://qv2ray.org/"  target="_blank" rel="noopener"
+    >Qv2ray</a></li>
+</ul>
+<h3 id="移动设备">移动设备
+</h3><h4 id="android-平台客户端">Android 平台客户端
+</h4><ul>
+<li><a class="link" href="https://v2rayng.org/"  target="_blank" rel="noopener"
+    >v2rayNG</a> [推荐]</li>
+<li><a class="link" href="https://clashforandroid.org/"  target="_blank" rel="noopener"
+    >Clash for Android</a></li>
+<li><a class="link" href="https://nekobox.tools/nekoboxforandroid/"  target="_blank" rel="noopener"
+    >NekoBox for Android</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+<li><a class="link" href="https://getsurfboard.org/"  target="_blank" rel="noopener"
+    >Surfboard</a></li>
+</ul>
+<h4 id="ios-平台客户端">iOS 平台客户端
+</h4><ul>
+<li><a class="link" href="https://shadowrocketios.org/"  target="_blank" rel="noopener"
+    >Shadowrocket</a> [推荐]</li>
+<li><a class="link" href="https://quantumult.org/"  target="_blank" rel="noopener"
+    >Quantumult</a></li>
+<li><a class="link" href="https://quantumultx.org/"  target="_blank" rel="noopener"
+    >Quantumult X</a></li>
+<li><a class="link" href="https://clashstash.org/"  target="_blank" rel="noopener"
+    >Stash</a></li>
+<li><a class="link" href="https://potatso.org/"  target="_blank" rel="noopener"
+    >Potatso Lite</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+</ul>
+<h3 id="路由设备">路由设备
+</h3><ul>
+<li><a class="link" href="https://opwrt.org/"  target="_blank" rel="noopener"
+    >OpenWrt</a></li>
+<li><a class="link" href="https://openclash.org/"  target="_blank" rel="noopener"
+    >OpenClash</a></li>
+<li><a class="link" href="https://ssrplus.org/"  target="_blank" rel="noopener"
+    >SSRplus</a> [推荐]</li>
+<li><a class="link" href="https://passwall2.org/"  target="_blank" rel="noopener"
+    >PassWall2</a></li>
+</ul>
+<h3 id="apple-tv">Apple TV
+</h3><ul>
+<li><a class="link" href="https://shadowrocketios.org/"  target="_blank" rel="noopener"
+    >Shadowrocket</a> [推荐]</li>
+<li><a class="link" href="https://quantumultx.org/"  target="_blank" rel="noopener"
+    >Quantumult X</a></li>
+<li><a class="link" href="https://clashstash.org/"  target="_blank" rel="noopener"
+    >Stash</a></li>
+<li><a class="link" href="https://sing-box.org/"  target="_blank" rel="noopener"
+    >sing-box</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux的常用软件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">网络优化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%AE%89%E8%A3%85windows-linux%E5%8F%8C%E7%B3%BB%E7%BB%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">安装windows-Linux双系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/windows%E6%8D%A2ubuntu/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">windows换ubuntu</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">git push失败问题</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
