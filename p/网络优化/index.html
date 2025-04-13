@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="光猫路由模式改桥接模式 待完成\n路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 AX6000刷OpenWRT https://github.com/kjfx/AX6000\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
 <title>网络优化</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/'>
 
 <link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="网络优化">
-<meta property='og:description' content="光猫路由模式改桥接模式 待完成\n路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 AX6000刷OpenWRT https://github.com/kjfx/AX6000\n">
+<meta property='og:description' content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
 <meta property='og:url' content='https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/'>
 <meta property='og:site_name' content='ydashu'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-10T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-13T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="网络优化">
-<meta name="twitter:description" content="光猫路由模式改桥接模式 待完成\n路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 AX6000刷OpenWRT https://github.com/kjfx/AX6000\n">
+<meta name="twitter:description" content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -247,20 +247,52 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#光猫路由模式改桥接模式">光猫路由模式改桥接模式</a></li>
+    <li><a href="#光猫路由模式改桥接模式">光猫路由模式改桥接模式</a>
+      <ol>
+        <li><a href="#获取超级管理员账号密码">获取超级管理员账号密码</a></li>
+        <li><a href="#改桥接">改桥接</a></li>
+      </ol>
+    </li>
     <li><a href="#路由器">路由器</a>
       <ol>
         <li><a href="#软路由or硬路由">软路由or硬路由</a></li>
       </ol>
     </li>
-    <li><a href="#ax6000刷openwrt">AX6000刷OpenWRT</a>
+    <li><a href="#相关技术术语">相关技术术语</a>
       <ol>
-        <li><a href="#刷openwrt">刷OpenWRT</a></li>
-        <li><a href="#安装插件">安装插件</a>
+        <li><a href="#网络连接的三种方式">网络连接的三种方式</a></li>
+        <li><a href="#padavan-vs-openwrt">Padavan vs OpenWrt</a></li>
+        <li><a href="#常用的dns">常用的DNS</a></li>
+        <li><a href="#计算机网络">计算机网络</a></li>
+      </ol>
+    </li>
+    <li><a href="#红米ac2100刷openwrt">红米AC2100刷OpenWRT</a>
+      <ol>
+        <li><a href="#降级">降级</a></li>
+        <li><a href="#一键刷breed">一键刷Breed</a></li>
+        <li><a href="#用breed刷openwrt">用Breed刷OpenWRT</a></li>
+        <li><a href="#设置openwrt">设置OpenWRT</a>
           <ol>
-            <li><a href="#openclash">OpenClash</a></li>
+            <li><a href="#可能无法联网的原因">可能无法联网的原因</a></li>
+            <li><a href="#设置wifi默认是不开启的">设置Wifi，默认是不开启的</a></li>
+            <li><a href="#安装中文包">安装中文包</a></li>
+            <li><a href="#dns配置">DNS配置</a></li>
           </ol>
         </li>
+      </ol>
+    </li>
+    <li><a href="#主要的dns配置">主要的DNS配置</a>
+      <ol>
+        <li><a href="#安装openwrt主要分支">安装OpenWRT主要分支</a></li>
+        <li><a href="#openwrt插件">OpenWRT插件</a></li>
+        <li><a href="#重新进去breed安装padavan和官方等其他固件">重新进去breed安装Padavan和官方等其他固件</a></li>
+      </ol>
+    </li>
+    <li><a href="#红米ac2100救砖">红米AC2100救砖</a>
+      <ol>
+        <li><a href="#变砖可能的原因">变砖可能的原因</a></li>
+        <li><a href="#小米路由器官方修复工具">小米路由器官方修复工具</a></li>
+        <li><a href="#bootloaders-损坏的情况下">bootloaders 损坏的情况下</a></li>
       </ol>
     </li>
   </ol>
@@ -312,7 +344,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-04-10</time>
+                <time class="article-time--published">2025-04-13</time>
             </div>
         
 
@@ -328,8 +360,50 @@
     <section class="article-content">
     
     
-    <h2 id="光猫路由模式改桥接模式">光猫路由模式改桥接模式
-</h2><p>待完成</p>
+    <blockquote>
+<p>待完成：安装openclash，安装smartCDN</p></blockquote>
+<h2 id="光猫路由模式改桥接模式">光猫路由模式改桥接模式
+</h2><h3 id="获取超级管理员账号密码">获取超级管理员账号密码
+</h3><ul>
+<li>方法一：直接打运营商电话问</li>
+<li>方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例
+<ul>
+<li>参考链接
+<ul>
+<li><a class="link" href="https://www.right.com.cn/forum/thread-4071002-1-1.html"  target="_blank" rel="noopener"
+    >https://www.right.com.cn/forum/thread-4071002-1-1.html</a></li>
+<li><a class="link" href="https://www.right.com.cn/forum/thread-2203236-1-1.html"  target="_blank" rel="noopener"
+    >https://www.right.com.cn/forum/thread-2203236-1-1.html</a></li>
+<li><a class="link" href="https://www.right.com.cn/forum/thread-5900154-1-1.html"  target="_blank" rel="noopener"
+    >https://www.right.com.cn/forum/thread-5900154-1-1.html</a></li>
+</ul>
+</li>
+<li>步骤
+<ul>
+<li>光猫插入一个U盘</li>
+<li>普通用户登录：账号密码在光猫的背面</li>
+<li>访问192.168.1.1/cgi-bin/luci/admin/storage/settings</li>
+<li>F12切换到CONSOLE，手动输入<code>get_path_files(&quot;/mnt/usb1_1/../..&quot;)</code>，此时已切换到根目录了</li>
+<li>把文件夹<code>var</code>拷贝到U盘中</li>
+<li>拔出U盘插到电脑上</li>
+<li>找出所有<code>.cfg</code>和<code>.conf</code>格式或者文件名有<code>config</code>的文件</li>
+<li>打开搜索<code>telecomadmin</code></li>
+<li>找到对应的位置（我的是<code>romfile.cfg</code>）即有超级管理员账号密码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="改桥接">改桥接
+</h3><ul>
+<li>访问192.168.1.1</li>
+<li>登录超级管理员账号</li>
+<li><code>网络-网络设置-网络连接</code></li>
+<li>找到连接名称包含<code>INTERNET-R-VID</code></li>
+<li>连接模式改为桥接</li>
+<li>保存即可</li>
+<li>同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码</li>
+</ul>
 <h2 id="路由器">路由器
 </h2><h3 id="软路由or硬路由">软路由or硬路由
 </h3><ul>
@@ -359,6 +433,7 @@
 <li>当前性价比较高的几款支持openWRT的路由器
 <ul>
 <li>红米 AX6000</li>
+<li>红米 AX2100</li>
 <li>Netgear RAX50</li>
 </ul>
 </li>
@@ -386,14 +461,581 @@
 </ul>
 </li>
 </ul>
-<h2 id="ax6000刷openwrt">AX6000刷OpenWRT
-</h2><p><a class="link" href="https://github.com/kjfx/AX6000"  target="_blank" rel="noopener"
-    >https://github.com/kjfx/AX6000</a></p>
-<h3 id="刷openwrt">刷OpenWRT
-</h3><h3 id="安装插件">安装插件
-</h3><h4 id="openclash">OpenClash
-</h4><p><a class="link" href="https://openclash.org/openwrt/"  target="_blank" rel="noopener"
-    >https://openclash.org/openwrt/</a></p>
+<h2 id="相关技术术语">相关技术术语
+</h2><h3 id="网络连接的三种方式">网络连接的三种方式
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>分配方式</th>
+          <th>IP稳定性</th>
+          <th>适用场景</th>
+          <th>举例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>动态IP(DHCP)</td>
+          <td>自动（DHCP服务器）</td>
+          <td>不固定</td>
+          <td>家庭Wi-Fi、手机、临时设备</td>
+          <td>手机自动获取IP（如192.168.1.100）</td>
+      </tr>
+      <tr>
+          <td>静态IP</td>
+          <td>手动配置</td>
+          <td>固定</td>
+          <td>服务器、摄像头、打印机</td>
+          <td>服务器固定IP（如192.168.1.10）</td>
+      </tr>
+      <tr>
+          <td>拨号(PPPoE)</td>
+          <td>ISP认证分配</td>
+          <td>通常不固定</td>
+          <td>家庭宽带、光纤接入</td>
+          <td>光猫拨号获取IP（如192.168.0.2）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="padavan-vs-openwrt">Padavan vs OpenWrt
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>Padavan</th>
+          <th>OpenWrt</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>易用性</strong></td>
+          <td>界面直观，适合新手</td>
+          <td>配置复杂，需技术基础</td>
+      </tr>
+      <tr>
+          <td><strong>功能</strong></td>
+          <td>VPN、SS/SSR、QoS、IPTV 等</td>
+          <td>全面支持 VPN、SQM、Adblock、Docker 等</td>
+      </tr>
+      <tr>
+          <td><strong>性能</strong></td>
+          <td>优化好，开箱即用</td>
+          <td>依赖硬件和配置</td>
+      </tr>
+      <tr>
+          <td><strong>兼容性</strong></td>
+          <td>特定品牌（华硕、MTK 芯片设备）</td>
+          <td>广泛设备（数百种路由器）</td>
+      </tr>
+      <tr>
+          <td><strong>更新频率</strong></td>
+          <td>较低，社区维护</td>
+          <td>频繁，官方和社区支持</td>
+      </tr>
+      <tr>
+          <td><strong>适用场景</strong></td>
+          <td>家庭用户，简单需求</td>
+          <td>技术爱好者，高级定制需求</td>
+      </tr>
+      <tr>
+          <td><strong>举例</strong></td>
+          <td>小米路由器刷机，设置 SS 和 IPTV</td>
+          <td>Netgear R7800 配置 WireGuard 和 SQM</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="常用的dns">常用的DNS
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>地区</th>
+          <th>DNS 名称</th>
+          <th>地址</th>
+          <th>特点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>国内</td>
+          <td>阿里公共 DNS</td>
+          <td>223.5.5.5, 223.6.6.6</td>
+          <td>解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。</td>
+      </tr>
+      <tr>
+          <td>国内</td>
+          <td>百度公共 DNS</td>
+          <td>180.76.76.76</td>
+          <td>速度快，稳定性高，对百度系服务优化，适合国内主流网站。</td>
+      </tr>
+      <tr>
+          <td>国内</td>
+          <td>114DNS</td>
+          <td>114.114.114.114, 114.114.115.115</td>
+          <td>老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。</td>
+      </tr>
+      <tr>
+          <td>国内</td>
+          <td>腾讯公共 DNS（DNSPod）</td>
+          <td>119.29.29.29, 182.254.116.116</td>
+          <td>速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。</td>
+      </tr>
+      <tr>
+          <td>国内</td>
+          <td>CNNIC SDNS</td>
+          <td>1.2.4.8, 210.2.4.8</td>
+          <td>权威性高，适合解析 .cn 域名，速度稳定，功能单一。</td>
+      </tr>
+      <tr>
+          <td>国外</td>
+          <td>Cloudflare DNS</td>
+          <td>1.1.1.1, 1.0.0.1</td>
+          <td>全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。</td>
+      </tr>
+      <tr>
+          <td>国外</td>
+          <td>Google Public DNS</td>
+          <td>8.8.8.8, 8.8.4.4</td>
+          <td>全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。</td>
+      </tr>
+      <tr>
+          <td>国外</td>
+          <td>Quad9</td>
+          <td>9.9.9.9, 149.112.112.112</td>
+          <td>专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。</td>
+      </tr>
+      <tr>
+          <td>国外</td>
+          <td>OpenDNS（Cisco Umbrella）</td>
+          <td>208.67.222.222, 208.67.220.220</td>
+          <td>支持内容过滤，可自定义规则，适合家庭和小型企业。</td>
+      </tr>
+      <tr>
+          <td>国外</td>
+          <td>AdGuard DNS</td>
+          <td>94.140.14.14, 94.140.15.15</td>
+          <td>默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="计算机网络">计算机网络
+</h3><p><a class="link" href="https://www.runoob.com/w3cnote/summary-of-network.html"  target="_blank" rel="noopener"
+    >## 基础知识总结</a></p>
+<h2 id="红米ac2100刷openwrt">红米AC2100刷OpenWRT
+</h2><p><a class="link" href="https://www.right.com.cn/forum/thread-4066963-1-1.html"  target="_blank" rel="noopener"
+    >参考链接1</a>
+<a class="link" href="https://blog.csdn.net/weixin_44548582/article/details/121054765"  target="_blank" rel="noopener"
+    >参考链接2</a></p>
+<h3 id="降级">降级
+</h3><ul>
+<li>下载降级包：降级到2.0.7，降级包<a class="link" href="http://cdn.cnbj1.fds.api.mi-img.com/xiaoqiang/rom/rm2100/miwifi_rm2100_firmware_d6234_2.0.7.bin"  target="_blank" rel="noopener"
+    >下载地址</a>，浏览器如果下载不了的话，可以复制到迅雷中下载</li>
+<li>导入降级包：登录小米路由器后台，<code>常用设置-系统状态-系统版本-手动升级</code>，导入降级包</li>
+<li>等待路由器重启</li>
+</ul>
+<h3 id="一键刷breed">一键刷Breed
+</h3><ul>
+<li>进入后台192.168.31.1，复制自己的stok</li>
+<li>用复制的stok<strong>替换</strong>掉下面代码(隐藏内容)中的CCCCCCCCCCC</li>
+<li><strong>复制</strong>修改好stok的代码，<strong>粘贴</strong>到浏览器，<strong>回车</strong>
+<ul>
+<li>(浏览器会显示 :  {&ldquo;code&rdquo;:0} ). 如果显示其他代码，可能是你还没降级固件或者stok过期。也可以恢复出厂从试。</li>
+<li>此代码是用来检查NAND坏块的
+<ul>
+<li>运行代码后，你路由器的2.4g WiFi名称会改名成：比如  &ldquo;ESMT&rdquo;，&ldquo;Toshiba&rdquo;，&ldquo;Toshiba 90 768&rdquo;。 90和768是坏块。 如果ESMT或者Toshiba后面没数字，那恭喜你，没有坏块！！</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=%0A%5B%20-z%20%22%24(dmesg%20%7C%20grep%20ESMT)%22%20%5D%20%26%26%20B%3D%22Toshiba%22%20%7C%7C%20B%3D%22ESMT%22%0Auci%20set%20wireless.%24(uci%20show%20wireless%20%7C%20awk%20-F%20&#39;.&#39;%20&#39;%2Fwl1%2F%20%7Bprint%20%242%7D&#39;).ssid%3D%22%24B%20%24(dmesg%20%7C%20awk%20&#39;%2FBad%2F%20%7Bprint%20%245%7D&#39;)%22%0A%2Fetc%2Finit.d%2Fnetwork%20restart%0A
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>此代码是用来刷BREED的
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">31.1</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/</span><span class="n">luci</span><span class="o">/</span><span class="p">;</span><span class="n">stok</span><span class="o">=</span><span class="n">CCCCCCCCCCC</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">misystem</span><span class="o">/</span><span class="n">set_config_iotdev</span><span class="err">?</span><span class="n">bssid</span><span class="o">=</span><span class="n">Xiaomi</span><span class="o">&amp;</span><span class="n">user_id</span><span class="o">=</span><span class="n">longdike</span><span class="o">&amp;</span><span class="n">ssid</span><span class="o">=%</span><span class="mi">0</span><span class="n">Acd</span><span class="o">%</span><span class="mi">20</span><span class="o">%</span><span class="mi">2</span><span class="n">Ftmp</span><span class="o">%</span><span class="mi">0</span><span class="n">Acurl</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">o</span><span class="o">%</span><span class="mi">20</span><span class="n">B</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">O</span><span class="o">%</span><span class="mi">20</span><span class="n">https</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">2</span><span class="n">F</span><span class="o">%</span><span class="mi">2</span><span class="n">Fbreed</span><span class="o">.</span><span class="n">hackpascal</span><span class="o">.</span><span class="n">net</span><span class="o">%</span><span class="mi">2</span><span class="n">Fr1286</span><span class="o">%</span><span class="mi">2520</span><span class="o">%</span><span class="mi">255</span><span class="n">b2020</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">09</span><span class="o">%</span><span class="mi">255</span><span class="n">d</span><span class="o">%</span><span class="mi">2</span><span class="n">Fbreed</span><span class="o">-</span><span class="n">mt7621</span><span class="o">-</span><span class="n">xiaomi</span><span class="o">-</span><span class="n">r3g</span><span class="o">.</span><span class="n">bin</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">k</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">g</span><span class="o">%</span><span class="mi">0</span><span class="n">A</span><span class="o">%</span><span class="mi">5</span><span class="n">B</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">z</span><span class="o">%</span><span class="mi">20</span><span class="o">%</span><span class="mi">22</span><span class="o">%</span><span class="mi">24</span><span class="p">(</span><span class="n">sha256sum</span><span class="o">%</span><span class="mi">20</span><span class="n">B</span><span class="o">%</span><span class="mi">20</span><span class="o">%</span><span class="mi">7</span><span class="n">C</span><span class="o">%</span><span class="mi">20</span><span class="n">grep</span><span class="o">%</span><span class="mi">20242</span><span class="n">d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85</span><span class="p">)</span><span class="o">%</span><span class="mi">22</span><span class="o">%</span><span class="mi">20</span><span class="o">%</span><span class="mi">5</span><span class="n">D</span><span class="o">%</span><span class="mi">20</span><span class="o">%</span><span class="mi">7</span><span class="n">C</span><span class="o">%</span><span class="mi">7</span><span class="n">C</span><span class="o">%</span><span class="mi">20</span><span class="n">mtd</span><span class="o">%</span><span class="mi">20</span><span class="o">-</span><span class="n">r</span><span class="o">%</span><span class="mi">20</span><span class="n">write</span><span class="o">%</span><span class="mi">20</span><span class="n">B</span><span class="o">%</span><span class="mi">20</span><span class="n">Bootloader</span><span class="o">%</span><span class="mi">0</span><span class="n">A</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>如果路由器在60秒内重启则代表刷BREED成功(灯会从<strong>蓝</strong>变<strong>橘</strong>，最终变<strong>蓝</strong>进入系统)。
+<ul>
+<li>如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，从新运行代码。也有可能没网络。</li>
+</ul>
+</li>
+<li>成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed。需要注意的是如果闪蓝灯那就是BREED。如果是闪橘灯那就是原厂UBOOT。</li>
+<li>最后用进入浏览器，最好是隐身模式，输入192.168.1.1  ENTER.</li>
+</ul>
+<h3 id="用breed刷openwrt">用Breed刷OpenWRT
+</h3><ul>
+<li>设置环境变量
+<ul>
+<li>进breed的<code>环境变量编缉</code>菜单，新增字段<code>xiaomi.r3g.bootfw</code>值为<code>2</code></li>
+</ul>
+</li>
+<li>下载openwrt
+<ul>
+<li>打开<a class="link" href="https://firmware-selector.openwrt.org/"  target="_blank" rel="noopener"
+    >官方链接</a></li>
+<li>输入<code>AC2100</code>，选择 <code>Xiaomi Redmi Router AC2100</code></li>
+<li>下载<code>KERNEL</code>和<code>SYSUPGRADE</code></li>
+</ul>
+</li>
+<li>breed写入openwrt固件
+<ul>
+<li>选择<code>固件更新-常规固件</code></li>
+<li>勾选固件，自动重启会自动勾选</li>
+<li>选择<code>KERNEL</code>文件</li>
+<li>上传</li>
+<li>更新</li>
+</ul>
+</li>
+<li>等待路由器重启
+<ul>
+<li>从<strong>蓝</strong>变<strong>橘</strong>，最终变<strong>蓝</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="设置openwrt">设置OpenWRT
+</h3><ul>
+<li>登录：<code>192.168.1.1</code>
+<ul>
+<li><code>username=root</code> <code>Password=</code></li>
+<li>直接点登录</li>
+</ul>
+</li>
+<li>设置密码
+<ul>
+<li>顶部出现Go to password configuration设置密码</li>
+<li>或者<code>system-Administration-Router Password</code>设置密码</li>
+</ul>
+</li>
+<li>添加<code>image</code>
+<ul>
+<li>进入<code>System-Backup/Flash Firmware</code></li>
+<li>Flash new firmware image</li>
+<li>Flash Image选择上面下载的<code>SYSUPGRADE</code>
+<ul>
+<li>这个是官方的Image，也可以选择第三方魔改版的Image</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>等待完成（约 2-5 分钟），路由器自动重启，勿断电或断开网线</li>
+</ul>
+<h4 id="可能无法联网的原因">可能无法联网的原因
+</h4><ul>
+<li>与上级路由器（光猫的路由模式）的IP冲突
+<ul>
+<li>OpenWrt 的 <strong>IPv4 Upstream</strong> 信息如下
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Protocol: DHCP client
+</span></span><span class="line"><span class="cl">Address: 192.168.1.4/24
+</span></span><span class="line"><span class="cl">Gateway: 192.168.1.1
+</span></span><span class="line"><span class="cl">DNS: 192.168.1.1
+</span></span><span class="line"><span class="cl">Expires: 22h 20m 51s
+</span></span><span class="line"><span class="cl">Connected: 1h 39m 9s
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>当前 WAN IP（192.168.1.4）与 LAN IP（192.168.1.1）在上行网段（192.168.1.0/24）冲突，需将 OpenWrt LAN IP 改为不同网段</li>
+<li><code>Network-Interfaces-lan-edit</code>中的<code>IPv4 address</code>改为<code>192.168.2.1</code>，其他不变</li>
+<li><code>save</code> <code>Save &amp; Apply</code> 这里一定要点强制执行</li>
+<li>等待一会看下是否有网</li>
+<li>注意：OpenWrt后台地址变为了<code>192.168.2.1</code></li>
+</ul>
+</li>
+<li>其他原因：没碰到不写了</li>
+</ul>
+<h4 id="设置wifi默认是不开启的">设置Wifi，默认是不开启的
+</h4><ul>
+<li><code>Network-Wireless</code></li>
+<li><code>Enable</code>，一般有几个开几个</li>
+<li><code>Edit-Interface Configuration-Wireless Security</code>设置密码
+<ul>
+<li><code>Encryption=WPA2-PSK</code></li>
+<li><code>Key=YourWifiPassword</code>：自定义自己的密码</li>
+<li>其他不动，<code>save</code> <code>Save &amp; Apply</code></li>
+<li>几种<code>Encryption</code>协议如下</li>
+<li></li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>协议</th>
+          <th>安全性</th>
+          <th>兼容性</th>
+          <th>速度影响</th>
+          <th>使用场景</th>
+          <th>红米 AC2100 推荐</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>WPA2-PSK</strong></td>
+          <td>强</td>
+          <td>极高</td>
+          <td>无</td>
+          <td>家庭、办公室、混合设备</td>
+          <td>⭐⭐⭐⭐ 首选</td>
+      </tr>
+      <tr>
+          <td><strong>WPA3-SAE</strong></td>
+          <td>最强</td>
+          <td>较低（新设备）</td>
+          <td>无</td>
+          <td>现代化网络、高安全需求</td>
+          <td>⭐⭐⭐ 未来导向</td>
+      </tr>
+      <tr>
+          <td><strong>WPA2-PSK/WPA3-SAE Mixed</strong></td>
+          <td>强</td>
+          <td>高</td>
+          <td>无</td>
+          <td>过渡期、新老设备混合</td>
+          <td>⭐⭐⭐⭐ 推荐</td>
+      </tr>
+      <tr>
+          <td><strong>WPA-PSK/WPA2-PSK Mixed</strong></td>
+          <td>中</td>
+          <td>极高</td>
+          <td>有（TKIP）</td>
+          <td>极老设备、临时兼容</td>
+          <td>⭐ 不推荐</td>
+      </tr>
+      <tr>
+          <td><strong>WPA-PSK</strong></td>
+          <td>弱</td>
+          <td>极高</td>
+          <td>有（TKIP）</td>
+          <td>老旧设备、测试</td>
+          <td>⭐ 不推荐</td>
+      </tr>
+      <tr>
+          <td><strong>OWE</strong></td>
+          <td>中（开放）</td>
+          <td>较低（新设备）</td>
+          <td>无</td>
+          <td>公共 Wi-Fi、访客网络</td>
+          <td>⭐⭐ 访客专用</td>
+      </tr>
+      <tr>
+          <td><strong>No Encryption</strong></td>
+          <td>无</td>
+          <td>最高</td>
+          <td>无</td>
+          <td>测试、无安全需求</td>
+          <td>🚫 避免</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+<h4 id="安装中文包">安装中文包
+</h4><ul>
+<li>配置国内镜像
+<ul>
+<li>打开<code>System-Software-Configure opkg</code></li>
+<li><code>/etc/opkg/distfeeds.conf</code>中每个<code>downloads.openwrt.org</code>替换为<code>mirrors.tuna.tsinghua.edu.cn/openwrt</code></li>
+</ul>
+</li>
+<li><code>Action-Update lists</code></li>
+<li><code>Filter:</code>中搜索<code>luci-i18n-base-zh-cn</code></li>
+<li>下载</li>
+<li><code>System-System-System Properties-Language and Style</code>切换中英文</li>
+</ul>
+<h4 id="dns配置">DNS配置
+</h4><blockquote>
+<p><a class="link" href="https://cloud.tencent.com/developer/article/2465053"  target="_blank" rel="noopener"
+    >参考文档1</a>
+<a class="link" href="https://www.right.com.cn/forum/thread-4059633-1-1.html"  target="_blank" rel="noopener"
+    >参考文档1</a></p></blockquote>
+<ul>
+<li>
+<p><a class="link" href="#%e5%b8%b8%e7%94%a8%e7%9a%84DNS" >常用的DNS</a></p>
+</li>
+<li>
+<h2 id="主要的dns配置">主要的DNS配置
+</h2><pre><code>  | DNS 类型              | 描述                    | 优先级      | 示例配置                  |
+  | ------------------- | -------------------------| --------------------- |-------------------- |
+  | WAN 口 DNS           | 仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效| 低           | WAN 接口设置 `1.1.1.1`    |
+  | LAN 口 DNS           | 仅影响路由器自身，与客户机无关    | 最低（仅路由器）     | LAN 接口设置 `8.8.8.8`    |
+  | LAN 口 DHCP 通告中的 DNS | 客户机直接使用下发 DNS，完全绕过路由器  | 高 | DHCP 选项 `6,1.1.1.1`   |
+  | DHCP/DNS 中的 DNS 转发  | 客户机通过路由器转发请求时生效          | 中   | dnsmasq 转发至 `1.1.1.1` |
+</code></pre>
+<ul>
+<li>通常情况只要配置WAN 口 DNS 为国内+国外，如：阿里+Cloudflare</li>
+</ul>
+</li>
+</ul>
+<h3 id="安装openwrt主要分支">安装OpenWRT主要分支
+</h3><blockquote>
+<p><a class="link" href="https://post.smzdm.com/p/agq38g26/"  target="_blank" rel="noopener"
+    >参考链接</a>
+<a class="link" href="https://www.bilibili.com/opus/647484062460542994"  target="_blank" rel="noopener"
+    >参考链接2</a></p></blockquote>
+<ul>
+<li>Lienol</li>
+<li>Lean
+<ul>
+<li>由恩山论坛大佬Lean分享了全部开源代码，由于加入了很多中国特色的功能，并告诉所有人怎么通过ubuntu 编译去得到自己想要的OpenWRT，定制灵活性很强。</li>
+<li>国内大多数固件都是基于的Lean大佬的源码进行编译的，例如eSir、sirpdboy和骷髅头等等大佬！国内大多数固件都是基于的Lean大佬的源码进行编译的，例如eSir、sirpdboy和骷髅头等等大佬！</li>
+<li>支持红米AC2100</li>
+</ul>
+</li>
+<li>ImmortalWrt
+<ul>
+<li>移植了更多的软件包，支持了更多的设备，更好的性能，并为中国大陆用户进行了特殊的优化。</li>
+<li>支持红米AC2100</li>
+</ul>
+</li>
+<li>OpenWrt-Rpi
+<ul>
+<li>属于高大全包，集成绝大多数有线、无线、3G / 4G 网卡驱动，无需额外安装，预置最新版 C…h 核心、预置 oh-my-zsh，最大程度减少配置成本！</li>
+<li>适配于 树莓派全系、Rockchip 平台、ipq40xx 平台以及 x86 平台设备的 OpenWrt 固件适配于 树莓派全系、Rockchip 平台、ipq40xx 平台以及 x86 平台设备的 OpenWrt 固件、</li>
+<li>不支持红米AC2100，一般软路由上用的比较多</li>
+</ul>
+</li>
+<li>OpenWrt-Buildbot
+<ul>
+<li>属于精简包，除设备默认定义软件包外，固件内未额外集成其他软件包</li>
+<li>项目已停</li>
+</ul>
+</li>
+<li>其他个人编译版
+<ul>
+<li><a class="link" href="https://www.right.com.cn/forum/thread-4067291-1-1.html"  target="_blank" rel="noopener"
+    >参考链接1</a></li>
+<li><a class="link" href="https://www.right.com.cn/forum/thread-4018216-1-1.html"  target="_blank" rel="noopener"
+    >参考链接2</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="openwrt插件">OpenWRT插件
+</h3><ul>
+<li>argon主题</li>
+</ul>
+<h3 id="重新进去breed安装padavan和官方等其他固件">重新进去breed安装Padavan和官方等其他固件
+</h3><blockquote>
+<p>如需选择
+<a class="link" href="https://www.bilibili.com/video/BV1114y1X7TA"  target="_blank" rel="noopener"
+    >参考视频</a></p></blockquote>
+<ul>
+<li>成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed</li>
+<li>breed写入其他固件
+<ul>
+<li>勾选固件，自动重启会自动勾选</li>
+<li>选择<code>其他固件</code>文件</li>
+<li>上传</li>
+<li>更新</li>
+</ul>
+</li>
+</ul>
+<h2 id="红米ac2100救砖">红米AC2100救砖
+</h2><blockquote>
+<p>其他小米路由器类似</p></blockquote>
+<p><a class="link" href="https://www.bilibili.com/video/BV1zS4y127PJ"  target="_blank" rel="noopener"
+    >参考视频</a></p>
+<h3 id="变砖可能的原因">变砖可能的原因
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>原因</th>
+          <th>描述</th>
+          <th>举例</th>
+          <th>表现</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>固件刷写错误</td>
+          <td>刷了不兼容或错误的固件</td>
+          <td>误刷 AX1800 的 OpenWrt 固件</td>
+          <td>卡在启动画面、指示灯异常</td>
+      </tr>
+      <tr>
+          <td>刷机过程中断</td>
+          <td>刷机时断电或网络中断</td>
+          <td>上传 Padavan 固件时网线断开</td>
+          <td>无法进入系统，部分功能可用</td>
+      </tr>
+      <tr>
+          <td>TFTP/TTL 操作失误</td>
+          <td>TFTP 或 TTL 刷机时配置错误或通信中断</td>
+          <td>TTL 刷机时串口线松动</td>
+          <td>停留在 Bootloader 模式</td>
+      </tr>
+      <tr>
+          <td>硬件损坏</td>
+          <td>闪存、主板或电源模块故障</td>
+          <td>高温运行导致闪存损坏</td>
+          <td>无法启动，指示灯不亮</td>
+      </tr>
+      <tr>
+          <td>Bootloader 损坏</td>
+          <td>引导程序被擦除或损坏</td>
+          <td>刷机时误覆盖 U-Boot 分区</td>
+          <td>完全无响应，TTL 无法连接</td>
+      </tr>
+      <tr>
+          <td>设置错误（软砖）</td>
+          <td>系统配置错误导致无法访问</td>
+          <td>OpenWrt 网络接口配置错误</td>
+          <td>运行但无法联网或登录</td>
+      </tr>
+      <tr>
+          <td>电源问题</td>
+          <td>电源适配器损坏或供电不足</td>
+          <td>使用非原装电源适配器</td>
+          <td>指示灯微弱或不亮，重启无效</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="小米路由器官方修复工具">小米路由器官方修复工具
+</h3><blockquote>
+<p>情况：刷机失误导致路由器一直亮黄橙灯</p></blockquote>
+<ul>
+<li>关闭防火墙。windows&gt;<code>控制面板-系统和安全-Windows Defender 防火墙-启动或关闭windows defender防火墙</code>
+<ul>
+<li>防火墙的作用：保护系统安全、过滤网络流量、防止未经授权访问和数据泄露</li>
+<li>关闭的原因：防止拦截 TFTP（UDP 69 端口）、本地网络通信、工具进程，导致修复失败</li>
+</ul>
+</li>
+<li><a class="link" href="https://www1.miwifi.com/miwifi_download.html"  target="_blank" rel="noopener"
+    >下载</a>官方<code>小米路由器修复工具</code>和对应路由器型号的<code>ROM</code></li>
+<li>解压<code>小米路由器修复工具</code></li>
+<li>电脑网线连接路由器的<code>Lan</code>口，接通路由器电源</li>
+<li>打开解压的文件，管理员身份运行<code>MIWIFIRepairTool.x86.exe</code></li>
+<li>本地上传<code>ROM</code></li>
+<li>选择正确的网卡</li>
+<li>按照提示：<code>断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset</code></li>
+<li>进度条在走。如果没有出现进度条，可能是因为没有关闭防火墙</li>
+<li>等待几分钟，等路由器蓝灯闪烁。断电重启路由器</li>
+<li>重启后，再等几分钟，路由器灯橙变蓝</li>
+<li>浏览器中输入<code>192.168.31.1</code>或者<code>www.miwifi.com</code>。如果能够正常进入，说明成功</li>
+</ul>
+<h3 id="bootloaders-损坏的情况下">bootloaders 损坏的情况下
+</h3><blockquote>
+<p>以上官方修复失败</p></blockquote>
+<ul>
+<li>方法一：USB转TLL烧录刷机法</li>
+<li>方法二：编程器刷机法</li>
+</ul>
 
 </section>
 

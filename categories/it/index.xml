@@ -7,7 +7,691 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Thu, 10 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>网络优化</title>
+        <link>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</link>
+        <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;待完成：安装openclash，安装smartCDN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;光猫路由模式改桥接模式&#34;&gt;光猫路由模式改桥接模式
+&lt;/h2&gt;&lt;h3 id=&#34;获取超级管理员账号密码&#34;&gt;获取超级管理员账号密码
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;方法一：直接打运营商电话问&lt;/li&gt;
+&lt;li&gt;方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例
+&lt;ul&gt;
+&lt;li&gt;参考链接
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4071002-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.right.com.cn/forum/thread-4071002-1-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-2203236-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.right.com.cn/forum/thread-2203236-1-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-5900154-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.right.com.cn/forum/thread-5900154-1-1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;步骤
+&lt;ul&gt;
+&lt;li&gt;光猫插入一个U盘&lt;/li&gt;
+&lt;li&gt;普通用户登录：账号密码在光猫的背面&lt;/li&gt;
+&lt;li&gt;访问192.168.1.1/cgi-bin/luci/admin/storage/settings&lt;/li&gt;
+&lt;li&gt;F12切换到CONSOLE，手动输入&lt;code&gt;get_path_files(&amp;quot;/mnt/usb1_1/../..&amp;quot;)&lt;/code&gt;，此时已切换到根目录了&lt;/li&gt;
+&lt;li&gt;把文件夹&lt;code&gt;var&lt;/code&gt;拷贝到U盘中&lt;/li&gt;
+&lt;li&gt;拔出U盘插到电脑上&lt;/li&gt;
+&lt;li&gt;找出所有&lt;code&gt;.cfg&lt;/code&gt;和&lt;code&gt;.conf&lt;/code&gt;格式或者文件名有&lt;code&gt;config&lt;/code&gt;的文件&lt;/li&gt;
+&lt;li&gt;打开搜索&lt;code&gt;telecomadmin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;找到对应的位置（我的是&lt;code&gt;romfile.cfg&lt;/code&gt;）即有超级管理员账号密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;改桥接&#34;&gt;改桥接
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;访问192.168.1.1&lt;/li&gt;
+&lt;li&gt;登录超级管理员账号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;网络-网络设置-网络连接&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;找到连接名称包含&lt;code&gt;INTERNET-R-VID&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;连接模式改为桥接&lt;/li&gt;
+&lt;li&gt;保存即可&lt;/li&gt;
+&lt;li&gt;同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;路由器&#34;&gt;路由器
+&lt;/h2&gt;&lt;h3 id=&#34;软路由or硬路由&#34;&gt;软路由or硬路由
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;软路由的可拓展等性能是比硬路由要好的&lt;/li&gt;
+&lt;li&gt;wifi性是软路由的硬伤&lt;/li&gt;
+&lt;li&gt;有没有哪种方案可以两者兼具
+&lt;ul&gt;
+&lt;li&gt;方案一：软路由挂载硬路由
+&lt;ul&gt;
+&lt;li&gt;网络结构复杂&lt;/li&gt;
+&lt;li&gt;可操控性大&lt;/li&gt;
+&lt;li&gt;硬路由设为 AP 模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方案二：硬路由刷OpenWRT
+&lt;ul&gt;
+&lt;li&gt;网络结构简单&lt;/li&gt;
+&lt;li&gt;可操控性较小&lt;/li&gt;
+&lt;li&gt;对硬路由的硬件有要求
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://openwrt.org/toh/start&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;支持的路由器列表&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;刷机风险：可能变砖&lt;/li&gt;
+&lt;li&gt;OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定&lt;/li&gt;
+&lt;li&gt;当前性价比较高的几款支持openWRT的路由器
+&lt;ul&gt;
+&lt;li&gt;红米 AX6000&lt;/li&gt;
+&lt;li&gt;红米 AX2100&lt;/li&gt;
+&lt;li&gt;Netgear RAX50&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;方案三：
+&lt;ul&gt;
+&lt;li&gt;网络结构简单&lt;/li&gt;
+&lt;li&gt;可操控性小&lt;/li&gt;
+&lt;li&gt;如安装clash对硬件有要求&lt;/li&gt;
+&lt;li&gt;稳定&lt;/li&gt;
+&lt;li&gt;通过插件（如 Merlin 固件）运行 Clash
+&lt;ul&gt;
+&lt;li&gt;支持梅林的路由器
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.asuswrt-merlin.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;华硕&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Clash 高负载可能影响性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关技术术语&#34;&gt;相关技术术语
+&lt;/h2&gt;&lt;h3 id=&#34;网络连接的三种方式&#34;&gt;网络连接的三种方式
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;分配方式&lt;/th&gt;
+          &lt;th&gt;IP稳定性&lt;/th&gt;
+          &lt;th&gt;适用场景&lt;/th&gt;
+          &lt;th&gt;举例&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;动态IP(DHCP)&lt;/td&gt;
+          &lt;td&gt;自动（DHCP服务器）&lt;/td&gt;
+          &lt;td&gt;不固定&lt;/td&gt;
+          &lt;td&gt;家庭Wi-Fi、手机、临时设备&lt;/td&gt;
+          &lt;td&gt;手机自动获取IP（如192.168.1.100）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;静态IP&lt;/td&gt;
+          &lt;td&gt;手动配置&lt;/td&gt;
+          &lt;td&gt;固定&lt;/td&gt;
+          &lt;td&gt;服务器、摄像头、打印机&lt;/td&gt;
+          &lt;td&gt;服务器固定IP（如192.168.1.10）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;拨号(PPPoE)&lt;/td&gt;
+          &lt;td&gt;ISP认证分配&lt;/td&gt;
+          &lt;td&gt;通常不固定&lt;/td&gt;
+          &lt;td&gt;家庭宽带、光纤接入&lt;/td&gt;
+          &lt;td&gt;光猫拨号获取IP（如192.168.0.2）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;padavan-vs-openwrt&#34;&gt;Padavan vs OpenWrt
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th&gt;Padavan&lt;/th&gt;
+          &lt;th&gt;OpenWrt&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;易用性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;界面直观，适合新手&lt;/td&gt;
+          &lt;td&gt;配置复杂，需技术基础&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;功能&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;VPN、SS/SSR、QoS、IPTV 等&lt;/td&gt;
+          &lt;td&gt;全面支持 VPN、SQM、Adblock、Docker 等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;性能&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;优化好，开箱即用&lt;/td&gt;
+          &lt;td&gt;依赖硬件和配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;兼容性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;特定品牌（华硕、MTK 芯片设备）&lt;/td&gt;
+          &lt;td&gt;广泛设备（数百种路由器）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;更新频率&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;较低，社区维护&lt;/td&gt;
+          &lt;td&gt;频繁，官方和社区支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;适用场景&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;家庭用户，简单需求&lt;/td&gt;
+          &lt;td&gt;技术爱好者，高级定制需求&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;举例&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;小米路由器刷机，设置 SS 和 IPTV&lt;/td&gt;
+          &lt;td&gt;Netgear R7800 配置 WireGuard 和 SQM&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;常用的dns&#34;&gt;常用的DNS
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;地区&lt;/th&gt;
+          &lt;th&gt;DNS 名称&lt;/th&gt;
+          &lt;th&gt;地址&lt;/th&gt;
+          &lt;th&gt;特点&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国内&lt;/td&gt;
+          &lt;td&gt;阿里公共 DNS&lt;/td&gt;
+          &lt;td&gt;223.5.5.5, 223.6.6.6&lt;/td&gt;
+          &lt;td&gt;解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国内&lt;/td&gt;
+          &lt;td&gt;百度公共 DNS&lt;/td&gt;
+          &lt;td&gt;180.76.76.76&lt;/td&gt;
+          &lt;td&gt;速度快，稳定性高，对百度系服务优化，适合国内主流网站。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国内&lt;/td&gt;
+          &lt;td&gt;114DNS&lt;/td&gt;
+          &lt;td&gt;114.114.114.114, 114.114.115.115&lt;/td&gt;
+          &lt;td&gt;老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国内&lt;/td&gt;
+          &lt;td&gt;腾讯公共 DNS（DNSPod）&lt;/td&gt;
+          &lt;td&gt;119.29.29.29, 182.254.116.116&lt;/td&gt;
+          &lt;td&gt;速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国内&lt;/td&gt;
+          &lt;td&gt;CNNIC SDNS&lt;/td&gt;
+          &lt;td&gt;1.2.4.8, 210.2.4.8&lt;/td&gt;
+          &lt;td&gt;权威性高，适合解析 .cn 域名，速度稳定，功能单一。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国外&lt;/td&gt;
+          &lt;td&gt;Cloudflare DNS&lt;/td&gt;
+          &lt;td&gt;1.1.1.1, 1.0.0.1&lt;/td&gt;
+          &lt;td&gt;全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国外&lt;/td&gt;
+          &lt;td&gt;Google Public DNS&lt;/td&gt;
+          &lt;td&gt;8.8.8.8, 8.8.4.4&lt;/td&gt;
+          &lt;td&gt;全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国外&lt;/td&gt;
+          &lt;td&gt;Quad9&lt;/td&gt;
+          &lt;td&gt;9.9.9.9, 149.112.112.112&lt;/td&gt;
+          &lt;td&gt;专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国外&lt;/td&gt;
+          &lt;td&gt;OpenDNS（Cisco Umbrella）&lt;/td&gt;
+          &lt;td&gt;208.67.222.222, 208.67.220.220&lt;/td&gt;
+          &lt;td&gt;支持内容过滤，可自定义规则，适合家庭和小型企业。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;国外&lt;/td&gt;
+          &lt;td&gt;AdGuard DNS&lt;/td&gt;
+          &lt;td&gt;94.140.14.14, 94.140.15.15&lt;/td&gt;
+          &lt;td&gt;默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;计算机网络&#34;&gt;计算机网络
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.runoob.com/w3cnote/summary-of-network.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;## 基础知识总结&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;红米ac2100刷openwrt&#34;&gt;红米AC2100刷OpenWRT
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4066963-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接1&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_44548582/article/details/121054765&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;降级&#34;&gt;降级
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;下载降级包：降级到2.0.7，降级包&lt;a class=&#34;link&#34; href=&#34;http://cdn.cnbj1.fds.api.mi-img.com/xiaoqiang/rom/rm2100/miwifi_rm2100_firmware_d6234_2.0.7.bin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载地址&lt;/a&gt;，浏览器如果下载不了的话，可以复制到迅雷中下载&lt;/li&gt;
+&lt;li&gt;导入降级包：登录小米路由器后台，&lt;code&gt;常用设置-系统状态-系统版本-手动升级&lt;/code&gt;，导入降级包&lt;/li&gt;
+&lt;li&gt;等待路由器重启&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一键刷breed&#34;&gt;一键刷Breed
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;进入后台192.168.31.1，复制自己的stok&lt;/li&gt;
+&lt;li&gt;用复制的stok&lt;strong&gt;替换&lt;/strong&gt;掉下面代码(隐藏内容)中的CCCCCCCCCCC&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;复制&lt;/strong&gt;修改好stok的代码，&lt;strong&gt;粘贴&lt;/strong&gt;到浏览器，&lt;strong&gt;回车&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;(浏览器会显示 :  {&amp;ldquo;code&amp;rdquo;:0} ). 如果显示其他代码，可能是你还没降级固件或者stok过期。也可以恢复出厂从试。&lt;/li&gt;
+&lt;li&gt;此代码是用来检查NAND坏块的
+&lt;ul&gt;
+&lt;li&gt;运行代码后，你路由器的2.4g WiFi名称会改名成：比如  &amp;ldquo;ESMT&amp;rdquo;，&amp;ldquo;Toshiba&amp;rdquo;，&amp;ldquo;Toshiba 90 768&amp;rdquo;。 90和768是坏块。 如果ESMT或者Toshiba后面没数字，那恭喜你，没有坏块！！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http://192.168.31.1/cgi-bin/luci/;stok=CCCCCCCCCCC/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;amp;user_id=longdike&amp;amp;ssid=%0A%5B%20-z%20%22%24(dmesg%20%7C%20grep%20ESMT)%22%20%5D%20%26%26%20B%3D%22Toshiba%22%20%7C%7C%20B%3D%22ESMT%22%0Auci%20set%20wireless.%24(uci%20show%20wireless%20%7C%20awk%20-F%20&amp;#39;.&amp;#39;%20&amp;#39;%2Fwl1%2F%20%7Bprint%20%242%7D&amp;#39;).ssid%3D%22%24B%20%24(dmesg%20%7C%20awk%20&amp;#39;%2FBad%2F%20%7Bprint%20%245%7D&amp;#39;)%22%0A%2Fetc%2Finit.d%2Fnetwork%20restart%0A
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;此代码是用来刷BREED的
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;31.1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cgi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;luci&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stok&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CCCCCCCCCCC&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;api&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;misystem&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_config_iotdev&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;?&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bssid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Xiaomi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user_id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;longdike&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ssid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Acd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Ftmp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Acurl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;O&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;F&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Fbreed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hackpascal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;net&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Fr1286&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2520&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;255&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b2020&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;09&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;255&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Fbreed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mt7621&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xiaomi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r3g&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sha256sum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grep&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20242&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mtd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Bootloader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果路由器在60秒内重启则代表刷BREED成功(灯会从&lt;strong&gt;蓝&lt;/strong&gt;变&lt;strong&gt;橘&lt;/strong&gt;，最终变&lt;strong&gt;蓝&lt;/strong&gt;进入系统)。
+&lt;ul&gt;
+&lt;li&gt;如果没重启，可能是stok过期了。进入后台复制新的stok即可。也有可能下载的BREED损坏，从新运行代码。也有可能没网络。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed。需要注意的是如果闪蓝灯那就是BREED。如果是闪橘灯那就是原厂UBOOT。&lt;/li&gt;
+&lt;li&gt;最后用进入浏览器，最好是隐身模式，输入192.168.1.1  ENTER.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;用breed刷openwrt&#34;&gt;用Breed刷OpenWRT
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;设置环境变量
+&lt;ul&gt;
+&lt;li&gt;进breed的&lt;code&gt;环境变量编缉&lt;/code&gt;菜单，新增字段&lt;code&gt;xiaomi.r3g.bootfw&lt;/code&gt;值为&lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;下载openwrt
+&lt;ul&gt;
+&lt;li&gt;打开&lt;a class=&#34;link&#34; href=&#34;https://firmware-selector.openwrt.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;输入&lt;code&gt;AC2100&lt;/code&gt;，选择 &lt;code&gt;Xiaomi Redmi Router AC2100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;下载&lt;code&gt;KERNEL&lt;/code&gt;和&lt;code&gt;SYSUPGRADE&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;breed写入openwrt固件
+&lt;ul&gt;
+&lt;li&gt;选择&lt;code&gt;固件更新-常规固件&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;勾选固件，自动重启会自动勾选&lt;/li&gt;
+&lt;li&gt;选择&lt;code&gt;KERNEL&lt;/code&gt;文件&lt;/li&gt;
+&lt;li&gt;上传&lt;/li&gt;
+&lt;li&gt;更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;等待路由器重启
+&lt;ul&gt;
+&lt;li&gt;从&lt;strong&gt;蓝&lt;/strong&gt;变&lt;strong&gt;橘&lt;/strong&gt;，最终变&lt;strong&gt;蓝&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;设置openwrt&#34;&gt;设置OpenWRT
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;登录：&lt;code&gt;192.168.1.1&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;username=root&lt;/code&gt; &lt;code&gt;Password=&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;直接点登录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;设置密码
+&lt;ul&gt;
+&lt;li&gt;顶部出现Go to password configuration设置密码&lt;/li&gt;
+&lt;li&gt;或者&lt;code&gt;system-Administration-Router Password&lt;/code&gt;设置密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;添加&lt;code&gt;image&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;进入&lt;code&gt;System-Backup/Flash Firmware&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Flash new firmware image&lt;/li&gt;
+&lt;li&gt;Flash Image选择上面下载的&lt;code&gt;SYSUPGRADE&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;这个是官方的Image，也可以选择第三方魔改版的Image&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;等待完成（约 2-5 分钟），路由器自动重启，勿断电或断开网线&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;可能无法联网的原因&#34;&gt;可能无法联网的原因
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;与上级路由器（光猫的路由模式）的IP冲突
+&lt;ul&gt;
+&lt;li&gt;OpenWrt 的 &lt;strong&gt;IPv4 Upstream&lt;/strong&gt; 信息如下
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Protocol: DHCP client
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Address: 192.168.1.4/24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Gateway: 192.168.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DNS: 192.168.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Expires: 22h 20m 51s
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Connected: 1h 39m 9s
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;当前 WAN IP（192.168.1.4）与 LAN IP（192.168.1.1）在上行网段（192.168.1.0/24）冲突，需将 OpenWrt LAN IP 改为不同网段&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Network-Interfaces-lan-edit&lt;/code&gt;中的&lt;code&gt;IPv4 address&lt;/code&gt;改为&lt;code&gt;192.168.2.1&lt;/code&gt;，其他不变&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;save&lt;/code&gt; &lt;code&gt;Save &amp;amp; Apply&lt;/code&gt; 这里一定要点强制执行&lt;/li&gt;
+&lt;li&gt;等待一会看下是否有网&lt;/li&gt;
+&lt;li&gt;注意：OpenWrt后台地址变为了&lt;code&gt;192.168.2.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;其他原因：没碰到不写了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;设置wifi默认是不开启的&#34;&gt;设置Wifi，默认是不开启的
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Network-Wireless&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Enable&lt;/code&gt;，一般有几个开几个&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Edit-Interface Configuration-Wireless Security&lt;/code&gt;设置密码
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Encryption=WPA2-PSK&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Key=YourWifiPassword&lt;/code&gt;：自定义自己的密码&lt;/li&gt;
+&lt;li&gt;其他不动，&lt;code&gt;save&lt;/code&gt; &lt;code&gt;Save &amp;amp; Apply&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;几种&lt;code&gt;Encryption&lt;/code&gt;协议如下&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;协议&lt;/th&gt;
+          &lt;th&gt;安全性&lt;/th&gt;
+          &lt;th&gt;兼容性&lt;/th&gt;
+          &lt;th&gt;速度影响&lt;/th&gt;
+          &lt;th&gt;使用场景&lt;/th&gt;
+          &lt;th&gt;红米 AC2100 推荐&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WPA2-PSK&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;强&lt;/td&gt;
+          &lt;td&gt;极高&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;家庭、办公室、混合设备&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐ 首选&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WPA3-SAE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;最强&lt;/td&gt;
+          &lt;td&gt;较低（新设备）&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;现代化网络、高安全需求&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐ 未来导向&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WPA2-PSK/WPA3-SAE Mixed&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;强&lt;/td&gt;
+          &lt;td&gt;高&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;过渡期、新老设备混合&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WPA-PSK/WPA2-PSK Mixed&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中&lt;/td&gt;
+          &lt;td&gt;极高&lt;/td&gt;
+          &lt;td&gt;有（TKIP）&lt;/td&gt;
+          &lt;td&gt;极老设备、临时兼容&lt;/td&gt;
+          &lt;td&gt;⭐ 不推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WPA-PSK&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;弱&lt;/td&gt;
+          &lt;td&gt;极高&lt;/td&gt;
+          &lt;td&gt;有（TKIP）&lt;/td&gt;
+          &lt;td&gt;老旧设备、测试&lt;/td&gt;
+          &lt;td&gt;⭐ 不推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;OWE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中（开放）&lt;/td&gt;
+          &lt;td&gt;较低（新设备）&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;公共 Wi-Fi、访客网络&lt;/td&gt;
+          &lt;td&gt;⭐⭐ 访客专用&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;No Encryption&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;最高&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;测试、无安全需求&lt;/td&gt;
+          &lt;td&gt;🚫 避免&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;安装中文包&#34;&gt;安装中文包
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;配置国内镜像
+&lt;ul&gt;
+&lt;li&gt;打开&lt;code&gt;System-Software-Configure opkg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/etc/opkg/distfeeds.conf&lt;/code&gt;中每个&lt;code&gt;downloads.openwrt.org&lt;/code&gt;替换为&lt;code&gt;mirrors.tuna.tsinghua.edu.cn/openwrt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Action-Update lists&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Filter:&lt;/code&gt;中搜索&lt;code&gt;luci-i18n-base-zh-cn&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;下载&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;System-System-System Properties-Language and Style&lt;/code&gt;切换中英文&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;dns配置&#34;&gt;DNS配置
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/2465053&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考文档1&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4059633-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考文档1&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e5%b8%b8%e7%94%a8%e7%9a%84DNS&#34; &gt;常用的DNS&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;主要的dns配置&#34;&gt;主要的DNS配置
+&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;  | DNS 类型              | 描述                    | 优先级      | 示例配置                  |
+  | ------------------- | -------------------------| --------------------- |-------------------- |
+  | WAN 口 DNS           | 仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效| 低           | WAN 接口设置 `1.1.1.1`    |
+  | LAN 口 DNS           | 仅影响路由器自身，与客户机无关    | 最低（仅路由器）     | LAN 接口设置 `8.8.8.8`    |
+  | LAN 口 DHCP 通告中的 DNS | 客户机直接使用下发 DNS，完全绕过路由器  | 高 | DHCP 选项 `6,1.1.1.1`   |
+  | DHCP/DNS 中的 DNS 转发  | 客户机通过路由器转发请求时生效          | 中   | dnsmasq 转发至 `1.1.1.1` |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;通常情况只要配置WAN 口 DNS 为国内+国外，如：阿里+Cloudflare&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装openwrt主要分支&#34;&gt;安装OpenWRT主要分支
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://post.smzdm.com/p/agq38g26/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/opus/647484062460542994&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Lienol&lt;/li&gt;
+&lt;li&gt;Lean
+&lt;ul&gt;
+&lt;li&gt;由恩山论坛大佬Lean分享了全部开源代码，由于加入了很多中国特色的功能，并告诉所有人怎么通过ubuntu 编译去得到自己想要的OpenWRT，定制灵活性很强。&lt;/li&gt;
+&lt;li&gt;国内大多数固件都是基于的Lean大佬的源码进行编译的，例如eSir、sirpdboy和骷髅头等等大佬！国内大多数固件都是基于的Lean大佬的源码进行编译的，例如eSir、sirpdboy和骷髅头等等大佬！&lt;/li&gt;
+&lt;li&gt;支持红米AC2100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ImmortalWrt
+&lt;ul&gt;
+&lt;li&gt;移植了更多的软件包，支持了更多的设备，更好的性能，并为中国大陆用户进行了特殊的优化。&lt;/li&gt;
+&lt;li&gt;支持红米AC2100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenWrt-Rpi
+&lt;ul&gt;
+&lt;li&gt;属于高大全包，集成绝大多数有线、无线、3G / 4G 网卡驱动，无需额外安装，预置最新版 C…h 核心、预置 oh-my-zsh，最大程度减少配置成本！&lt;/li&gt;
+&lt;li&gt;适配于 树莓派全系、Rockchip 平台、ipq40xx 平台以及 x86 平台设备的 OpenWrt 固件适配于 树莓派全系、Rockchip 平台、ipq40xx 平台以及 x86 平台设备的 OpenWrt 固件、&lt;/li&gt;
+&lt;li&gt;不支持红米AC2100，一般软路由上用的比较多&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenWrt-Buildbot
+&lt;ul&gt;
+&lt;li&gt;属于精简包，除设备默认定义软件包外，固件内未额外集成其他软件包&lt;/li&gt;
+&lt;li&gt;项目已停&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;其他个人编译版
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4067291-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4018216-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考链接2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;openwrt插件&#34;&gt;OpenWRT插件
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;argon主题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;重新进去breed安装padavan和官方等其他固件&#34;&gt;重新进去breed安装Padavan和官方等其他固件
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;如需选择
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1114y1X7TA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考视频&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed&lt;/li&gt;
+&lt;li&gt;breed写入其他固件
+&lt;ul&gt;
+&lt;li&gt;勾选固件，自动重启会自动勾选&lt;/li&gt;
+&lt;li&gt;选择&lt;code&gt;其他固件&lt;/code&gt;文件&lt;/li&gt;
+&lt;li&gt;上传&lt;/li&gt;
+&lt;li&gt;更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;红米ac2100救砖&#34;&gt;红米AC2100救砖
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;其他小米路由器类似&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1zS4y127PJ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考视频&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;变砖可能的原因&#34;&gt;变砖可能的原因
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;原因&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+          &lt;th&gt;举例&lt;/th&gt;
+          &lt;th&gt;表现&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;固件刷写错误&lt;/td&gt;
+          &lt;td&gt;刷了不兼容或错误的固件&lt;/td&gt;
+          &lt;td&gt;误刷 AX1800 的 OpenWrt 固件&lt;/td&gt;
+          &lt;td&gt;卡在启动画面、指示灯异常&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;刷机过程中断&lt;/td&gt;
+          &lt;td&gt;刷机时断电或网络中断&lt;/td&gt;
+          &lt;td&gt;上传 Padavan 固件时网线断开&lt;/td&gt;
+          &lt;td&gt;无法进入系统，部分功能可用&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TFTP/TTL 操作失误&lt;/td&gt;
+          &lt;td&gt;TFTP 或 TTL 刷机时配置错误或通信中断&lt;/td&gt;
+          &lt;td&gt;TTL 刷机时串口线松动&lt;/td&gt;
+          &lt;td&gt;停留在 Bootloader 模式&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;硬件损坏&lt;/td&gt;
+          &lt;td&gt;闪存、主板或电源模块故障&lt;/td&gt;
+          &lt;td&gt;高温运行导致闪存损坏&lt;/td&gt;
+          &lt;td&gt;无法启动，指示灯不亮&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Bootloader 损坏&lt;/td&gt;
+          &lt;td&gt;引导程序被擦除或损坏&lt;/td&gt;
+          &lt;td&gt;刷机时误覆盖 U-Boot 分区&lt;/td&gt;
+          &lt;td&gt;完全无响应，TTL 无法连接&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;设置错误（软砖）&lt;/td&gt;
+          &lt;td&gt;系统配置错误导致无法访问&lt;/td&gt;
+          &lt;td&gt;OpenWrt 网络接口配置错误&lt;/td&gt;
+          &lt;td&gt;运行但无法联网或登录&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;电源问题&lt;/td&gt;
+          &lt;td&gt;电源适配器损坏或供电不足&lt;/td&gt;
+          &lt;td&gt;使用非原装电源适配器&lt;/td&gt;
+          &lt;td&gt;指示灯微弱或不亮，重启无效&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;小米路由器官方修复工具&#34;&gt;小米路由器官方修复工具
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;情况：刷机失误导致路由器一直亮黄橙灯&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;关闭防火墙。windows&amp;gt;&lt;code&gt;控制面板-系统和安全-Windows Defender 防火墙-启动或关闭windows defender防火墙&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;防火墙的作用：保护系统安全、过滤网络流量、防止未经授权访问和数据泄露&lt;/li&gt;
+&lt;li&gt;关闭的原因：防止拦截 TFTP（UDP 69 端口）、本地网络通信、工具进程，导致修复失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www1.miwifi.com/miwifi_download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载&lt;/a&gt;官方&lt;code&gt;小米路由器修复工具&lt;/code&gt;和对应路由器型号的&lt;code&gt;ROM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;解压&lt;code&gt;小米路由器修复工具&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;电脑网线连接路由器的&lt;code&gt;Lan&lt;/code&gt;口，接通路由器电源&lt;/li&gt;
+&lt;li&gt;打开解压的文件，管理员身份运行&lt;code&gt;MIWIFIRepairTool.x86.exe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;本地上传&lt;code&gt;ROM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选择正确的网卡&lt;/li&gt;
+&lt;li&gt;按照提示：&lt;code&gt;断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;进度条在走。如果没有出现进度条，可能是因为没有关闭防火墙&lt;/li&gt;
+&lt;li&gt;等待几分钟，等路由器蓝灯闪烁。断电重启路由器&lt;/li&gt;
+&lt;li&gt;重启后，再等几分钟，路由器灯橙变蓝&lt;/li&gt;
+&lt;li&gt;浏览器中输入&lt;code&gt;192.168.31.1&lt;/code&gt;或者&lt;code&gt;www.miwifi.com&lt;/code&gt;。如果能够正常进入，说明成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bootloaders-损坏的情况下&#34;&gt;bootloaders 损坏的情况下
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;以上官方修复失败&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;方法一：USB转TLL烧录刷机法&lt;/li&gt;
+&lt;li&gt;方法二：编程器刷机法&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Linux的常用软件</title>
         <link>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
         <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
@@ -64,80 +748,6 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-</description>
-        </item>
-        <item>
-        <title>网络优化</title>
-        <link>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</link>
-        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</guid>
-        <description>&lt;h2 id=&#34;光猫路由模式改桥接模式&#34;&gt;光猫路由模式改桥接模式
-&lt;/h2&gt;&lt;p&gt;待完成&lt;/p&gt;
-&lt;h2 id=&#34;路由器&#34;&gt;路由器
-&lt;/h2&gt;&lt;h3 id=&#34;软路由or硬路由&#34;&gt;软路由or硬路由
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;软路由的可拓展等性能是比硬路由要好的&lt;/li&gt;
-&lt;li&gt;wifi性是软路由的硬伤&lt;/li&gt;
-&lt;li&gt;有没有哪种方案可以两者兼具
-&lt;ul&gt;
-&lt;li&gt;方案一：软路由挂载硬路由
-&lt;ul&gt;
-&lt;li&gt;网络结构复杂&lt;/li&gt;
-&lt;li&gt;可操控性大&lt;/li&gt;
-&lt;li&gt;硬路由设为 AP 模式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;方案二：硬路由刷OpenWRT
-&lt;ul&gt;
-&lt;li&gt;网络结构简单&lt;/li&gt;
-&lt;li&gt;可操控性较小&lt;/li&gt;
-&lt;li&gt;对硬路由的硬件有要求
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://openwrt.org/toh/start&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;支持的路由器列表&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;刷机风险：可能变砖&lt;/li&gt;
-&lt;li&gt;OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定&lt;/li&gt;
-&lt;li&gt;当前性价比较高的几款支持openWRT的路由器
-&lt;ul&gt;
-&lt;li&gt;红米 AX6000&lt;/li&gt;
-&lt;li&gt;Netgear RAX50&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;方案三：
-&lt;ul&gt;
-&lt;li&gt;网络结构简单&lt;/li&gt;
-&lt;li&gt;可操控性小&lt;/li&gt;
-&lt;li&gt;如安装clash对硬件有要求&lt;/li&gt;
-&lt;li&gt;稳定&lt;/li&gt;
-&lt;li&gt;通过插件（如 Merlin 固件）运行 Clash
-&lt;ul&gt;
-&lt;li&gt;支持梅林的路由器
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.asuswrt-merlin.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;华硕&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Clash 高负载可能影响性能&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;ax6000刷openwrt&#34;&gt;AX6000刷OpenWRT
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kjfx/AX6000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kjfx/AX6000&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;刷openwrt&#34;&gt;刷OpenWRT
-&lt;/h3&gt;&lt;h3 id=&#34;安装插件&#34;&gt;安装插件
-&lt;/h3&gt;&lt;h4 id=&#34;openclash&#34;&gt;OpenClash
-&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openclash.org/openwrt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://openclash.org/openwrt/&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
