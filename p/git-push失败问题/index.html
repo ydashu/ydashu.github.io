@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTP代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get http.proxy 应该输出为http://127.0.0.1:7890 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 根据情况选择端口 windows for clash: 7890 calsh Verge: 7897 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
 <title>git push失败问题</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/'>
 
 <link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="git push失败问题">
-<meta property='og:description' content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTP代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get http.proxy 应该输出为http://127.0.0.1:7890 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
+<meta property='og:description' content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 根据情况选择端口 windows for clash: 7890 calsh Verge: 7897 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
 <meta property='og:url' content='https://ydashu.github.io/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:published_time' content='2025-03-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-24T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="git push失败问题">
-<meta name="twitter:description" content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTP代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get http.proxy 应该输出为http://127.0.0.1:7890 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
+<meta name="twitter:description" content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 根据情况选择端口 windows for clash: 7890 calsh Verge: 7897 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -317,31 +317,6 @@
 </h2><ul>
 <li>一般为网络问题。需要设置代理
 <ul>
-<li>设置clash为git的HTTP代理
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global http.proxy http://127.0.0.1:7890
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>验证配置是否生效
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global --get http.proxy
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>应该输出为<code>http://127.0.0.1:7890</code></li>
-</ul>
-</li>
-</ul>
-</li>
 <li>设置clash为git的HTTPS代理
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -352,6 +327,12 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
+<li>根据情况选择端口
+<ul>
+<li>windows for clash: 7890</li>
+<li>calsh Verge: 7897</li>
+</ul>
+</li>
 <li>验证配置是否生效
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
