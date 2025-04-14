@@ -14,7 +14,7 @@
         
         <guid>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;待完成：安装openclash，安装smartCDN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;待完成：dnsmasq，安装openclash，安装smartCDN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;光猫路由模式改桥接模式&#34;&gt;光猫路由模式改桥接模式
 &lt;/h2&gt;&lt;h3 id=&#34;获取超级管理员账号密码&#34;&gt;获取超级管理员账号密码
 &lt;/h3&gt;&lt;ul&gt;
@@ -515,31 +515,56 @@
 &lt;h4 id=&#34;dns配置&#34;&gt;DNS配置
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/2465053&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档1&lt;/a&gt;
+    &gt;参考链接1&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4059633-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档1&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e5%b8%b8%e7%94%a8%e7%9a%84DNS&#34; &gt;常用的DNS&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;h2 id=&#34;主要的dns配置&#34;&gt;主要的DNS配置
-&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;  | DNS 类型              | 描述                    | 优先级      | 示例配置                  |
-  | ------------------- | -------------------------| --------------------- |-------------------- |
-  | WAN 口 DNS           | 仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效| 低           | WAN 接口设置 `1.1.1.1`    |
-  | LAN 口 DNS           | 仅影响路由器自身，与客户机无关    | 最低（仅路由器）     | LAN 接口设置 `8.8.8.8`    |
-  | LAN 口 DHCP 通告中的 DNS | 客户机直接使用下发 DNS，完全绕过路由器  | 高 | DHCP 选项 `6,1.1.1.1`   |
-  | DHCP/DNS 中的 DNS 转发  | 客户机通过路由器转发请求时生效          | 中   | dnsmasq 转发至 `1.1.1.1` |
-&lt;/code&gt;&lt;/pre&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#%e5%b8%b8%e7%94%a8%e7%9a%84DNS&#34; &gt;常用的DNS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;主要的DNS配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;DNS 类型&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+          &lt;th&gt;优先级&lt;/th&gt;
+          &lt;th&gt;示例配置&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;WAN 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效&lt;/td&gt;
+          &lt;td&gt;低&lt;/td&gt;
+          &lt;td&gt;WAN 接口设置 &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LAN 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅影响路由器自身，与客户机无关&lt;/td&gt;
+          &lt;td&gt;最低（仅路由器）&lt;/td&gt;
+          &lt;td&gt;LAN 接口设置 &lt;code&gt;8.8.8.8&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LAN 口 DHCP 通告中的 DNS&lt;/td&gt;
+          &lt;td&gt;客户机直接使用下发 DNS，完全绕过路由器&lt;/td&gt;
+          &lt;td&gt;高&lt;/td&gt;
+          &lt;td&gt;DHCP 选项 &lt;code&gt;6,1.1.1.1&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DHCP/DNS 中的 DNS 转发&lt;/td&gt;
+          &lt;td&gt;客户机通过路由器转发请求时生效&lt;/td&gt;
+          &lt;td&gt;中&lt;/td&gt;
+          &lt;td&gt;dnsmasq 转发至 &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 &lt;ul&gt;
 &lt;li&gt;通常情况只要配置WAN 口 DNS 为国内+国外，如：阿里+Cloudflare&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;安装openwrt主要分支&#34;&gt;安装OpenWRT主要分支
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://post.smzdm.com/p/agq38g26/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考链接&lt;/a&gt;
+    &gt;参考链接1&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/opus/647484062460542994&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接2&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
@@ -676,8 +701,8 @@
 &lt;li&gt;打开解压的文件，管理员身份运行&lt;code&gt;MIWIFIRepairTool.x86.exe&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;本地上传&lt;code&gt;ROM&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;选择正确的网卡&lt;/li&gt;
-&lt;li&gt;按照提示：&lt;code&gt;断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;进度条在走。如果没有出现进度条，可能是因为没有关闭防火墙&lt;/li&gt;
+&lt;li&gt;按照提示：&lt;code&gt;断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;等待几分钟，等路由器蓝灯闪烁。断电重启路由器&lt;/li&gt;
 &lt;li&gt;重启后，再等几分钟，路由器灯橙变蓝&lt;/li&gt;
 &lt;li&gt;浏览器中输入&lt;code&gt;192.168.31.1&lt;/code&gt;或者&lt;code&gt;www.miwifi.com&lt;/code&gt;。如果能够正常进入，说明成功&lt;/li&gt;

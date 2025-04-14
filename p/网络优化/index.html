@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 待完成：dnsmasq，安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
 <title>网络优化</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/'>
 
 <link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="网络优化">
-<meta property='og:description' content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
+<meta property='og:description' content=" 待完成：dnsmasq，安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
 <meta property='og:url' content='https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-13T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="网络优化">
-<meta name="twitter:description" content=" 待完成：安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
+<meta name="twitter:description" content=" 待完成：dnsmasq，安装openclash，安装smartCDN\n光猫路由模式改桥接模式 获取超级管理员账号密码 方法一：直接打运营商电话问 方法二：自己手动获取：以 电信 天翼网关3 机器型号ZN600为例 参考链接 https://www.right.com.cn/forum/thread-4071002-1-1.html https://www.right.com.cn/forum/thread-2203236-1-1.html https://www.right.com.cn/forum/thread-5900154-1-1.html 步骤 光猫插入一个U盘 普通用户登录：账号密码在光猫的背面 访问192.168.1.1/cgi-bin/luci/admin/storage/settings F12切换到CONSOLE，手动输入get_path_files(&quot;/mnt/usb1_1/../..&quot;)，此时已切换到根目录了 把文件夹var拷贝到U盘中 拔出U盘插到电脑上 找出所有.cfg和.conf格式或者文件名有config的文件 打开搜索telecomadmin 找到对应的位置（我的是romfile.cfg）即有超级管理员账号密码 改桥接 访问192.168.1.1 登录超级管理员账号 网络-网络设置-网络连接 找到连接名称包含INTERNET-R-VID 连接模式改为桥接 保存即可 同时需要注意要在光猫后方网线连接的的路由器或者电脑设置PPPoE拨号上网，输入账号密码 路由器 软路由or硬路由 软路由的可拓展等性能是比硬路由要好的 wifi性是软路由的硬伤 有没有哪种方案可以两者兼具 方案一：软路由挂载硬路由 网络结构复杂 可操控性大 硬路由设为 AP 模式 方案二：硬路由刷OpenWRT 网络结构简单 可操控性较小 对硬路由的硬件有要求 支持的路由器列表 刷机风险：可能变砖 OpenWRT 的 Wi-Fi 驱动可能不如原厂固件稳定 当前性价比较高的几款支持openWRT的路由器 红米 AX6000 红米 AX2100 Netgear RAX50 方案三： 网络结构简单 可操控性小 如安装clash对硬件有要求 稳定 通过插件（如 Merlin 固件）运行 Clash 支持梅林的路由器 华硕 Clash 高负载可能影响性能 相关技术术语 网络连接的三种方式 类型 分配方式 IP稳定性 适用场景 举例 动态IP(DHCP) 自动（DHCP服务器） 不固定 家庭Wi-Fi、手机、临时设备 手机自动获取IP（如192.168.1.100） 静态IP 手动配置 固定 服务器、摄像头、打印机 服务器固定IP（如192.168.1.10） 拨号(PPPoE) ISP认证分配 通常不固定 家庭宽带、光纤接入 光猫拨号获取IP（如192.168.0.2） Padavan vs OpenWrt 特性 Padavan OpenWrt 易用性 界面直观，适合新手 配置复杂，需技术基础 功能 VPN、SS/SSR、QoS、IPTV 等 全面支持 VPN、SQM、Adblock、Docker 等 性能 优化好，开箱即用 依赖硬件和配置 兼容性 特定品牌（华硕、MTK 芯片设备） 广泛设备（数百种路由器） 更新频率 较低，社区维护 频繁，官方和社区支持 适用场景 家庭用户，简单需求 技术爱好者，高级定制需求 举例 小米路由器刷机，设置 SS 和 IPTV Netgear R7800 配置 WireGuard 和 SQM 常用的DNS 地区 DNS 名称 地址 特点 国内 阿里公共 DNS 223.5.5.5, 223.6.6.6 解析速度快，支持 IPv6，提供安全防护，适合国内网站访问。 国内 百度公共 DNS 180.76.76.76 速度快，稳定性高，对百度系服务优化，适合国内主流网站。 国内 114DNS 114.114.114.114, 114.114.115.115 老牌 DNS，提供安全版拦截恶意网站，覆盖广，适合家庭用户。 国内 腾讯公共 DNS（DNSPod） 119.29.29.29, 182.254.116.116 速度快，支持 IPv6，对腾讯系服务优化，提供安全过滤。 国内 CNNIC SDNS 1.2.4.8, 210.2.4.8 权威性高，适合解析 .cn 域名，速度稳定，功能单一。 国外 Cloudflare DNS 1.1.1.1, 1.0.0.1 全球最快，支持 DoH/DoT，提供家庭版拦截恶意内容，隐私保护强。 国外 Google Public DNS 8.8.8.8, 8.8.4.4 全球覆盖，稳定可靠，支持 IPv6，适合国际网站访问。 国外 Quad9 9.9.9.9, 149.112.112.112 专注安全，拦截恶意域名，支持 DoH/DoT，适合隐私敏感用户。 国外 OpenDNS（Cisco Umbrella） 208.67.222.222, 208.67.220.220 支持内容过滤，可自定义规则，适合家庭和小型企业。 国外 AdGuard DNS 94.140.14.14, 94.140.15.15 默认拦截广告和跟踪器，提供家庭保护模式，支持 DoH/DoT，适合无广告体验。 计算机网络 ## 基础知识总结\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -279,10 +279,6 @@
             <li><a href="#dns配置">DNS配置</a></li>
           </ol>
         </li>
-      </ol>
-    </li>
-    <li><a href="#主要的dns配置">主要的DNS配置</a>
-      <ol>
         <li><a href="#安装openwrt主要分支">安装OpenWRT主要分支</a></li>
         <li><a href="#openwrt插件">OpenWRT插件</a></li>
         <li><a href="#重新进去breed安装padavan和官方等其他固件">重新进去breed安装Padavan和官方等其他固件</a></li>
@@ -361,7 +357,7 @@
     
     
     <blockquote>
-<p>待完成：安装openclash，安装smartCDN</p></blockquote>
+<p>待完成：dnsmasq，安装openclash，安装smartCDN</p></blockquote>
 <h2 id="光猫路由模式改桥接模式">光猫路由模式改桥接模式
 </h2><h3 id="获取超级管理员账号密码">获取超级管理员账号密码
 </h3><ul>
@@ -862,31 +858,56 @@
 <h4 id="dns配置">DNS配置
 </h4><blockquote>
 <p><a class="link" href="https://cloud.tencent.com/developer/article/2465053"  target="_blank" rel="noopener"
-    >参考文档1</a>
+    >参考链接1</a>
 <a class="link" href="https://www.right.com.cn/forum/thread-4059633-1-1.html"  target="_blank" rel="noopener"
-    >参考文档1</a></p></blockquote>
+    >参考链接2</a></p></blockquote>
 <ul>
-<li>
-<p><a class="link" href="#%e5%b8%b8%e7%94%a8%e7%9a%84DNS" >常用的DNS</a></p>
-</li>
-<li>
-<h2 id="主要的dns配置">主要的DNS配置
-</h2><pre><code>  | DNS 类型              | 描述                    | 优先级      | 示例配置                  |
-  | ------------------- | -------------------------| --------------------- |-------------------- |
-  | WAN 口 DNS           | 仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效| 低           | WAN 接口设置 `1.1.1.1`    |
-  | LAN 口 DNS           | 仅影响路由器自身，与客户机无关    | 最低（仅路由器）     | LAN 接口设置 `8.8.8.8`    |
-  | LAN 口 DHCP 通告中的 DNS | 客户机直接使用下发 DNS，完全绕过路由器  | 高 | DHCP 选项 `6,1.1.1.1`   |
-  | DHCP/DNS 中的 DNS 转发  | 客户机通过路由器转发请求时生效          | 中   | dnsmasq 转发至 `1.1.1.1` |
-</code></pre>
+<li><a class="link" href="#%e5%b8%b8%e7%94%a8%e7%9a%84DNS" >常用的DNS</a></li>
+<li>主要的DNS配置</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>DNS 类型</th>
+          <th>描述</th>
+          <th>优先级</th>
+          <th>示例配置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WAN 口 DNS</td>
+          <td>仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效</td>
+          <td>低</td>
+          <td>WAN 接口设置 <code>1.1.1.1</code></td>
+      </tr>
+      <tr>
+          <td>LAN 口 DNS</td>
+          <td>仅影响路由器自身，与客户机无关</td>
+          <td>最低（仅路由器）</td>
+          <td>LAN 接口设置 <code>8.8.8.8</code></td>
+      </tr>
+      <tr>
+          <td>LAN 口 DHCP 通告中的 DNS</td>
+          <td>客户机直接使用下发 DNS，完全绕过路由器</td>
+          <td>高</td>
+          <td>DHCP 选项 <code>6,1.1.1.1</code></td>
+      </tr>
+      <tr>
+          <td>DHCP/DNS 中的 DNS 转发</td>
+          <td>客户机通过路由器转发请求时生效</td>
+          <td>中</td>
+          <td>dnsmasq 转发至 <code>1.1.1.1</code></td>
+      </tr>
+  </tbody>
+</table></div>
 <ul>
 <li>通常情况只要配置WAN 口 DNS 为国内+国外，如：阿里+Cloudflare</li>
-</ul>
-</li>
 </ul>
 <h3 id="安装openwrt主要分支">安装OpenWRT主要分支
 </h3><blockquote>
 <p><a class="link" href="https://post.smzdm.com/p/agq38g26/"  target="_blank" rel="noopener"
-    >参考链接</a>
+    >参考链接1</a>
 <a class="link" href="https://www.bilibili.com/opus/647484062460542994"  target="_blank" rel="noopener"
     >参考链接2</a></p></blockquote>
 <ul>
@@ -1023,8 +1044,8 @@
 <li>打开解压的文件，管理员身份运行<code>MIWIFIRepairTool.x86.exe</code></li>
 <li>本地上传<code>ROM</code></li>
 <li>选择正确的网卡</li>
-<li>按照提示：<code>断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset</code></li>
 <li>进度条在走。如果没有出现进度条，可能是因为没有关闭防火墙</li>
+<li>按照提示：<code>断开路由器的电源，按住Reset键，再接通电源，直到橙灯闪烁松开Reset</code></li>
 <li>等待几分钟，等路由器蓝灯闪烁。断电重启路由器</li>
 <li>重启后，再等几分钟，路由器灯橙变蓝</li>
 <li>浏览器中输入<code>192.168.31.1</code>或者<code>www.miwifi.com</code>。如果能够正常进入，说明成功</li>
