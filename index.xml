@@ -7,7 +7,214 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>openwrt的DNS</title>
+        <link>https://ydashu.github.io/p/openwrt%E7%9A%84dns/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/openwrt%E7%9A%84dns/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;DNS 类型&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+          &lt;th&gt;优先级&lt;/th&gt;
+          &lt;th&gt;格式&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;LAN 口 DHCP 通告中的 DNS&lt;/td&gt;
+          &lt;td&gt;客户机直接使用下发的 DNS，通过dnsmasq实现&lt;/td&gt;
+          &lt;td&gt;高&lt;/td&gt;
+          &lt;td&gt;6,192.168.2.1 或 6,1.1.1.1等&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;DHCP/DNS 中的 DNS 转发&lt;/td&gt;
+          &lt;td&gt;仅当1设置为6,192.168.2.1时生效&lt;/td&gt;
+          &lt;td&gt;中&lt;/td&gt;
+          &lt;td&gt;/*google.com/10.1.2.3&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;WAN 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅当1设置为6,192.168.2.1时生效&lt;/td&gt;
+          &lt;td&gt;低&lt;/td&gt;
+          &lt;td&gt;1.1.1.1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;ISP 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅当1和3没有设置的情况下&lt;/td&gt;
+          &lt;td&gt;最低&lt;/td&gt;
+          &lt;td&gt;运营商设置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;LAN 口 DNS&lt;/td&gt;
+          &lt;td&gt;一般情况下，仅影响路由器自身，与客户机无关。&lt;br&gt;仅当强制修改路由器 DNS 转发规则（如绑定 LAN 口 DNS 为上游）时，LAN 口 DNS 才会影响客户端。&lt;/td&gt;
+          &lt;td&gt;/&lt;/td&gt;
+          &lt;td&gt;1.1.1.1&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;dhcp-通告&#34;&gt;DHCP 通告
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dhcp.lan.dhcp_option=&amp;#34;6,192.168.2.1&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dhcp.lan.dhcp_option=&amp;#34;3,192.168.2.1&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;6&lt;/code&gt;&lt;/strong&gt; 代表 DNS Servers Option：告诉 DHCP 客户端，它们应该使用 IP 地址为 &lt;code&gt;192.168.1.1&lt;/code&gt; 的服务器作为其 &lt;strong&gt;DNS 服务器&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;3&lt;/code&gt;&lt;/strong&gt; 代表 Router Option：告诉 DHCP 客户端，IP 地址为 &lt;code&gt;192.168.1.1&lt;/code&gt; 的设备是它们的 &lt;strong&gt;默认网关&lt;/strong&gt;，当客户端需要发送数据包到其本地网络之外的目标时，它们会将这些数据包发送到默认网关，然后由路由器负责将数据包转发到正确的目的地。&lt;/li&gt;
+&lt;li&gt;dhcp.lan.dhcp_option默认的就是LAN的ip，所以以上代码是默认的，可以不写，也最好不写，因为LAN的ip可能会变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;默认情况下&#34;&gt;默认情况下
+&lt;/h3&gt;&lt;p&gt;如果设置 &lt;code&gt;dhcp.lan.dhcp_option=&amp;quot;6,192.168.2.1&amp;quot;&lt;/code&gt;则客户端查询本地域名失效&lt;/p&gt;
+&lt;h4 id=&#34;dns-查询路径示例&#34;&gt;DNS 查询路径示例
+&lt;/h4&gt;&lt;p&gt;条件： dhcp.lan.dhcp_option默认；WAN的DNS设置为&lt;code&gt;8.8.8.8&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;客户端查询外部域名（&lt;code&gt;www.google.com&lt;/code&gt;）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;步骤&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;笔记本（&lt;code&gt;192.168.1.100&lt;/code&gt;）通过 DHCP 获取 DNS 服务器 &lt;code&gt;192.168.1.1&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;笔记本发送查询 &lt;code&gt;www.google.com&lt;/code&gt; 到 &lt;code&gt;192.168.1.1:53&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 检查缓存，未命中。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 检查本地记录，非 &lt;code&gt;.lan&lt;/code&gt; 域名，继续。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 读取 &lt;code&gt;/tmp/resolv.conf.d/resolv.conf.auto&lt;/code&gt;（包含 &lt;code&gt;8.8.8.8&lt;/code&gt;）（WAN的DNS）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 转发查询到 &lt;code&gt;8.8.8.8:53&lt;/code&gt;，获取 &lt;code&gt;142.250.190.14&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 缓存结果，返回 &lt;code&gt;142.250.190.14&lt;/code&gt; 给笔记本。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路径&lt;/strong&gt;：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → Google DNS (8.8.8.8:53) → 返回
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果&lt;/strong&gt;：笔记本访问 &lt;code&gt;www.google.com&lt;/code&gt;，解析快速（缓存命中后续查询）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;客户端查询本地域名（&lt;code&gt;laptop.lan&lt;/code&gt;）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;步骤&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;通过 DHCP 获取 DNS 服务器 &lt;code&gt;192.168.1.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;笔记本发送查询 &lt;code&gt;laptop.lan&lt;/code&gt; 到 &lt;code&gt;192.168.1.1:53&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 检查缓存，未命中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 检查本地记录，&lt;code&gt;.lan&lt;/code&gt; 域名，找到 &lt;code&gt;laptop&lt;/code&gt; 对应 &lt;code&gt;192.168.1.100&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 直接返回 &lt;code&gt;192.168.1.100&lt;/code&gt;，无需上游查询。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路径&lt;/strong&gt;：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → 返回
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果&lt;/strong&gt;：笔记本可通过 &lt;code&gt;laptop.lan&lt;/code&gt; 访问自身或其他本地设备。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;路由器自身查询（&lt;code&gt;api.openwrt.org&lt;/code&gt;）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;步骤&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;路由器运行 &lt;code&gt;opkg update&lt;/code&gt;，需要解析 &lt;code&gt;api.openwrt.org&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;查询发送到 &lt;code&gt;127.0.0.1:53&lt;/code&gt;（&lt;code&gt;dnsmasq&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 检查缓存，未命中。&lt;/li&gt;
+&lt;li&gt;非本地域名，&lt;code&gt;dnsmasq&lt;/code&gt; 转发到 &lt;code&gt;8.8.8.8&lt;/code&gt;，获取 IP（如 &lt;code&gt;185.233.100.100&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 缓存结果，返回给路由器。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路径&lt;/strong&gt;：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;路由器进程 → dnsmasq (127.0.0.1:53) → Google DNS (8.8.8.8:53) → 返回
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;效果&lt;/strong&gt;：路由器完成更新，解析可靠。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;通告路由器-vs-通告外部-dns&#34;&gt;通告路由器 vs 通告外部 DNS
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;配置 1：通告路由器 IP&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;配置 2：通告外部 DNS&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;DHCP 选项&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;无 &lt;code&gt;dhcp_option&lt;/code&gt;，默认 &lt;code&gt;192.168.1.1&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;dhcp_option=&amp;quot;6,8.8.8.8,8.8.4.4&amp;quot;&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;本地解析&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持（如 &lt;code&gt;laptop.lan&lt;/code&gt;）&lt;/td&gt;
+          &lt;td&gt;不支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;缓存&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;dnsmasq&lt;/code&gt; 提供缓存，加速查询&lt;/td&gt;
+          &lt;td&gt;路由器无本地缓存（浏览器和应用程序应用程序可能会有缓存），依赖外部 DNS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;查询路径&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;客户端 → &lt;code&gt;dnsmasq&lt;/code&gt; → 上游 DNS&lt;/td&gt;
+          &lt;td&gt;客户端 → 外部 DNS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;管理性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;集中管理，适合本地网络&lt;/td&gt;
+          &lt;td&gt;分散管理，适合外部访问优先&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IPv6 DNS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;RA 通告路由器 IP&lt;/td&gt;
+          &lt;td&gt;DHCPv6 通告外部 DNS&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;手机设备用clash代理上网dns的路径&#34;&gt;手机设备用clash代理上网，DNS的路径
+&lt;/h2&gt;&lt;p&gt;前提条件：dhcp.lan.dhcp_option默认；WAN的DNS设置为&lt;code&gt;8.8.8.8&lt;/code&gt;；手机clash开启；路由器没有装clash&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DNS 劫持（默认）&lt;/strong&gt;：手机 → Clash DNS → 代理通道 → 上游 DNS（如 &lt;code&gt;8.8.8.8&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无劫持&lt;/strong&gt;：手机 → OpenWrt &lt;code&gt;dnsmasq&lt;/code&gt;（&lt;code&gt;192.168.1.1&lt;/code&gt;） → &lt;code&gt;wan.dns&lt;/code&gt;（&lt;code&gt;1.1.1.1&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TUN 模式&lt;/strong&gt;：手机 → Clash TUN → Clash DNS → 代理通道 → 上游 DNS。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结
+&lt;/h2&gt;&lt;p&gt;大部分情况只需要设置WAN的DNS和LAN的DNS并开启LAN 口 DHCP 通告&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>网络优化</title>
         <link>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</link>
         <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
@@ -525,41 +732,54 @@
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
           &lt;th&gt;DNS 类型&lt;/th&gt;
           &lt;th&gt;描述&lt;/th&gt;
           &lt;th&gt;优先级&lt;/th&gt;
-          &lt;th&gt;示例配置&lt;/th&gt;
+          &lt;th&gt;格式&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;WAN 口 DNS&lt;/td&gt;
-          &lt;td&gt;仅当客户机通过路由器转发且未设置 DHCP/DNS 转发时生效&lt;/td&gt;
-          &lt;td&gt;低&lt;/td&gt;
-          &lt;td&gt;WAN 接口设置 &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;LAN 口 DHCP 通告中的 DNS&lt;/td&gt;
+          &lt;td&gt;客户机直接使用下发的 DNS，通过dnsmasq实现&lt;/td&gt;
+          &lt;td&gt;高&lt;/td&gt;
+          &lt;td&gt;6,192.168.2.1 或 6,1.1.1.1等&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;DHCP/DNS 中的 DNS 转发&lt;/td&gt;
+          &lt;td&gt;仅当1设置为6,192.168.2.1时生效&lt;/td&gt;
+          &lt;td&gt;中&lt;/td&gt;
+          &lt;td&gt;/*google.com/10.1.2.3&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;WAN 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅当1设置为6,192.168.2.1时生效&lt;/td&gt;
+          &lt;td&gt;低&lt;/td&gt;
+          &lt;td&gt;1.1.1.1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;ISP 口 DNS&lt;/td&gt;
+          &lt;td&gt;仅当1和3没有设置的情况下&lt;/td&gt;
+          &lt;td&gt;最低&lt;/td&gt;
+          &lt;td&gt;运营商设置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
           &lt;td&gt;LAN 口 DNS&lt;/td&gt;
           &lt;td&gt;仅影响路由器自身，与客户机无关&lt;/td&gt;
-          &lt;td&gt;最低（仅路由器）&lt;/td&gt;
-          &lt;td&gt;LAN 接口设置 &lt;code&gt;8.8.8.8&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LAN 口 DHCP 通告中的 DNS&lt;/td&gt;
-          &lt;td&gt;客户机直接使用下发 DNS，完全绕过路由器&lt;/td&gt;
-          &lt;td&gt;高&lt;/td&gt;
-          &lt;td&gt;DHCP 选项 &lt;code&gt;6,1.1.1.1&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;DHCP/DNS 中的 DNS 转发&lt;/td&gt;
-          &lt;td&gt;客户机通过路由器转发请求时生效&lt;/td&gt;
-          &lt;td&gt;中&lt;/td&gt;
-          &lt;td&gt;dnsmasq 转发至 &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;/&lt;/td&gt;
+          &lt;td&gt;1.1.1.1&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;ul&gt;
-&lt;li&gt;通常情况只要配置WAN 口 DNS 为国内+国外，如：阿里+Cloudflare&lt;/li&gt;
+&lt;li&gt;大部分情况只需要设置WAN的DNS和LAN的DNS并开启LAN 口 DHCP 通告&lt;/li&gt;
+&lt;li&gt;DNS 为国内+国外，如：阿里+Cloudflare&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;安装openwrt主要分支&#34;&gt;安装OpenWRT主要分支
 &lt;/h3&gt;&lt;blockquote&gt;
@@ -579,6 +799,8 @@
 &lt;li&gt;ImmortalWrt
 &lt;ul&gt;
 &lt;li&gt;移植了更多的软件包，支持了更多的设备，更好的性能，并为中国大陆用户进行了特殊的优化。&lt;/li&gt;
+&lt;li&gt;收录一些OpenWRT没有的应用，相对更全，例如Dae、OpenClash等科学上网插件&lt;/li&gt;
+&lt;li&gt;默认配置国内的软件源&lt;/li&gt;
 &lt;li&gt;支持红米AC2100&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
