@@ -249,11 +249,7 @@
   <ol>
     <li><a href="#dhcp-通告">DHCP 通告</a>
       <ol>
-        <li><a href="#默认情况下">默认情况下</a>
-          <ol>
-            <li><a href="#dns-查询路径示例">DNS 查询路径示例</a></li>
-          </ol>
-        </li>
+        <li><a href="#dns-查询路径示例">DNS 查询路径示例</a></li>
         <li><a href="#通告路由器-vs-通告外部-dns">通告路由器 vs 通告外部 DNS</a></li>
       </ol>
     </li>
@@ -388,11 +384,10 @@
 <li><strong><code>6</code></strong> 代表 DNS Servers Option：告诉 DHCP 客户端，它们应该使用 IP 地址为 <code>192.168.1.1</code> 的服务器作为其 <strong>DNS 服务器</strong></li>
 <li><strong><code>3</code></strong> 代表 Router Option：告诉 DHCP 客户端，IP 地址为 <code>192.168.1.1</code> 的设备是它们的 <strong>默认网关</strong>，当客户端需要发送数据包到其本地网络之外的目标时，它们会将这些数据包发送到默认网关，然后由路由器负责将数据包转发到正确的目的地。</li>
 <li>dhcp.lan.dhcp_option默认的就是LAN的ip，所以以上代码是默认的，可以不写，也最好不写，因为LAN的ip可能会变</li>
+<li>设置 <code>dhcp.lan.dhcp_option!=&quot;6,192.168.2.1&quot;</code>，如<code>dhcp.lan.dhcp_option!=&quot;6,8.8.8.8&quot;</code>则客户端查询本地域名失效</li>
 </ul>
-<h3 id="默认情况下">默认情况下
-</h3><p>如果设置 <code>dhcp.lan.dhcp_option=&quot;6,192.168.2.1&quot;</code>则客户端查询本地域名失效</p>
-<h4 id="dns-查询路径示例">DNS 查询路径示例
-</h4><p>条件： dhcp.lan.dhcp_option默认；WAN的DNS设置为<code>8.8.8.8</code></p>
+<h3 id="dns-查询路径示例">DNS 查询路径示例
+</h3><p>条件： dhcp.lan.dhcp_option默认；WAN的DNS设置为<code>8.8.8.8</code></p>
 <ol>
 <li>
 <p><strong>客户端查询外部域名（<code>www.google.com</code>）</strong>：</p>
@@ -414,7 +409,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → Google DNS (8.8.8.8:53) → 返回
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → WAN的DNS (8.8.8.8:53) → 返回
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -464,7 +459,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">路由器进程 → dnsmasq (127.0.0.1:53) → Google DNS (8.8.8.8:53) → 返回
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">路由器进程 → dnsmasq (127.0.0.1:53) → WAN的DNS (8.8.8.8:53) → 返回
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
