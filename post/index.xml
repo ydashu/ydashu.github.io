@@ -7,22 +7,912 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Wed, 16 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>wordpress Meow&#43;ACF实现动态产品图片展示</title>
-        <link>https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</link>
-        <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>铜产品</title>
+        <link>https://ydashu.github.io/p/%E9%93%9C%E4%BA%A7%E5%93%81/</link>
+        <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</guid>
-        <description>&lt;blockquote&gt;
-&lt;p&gt;参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h2 id=&#34;步骤&#34;&gt;步骤
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;安装Meow gallery和ACF&lt;/li&gt;
-&lt;li&gt;ACF定义产品和产品类别，并为产品添加gallery字段&lt;/li&gt;
-&lt;li&gt;添加php snippet
+        <guid>https://ydashu.github.io/p/%E9%93%9C%E4%BA%A7%E5%93%81/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;CN&lt;/th&gt;
+          &lt;th&gt;GER&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;EUR&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;INT&lt;/th&gt;
+          &lt;th&gt;USA&lt;/th&gt;
+          &lt;th&gt;JPN&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GB&lt;/td&gt;
+          &lt;td&gt;DIN&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;EN&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;ISO&lt;/td&gt;
+          &lt;td&gt;UNS&lt;/td&gt;
+          &lt;td&gt;JIS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TU2&lt;/td&gt;
+          &lt;td&gt;OF-Cu&lt;/td&gt;
+          &lt;td&gt;2.0040&lt;/td&gt;
+          &lt;td&gt;Cu-OFE&lt;/td&gt;
+          &lt;td&gt;CW009A&lt;/td&gt;
+          &lt;td&gt;Cu-OF&lt;/td&gt;
+          &lt;td&gt;C10100&lt;/td&gt;
+          &lt;td&gt;CJ0ll&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;SE-Cu&lt;/td&gt;
+          &lt;td&gt;2.0070&lt;/td&gt;
+          &lt;td&gt;Cu-HCP&lt;/td&gt;
+          &lt;td&gt;CW021A&lt;/td&gt;
+          &lt;td&gt;•&lt;/td&gt;
+          &lt;td&gt;Cl0300&lt;/td&gt;
+          &lt;td&gt;•&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;SE-Cu&lt;/td&gt;
+          &lt;td&gt;2.0070&lt;/td&gt;
+          &lt;td&gt;Cu-PHC&lt;/td&gt;
+          &lt;td&gt;CW020A&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cl0300&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;T2&lt;/td&gt;
+          &lt;td&gt;E-Cu58&lt;/td&gt;
+          &lt;td&gt;2.0065&lt;/td&gt;
+          &lt;td&gt;Cu-ETP&lt;/td&gt;
+          &lt;td&gt;CW004A&lt;/td&gt;
+          &lt;td&gt;Cu-ETP&lt;/td&gt;
+          &lt;td&gt;C11000&lt;/td&gt;
+          &lt;td&gt;CH00&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TP2&lt;/td&gt;
+          &lt;td&gt;SF-Cu&lt;/td&gt;
+          &lt;td&gt;2.0090&lt;/td&gt;
+          &lt;td&gt;Cu-DHP&lt;/td&gt;
+          &lt;td&gt;CW024A&lt;/td&gt;
+          &lt;td&gt;Cu-DHP&lt;/td&gt;
+          &lt;td&gt;Cl  2200&lt;/td&gt;
+          &lt;td&gt;Cl  220&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;•&lt;/td&gt;
+          &lt;td&gt;SF-Cu&lt;/td&gt;
+          &lt;td&gt;2.0090&lt;/td&gt;
+          &lt;td&gt;Cu-DHP&lt;/td&gt;
+          &lt;td&gt;CW024A&lt;/td&gt;
+          &lt;td&gt;Cu-DHP&lt;/td&gt;
+          &lt;td&gt;Cl2200&lt;/td&gt;
+          &lt;td&gt;Cl  220&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;SF-Cu&lt;/td&gt;
+          &lt;td&gt;2.0090&lt;/td&gt;
+          &lt;td&gt;Cu-DHP&lt;/td&gt;
+          &lt;td&gt;CW024A&lt;/td&gt;
+          &lt;td&gt;Cu-DLP&lt;/td&gt;
+          &lt;td&gt;Cl  2200&lt;/td&gt;
+          &lt;td&gt;Cl 220&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TP1&lt;/td&gt;
+          &lt;td&gt;SW-Cu&lt;/td&gt;
+          &lt;td&gt;2.0076&lt;/td&gt;
+          &lt;td&gt;Cu-DLP&lt;/td&gt;
+          &lt;td&gt;CW023A&lt;/td&gt;
+          &lt;td&gt;Cu-DLP&lt;/td&gt;
+          &lt;td&gt;Cl  2000&lt;/td&gt;
+          &lt;td&gt;C1201&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H96&lt;/td&gt;
+          &lt;td&gt;CuZn5&lt;/td&gt;
+          &lt;td&gt;2.0220&lt;/td&gt;
+          &lt;td&gt;CuZn5&lt;/td&gt;
+          &lt;td&gt;CE500L&lt;/td&gt;
+          &lt;td&gt;CuZn5&lt;/td&gt;
+          &lt;td&gt;C21000&lt;/td&gt;
+          &lt;td&gt;C2100&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H90&lt;/td&gt;
+          &lt;td&gt;CuZn10&lt;/td&gt;
+          &lt;td&gt;2.0230&lt;/td&gt;
+          &lt;td&gt;CuZnlO&lt;/td&gt;
+          &lt;td&gt;CW501L&lt;/td&gt;
+          &lt;td&gt;CuZnl0&lt;/td&gt;
+          &lt;td&gt;C22000&lt;/td&gt;
+          &lt;td&gt;C2200&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H85&lt;/td&gt;
+          &lt;td&gt;CuZn15&lt;/td&gt;
+          &lt;td&gt;2.0240&lt;/td&gt;
+          &lt;td&gt;CuZnl5&lt;/td&gt;
+          &lt;td&gt;CW502L&lt;/td&gt;
+          &lt;td&gt;CuZn15&lt;/td&gt;
+          &lt;td&gt;C23000&lt;/td&gt;
+          &lt;td&gt;C2300&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H80&lt;/td&gt;
+          &lt;td&gt;CuZn20&lt;/td&gt;
+          &lt;td&gt;2.0250&lt;/td&gt;
+          &lt;td&gt;CuZn20&lt;/td&gt;
+          &lt;td&gt;CW503L&lt;/td&gt;
+          &lt;td&gt;CuZn20&lt;/td&gt;
+          &lt;td&gt;C24000&lt;/td&gt;
+          &lt;td&gt;C2400&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H70&lt;/td&gt;
+          &lt;td&gt;CuZn30&lt;/td&gt;
+          &lt;td&gt;2.0265&lt;/td&gt;
+          &lt;td&gt;CuZn30&lt;/td&gt;
+          &lt;td&gt;CW505L&lt;/td&gt;
+          &lt;td&gt;CuZn30&lt;/td&gt;
+          &lt;td&gt;C26000&lt;/td&gt;
+          &lt;td&gt;C2600&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H68&lt;/td&gt;
+          &lt;td&gt;CuZn33&lt;/td&gt;
+          &lt;td&gt;2.0280&lt;/td&gt;
+          &lt;td&gt;CuZn33&lt;/td&gt;
+          &lt;td&gt;CW506L&lt;/td&gt;
+          &lt;td&gt;CuZn35&lt;/td&gt;
+          &lt;td&gt;C26800&lt;/td&gt;
+          &lt;td&gt;C2680&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H65&lt;/td&gt;
+          &lt;td&gt;CuZn36&lt;/td&gt;
+          &lt;td&gt;2.0335&lt;/td&gt;
+          &lt;td&gt;CuZn36&lt;/td&gt;
+          &lt;td&gt;CW507L&lt;/td&gt;
+          &lt;td&gt;CuZn35&lt;/td&gt;
+          &lt;td&gt;C27000&lt;/td&gt;
+          &lt;td&gt;C2700&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H63&lt;/td&gt;
+          &lt;td&gt;CuZn37&lt;/td&gt;
+          &lt;td&gt;2.0321&lt;/td&gt;
+          &lt;td&gt;CuZn37&lt;/td&gt;
+          &lt;td&gt;CW508L&lt;/td&gt;
+          &lt;td&gt;CuZn37&lt;/td&gt;
+          &lt;td&gt;C27200&lt;/td&gt;
+          &lt;td&gt;C2720&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HPb63-3&lt;/td&gt;
+          &lt;td&gt;CuZn36Pb1.5&lt;/td&gt;
+          &lt;td&gt;2.0331&lt;/td&gt;
+          &lt;td&gt;CuZn35Pb1&lt;/td&gt;
+          &lt;td&gt;CW600N&lt;/td&gt;
+          &lt;td&gt;CuZn35Pb1&lt;/td&gt;
+          &lt;td&gt;C34000&lt;/td&gt;
+          &lt;td&gt;C3501&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HPb63-3&lt;/td&gt;
+          &lt;td&gt;CuZn36Pb1.5&lt;/td&gt;
+          &lt;td&gt;2.0331&lt;/td&gt;
+          &lt;td&gt;CuZn35Pb2&lt;/td&gt;
+          &lt;td&gt;CW60IN&lt;/td&gt;
+          &lt;td&gt;CuZn34Pb2&lt;/td&gt;
+          &lt;td&gt;C34200&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H62&lt;/td&gt;
+          &lt;td&gt;CuZn40&lt;/td&gt;
+          &lt;td&gt;2.0360&lt;/td&gt;
+          &lt;td&gt;CuZn40&lt;/td&gt;
+          &lt;td&gt;CW509N&lt;/td&gt;
+          &lt;td&gt;CuZn40&lt;/td&gt;
+          &lt;td&gt;C28000&lt;/td&gt;
+          &lt;td&gt;C3712&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;H60&lt;/td&gt;
+          &lt;td&gt;CuZn38Pb1.5&lt;/td&gt;
+          &lt;td&gt;2.0371&lt;/td&gt;
+          &lt;td&gt;CuZn38Pb2&lt;/td&gt;
+          &lt;td&gt;CW608N&lt;/td&gt;
+          &lt;td&gt;CuZn37Pb2&lt;/td&gt;
+          &lt;td&gt;C35000&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HPb63-3&lt;/td&gt;
+          &lt;td&gt;CuZn36Pb3&lt;/td&gt;
+          &lt;td&gt;2.0375&lt;/td&gt;
+          &lt;td&gt;CuZn36Pb3&lt;/td&gt;
+          &lt;td&gt;CW603N&lt;/td&gt;
+          &lt;td&gt;CuZn36Pb3&lt;/td&gt;
+          &lt;td&gt;C36000&lt;/td&gt;
+          &lt;td&gt;C3601&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HPb59-l&lt;/td&gt;
+          &lt;td&gt;CuZn39Pb2&lt;/td&gt;
+          &lt;td&gt;2.0380&lt;/td&gt;
+          &lt;td&gt;CuZn39Pb2&lt;/td&gt;
+          &lt;td&gt;CW6I2N&lt;/td&gt;
+          &lt;td&gt;CuZn38Pb2&lt;/td&gt;
+          &lt;td&gt;C37700&lt;/td&gt;
+          &lt;td&gt;C3771&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;HPb58-2.5&lt;/td&gt;
+          &lt;td&gt;CuZn39Pb3&lt;/td&gt;
+          &lt;td&gt;2.0401&lt;/td&gt;
+          &lt;td&gt;CuZn39Pb3&lt;/td&gt;
+          &lt;td&gt;CW614N&lt;/td&gt;
+          &lt;td&gt;CuZn39Pb3&lt;/td&gt;
+          &lt;td&gt;C38500&lt;/td&gt;
+          &lt;td&gt;C3603&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;CuZn40Pb2&lt;/td&gt;
+          &lt;td&gt;2.0402&lt;/td&gt;
+          &lt;td&gt;CuZn40Pb2&lt;/td&gt;
+          &lt;td&gt;CW6I7N&lt;/td&gt;
+          &lt;td&gt;CuZn40Pb2&lt;/td&gt;
+          &lt;td&gt;C38000&lt;/td&gt;
+          &lt;td&gt;C3771&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;•&lt;/td&gt;
+          &lt;td&gt;CuZn28Sn1&lt;/td&gt;
+          &lt;td&gt;2.0470&lt;/td&gt;
+          &lt;td&gt;CuZn28Sn1As&lt;/td&gt;
+          &lt;td&gt;CW706R&lt;/td&gt;
+          &lt;td&gt;CuZn28Sn1&lt;/td&gt;
+          &lt;td&gt;C68800&lt;/td&gt;
+          &lt;td&gt;C4430&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;CuZn31Si1&lt;/td&gt;
+          &lt;td&gt;2.0490&lt;/td&gt;
+          &lt;td&gt;CuZn31Si1&lt;/td&gt;
+          &lt;td&gt;CW708R&lt;/td&gt;
+          &lt;td&gt;CuZn31Si1&lt;/td&gt;
+          &lt;td&gt;C44300&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;CuZn20A12&lt;/td&gt;
+          &lt;td&gt;2.0460&lt;/td&gt;
+          &lt;td&gt;CuZn20A12As&lt;/td&gt;
+          &lt;td&gt;CW702R&lt;/td&gt;
+          &lt;td&gt;CuZn20A12&lt;/td&gt;
+          &lt;td&gt;C68700&lt;/td&gt;
+          &lt;td&gt;C6870&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;QSn4-0.3&lt;/td&gt;
+          &lt;td&gt;CuSn4&lt;/td&gt;
+          &lt;td&gt;2.1016&lt;/td&gt;
+          &lt;td&gt;CuSn4&lt;/td&gt;
+          &lt;td&gt;CW450K&lt;/td&gt;
+          &lt;td&gt;CuSn4&lt;/td&gt;
+          &lt;td&gt;C51100&lt;/td&gt;
+          &lt;td&gt;C5111&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;CuSn5&lt;/td&gt;
+          &lt;td&gt;2.1018&lt;/td&gt;
+          &lt;td&gt;CuSn5&lt;/td&gt;
+          &lt;td&gt;CW451K&lt;/td&gt;
+          &lt;td&gt;CuSn5&lt;/td&gt;
+          &lt;td&gt;C51000&lt;/td&gt;
+          &lt;td&gt;C5102&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;QSn6.5-0.l&lt;/td&gt;
+          &lt;td&gt;CuSn6&lt;/td&gt;
+          &lt;td&gt;2.1020&lt;/td&gt;
+          &lt;td&gt;CuSn6&lt;/td&gt;
+          &lt;td&gt;CW452K&lt;/td&gt;
+          &lt;td&gt;CuSn6&lt;/td&gt;
+          &lt;td&gt;C51900&lt;/td&gt;
+          &lt;td&gt;C5191&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;QSn8-0.3&lt;/td&gt;
+          &lt;td&gt;CuSn8&lt;/td&gt;
+          &lt;td&gt;2.1030&lt;/td&gt;
+          &lt;td&gt;CuSn8&lt;/td&gt;
+          &lt;td&gt;CW453K&lt;/td&gt;
+          &lt;td&gt;CuSn8&lt;/td&gt;
+          &lt;td&gt;C52100&lt;/td&gt;
+          &lt;td&gt;C5210&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BZn12-24&lt;/td&gt;
+          &lt;td&gt;CuNi12Zn24&lt;/td&gt;
+          &lt;td&gt;2.0730&lt;/td&gt;
+          &lt;td&gt;CuNil2Zn24&lt;/td&gt;
+          &lt;td&gt;CW403J&lt;/td&gt;
+          &lt;td&gt;CuNil2Zn24&lt;/td&gt;
+          &lt;td&gt;C75700&lt;/td&gt;
+          &lt;td&gt;.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BZn 12-26&lt;/td&gt;
+          &lt;td&gt;CuNi18Zn27&lt;/td&gt;
+          &lt;td&gt;2.0742&lt;/td&gt;
+          &lt;td&gt;CuNi18Zn27&lt;/td&gt;
+          &lt;td&gt;CW410J&lt;/td&gt;
+          &lt;td&gt;CuNil8Zn27&lt;/td&gt;
+          &lt;td&gt;C77000&lt;/td&gt;
+          &lt;td&gt;C7701&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BZnl8-18&lt;/td&gt;
+          &lt;td&gt;CuNi18Zn20&lt;/td&gt;
+          &lt;td&gt;2.0740&lt;/td&gt;
+          &lt;td&gt;CuNi18Zn20&lt;/td&gt;
+          &lt;td&gt;CW409J&lt;/td&gt;
+          &lt;td&gt;CuNil8Zn20&lt;/td&gt;
+          &lt;td&gt;C76400&lt;/td&gt;
+          &lt;td&gt;C7521&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;CuNi10Fe1Mn&lt;/td&gt;
+          &lt;td&gt;2.0872&lt;/td&gt;
+          &lt;td&gt;CuNi10Fe1Mn&lt;/td&gt;
+          &lt;td&gt;CW352H&lt;/td&gt;
+          &lt;td&gt;CuNilOFeIMn&lt;/td&gt;
+          &lt;td&gt;C70600&lt;/td&gt;
+          &lt;td&gt;C7060&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;•&lt;/td&gt;
+          &lt;td&gt;CuNi30Mn1Fe&lt;/td&gt;
+          &lt;td&gt;2.8820&lt;/td&gt;
+          &lt;td&gt;CuNi30Mn1Fc&lt;/td&gt;
+          &lt;td&gt;CW354H&lt;/td&gt;
+          &lt;td&gt;CuNBOMnlFe&lt;/td&gt;
+          &lt;td&gt;C71500&lt;/td&gt;
+          &lt;td&gt;C7150&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;官方默认的snippet&lt;/p&gt;
+&lt;li&gt;&lt;strong&gt;C10000-C19999&lt;/strong&gt;：纯铜和低合金铜（如无氧铜、韧铜）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C20000-C49999&lt;/strong&gt;：黄铜（铜锌合金），包括含铅黄铜。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C50000-C59999&lt;/strong&gt;：青铜（铜锡合金）及其他铜合金。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C60000-C79999&lt;/strong&gt;：铜镍合金及其他特殊铜合金。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;具体牌号介绍&#34;&gt;具体牌号介绍
+&lt;/h2&gt;&lt;h3 id=&#34;纯铜c10000-c19999&#34;&gt;纯铜（C10000-C19999）
+&lt;/h3&gt;&lt;h4 id=&#34;材质&#34;&gt;材质
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;对应中国牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要成分&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;典型用途&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10100&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;TU2&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, O≤0.003%&lt;/td&gt;
+          &lt;td&gt;无氧铜，极高导电性（接近100% IACS），低氧含量，优异焊接性&lt;/td&gt;
+          &lt;td&gt;电子元件、真空管、高精度导体、超导材料&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10200&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;TU1&lt;/td&gt;
+          &lt;td&gt;Cu≥99.97%, O≤0.002%&lt;/td&gt;
+          &lt;td&gt;高纯无氧铜，导电性和导热性极佳，耐腐蚀&lt;/td&gt;
+          &lt;td&gt;电气母线、波导管、高频电缆、真空密封件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C11000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;T2&lt;/td&gt;
+          &lt;td&gt;Cu≥99.90%, O≈0.02%-0.04%&lt;/td&gt;
+          &lt;td&gt;电解韧铜，良好导电性（~98% IACS），易加工，经济性好&lt;/td&gt;
+          &lt;td&gt;电线电缆、电气连接器、屋顶材料、换热器&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C12000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;TP1&lt;/td&gt;
+          &lt;td&gt;Cu≥99.90%, P≈0.004%-0.012%&lt;/td&gt;
+          &lt;td&gt;低磷脱氧铜，良好焊接性和耐腐蚀性，导电性稍低于C11000&lt;/td&gt;
+          &lt;td&gt;管道系统、换热器、焊接管件、冷凝器&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C12200&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;TP2&lt;/td&gt;
+          &lt;td&gt;Cu≥99.90%, P≈0.015%-0.040%&lt;/td&gt;
+          &lt;td&gt;高磷脱氧铜，优异耐腐蚀性和可焊性，适用于液体输送&lt;/td&gt;
+          &lt;td&gt;水管、空调管、制冷设备、燃气管道&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10300&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, O≤0.005%, P≤0.005%&lt;/td&gt;
+          &lt;td&gt;高纯度无氧铜，接近C10100的导电性，含微量磷，良好的加工性&lt;/td&gt;
+          &lt;td&gt;电气导体、精密仪器、超导电缆、真空器件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10500&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, O≤0.001%, Ag微量&lt;/td&gt;
+          &lt;td&gt;无氧铜，添加微量银提高抗软化温度，优异导电性&lt;/td&gt;
+          &lt;td&gt;高温电气导体、电机绕组、换向器&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10700&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, O≤0.001%, Ag微量&lt;/td&gt;
+          &lt;td&gt;无氧铜，含较高银含量，抗高温软化，导电性高&lt;/td&gt;
+          &lt;td&gt;航空航天导体、重载电气设备、焊接电极&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10800&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, P≈0.005%-0.013%&lt;/td&gt;
+          &lt;td&gt;低磷无氧铜，兼具高导电性和良好焊接性&lt;/td&gt;
+          &lt;td&gt;电子连接器、电气母线、制冷管件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C10910&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≥99.95%, O≤0.02%&lt;/td&gt;
+          &lt;td&gt;低氧铜，导电性高，适用于冷加工和冲压&lt;/td&gt;
+          &lt;td&gt;电气端子、冲压件、薄板导体&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;形状&#34;&gt;形状
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;名称&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特点&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;尺寸范围&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;常用UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要应用&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Plate/Sheet&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;平坦的铜板（Plate，厚度&amp;gt;6mm）或铜片（Sheet，厚度0.15-6mm）&lt;/td&gt;
+          &lt;td&gt;表面平整，易切割、冲压、焊接；高导电性和耐腐蚀性&lt;/td&gt;
+          &lt;td&gt;厚度：0.15-100mm  &lt;br&gt;宽：100-2000mm&lt;/td&gt;
+          &lt;td&gt;C10100, C10200, C11000, C12200&lt;/td&gt;
+          &lt;td&gt;电气面板、屋顶、换热器、装饰件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Coil/Strip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;连续卷状铜材（Coil）或切割后的窄条（Strip，宽度&amp;lt;600mm）&lt;/td&gt;
+          &lt;td&gt;柔性好，适合连续加工和精密冲压；高导电性和表面质量&lt;/td&gt;
+          &lt;td&gt;厚度：0.1-3mm  &lt;br&gt;宽度：10-600mm&lt;/td&gt;
+          &lt;td&gt;C10100, C10200, C11000, C10300, C10800&lt;/td&gt;
+          &lt;td&gt;电子连接器、冲压件、散热器、弹簧&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Pipe/Tube&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中空圆形或异形铜材，Pipe为大直径管道，Tube为小直径管&lt;/td&gt;
+          &lt;td&gt;耐腐蚀、耐压、易焊接；优异导热性，适合流体输送&lt;/td&gt;
+          &lt;td&gt;壁厚：0.5-10mm  &lt;br&gt;外径：3-200mm&lt;/td&gt;
+          &lt;td&gt;C12200, C12000, C10200, C11000&lt;/td&gt;
+          &lt;td&gt;水管、空调管、换热器、燃气管道&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Bar/Rod&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;实心长条铜材，Rod为圆形，Bar为方形/矩形/六边形&lt;/td&gt;
+          &lt;td&gt;高强度，易车削、锻造；导电性好，适合加工和承重&lt;/td&gt;
+          &lt;td&gt;直径/边长：3-100mm  &lt;br&gt;长度：1-6m&lt;/td&gt;
+          &lt;td&gt;C10100, C10200, C11000, C10500, C10700&lt;/td&gt;
+          &lt;td&gt;母线、接地棒、轴、螺栓、阀门零件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Wire&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;细长实心铜材，圆形截面，可单股或多股绞合&lt;/td&gt;
+          &lt;td&gt;高导电性，柔韧性好，易拉伸和缠绕；适合小直径导体&lt;/td&gt;
+          &lt;td&gt;直径：0.05-10mm  &lt;br&gt;长度：连续或定制&lt;/td&gt;
+          &lt;td&gt;C10100, C10200, C11000, C10500&lt;/td&gt;
+          &lt;td&gt;电线电缆、电机绕组、电磁线、焊接线&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;黄铜c20000-c49999&#34;&gt;黄铜（C20000-C49999）
+&lt;/h3&gt;&lt;h3 id=&#34;材质-1&#34;&gt;材质
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;对应中国牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要成分&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;典型用途&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C21000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H96&lt;/td&gt;
+          &lt;td&gt;Cu≈95%, Zn≈5%&lt;/td&gt;
+          &lt;td&gt;含锌5%的黄铜，延展性好，表面光泽，耐腐蚀&lt;/td&gt;
+          &lt;td&gt;装饰品、乐器、徽章、铭牌&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C22000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H90&lt;/td&gt;
+          &lt;td&gt;Cu≈90%, Zn≈10%&lt;/td&gt;
+          &lt;td&gt;含锌10%的黄铜，强度和延展性平衡，易冷加工&lt;/td&gt;
+          &lt;td&gt;建筑五金、冷凝管、弹壳&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C23000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H85&lt;/td&gt;
+          &lt;td&gt;Cu≈85%, Zn≈15%&lt;/td&gt;
+          &lt;td&gt;含锌15%的黄铜，耐腐蚀性强，适合深冲&lt;/td&gt;
+          &lt;td&gt;管道、热交换器、散热器管&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C24000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H80&lt;/td&gt;
+          &lt;td&gt;Cu≈80%, Zn≈20%&lt;/td&gt;
+          &lt;td&gt;含锌20%的黄铜，良好的成型性和装饰性&lt;/td&gt;
+          &lt;td&gt;弹壳、装饰件、拉链&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C26000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H70&lt;/td&gt;
+          &lt;td&gt;Cu≈70%, Zn≈30%&lt;/td&gt;
+          &lt;td&gt;含锌30%的黄铜，加工性能优异，冷热加工性好&lt;/td&gt;
+          &lt;td&gt;五金件、拉链、铆钉、弹簧&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C26800&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H68&lt;/td&gt;
+          &lt;td&gt;Cu≈68%, Zn≈33%&lt;/td&gt;
+          &lt;td&gt;含锌33%的黄铜，冷加工性能佳，成本较低&lt;/td&gt;
+          &lt;td&gt;冲压件、连接器、仪表零件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C27000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H65&lt;/td&gt;
+          &lt;td&gt;Cu≈65%, Zn≈35%&lt;/td&gt;
+          &lt;td&gt;含锌35%的黄铜，强度较高，适合冷加工&lt;/td&gt;
+          &lt;td&gt;管件、螺母、紧固件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C28000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;H62&lt;/td&gt;
+          &lt;td&gt;Cu≈62%, Zn≈38%&lt;/td&gt;
+          &lt;td&gt;含锌38%的黄铜，强度高，适合热加工&lt;/td&gt;
+          &lt;td&gt;结构件、齿轮、阀门&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C36000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;HPb63-3&lt;/td&gt;
+          &lt;td&gt;Cu≈60%, Zn≈37%, Pb≈3%&lt;/td&gt;
+          &lt;td&gt;含铅黄铜，优异切削性，易加工&lt;/td&gt;
+          &lt;td&gt;螺栓、螺母、阀门零件、钟表零件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C37700&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;HPb59-1&lt;/td&gt;
+          &lt;td&gt;Cu≈59%, Zn≈39%, Pb≈2%&lt;/td&gt;
+          &lt;td&gt;含铅黄铜，良好的锻造性和加工性&lt;/td&gt;
+          &lt;td&gt;锻件、管道配件、锁具&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;形状-1&#34;&gt;形状
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;名称&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特点&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;尺寸范围&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;常用UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要应用&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;与其他形式的区别&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Plate/Sheet&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;平坦的黄铜板（Plate，厚度&amp;gt;6mm）或黄铜片（Sheet，厚度0.15-6mm）&lt;/td&gt;
+          &lt;td&gt;表面光泽，易冲压、弯曲；强度和耐腐蚀性优于纯铜&lt;/td&gt;
+          &lt;td&gt;厚度：0.15-100mm  &lt;br&gt;宽：100-2000mm&lt;/td&gt;
+          &lt;td&gt;C22000, C23000, C26000, C26800, C28000&lt;/td&gt;
+          &lt;td&gt;装饰面板、铭牌、换热器板、建筑饰面&lt;/td&gt;
+          &lt;td&gt;平板状，适合大面积覆盖；比Coil/Strip厚且不卷曲，比Pipe/Tube实心，比Bar/Rod薄而宽&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Coil/Strip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;连续卷状黄铜（Coil）或切割后的窄条（Strip，宽度&amp;lt;600mm）&lt;/td&gt;
+          &lt;td&gt;柔性好，适合连续冲压和精密加工；表面质量高&lt;/td&gt;
+          &lt;td&gt;厚度：0.1-3mm  &lt;br&gt;宽度：10-600mm&lt;/td&gt;
+          &lt;td&gt;C21000, C22000, C26000, C26800, C27000&lt;/td&gt;
+          &lt;td&gt;电子连接器、弹簧、散热片、装饰条&lt;/td&gt;
+          &lt;td&gt;薄而卷曲，适合自动化生产；比Plate/Sheet薄且窄，比Pipe/Tube实心，比Bar/Rod细长&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Pipe/Tube&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中空圆形或异形黄铜管，Pipe为大直径管道，Tube为小直径管&lt;/td&gt;
+          &lt;td&gt;耐腐蚀、易焊接；强度高于纯铜，适合液体输送&lt;/td&gt;
+          &lt;td&gt;壁厚：0.5-10mm  &lt;br&gt;外径：3-200mm&lt;/td&gt;
+          &lt;td&gt;C23000, C26000, C27000, C28000&lt;/td&gt;
+          &lt;td&gt;给水管、乐器管（如喇叭）、换热器管&lt;/td&gt;
+          &lt;td&gt;中空，专为流体输送；与Plate/Sheet、Coil/Strip、Bar/Rod不同为中空&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Bar/Rod&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;实心长条黄铜，Rod为圆形，Bar为方形/矩形/六边形&lt;/td&gt;
+          &lt;td&gt;高强度，易车削、锻造；适合机械加工&lt;/td&gt;
+          &lt;td&gt;直径/边长：3-100mm  &lt;br&gt;长度：1-6m&lt;/td&gt;
+          &lt;td&gt;C26000, C28000, C36000, C37700&lt;/td&gt;
+          &lt;td&gt;螺栓、阀门、齿轮、机械零件&lt;/td&gt;
+          &lt;td&gt;实心且粗大，适合机械加工；比Plate/Sheet厚且截面小，比Coil/Strip粗，比Pipe/Tube实心&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;青铜c50000-c59999&#34;&gt;青铜（C50000-C59999）
+&lt;/h3&gt;&lt;h3 id=&#34;材质-2&#34;&gt;材质
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;对应中国牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要成分&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;典型用途&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C51100&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;QSn4-0.3&lt;/td&gt;
+          &lt;td&gt;Cu≈96%, Sn≈4%, P微量&lt;/td&gt;
+          &lt;td&gt;含锡4%的磷青铜，耐磨性好，弹性高，耐腐蚀&lt;/td&gt;
+          &lt;td&gt;弹簧、轴承、电气连接器、乐器弦&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C51000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈95%, Sn≈5%, P微量&lt;/td&gt;
+          &lt;td&gt;含锡5%的磷青铜，强度和弹性优异，耐疲劳&lt;/td&gt;
+          &lt;td&gt;电气连接器、膜片、弹簧、紧固件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C51900&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;QSn6.5-0.1&lt;/td&gt;
+          &lt;td&gt;Cu≈93.5%, Sn≈6%, P微量&lt;/td&gt;
+          &lt;td&gt;含锡6%的磷青铜，高强度，耐腐蚀性强&lt;/td&gt;
+          &lt;td&gt;船用零件、弹簧、齿轮、轴套&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C52100&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;QSn8-0.3&lt;/td&gt;
+          &lt;td&gt;Cu≈92%, Sn≈8%, P微量&lt;/td&gt;
+          &lt;td&gt;含锡8%的磷青铜，高强度、耐磨、耐腐蚀&lt;/td&gt;
+          &lt;td&gt;重载轴承、齿轮、阀门零件、船用组件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C52400&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈90%, Sn≈10%, P微量&lt;/td&gt;
+          &lt;td&gt;高锡磷青铜，极高强度和耐磨性，耐腐蚀&lt;/td&gt;
+          &lt;td&gt;高载荷弹簧、船舶螺旋桨、泵零件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C54400&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈88%, Sn≈4%, Zn≈4%, Pb≈4%&lt;/td&gt;
+          &lt;td&gt;含铅磷青铜，优异切削性，耐磨性好&lt;/td&gt;
+          &lt;td&gt;滑动轴承、衬套、螺母、齿轮&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;形状-2&#34;&gt;形状
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;名称&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特点&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;尺寸范围&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;常用UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要应用&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;与其他形式的区别&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Plate/Sheet&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;平坦的青铜板（Plate，厚度&amp;gt;6mm）或青铜片（Sheet，厚度0.15-6mm）&lt;/td&gt;
+          &lt;td&gt;高强度、耐磨、耐腐蚀；适合冲压和耐磨应用&lt;/td&gt;
+          &lt;td&gt;厚度：0.15-100mm  &lt;br&gt;宽：100-2000mm&lt;/td&gt;
+          &lt;td&gt;C51000, C51900, C52100&lt;/td&gt;
+          &lt;td&gt;耐磨板、船舶面板、模具、装饰件&lt;/td&gt;
+          &lt;td&gt;平板状，适合大面积耐磨覆盖；比Coil/Strip厚且不卷曲，比Pipe/Tube实心，比Bar/Rod薄而宽&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Coil/Strip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;连续卷状青铜（Coil）或切割后的窄条（Strip，宽度&amp;lt;600mm）&lt;/td&gt;
+          &lt;td&gt;高弹性、耐疲劳，适合精密冲压和弹簧制造&lt;/td&gt;
+          &lt;td&gt;厚度：0.1-3mm  &lt;br&gt;宽度：10-600mm&lt;/td&gt;
+          &lt;td&gt;C51100, C51000, C51900&lt;/td&gt;
+          &lt;td&gt;弹簧、电气连接器、膜片、乐器零件&lt;/td&gt;
+          &lt;td&gt;薄而卷曲，适合连续加工；比Plate/Sheet薄且窄，比Pipe/Tube实心，比Bar/Rod细长&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Pipe/Tube&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中空圆形或异形青铜管，Pipe为大直径管道，Tube为小直径管&lt;/td&gt;
+          &lt;td&gt;耐腐蚀、耐磨、高强度；适合高压流体输送&lt;/td&gt;
+          &lt;td&gt;壁厚：0.5-10mm  &lt;br&gt;外径：3-200mm&lt;/td&gt;
+          &lt;td&gt;C51900, C52100, C52400&lt;/td&gt;
+          &lt;td&gt;船用管道、液压管、泵管、换热器管&lt;/td&gt;
+          &lt;td&gt;中空，专为流体输送；与Plate/Sheet、Coil/Strip、Bar/Rod不同为中空&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Bar/Rod&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;实心长条青铜，Rod为圆形，Bar为方形/矩形/六边形&lt;/td&gt;
+          &lt;td&gt;高强度、耐磨、易加工；适合重载零件&lt;/td&gt;
+          &lt;td&gt;直径/边长：3-100mm  &lt;br&gt;长度：1-6m&lt;/td&gt;
+          &lt;td&gt;C51900, C52100, C52400, C54400&lt;/td&gt;
+          &lt;td&gt;轴承、齿轮、轴、阀门零件、船舶配件&lt;/td&gt;
+          &lt;td&gt;实心且粗大，适合机械加工；比Plate/Sheet厚且截面小，比Coil/Strip粗，比Pipe/Tube实心&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;铜镍合金及其他c60000-c79999&#34;&gt;铜镍合金及其他（C60000-C79999）
+&lt;/h3&gt;&lt;h3 id=&#34;材质-3&#34;&gt;材质
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;对应中国牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要成分&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;典型用途&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C68800&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈73%, Zn≈23%, Sn≈1%, Al微量&lt;/td&gt;
+          &lt;td&gt;铜锌锡合金，优异耐海水腐蚀性，强度高，耐磨&lt;/td&gt;
+          &lt;td&gt;海洋工程换热器、冷凝管、船舶零件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C68700&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈77%, Zn≈20%, Al≈2%, As微量&lt;/td&gt;
+          &lt;td&gt;铝黄铜，耐海水腐蚀和冲蚀，良好的导热性&lt;/td&gt;
+          &lt;td&gt;冷凝管、换热器管、船舶管道&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C70600&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈88%, Ni≈10%, Fe≈1%, Mn微量&lt;/td&gt;
+          &lt;td&gt;铜镍合金（10%镍），优异抗海水腐蚀，抗生物附着&lt;/td&gt;
+          &lt;td&gt;船舶管道、换热器、海洋工程、海水淡化设备&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C71500&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;Cu≈68%, Ni≈30%, Fe≈1%, Mn微量&lt;/td&gt;
+          &lt;td&gt;铜镍合金（30%镍），高温耐腐蚀，强度高&lt;/td&gt;
+          &lt;td&gt;海洋工程管道、化工设备、换热器&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C75700&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;BZn12-24&lt;/td&gt;
+          &lt;td&gt;Cu≈64%, Ni≈12%, Zn≈24%&lt;/td&gt;
+          &lt;td&gt;镍白铜，耐腐蚀，美观，良好的冷加工性&lt;/td&gt;
+          &lt;td&gt;精密仪器外壳、装饰品、医疗器械&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C76400&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;BZn18-18&lt;/td&gt;
+          &lt;td&gt;Cu≈64%, Ni≈18%, Zn≈18%&lt;/td&gt;
+          &lt;td&gt;镍白铜，高耐腐蚀性，银白色泽，延展性好&lt;/td&gt;
+          &lt;td&gt;光学仪器、餐具、装饰件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;C77000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;BZn12-26&lt;/td&gt;
+          &lt;td&gt;Cu≈55%, Ni≈18%, Zn≈27%&lt;/td&gt;
+          &lt;td&gt;镍白铜，强度高，耐腐蚀，适合冷加工&lt;/td&gt;
+          &lt;td&gt;弹簧、电阻元件、精密零件&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;形状-3&#34;&gt;形状
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;名称&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特点&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;尺寸范围&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;常用UNS牌号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;主要应用&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;与其他形式的区别&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Plate/Sheet&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;平坦的铜镍合金板（Plate，厚度&amp;gt;6mm）或片（Sheet，厚度0.15-6mm）&lt;/td&gt;
+          &lt;td&gt;耐海水腐蚀，美观，适合冲压和装饰&lt;/td&gt;
+          &lt;td&gt;厚度：0.15-100mm  &lt;br&gt;宽：100-2000mm&lt;/td&gt;
+          &lt;td&gt;C70600, C71500, C75700, C76400, C77000&lt;/td&gt;
+          &lt;td&gt;船舶面板、化工设备外壳、装饰板、海洋结构件&lt;/td&gt;
+          &lt;td&gt;平板状，适合大面积耐腐蚀覆盖；比Coil/Strip厚且不卷曲，比Pipe/Tube实心，比Bar/Rod薄而宽&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Coil/Strip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;连续卷状铜镍合金（Coil）或切割后的窄条（Strip，宽度&amp;lt;600mm）&lt;/td&gt;
+          &lt;td&gt;耐腐蚀，适合精密冲压，延展性好&lt;/td&gt;
+          &lt;td&gt;厚度：0.1-3mm  &lt;br&gt;宽度：10-600mm&lt;/td&gt;
+          &lt;td&gt;C75700, C76400, C77000&lt;/td&gt;
+          &lt;td&gt;精密仪器零件、弹簧、装饰条、电阻元件&lt;/td&gt;
+          &lt;td&gt;薄而卷曲，适合连续加工；比Plate/Sheet薄且窄，比Pipe/Tube实心，比Bar/Rod细长&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Pipe/Tube&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;中空圆形或异形铜镍合金管，Pipe为大直径管道，Tube为小直径管&lt;/td&gt;
+          &lt;td&gt;极强耐海水腐蚀，耐高压，易焊接&lt;/td&gt;
+          &lt;td&gt;壁厚：0.5-10mm  &lt;br&gt;外径：3-200mm&lt;/td&gt;
+          &lt;td&gt;C70600, C71500, C68700, C68800&lt;/td&gt;
+          &lt;td&gt;船舶管道、海水淡化管、换热器管、化工管道&lt;/td&gt;
+          &lt;td&gt;中空，专为流体输送；与Plate/Sheet、Coil/Strip、Bar/Rod不同为中空&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Copper Bar/Rod&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;实心长条铜镍合金，Rod为圆形，Bar为方形/矩形/六边形&lt;/td&gt;
+          &lt;td&gt;耐腐蚀，高强度，易加工&lt;/td&gt;
+          &lt;td&gt;直径/边长：3-100mm  &lt;br&gt;长度：1-6m&lt;/td&gt;
+          &lt;td&gt;C70600, C71500, C77000&lt;/td&gt;
+          &lt;td&gt;船舶配件、阀门零件、化工设备轴、紧固件&lt;/td&gt;
+          &lt;td&gt;实心且粗大，适合机械加工；比Plate/Sheet厚且截面小，比Coil/Strip粗，比Pipe/Tube实心&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;产品demo&#34;&gt;产品demo
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;标题
+&lt;code&gt;prue copper plate C10100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;描述
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -32,91 +922,25 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;shortcode_atts_gallery&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_the_ID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$ids&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;implode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ids&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Material: Oxygen-Free Copper, Cu≥99.95%, O≤0.003%
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Size: Customizable
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Delivery time:Usually 3-7 days, or upon negotiation
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Competitive price and quality from our own factory
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Terms of price: EXW, FOB, CFR, CIF
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Payment Term:TT,L/C,etc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Certificates: SGS, MTC, ISO9001, CE, SGS
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;可能会出现错误，如果产品的gallery为空的话&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;以下是优化后的代码，替换官方默认的&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;shortcode_atts_gallery&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 增加三重验证：
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_the_ID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 1. 验证 ACF 字段存在性
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 2. 确保数据类型为数组
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;is_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[];&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 3. 过滤非数字值
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$valid_ids&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;array_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;is_numeric&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ids&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;implode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$valid_ids&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;wordpress编辑界面添加短代码，格式为&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[meow-gallery acf=&amp;#34;my_acf_gallery_field&amp;#34;]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;可以添加其他参数，如：&lt;code&gt;layout=&amp;quot;carousel&amp;quot;&lt;/code&gt;等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
         <item>
         <title>wordpress备份</title>
         <link>https://ydashu.github.io/p/wordpress%E5%A4%87%E4%BB%BD/</link>
-        <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/p/wordpress%E5%A4%87%E4%BB%BD/</guid>
         <description>&lt;h2 id=&#34;linux后台方法&#34;&gt;linux后台方法
@@ -336,6 +1160,28 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;设置每天4点自动备份
+&lt;ul&gt;
+&lt;li&gt;检查执行的权限
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ls -l /backups/wordpress/backup.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;如果没有执行的权限&lt;code&gt;X&lt;/code&gt;，添加权限
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x /backups/wordpress/backup.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;进入crontab
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -344,7 +1190,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -e
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;然后
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;设置定时
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -354,6 +1201,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;备份还原：路径 &lt;code&gt;/backups/restore_wordpress.sh&lt;/code&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -559,6 +1408,112 @@
 &lt;li&gt;备份还原
 &lt;ul&gt;
 &lt;li&gt;选择 &lt;code&gt;upload&lt;/code&gt;之前保存的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>wordpress Meow&#43;ACF实现动态产品图片展示</title>
+        <link>https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</link>
+        <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;步骤&#34;&gt;步骤
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;安装Meow gallery和ACF&lt;/li&gt;
+&lt;li&gt;ACF定义产品和产品类别，并为产品添加gallery字段&lt;/li&gt;
+&lt;li&gt;添加php snippet
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;官方默认的snippet&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;shortcode_atts_gallery&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_the_ID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$ids&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;implode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ids&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可能会出现错误，如果产品的gallery为空的话&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;以下是优化后的代码，替换官方默认的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;add_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;shortcode_atts_gallery&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 增加三重验证：
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$atts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;acf&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;get_the_ID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 1. 验证 ACF 字段存在性
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 2. 确保数据类型为数组
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;is_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$gallery_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 3. 过滤非数字值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nv&#34;&gt;$valid_ids&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;array_filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gallery_id_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;is_numeric&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ids&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;implode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$valid_ids&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;wordpress编辑界面添加短代码，格式为&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[meow-gallery acf=&amp;#34;my_acf_gallery_field&amp;#34;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;可以添加其他参数，如：&lt;code&gt;layout=&amp;quot;carousel&amp;quot;&lt;/code&gt;等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
