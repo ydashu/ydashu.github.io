@@ -1597,6 +1597,7 @@
 &lt;h2 id=&#34;安装流程&#34;&gt;安装流程
 &lt;/h2&gt;&lt;h3 id=&#34;windows利用磁盘空间划分空间&#34;&gt;windows利用磁盘空间划分空间
 &lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;WIN&lt;/code&gt; + &lt;code&gt;X&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;打开磁盘管理&lt;/li&gt;
 &lt;li&gt;选择一个空间较多的盘，右键点击它，选择压缩&lt;/li&gt;
 &lt;li&gt;压缩完了以后，底下会多出一块显示为“&lt;strong&gt;未分配&lt;/strong&gt;”的空间，假设是100G&lt;/li&gt;
@@ -1673,7 +1674,7 @@
 &lt;/li&gt;
 &lt;li&gt;安装完成，选择“立即重启”，移除 U盘
 &lt;ul&gt;
-&lt;li&gt;如果由于网络问题安装失败，可以离线安装，代安装完ubuntu之后再设置代理等方式安装额外的软件、包和驱动等&lt;/li&gt;
+&lt;li&gt;如果由于网络问题安装失败，可以离线安装，待安装完ubuntu之后再设置代理等方式安装额外的软件、包和驱动等&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;重启后，进入 GRUB 菜单
@@ -1739,47 +1740,6 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-</description>
-        </item>
-        <item>
-        <title>windows换ubuntu</title>
-        <link>https://ydashu.github.io/p/windows%E6%8D%A2ubuntu/</link>
-        <pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/p/windows%E6%8D%A2ubuntu/</guid>
-        <description>&lt;ul&gt;
-&lt;li&gt;windows换ubuntu &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/download/desktop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://ubuntu.com/download/desktop&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;先备份&lt;/li&gt;
-&lt;li&gt;u盘闪存
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pbatard/rufus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Rufus&lt;/a&gt; Ventoy 等工具安装：
-&lt;ul&gt;
-&lt;li&gt;Ventoy
-&lt;ul&gt;
-&lt;li&gt;支持多ISO系统&lt;/li&gt;
-&lt;li&gt;U 盘可保留其他文件（如文档、工具），只需不覆盖 ISO 存储分区&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;视频软件用MPV or VLC ：MPV更极客
-&lt;ul&gt;
-&lt;li&gt;MPV教学
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/623849465&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://zhuanlan.zhihu.com/p/623849465&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         </item>
         <item>
