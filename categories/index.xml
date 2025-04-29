@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>物理</title>
         <link>https://ydashu.github.io/categories/%E7%89%A9%E7%90%86/</link>
-        <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/categories/%E7%89%A9%E7%90%86/</guid>
         <description></description>
@@ -18,9 +18,17 @@
         <item>
         <title>哲学</title>
         <link>https://ydashu.github.io/categories/%E5%93%B2%E5%AD%A6/</link>
-        <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/categories/%E5%93%B2%E5%AD%A6/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>B2B外贸</title>
+        <link>https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/</link>
+        <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/</guid>
         <description></description>
         </item>
         <item>
@@ -53,14 +61,6 @@
         <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/categories/it/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>总</title>
-        <link>https://ydashu.github.io/categories/%E6%80%BB/</link>
-        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/categories/%E6%80%BB/</guid>
         <description></description>
         </item>
         <item>
@@ -104,14 +104,6 @@
         <description></description>
         </item>
         <item>
-        <title>B2b外贸</title>
-        <link>https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/</link>
-        <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Google</title>
         <link>https://ydashu.github.io/categories/google/</link>
         <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
@@ -133,6 +125,14 @@
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/categories/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>总</title>
+        <link>https://ydashu.github.io/categories/%E6%80%BB/</link>
+        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/categories/%E6%80%BB/</guid>
         <description></description>
         </item>
         

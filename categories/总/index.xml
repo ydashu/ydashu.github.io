@@ -7,19 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%80%BB/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>待完成</title>
-        <link>https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/</link>
-        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/p/%E5%BE%85%E5%AE%8C%E6%88%90/</guid>
-        <description>&lt;ul&gt;
-&lt;li&gt;wordpress测试网站安装redis，要不要装？&lt;/li&gt;
-&lt;li&gt;摄影&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%80%BB/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>博客总览</title>
         <link>https://ydashu.github.io/p/%E5%8D%9A%E5%AE%A2%E6%80%BB%E8%A7%88/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
@@ -40,6 +28,11 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/it/&#34; &gt;IT&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e9%87%91%e8%9e%8d/&#34; &gt;金融&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e9%9a%8f%e8%ae%b0/&#34; &gt;随记&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e5%93%b2%e5%ad%a6/&#34; &gt;哲学&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e7%89%a9%e7%90%86/&#34; &gt;物理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/%e5%a4%96%e8%b4%b8/&#34; &gt;外贸&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/categories/b2b%e5%a4%96%e8%b4%b8/&#34; &gt;B2B外贸&lt;/a&gt;&lt;/li&gt;
@@ -54,6 +47,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;待完成&#34;&gt;待完成
 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;wordpress测试网站安装redis，要不要装？&lt;/li&gt;
+&lt;li&gt;摄影&lt;/li&gt;
 &lt;li&gt;随记&lt;/li&gt;
 &lt;li&gt;金融
 &lt;ul&gt;
