@@ -7,7 +7,21 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Fri, 18 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 30 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>slider插件</title>
+        <link>https://ydashu.github.io/p/slider%E6%8F%92%E4%BB%B6/</link>
+        <pubDate>Wed, 30 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/slider%E6%8F%92%E4%BB%B6/</guid>
+        <description>&lt;p&gt;generateblock不支持slider，element和kadence block pro自带slider。&lt;/p&gt;
+&lt;p&gt;插件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block Slider&lt;/li&gt;
+&lt;li&gt;mg-block-slider&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>wordpress备份</title>
         <link>https://ydashu.github.io/p/wordpress%E5%A4%87%E4%BB%BD/</link>
         <pubDate>Fri, 18 Apr 2025 00:00:00 +0000</pubDate>
