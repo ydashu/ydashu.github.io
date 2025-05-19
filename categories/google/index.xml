@@ -7,7 +7,251 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 31 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/google/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/google/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>google搜索技巧</title>
+        <link>https://ydashu.github.io/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;网站网址
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;tagmanager.google.com&#34; &gt;GTM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;ads.google.com&#34; &gt;google ads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;tagassistant.google.com/&#34; &gt;google tag assistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;analytics.google.com&#34; &gt;GA4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ads添加website目标&#34;&gt;ads添加website目标
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;google ads-Goals-Conversersion-Summary-create conversion action&lt;/li&gt;
+&lt;li&gt;选择website-Create conversion actions manually using code
+&lt;ul&gt;
+&lt;li&gt;填写
+&lt;ul&gt;
+&lt;li&gt;目标1
+&lt;ul&gt;
+&lt;li&gt;Goal and action optimization = Submit lead form&lt;/li&gt;
+&lt;li&gt;Conversion name = Submit form&lt;/li&gt;
+&lt;li&gt;done&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;目标2
+&lt;ul&gt;
+&lt;li&gt;Goal and action optimization = Contact&lt;/li&gt;
+&lt;li&gt;Conversion name = email&lt;/li&gt;
+&lt;li&gt;done&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;目标3
+&lt;ul&gt;
+&lt;li&gt;Goal and action optimization = Contact&lt;/li&gt;
+&lt;li&gt;Conversion name = whatsapp&lt;/li&gt;
+&lt;li&gt;done&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;save and continue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Use Google Tag Manager
+&lt;ul&gt;
+&lt;li&gt;保存 &lt;code&gt;Conversion ID&lt;/code&gt;  * 1 和 &lt;code&gt;Conversion label&lt;/code&gt;  * 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建gtm账户&#34;&gt;创建GTM账户
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;登录 tag manage&lt;/li&gt;
+&lt;li&gt;create account
+&lt;ul&gt;
+&lt;li&gt;填写相关信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Install Google Tag Manager
+&lt;ul&gt;
+&lt;li&gt;出现两段代码
+&lt;ul&gt;
+&lt;li&gt;分别添加到 head 和 body(或者footer中)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建ga4账户&#34;&gt;创建GA4账户
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;create account&lt;/li&gt;
+&lt;li&gt;Choose how to set up a Google tag：选择第三个
+&lt;ul&gt;
+&lt;li&gt;Install with Wordpress&lt;/li&gt;
+&lt;li&gt;Install manually&lt;/li&gt;
+&lt;li&gt;Use a Google tag you already have&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;查看并复制 &lt;code&gt;Measurement Id&lt;/code&gt; &amp;ndash; 供绑定GTM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ga4绑定google-ads&#34;&gt;GA4绑定Google ads
+&lt;/h2&gt;&lt;p&gt;GA4-admin-product links-Google Ads links&lt;/p&gt;
+&lt;h2 id=&#34;gtm中创建tags和triggers&#34;&gt;GTM中创建Tags和Triggers
+&lt;/h2&gt;&lt;h3 id=&#34;创建triggers&#34;&gt;创建Triggers
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;触发器名称&lt;/th&gt;
+          &lt;th&gt;触发器类型&lt;/th&gt;
+          &lt;th&gt;触发条件&lt;/th&gt;
+          &lt;th&gt;具体条件&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;email&lt;/td&gt;
+          &lt;td&gt;Click - Just Links&lt;/td&gt;
+          &lt;td&gt;Some Link Clicks&lt;/td&gt;
+          &lt;td&gt;{{Click URL}} contains mailto:&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;whatsapp&lt;/td&gt;
+          &lt;td&gt;Click - Just Links&lt;/td&gt;
+          &lt;td&gt;Some Link Clicks&lt;/td&gt;
+          &lt;td&gt;{{Click URL}} contains wa.me&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;contact form 7&lt;/td&gt;
+          &lt;td&gt;Form Submission&lt;/td&gt;
+          &lt;td&gt;Some Form&lt;/td&gt;
+          &lt;td&gt;{{Form Classes}} equals wpcf7-form submitting&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Remark: 可以按照情况选择&lt;code&gt;Form Classes&lt;/code&gt;或者&lt;code&gt;Form ID&lt;/code&gt;；使用的是contact form 7插件，不同插件的class名称不同，具体按照情况或者GTA测试后查看&lt;/p&gt;
+&lt;h3 id=&#34;创建tags&#34;&gt;创建Tags
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;触发器&lt;/th&gt;
+          &lt;th&gt;备注&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ads&lt;/td&gt;
+          &lt;td&gt;Google Tag&lt;/td&gt;
+          &lt;td&gt;Initialization - All Pages&lt;/td&gt;
+          &lt;td&gt;Tag ID 为 Google Ads 的 ID&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ads-whatsapp&lt;/td&gt;
+          &lt;td&gt;Google Ads Conversion Tracking&lt;/td&gt;
+          &lt;td&gt;whatsapp&lt;/td&gt;
+          &lt;td&gt;Conversion ID 和 Conversion Label&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ads-email&lt;/td&gt;
+          &lt;td&gt;Google Ads Conversion Tracking&lt;/td&gt;
+          &lt;td&gt;email&lt;/td&gt;
+          &lt;td&gt;Conversion ID 和 Conversion Label&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Ads-form&lt;/td&gt;
+          &lt;td&gt;Google Ads Conversion Tracking&lt;/td&gt;
+          &lt;td&gt;contact form 7&lt;/td&gt;
+          &lt;td&gt;Conversion ID 和 Conversion Label&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GA4&lt;/td&gt;
+          &lt;td&gt;Google Tag&lt;/td&gt;
+          &lt;td&gt;Initialization - All Pages&lt;/td&gt;
+          &lt;td&gt;Tag ID 为 GA4 的 ID&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GA4-whatsapp&lt;/td&gt;
+          &lt;td&gt;Google Analytics: GA4 Event&lt;/td&gt;
+          &lt;td&gt;whatsapp&lt;/td&gt;
+          &lt;td&gt;Measurement ID 为 GA4 的 ID&lt;br&gt;Event Name = whatsapp&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GA4-email&lt;/td&gt;
+          &lt;td&gt;Google Analytics: GA4 Event&lt;/td&gt;
+          &lt;td&gt;email&lt;/td&gt;
+          &lt;td&gt;Measurement ID 为 GA4 的 ID&lt;br&gt;Event Name = email&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GA4-form&lt;/td&gt;
+          &lt;td&gt;Google Analytics: GA4 Event&lt;/td&gt;
+          &lt;td&gt;contact form 7&lt;/td&gt;
+          &lt;td&gt;Measurement ID 为 GA4 的 ID&lt;br&gt;Event Name = form&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Conversion ID 和 Conversion Label &lt;a class=&#34;link&#34; href=&#34;#ads%e6%b7%bb%e5%8a%a0website%e7%9b%ae%e6%a0%87&#34; &gt;ads添加website目标&lt;/a&gt;查看，注意对应名称&lt;/p&gt;
+&lt;h2 id=&#34;gta测试&#34;&gt;GTA测试
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;登录 tagassistant&lt;/li&gt;
+&lt;li&gt;连接对应的网址&lt;/li&gt;
+&lt;li&gt;分别点击 邮箱、whatsapp链接，提交表单。summary中6个是否全都&lt;code&gt;Tags Fired&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;如果&lt;code&gt;form&lt;/code&gt;这个&lt;code&gt;tags&lt;/code&gt;为&lt;code&gt;Not Fired&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;点击Form Submit - Variables 可以查看Form Classes.将&lt;a class=&#34;link&#34; href=&#34;#%e5%88%9b%e5%bb%baTriggers&#34; &gt;创建Triggers&lt;/a&gt;中的&lt;code&gt;{{Form Classes}} equals&lt;/code&gt;替换成查看的真实的&lt;/li&gt;
+&lt;li&gt;重新提交表单，检查&lt;code&gt;form&lt;/code&gt;这个&lt;code&gt;tags&lt;/code&gt;是否转为&lt;code&gt;Fired&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;google-ads-goal是否生效&#34;&gt;google ads goal是否生效
+&lt;/h2&gt;&lt;p&gt;google ads - Goals - Conversions - Summary - Status&lt;/p&gt;
+&lt;p&gt;查看为&lt;code&gt;No recent conversions&lt;/code&gt;或者&lt;code&gt;Active&lt;/code&gt;，则正常生效。&lt;/p&gt;
+&lt;p&gt;如果为&lt;code&gt;No recent conversions&lt;/code&gt;，那么后期广告开启后有一些转化了，检查是否转为&lt;code&gt;Active&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;状态&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+          &lt;th&gt;颜色提示&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Active&lt;/td&gt;
+          &lt;td&gt;转化操作正常工作，Google Ads 检测到标签正在记录转化数据。&lt;/td&gt;
+          &lt;td&gt;绿色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Inactive&lt;/td&gt;
+          &lt;td&gt;转化操作未正常工作，可能由于标签未正确安装或未触发转化。&lt;/td&gt;
+          &lt;td&gt;红色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;No recent conversions&lt;/td&gt;
+          &lt;td&gt;转化操作已设置，但近期（通常过去7天）未记录到任何转化数据。&lt;/td&gt;
+          &lt;td&gt;无特定颜色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Other&lt;/td&gt;
+          &lt;td&gt;其他未明确分类的状态，需悬停查看详细信息（可能包括特定问题或配置状态）。&lt;/td&gt;
+          &lt;td&gt;无特定颜色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Recently created&lt;/td&gt;
+          &lt;td&gt;转化操作刚创建，Google Ads 尚未检测到任何转化数据（通常少于24小时）。&lt;/td&gt;
+          &lt;td&gt;无特定颜色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Removed&lt;/td&gt;
+          &lt;td&gt;转化操作已被移除，不再跟踪数据，但仍可在历史记录中查看。&lt;/td&gt;
+          &lt;td&gt;无特定颜色&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>google搜索技巧</title>
         <link>https://ydashu.github.io/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>

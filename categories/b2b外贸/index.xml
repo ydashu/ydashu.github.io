@@ -7,7 +7,122 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 19 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/b2b%E5%A4%96%E8%B4%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>沙特阿拉伯、阿联酋和卡塔尔的税务情况（针对中国公民）</title>
+        <link>https://ydashu.github.io/p/%E6%B2%99%E7%89%B9%E9%98%BF%E6%8B%89%E4%BC%AF%E9%98%BF%E8%81%94%E9%85%8B%E5%92%8C%E5%8D%A1%E5%A1%94%E5%B0%94%E7%9A%84%E7%A8%8E%E5%8A%A1%E6%83%85%E5%86%B5%E9%92%88%E5%AF%B9%E4%B8%AD%E5%9B%BD%E5%85%AC%E6%B0%91/</link>
+        <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E6%B2%99%E7%89%B9%E9%98%BF%E6%8B%89%E4%BC%AF%E9%98%BF%E8%81%94%E9%85%8B%E5%92%8C%E5%8D%A1%E5%A1%94%E5%B0%94%E7%9A%84%E7%A8%8E%E5%8A%A1%E6%83%85%E5%86%B5%E9%92%88%E5%AF%B9%E4%B8%AD%E5%9B%BD%E5%85%AC%E6%B0%91/</guid>
+        <description>&lt;p&gt;以下表格总结了沙特阿拉伯、阿联酋和卡塔尔的个人所得税及其他税种，突出对中国公民在就业和公司运营中的影响。货币单位：沙特里亚尔（SAR，1 SAR ≈ 1.83 CNY），阿联酋迪拉姆（AED，1 AED ≈ 1.94 CNY），卡塔尔里亚尔（QAR，1 QAR ≈ 1.89 CNY）。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;税种&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;沙特阿拉伯&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;阿联酋&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;卡塔尔&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;个人所得税（PIT）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民&lt;/strong&gt;：0%（无PIT）  &lt;br&gt;&lt;strong&gt;非居民&lt;/strong&gt;：0%（就业收入）；20%（商业利润）&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民/非居民&lt;/strong&gt;：0%（无PIT）&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民/非居民&lt;/strong&gt;：0%（无PIT）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;公司所得税（CIT）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民&lt;/strong&gt;：20%（+2.5% Zakat 若有沙特股东）  &lt;br&gt;&lt;strong&gt;非居民&lt;/strong&gt;：20%（沙特来源收入）&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民&lt;/strong&gt;：9%（利润&amp;gt;375,000 AED，约727,500 CNY）  &lt;br&gt;&lt;strong&gt;自由区&lt;/strong&gt;：0%  &lt;br&gt;&lt;strong&gt;非居民&lt;/strong&gt;：9%&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;居民&lt;/strong&gt;：10%（利润&amp;gt;500,000 QAR，约945,000 CNY）  &lt;br&gt;&lt;strong&gt;自由区（QFC/QSTP）&lt;/strong&gt;：0%（10年+）  &lt;br&gt;&lt;strong&gt;非居民&lt;/strong&gt;：10%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;增值税（VAT）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;15%（商品/服务，食品/医疗等部分免税）&lt;/td&gt;
+          &lt;td&gt;5%（商品/服务，医疗/教育等部分免税）&lt;/td&gt;
+          &lt;td&gt;0%（暂未实施，计划2025–2026年5–10%）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;预提税（WHT）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;非居民：股息5%、利息5%、特许权使用费15%、管理费20%&lt;/td&gt;
+          &lt;td&gt;0%（无WHT）&lt;/td&gt;
+          &lt;td&gt;非居民：股息0%、利息0%、特许权使用费5%、技术服务费5%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;宗教税（Zakat）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;2.5%（仅沙特/GCC公民及公司，基于净资产/收入）&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;消费税&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+          &lt;td&gt;烟草100%、碳酸饮料50%、能量饮料100%&lt;/td&gt;
+          &lt;td&gt;无&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;房地产税&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;5%（房地产交易）&lt;/td&gt;
+          &lt;td&gt;迪拜：住宅租赁5%、商业物业10%&lt;/td&gt;
+          &lt;td&gt;无（部分租赁合同需市政费）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;社会保险&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;沙特公民&lt;/strong&gt;：雇员2%（意外险），雇主9–12%（养老等）  &lt;br&gt;&lt;strong&gt;外籍&lt;/strong&gt;：仅2%意外险&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;阿联酋公民&lt;/strong&gt;：雇员5%、雇主12.5%  &lt;br&gt;&lt;strong&gt;外籍&lt;/strong&gt;：0%&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;卡塔尔公民&lt;/strong&gt;：雇员5%、雇主10%  &lt;br&gt;&lt;strong&gt;外籍&lt;/strong&gt;：0%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;海关关税&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;5–25%（进口商品）&lt;/td&gt;
+          &lt;td&gt;5%（大部分商品，奢侈品更高）&lt;/td&gt;
+          &lt;td&gt;5%（大部分商品，酒精高达100%）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;中国公民就业影响&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;工资全免税（平均15,000 SAR/月，约27,450 CNY）；2% GOSI意外险；VAT 15%&lt;/td&gt;
+          &lt;td&gt;工资全免税（迪拜18,000–22,000 AED/月，约34,920–42,680 CNY）；VAT 5%；租赁税5–10%&lt;/td&gt;
+          &lt;td&gt;工资全免税（10,000–20,000 QAR/月，约18,900–37,800 CNY）；未来可能VAT&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;中国公民公司影响&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;公司利润20%税，个人工资0%；WHT（15–20%）；VAT 15%（年收入&amp;gt;375,000 SAR）&lt;/td&gt;
+          &lt;td&gt;自由区0%税，内地超375,000 AED 9%税；个人工资0%；VAT 5%（年收入&amp;gt;375,000 AED）&lt;/td&gt;
+          &lt;td&gt;QFC 0%税，LLC 超500,000 QAR 10%税；个人工资0%；WHT（5%）；未来可能VAT&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;说明与建议&#34;&gt;说明与建议
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;沙特&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;无个人所得税，工资全免税（利雅得平均15,000 SAR/月）。公司利润20%税，非居民商业收入20% WHT，高VAT（15%）增加成本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;建议&lt;/strong&gt;：聘请税务顾问（如KPMG沙特）确认WHT和VAT注册。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阿联酋&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;无个人所得税，自由区公司免税（DMCC、DIFC），内地公司超375,000 AED 9%税。VAT 5%和租赁税（5–10%）影响生活成本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;建议&lt;/strong&gt;：选择自由区设立公司（如DMCC），咨询Creation BC确保合规。利用迪拜30万华人社区支持贸易和科技。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;卡塔尔&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;无个人所得税，QFC免税10年+，LLC超500,000 QAR 10%税。暂无VAT（计划2025–2026年），WHT 5%影响跨国支付。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;建议&lt;/strong&gt;：优先QFC自由区，聘请RA Group核查行业要求。关注“一带一路”能源和金融机会。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中国公民&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;就业：三国工资免税，需考虑VAT（沙特15%、阿联酋5%）和生活成本（迪拜最高9,000 AED/月）。&lt;/li&gt;
+&lt;li&gt;公司：阿联酋自由区和卡塔尔QFC税收最优，沙特审批严格但能源机会多。&lt;/li&gt;
+&lt;li&gt;准备公证文件（护照、营业执照），联系华人社区（如迪拜华人商会）获取支持。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>铜产品</title>
         <link>https://ydashu.github.io/p/%E9%93%9C%E4%BA%A7%E5%93%81/</link>
         <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
