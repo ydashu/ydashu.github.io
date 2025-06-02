@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta property='og:description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
@@ -2288,7 +2288,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -ti mailserver setup email add user1@example.com MySecurePassword123
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti mailserver setup email add user1@example.com MySecurePassword123
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2298,7 +2298,17 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -ti mailserver setup email del user1@example.com
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti mailserver setup email del user1@example.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>修改邮箱密码
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti mailserver setup email update user1@example.com
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

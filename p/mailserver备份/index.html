@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/mailserver%E5%A4%87%E4%BB%BD/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="mailserver备份">
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="mailserver备份">
 <meta property='og:description' content=" 备份结构\n1 /backups/mailserver/mailserver_files_$DATE.tar.gz 备份脚本：路径\u00a0/backups/backup_mailserver.sh\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 #!/bin/bash # 配置 BACKUP_DIR=&#34;/backups/mailserver&#34; # 备份目标目录 SOURCE_DIR=&#34;/opt/mailserver&#34; # 源目录 BACKUP_USER=&#34;root&#34; # 备份文件所有者，调整为实际用户（如 docker 或 admin） BACKUP_GROUP=&#34;root&#34; # 备份文件所属组，调整为实际组 DATE=$(date +%F) # 当前日期（格式：YYYY-MM-DD） RETENTION_DAYS=30 # 备份保留天数 CLEAN_LOG=&#34;/var/log/mailserver_clean_backup.log&#34; # 清理日志文件 # 确保日志文件存在 touch &#34;$CLEAN_LOG&#34; # 确保备份目录存在 mkdir -p &#34;$BACKUP_DIR&#34; # 备份文件 tar -zcvf &#34;$BACKUP_DIR/mailserver_files_$DATE.tar.gz&#34; -C &#34;$SOURCE_DIR&#34; . # 设置权限 已删除 # 清理函数 clean_old_backups() { echo &#34;===== 开始清理 $(date +&#39;%F %T&#39;) =====&#34; &gt;&gt; &#34;$CLEAN_LOG&#34; # 清理超过保留天数的备份文件 find &#34;$BACKUP_DIR&#34; -type f -name &#34;mailserver_files_20??-??-??.tar.gz&#34; -mtime +$RETENTION_DAYS \\ -exec echo &#34;删除备份: {}&#34; &gt;&gt; &#34;$CLEAN_LOG&#34; \\; \\ -exec rm -f {} \\; echo &#34;===== 清理完成 =====&#34; &gt;&gt; &#34;$CLEAN_LOG&#34; } # 执行清理 clean_old_backups 设置每天5点自动备份\n">
 <meta property='og:url' content='https://ydashu.github.io/p/mailserver%E5%A4%87%E4%BB%BD/'>
 <meta property='og:site_name' content='ydashu'>
