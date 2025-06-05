@@ -396,12 +396,18 @@
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span> curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh <span class="o">)</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;password&#39;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E site1@gmail.com <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span>
+</span></span><span class="line"><span class="cl">  --dbname wordpress <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser wp_user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;password&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -621,9 +627,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cataoase name here = wordpress
-</span></span><span class="line"><span class="cl">username_here = wp_user
-</span></span><span class="line"><span class="cl">password_here = your_strong_password
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DB_NAME = shine
+</span></span><span class="line"><span class="cl">DB_USER = wp_user
+</span></span><span class="line"><span class="cl">DB_PASSWORD = password
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -662,7 +668,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">Follow</span> <span class="n">Symbolic</span> <span class="n">Link</span> <span class="o">=</span> <span class="n">Yes</span> <span class="c1"># 专用服务器，可以打开提高性能，但是有风险</span>
 </span></span><span class="line"><span class="cl"><span class="n">Enable</span> <span class="n">Scripts</span><span class="o">/</span><span class="n">ExtApps</span> <span class="o">=</span> <span class="n">Yes</span>
 </span></span><span class="line"><span class="cl"><span class="n">Restrained</span> <span class="o">=</span> <span class="n">No</span> <span class="c1"># 共享主机 选Yes</span>
-</span></span><span class="line"><span class="cl"><span class="n">External</span> <span class="n">App</span> <span class="n">Set</span> <span class="n">UID</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">Server</span> <span class="n">UlD</span>
+</span></span><span class="line"><span class="cl"><span class="n">External</span> <span class="n">App</span> <span class="n">Set</span> <span class="n">UID</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">Doc</span> <span class="n">Root</span> <span class="n">UID</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -762,7 +768,51 @@
 </span></span><span class="line"><span class="cl">Log Level = 
 </span></span></code></pre></td></tr></table>
 </div>
+</div><ul>
+<li>rewrite Rules
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</span></span></code></pre></td></tr></table>
+</div>
 </div></li>
+</ul>
+</li>
 </ul>
 <h2 id="listeners设置">Listeners设置
 </h2><ul>
@@ -896,48 +946,6 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>openlitespeed中的Virtual Host设置Rewrite
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]RewriteEngine On
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
-</span></span></code></pre></td></tr></table>
-</div>
-</div>具体根据情况考虑要不要<code>强制 HTTP 到 HTTPS</code>和<code>将 www 重定向到非 www（根域名）</code></li>
 </ul>
 <h3 id="多个域名安装ssl">多个域名安装SSL
 </h3><ul>

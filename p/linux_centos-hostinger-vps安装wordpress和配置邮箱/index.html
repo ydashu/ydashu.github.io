@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 5 6 7 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; --dbname shine \\ --dbuser wp_user \\ --dbpassword &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
 <title>linux_centos-hostinger-vps安装wordpress和配置邮箱</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
 <link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
-<meta property='og:description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
+<meta property='og:description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 5 6 7 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; --dbname shine \\ --dbuser wp_user \\ --dbpassword &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
-<meta name="twitter:description" content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
+<meta name="twitter:description" content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 5 6 7 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; --dbname shine \\ --dbuser wp_user \\ --dbpassword &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -394,12 +394,18 @@
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span> curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh <span class="o">)</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;password&#39;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E site1@gmail.com <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span>
+</span></span><span class="line"><span class="cl">  --dbname shine <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser wp_user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;password&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -648,9 +654,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cataoase name here = wordpress
-</span></span><span class="line"><span class="cl">username_here = wp_user
-</span></span><span class="line"><span class="cl">password_here = your_strong_password
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DB_NAME = shine
+</span></span><span class="line"><span class="cl">DB_USER = wp_user
+</span></span><span class="line"><span class="cl">DB_PASSWORD = password
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -689,7 +695,7 @@
 </span></span><span class="line"><span class="cl">Follow Symbolic Link = Yes # 专用服务器，可以打开提高性能，但是有风险
 </span></span><span class="line"><span class="cl">Enable Scripts/ExtApps = Yes
 </span></span><span class="line"><span class="cl">Restrained = No # 共享主机 选Yes
-</span></span><span class="line"><span class="cl">External App Set UID Mode = Server UlD
+</span></span><span class="line"><span class="cl">External App Set UID Mode = Doc Root UID
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -789,7 +795,51 @@
 </span></span><span class="line"><span class="cl">Log Level = 
 </span></span></code></pre></td></tr></table>
 </div>
+</div><ul>
+<li>rewrite Rules
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]RewriteEngine On
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
+</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</span></span></code></pre></td></tr></table>
+</div>
 </div></li>
+</ul>
+</li>
 </ul>
 <h2 id="listeners设置">Listeners设置
 </h2><ul>
@@ -923,48 +973,6 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>openlitespeed中的Virtual Host设置Rewrite
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]RewriteEngine On
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
-</span></span></code></pre></td></tr></table>
-</div>
-</div>具体根据情况考虑要不要<code>强制 HTTP 到 HTTPS</code>和<code>将 www 重定向到非 www（根域名）</code></li>
 </ul>
 <h3 id="多个域名安装ssl">多个域名安装SSL
 </h3><ul>
