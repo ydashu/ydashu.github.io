@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
 <title>linux_centos-hostinger-vps安装wordpress和配置邮箱</title>
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
 <link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
-<meta property='og:description' content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+<meta property='og:description' content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-14T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
-<meta name="twitter:description" content="购买hostinger vps 购买链接\n根据提示界面安装centos\nwindows下ssh和ftp连接远程linux系统 ssh windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件\n操作流程 cmd打开命令行 ssh 用户名@服务器IP地址，默认端口22 按照要求输入账号密码 首次连接，提示是否将服务器的公钥添加到你的本地信任列表中 脚本快捷 win+E打开文件资源管理器 在地址栏中输入 %userprofile%\\.ssh 并按回车键 如果 .ssh 文件夹不存在，你需要手动创建一个名为 .ssh 的文件夹 在 .ssh 文件夹中，创建一个名为 config 的文件（没有扩展名）。如果文件已存在，则直接打开它。 编辑 config 文件 添加以下代码到文件中 1 2 3 4 Host your_alias_name Hostname XX.XX.XXX.XXX User root Port your_port_number 将 your_alias_name 替换为你想要使用的别名，例如 myvps、france 或任何你喜欢的名称。下次你将使用这个别名来连接 将 your_port_number 替换为实际的端口号，默认端口22 将XX.XX.XXX.XXX替换成实际的hostname 下次连接直接win+R，输入ssh your_alias_name连接 ftp ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla\n">
+<meta name="twitter:description" content="一键安装 openlitespeed提供的一键安装\n1 2 3 4 bash &lt;( curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh ) \\ -A &#39;password&#39; \\ -E site1@gmail.com \\ -R &#39;password&#39; 安装完成后openlitespeed的GUI界面端口：7080 手动安装 安装openlitespeed和LSPHP 安装配置mariadb mariadb生成wordpress需要的数据库 生成数据库 登录到 MariaDB 服务器（如果尚未登录）：\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -247,29 +247,10 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#购买hostinger-vps">购买hostinger vps</a></li>
-    <li><a href="#windows下ssh和ftp连接远程linux系统">windows下ssh和ftp连接远程linux系统</a>
+    <li><a href="#一键安装">一键安装</a></li>
+    <li><a href="#手动安装">手动安装</a>
       <ol>
-        <li><a href="#ssh">ssh</a>
-          <ol>
-            <li><a href="#操作流程">操作流程</a></li>
-            <li><a href="#脚本快捷">脚本快捷</a></li>
-          </ol>
-        </li>
-        <li><a href="#ftp">ftp</a></li>
-      </ol>
-    </li>
-    <li><a href="#centos一键安装wordpressopenlitespeed所需的配置文件">centos一键安装wordpress+openlitespeed所需的配置文件</a></li>
-    <li><a href="#centos手动安装wordpressopenlitespeed所需的配置文件">centos手动安装wordpress+openlitespeed所需的配置文件</a>
-      <ol>
-        <li><a href="#安装openlitespeed和lsphp">安装openlitespeed和LSPHP</a>
-          <ol>
-            <li><a href="#install-the-litespeed-repository">Install the LiteSpeed Repository</a></li>
-            <li><a href="#install-openlitespeed">Install OpenLiteSpeed</a></li>
-            <li><a href="#install-lsphp">Install LSPHP</a></li>
-            <li><a href="#access-the-webadmin-console">Access the WebAdmin Console</a></li>
-          </ol>
-        </li>
+        <li><a href="#安装openlitespeed和lsphp">安装openlitespeed和LSPHP</a></li>
         <li><a href="#安装配置mariadb">安装配置mariadb</a></li>
         <li><a href="#mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库</a>
           <ol>
@@ -277,16 +258,16 @@
           </ol>
         </li>
         <li><a href="#安装wordpress">安装wordpress</a></li>
-        <li><a href="#配置openlitespeed">配置openlitespeed</a>
-          <ol>
-            <li><a href="#打开openlitespeed-gui面板">打开openlitespeed GUI面板</a></li>
-            <li><a href="#virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置</a></li>
-            <li><a href="#listeners设置">Listeners设置</a></li>
-          </ol>
-        </li>
-        <li><a href="#配置wordpress的wp-configphp">配置wordpress的wp-config.php</a></li>
       </ol>
     </li>
+    <li><a href="#配置wordpress的wp-configphp">配置wordpress的wp-config.php</a></li>
+    <li><a href="#配置openlitespeed">配置openlitespeed</a>
+      <ol>
+        <li><a href="#打开openlitespeed-gui面板">打开openlitespeed GUI面板</a></li>
+        <li><a href="#virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置</a></li>
+      </ol>
+    </li>
+    <li><a href="#listeners设置">Listeners设置</a></li>
     <li><a href="#安装ssl">安装SSL</a>
       <ol>
         <li><a href="#单个域名安装ssl">单个域名安装SSL</a></li>
@@ -301,14 +282,6 @@
       </ol>
     </li>
     <li><a href="#配置lscache">配置LSCache</a></li>
-    <li><a href="#备份与恢复">备份与恢复</a>
-      <ol>
-        <li><a href="#数据库">数据库</a></li>
-        <li><a href="#wordpress">wordpress</a></li>
-        <li><a href="#更新configuration-file">更新Configuration File</a></li>
-        <li><a href="#cron-自动化备份">Cron 自动化备份</a></li>
-      </ol>
-    </li>
     <li><a href="#配置邮箱">配置邮箱</a>
       <ol>
         <li><a href="#安装docker">安装docker</a></li>
@@ -333,11 +306,8 @@
             </li>
           </ol>
         </li>
-        <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a>
-          <ol>
-            <li><a href="#批量操作-基于脚本">批量操作-基于脚本</a></li>
-          </ol>
-        </li>
+        <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a></li>
+        <li><a href="#设置邮件的大小限制">设置邮件的大小限制</a></li>
         <li><a href="#邮件客户端">邮件客户端</a>
           <ol>
             <li><a href="#实现邮件已读">实现邮件“已读”</a></li>
@@ -415,29 +385,9 @@
     <section class="article-content">
     
     
-    <h2 id="购买hostinger-vps">购买hostinger vps
-</h2><p><a class="link" href="https://www.hostinger.com/vps-hosting"  target="_blank" rel="noopener"
-    >购买链接</a></p>
-<p>根据提示界面安装centos</p>
-<h2 id="windows下ssh和ftp连接远程linux系统">windows下ssh和ftp连接远程linux系统
-</h2><h3 id="ssh">ssh
-</h3><p>windows10和11自带命令行连接，可以不用下载putty等免费开源ssh软件</p>
-<h4 id="操作流程">操作流程
-</h4><ul>
-<li>cmd打开命令行</li>
-<li><code>ssh 用户名@服务器IP地址</code>，默认端口22</li>
-<li>按照要求输入账号密码</li>
-<li>首次连接，提示是否将服务器的公钥添加到你的本地信任列表中</li>
-</ul>
-<h4 id="脚本快捷">脚本快捷
-</h4><ul>
-<li><code>win+E</code>打开文件资源管理器</li>
-<li>在地址栏中输入 <code>%userprofile%\.ssh</code> 并按回车键</li>
-<li>如果 <code>.ssh</code> 文件夹不存在，你需要手动创建一个名为 <code>.ssh</code> 的文件夹</li>
-<li>在 <code>.ssh</code> 文件夹中，创建一个名为 <code>config</code> 的文件（没有扩展名）。如果文件已存在，则直接打开它。</li>
-<li>编辑 <code>config</code> 文件
-<ul>
-<li>添加以下代码到文件中
+    <h2 id="一键安装">一键安装
+</h2><p>openlitespeed提供的<a class="link" href="https://docs.openlitespeed.org/installation/script/https://docs.openlitespeed.org/installation/script/"  target="_blank" rel="noopener"
+    >一键安装</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -446,216 +396,19 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Host your_alias_name
-</span></span><span class="line"><span class="cl">	Hostname XX.XX.XXX.XXX
-</span></span><span class="line"><span class="cl">	User root
-</span></span><span class="line"><span class="cl">	Port your_port_number
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>将 <code>your_alias_name</code> 替换为你想要使用的别名，例如 <code>myvps</code>、<code>france</code> 或任何你喜欢的名称。下次你将使用这个别名来连接</li>
-<li>将 <code>your_port_number</code> 替换为实际的端口号，默认端口22</li>
-<li>将<code>XX.XX.XXX.XXX</code>替换成实际的hostname</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>下次连接直接<code>win+R</code>，输入<code>ssh your_alias_name</code>连接</li>
-</ul>
-<h3 id="ftp">ftp
-</h3><p>ftp也可以在win10和11下用命令行操作，但是传输文件不方便，所以用免费开源的FileZilla</p>
-<p><a class="link" href="https://filezilla-project.org/"  target="_blank" rel="noopener"
-    >下载链接</a>，选择client下载安装</p>
-<p>打开数据主机名、用户名、密码、端口号（默认22），点击<code>快速连接</code>就好</p>
-<p>下次连接点击<code>快速连接</code>的右边下拉有历史记录</p>
-<h2 id="centos一键安装wordpressopenlitespeed所需的配置文件">centos一键安装wordpress+openlitespeed所需的配置文件
-</h2><p>openlitespeed提供的<a class="link" href="https://docs.openlitespeed.org/installation/script/https://docs.openlitespeed.org/installation/script/"  target="_blank" rel="noopener"
-    >一键安装</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span> curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh <span class="o">)</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wordpressplus site1.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wordpresspath Site1/ <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;password&#39;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E site1@gmail.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lsphp <span class="m">81</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --mariadbver 10.11 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbname wordpress <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser wp_user <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;password&#39;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wpuser wp_user <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wppassword <span class="s1">&#39;password&#39;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --sitetitle site1
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>site1 Site1 password  email wp_user替换成自己的</li>
-<li>lsphp mariadbver替换成想装的版本号</li>
 <li>安装完成后openlitespeed的GUI界面端口：7080</li>
 </ul>
-<h2 id="centos手动安装wordpressopenlitespeed所需的配置文件">centos手动安装wordpress+openlitespeed所需的配置文件
-</h2><p>安装 vim</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dnf install vim
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="安装openlitespeed和lsphp">安装openlitespeed和LSPHP
-</h3><p><a class="link" href="https://docs.openlitespeed.org/installation/repo/"  target="_blank" rel="noopener"
-    >官方文档</a></p>
-<h4 id="install-the-litespeed-repository">Install the LiteSpeed Repository
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo wget -O - https://repo.litespeed.sh <span class="p">|</span> sudo bash
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="install-openlitespeed">Install OpenLiteSpeed
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install openlitespeed -y
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="install-lsphp">Install LSPHP
-</h4><p>This command will install <code>lsphp81</code> and <code>lsphp81-mysql</code> into <code>/usr/local/lsws/lsphp81/bin/lsphp</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install lsphp81 lsphp81-common lsphp81-mysqlnd
-</span></span><span class="line"><span class="cl">sudo yum search lsphp
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="access-the-webadmin-console">Access the WebAdmin Console
-</h4><p>The randomly generated WebAdmin password is stored in the <code>/usr/local/lsws/adminpasswd</code> file.</p>
-<p>Run the following command to set the WebAdmin password if needed:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo /usr/local/lsws/admin/misc/admpass.sh
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>check</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usr/local/lsws/bin/lswsctrl status
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>To access the WebAdmin console, visit port <code>7080</code> of your domain (for example, <code>ip:7080/</code>) and log in using the password you just set.</p>
-<h3 id="安装配置mariadb">安装配置mariadb
-</h3><blockquote>
-<p><a class="link" href="https://segmentfault.com/a/1190000045447884"  target="_blank" rel="noopener"
-    >参考链接</a></p></blockquote>
-<ul>
-<li>添加MariaDB官方仓库
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/yum.repos.d/MariaDB.repo
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>添加以下内容
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># MariaDB 10.11 CentOS repository list - created 2025-03-19 01:02 UTC</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># https://mariadb.org/download/</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">mariadb</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="n">MariaDB</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># rpm.mariadb.org is a dynamic mirror if your preferred mirror goes offline. See https://mariadb.org/mirrorbits/ for details.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># baseurl = https://rpm.mariadb.org/10.11/centos/$releasever/$basearch</span>
-</span></span><span class="line"><span class="cl"><span class="n">baseurl</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">xtom</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">hk</span><span class="o">/</span><span class="n">mariadb</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="mf">10.11</span><span class="o">/</span><span class="n">centos</span><span class="o">/$</span><span class="n">releasever</span><span class="o">/$</span><span class="n">basearch</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># gpgkey = https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB</span>
-</span></span><span class="line"><span class="cl"><span class="n">gpgkey</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">xtom</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">hk</span><span class="o">/</span><span class="n">mariadb</span><span class="o">/</span><span class="n">yum</span><span class="o">/</span><span class="n">RPM</span><span class="o">-</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">MariaDB</span>
-</span></span><span class="line"><span class="cl"><span class="n">gpgcheck</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>注意：具体版本号参考官方 <a class="link" href="https://mariadb.org/download/?t=repo-config"  target="_blank" rel="noopener"
-    >https://mariadb.org/download/?t=repo-config</a></li>
-</ul>
-</li>
-<li>安装MariaDB
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum update -y
-</span></span><span class="line"><span class="cl">sudo yum install MariaDB-server MariaDB-client -y
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>启动MariaDB服务
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start mariadb
-</span></span><span class="line"><span class="cl">sudo systemctl status mariadb
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>设置MariaDB开机自启动
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-<h3 id="mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库
+<h2 id="手动安装">手动安装
+</h2><h3 id="安装openlitespeed和lsphp">安装openlitespeed和LSPHP
+</h3><h3 id="安装配置mariadb">安装配置mariadb
+</h3><h3 id="mariadb生成wordpress需要的数据库">mariadb生成wordpress需要的数据库
 </h3><h4 id="生成数据库">生成数据库
 </h4><ul>
 <li>
@@ -680,20 +433,19 @@
 </div></li>
 <li>
 <p>创建数据库：</p>
-<p>为你的 WordPress 网站创建一个新的数据库。通常使用 <code>wordpress</code> 作为数据库名称，但你也可以选择其他名称。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">site1</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>你可以将 <code>wordpress</code> 替换为你想要的数据库名称。</p>
+</div><p>你可以将 <code>site1</code> 替换为你想要的数据库名称。</p>
 </li>
 <li>
-<p>创建一个新的 MariaDB 用户：</p>
-<p>为你的 WordPress 网站创建一个专门的用户。你需要选择一个用户名和一个安全的密码。将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个强密码。</p>
+<p>创建一个新的 MariaDB 用户：
+将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个强密码。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -702,31 +454,24 @@
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;your_strong_password&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li><code>'wp_user'</code>: 这是你将用于 WordPress 连接数据库的用户名。</li>
-<li><code>'localhost'</code>: 这指定该用户只能从运行 MariaDB 服务器的同一主机连接。如果你的 WordPress 网站运行在不同的服务器上，你需要将 <code>'localhost'</code> 替换为 WordPress 服务器的 IP 地址或使用 <code>'%'</code> 允许从任何主机连接（<strong>不推荐用于生产环境，因为它不太安全</strong>）。</li>
-<li><code>'your_strong_password'</code>: 这是你为该用户设置的密码。请务必使用一个强壮且唯一的密码。</li>
-</ul>
-</li>
+</div></li>
 <li>
 <p>授予用户对数据库的权限：</p>
-<p>现在，你需要将你在步骤 2 中创建的数据库的所有权限授予你在步骤 3 中创建的用户。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">site1</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li><code>wordpress.*</code>: 这表示将对 <code>wordpress</code> 数据库中的所有表授予权限。</li>
+<li><code>site1.*</code>: 这表示将对 <code>site1</code> 数据库中的所有表授予权限。</li>
 <li><code>'wp_user'@'localhost'</code>: 这是你之前创建的用户名和主机。</li>
 </ul>
 </li>
 <li>
 <p>刷新权限：</p>
-<p>执行完权限授予操作后，你需要刷新 MariaDB 的权限表，以使更改生效。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -753,10 +498,19 @@
 </div></li>
 <li>
 <p>退出 MariaDB 客户端：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">QUIT</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>总结一下你需要执行的 SQL 命令：</p>
 </li>
 </ul>
-<p>完成以上操作后，你可以退出 MariaDB 客户端：<code>QUIT;</code>
-总结一下你需要执行的 SQL 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -765,16 +519,16 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">site1</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;your_strong_password&#39;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">site1</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>请务必将 <code>wordpress</code> 替换为你想要的数据库名称，将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个安全的密码。</p>
-<h3 id="安装wordpress">安装wordpress
+</div><h3 id="安装wordpress">安装wordpress
 </h3><ul>
-<li>切换到目标目录
+<li>
+<p>切换到目标目录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -790,7 +544,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>新建文件夹
+<li>
+<p>新建文件夹</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -800,7 +555,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>进入 Site1
+<li>
+<p>进入 Site1</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -810,7 +566,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>下载 WordPress
+<li>
+<p>下载 WordPress</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -820,7 +577,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>解压，并删除下载的压缩包
+<li>
+<p>解压，并删除下载的压缩包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -832,7 +590,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>将 WordPress 文件移动到站点根目录
+<li>
+<p>将 WordPress 文件移动到站点根目录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -844,19 +603,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>更改目录文件的权限：更安全，默认是755和644，<strong>一般直接用默认，不需要修改</strong>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /usr/local/lsws/virtual_host_root/wordpress/site1/ -type d -exec chmod <span class="m">750</span> <span class="o">{}</span> <span class="se">\;</span>
-</span></span><span class="line"><span class="cl">find /usr/local/lsws/virtual_host_root/wordpress/site1/ -type f -exec chmod <span class="m">640</span> <span class="o">{}</span> <span class="se">\;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>更改用户
+<li>
+<p>更改用户</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -870,13 +618,59 @@
 </ul>
 </li>
 </ul>
-<h3 id="配置openlitespeed">配置openlitespeed
-</h3><h4 id="打开openlitespeed-gui面板">打开openlitespeed GUI面板
-</h4><pre><code>格式为 `ip:7080`
+<h2 id="配置wordpress的wp-configphp">配置wordpress的wp-config.php
+</h2><ul>
+<li>打开wordpress安装的文件夹</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/lsws/virtual_host_root/wordpress/site1/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>打开并修改wp-config-sample.php</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi wp-config-sample.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cataoase name here = wordpress
+</span></span><span class="line"><span class="cl">username_here = wp_user
+</span></span><span class="line"><span class="cl">password_here = your_strong_password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>wp-config-sample.php重命名wp-config.php</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv wp-config-sample.php wp-config.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置openlitespeed">配置openlitespeed
+</h2><h3 id="打开openlitespeed-gui面板">打开openlitespeed GUI面板
+</h3><pre><code>格式为 `ip:7080`
 如果浏览器出现提示风险，选择accept，就可以跳转
 </code></pre>
-<h4 id="virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置
-</h4><ul>
+<h3 id="virtual-hosts虚拟主机设置">Virtual Hosts虚拟主机设置
+</h3><ul>
 <li>界面右上角点击add，基础配置
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -997,8 +791,8 @@
 </div>
 </div></li>
 </ul>
-<h4 id="listeners设置">Listeners设置
-</h4><ul>
+<h2 id="listeners设置">Listeners设置
+</h2><ul>
 <li>界面右上角点击add，基础配置</li>
 <li>HTTP Listener
 <div class="highlight"><div class="chroma">
@@ -1053,53 +847,7 @@
 </div>
 </div></li>
 </ul>
-<h3 id="配置wordpress的wp-configphp">配置wordpress的wp-config.php
-</h3><ul>
-<li>打开wordpress安装的文件夹</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/lsws/virtual_host_root/wordpress/site1/
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>打开并修改wp-config-sample.php</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi wp-config-sample.php
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cataoase name here = wordpress
-</span></span><span class="line"><span class="cl">username_here = wp_user
-</span></span><span class="line"><span class="cl">password_here = your_strong_password
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>wp-config-sample.php重命名wp-config.php</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv wp-config-sample.php wp-config.php
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="安装ssl">安装SSL
+<h2 id="安装ssl">安装SSL
 </h2><p>Let&rsquo;s Encrypt (免费)</p>
 <ul>
 <li>安装 Certbot
@@ -1537,96 +1285,7 @@
 </div>
 </div></li>
 </ul>
-<h2 id="备份与恢复">备份与恢复
-</h2><h3 id="数据库">数据库
-</h3><ul>
-<li>备份
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysqldump -u username -p database_name &gt; backup_filename.sql
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>恢复
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -u username -p database_name &lt; backup_filename.sql
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-<h3 id="wordpress">wordpress
-</h3><ul>
-<li>备份
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -czvf backup_filename.tar.gz /path/to/wordpress_directory
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>恢复</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xzvf backup_filename.tar.gz -C /path/to/new_wordpress_directory
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="更新configuration-file">更新Configuration File
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /path/to/wordpress/wp-config.php
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;new_database_name&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;new_username&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;new_password&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;new_host&#39;</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="cron-自动化备份">Cron 自动化备份
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -e
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>每天7点，系统为UTC+8</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">7</span> * * * tar -czf /backup/wordpress-backup-<span class="k">$(</span>date +<span class="se">\%</span>F<span class="k">)</span>.tar.gz -C /path/to/wordpress .
-</span></span><span class="line"><span class="cl"><span class="m">0</span> <span class="m">7</span> * * * wp db <span class="nb">export</span> /backup/database-backup-<span class="k">$(</span>date +<span class="se">\%</span>F<span class="k">)</span>.sql --path<span class="o">=</span>/path/to/wordpress
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="配置邮箱">配置邮箱
+<h2 id="配置邮箱">配置邮箱
 </h2><p>方法一：企业微信配置邮箱</p>
 <ul>
 <li>DNS配置MX
@@ -2315,8 +1974,46 @@
 </ul>
 </li>
 </ul>
-<h4 id="批量操作-基于脚本">批量操作-基于脚本
-</h4><p>略；后期再研究</p>
+<h3 id="设置邮件的大小限制">设置邮件的大小限制
+</h3><p>根据官方<a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/config/environment/#postfix_message_size_limit"  target="_blank" rel="noopener"
+    >参考文档</a>，默认的邮件上限是10M，需要修改<code>mailserver.env</code>的上限，改成需要的上限</p>
+<ul>
+<li>
+<p>进入配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /opt/mailserver/mailserver.env
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>修改参数，保存退出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POSTFIX_MESSAGE_SIZE_LIMIT=XXXXXXXXX
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>重启docker-compose</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down
+</span></span><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 <h3 id="邮件客户端">邮件客户端
 </h3><p>推荐使用</p>
 <ul>
@@ -2547,12 +2244,12 @@
             
                 
 <article class="">
-    <a href="/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/">
+    <a href="/p/wordpress%E5%A4%87%E4%BB%BD/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">wordpress Meow&#43;ACF实现动态产品图片展示</h2>
+            <h2 class="article-title">wordpress备份</h2>
         </div>
     </a>
 </article>
@@ -2560,12 +2257,12 @@
             
                 
 <article class="">
-    <a href="/p/wordpress%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E8%AE%A1/">
+    <a href="/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">wordpress字体颜色设计</h2>
+            <h2 class="article-title">wordpress Meow&#43;ACF实现动态产品图片展示</h2>
         </div>
     </a>
 </article>

@@ -318,7 +318,9 @@
     <section class="article-content">
     
     
-    <h2 id="linux后台方法">linux后台方法
+    <blockquote>
+<p>改进版和之前不同是wordpress目录由<code>/usr/local/lsws/virtual_host_root/wordpress/site1</code>改成<code>/var/www/site1</code></p></blockquote>
+<h2 id="linux后台方法">linux后台方法
 </h2><ul>
 <li>备份结构
 <div class="highlight"><div class="chroma">
@@ -470,11 +472,11 @@
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backups/wordpress&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&#34;db_user&#34;</span>     <span class="c1"># 替换</span>
 </span></span><span class="line"><span class="cl"><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s2">&#34;db_password&#34;</span>   <span class="c1"># 替换</span>
-</span></span><span class="line"><span class="cl"><span class="nv">WEB_ROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">WEB_ROOT</span><span class="o">=</span><span class="s2">&#34;/var/www/&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_USER</span><span class="o">=</span><span class="s2">&#34;root&#34;</span>  <span class="c1"># 替换为实际用户，例如 www-data 或 admin</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_GROUP</span><span class="o">=</span><span class="s2">&#34;root&#34;</span> <span class="c1"># 替换为实际组，例如 www-data 或 admin</span>
 </span></span><span class="line"><span class="cl"><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%F<span class="k">)</span>
-</span></span><span class="line"><span class="cl"><span class="nv">RETENTION_DAYS</span><span class="o">=</span><span class="m">30</span>  <span class="c1"># 保留天数</span>
+</span></span><span class="line"><span class="cl"><span class="nv">RETENTION_DAYS</span><span class="o">=</span><span class="m">5</span>  <span class="c1"># 保留天数</span>
 </span></span><span class="line"><span class="cl"><span class="nv">CLEAN_LOG</span><span class="o">=</span><span class="s2">&#34;/var/log/wp_clean_backup.log&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 确保文件存在</span>
@@ -671,7 +673,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 配置</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backups/wordpress&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">WEB_ROOT</span><span class="o">=</span><span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">WEB_ROOT</span><span class="o">=</span><span class="s2">&#34;/var/www&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&#34;db_user&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s2">&#34;db_password&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">RESTORE_USER</span><span class="o">=</span><span class="s2">&#34;nobody&#34;</span>  <span class="c1"># 替换为实际用户，例如 www-data</span>
@@ -848,6 +850,19 @@
             
                 
 <article class="">
+    <a href="/p/wordpress%E5%A4%87%E4%BB%BD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress备份</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/">
         
         
@@ -867,19 +882,6 @@
 
         <div class="article-details">
             <h2 class="article-title">wordpress字体颜色设计</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E9%85%8D%E7%BD%AEsmtp/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress配置SMTP</h2>
         </div>
     </a>
 </article>
