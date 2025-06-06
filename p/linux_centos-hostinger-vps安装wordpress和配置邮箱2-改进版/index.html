@@ -247,6 +247,8 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#安装防火墙开启相关端口">安装防火墙，开启相关端口</a></li>
+    <li><a href="#安装libcryptso1">安装<code>libcrypt.so.1</code></a></li>
     <li><a href="#一键安装">一键安装</a></li>
     <li><a href="#手动安装">手动安装</a>
       <ol>
@@ -387,9 +389,69 @@
     
     <blockquote>
 <p>改进版和之前不同是wordpress目录由<code>/usr/local/lsws/virtual_host_root/wordpress/site1</code>改成<code>/var/www/site1</code></p></blockquote>
-<h2 id="一键安装">一键安装
-</h2><p>openlitespeed提供的<a class="link" href="https://docs.openlitespeed.org/installation/script/https://docs.openlitespeed.org/installation/script/"  target="_blank" rel="noopener"
-    >一键安装</a></p>
+<h2 id="安装防火墙开启相关端口">安装防火墙，开启相关端口
+</h2><ul>
+<li>邮件发送：
+<ul>
+<li>25/tcp - SMTP（简单邮件传输协议）</li>
+<li>465/tcp - SMTPS（安全的 SMTP，使用 SSL/TLS）</li>
+<li>587/tcp - Submission（邮件提交端口，通常用于客户端）</li>
+</ul>
+</li>
+<li>邮件接收：
+<ul>
+<li>110/tcp - POP3（邮局协议第 3 版）</li>
+<li>143/tcp - IMAP（互联网消息访问协议）</li>
+<li>995/tcp - POP3S（安全的 POP3，使用 SSL/TLS）</li>
+<li>993/tcp - IMAPS（安全的 IMAP，使用 SSL/TLS）</li>
+</ul>
+</li>
+<li>Web 邮箱界面：
+<ul>
+<li>80/tcp - HTTP（网页访问）</li>
+<li>443/tcp - HTTPS（安全的网页访问，使用 SSL/TLS）。</li>
+</ul>
+</li>
+</ul>
+<p>系统默认没有安装防火墙，即端口全开。如需安装配置防火墙可参考以下</p>
+<ul>
+<li>
+<p>安装firewalld。(或者安装静态简单版的ufw)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install firewalld
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>启动并设置开机启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start firewalld
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> firewalld
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查看已开放的端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --list-all
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开启端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -399,15 +461,103 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span> curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh <span class="o">)</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;password&#39;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E site1@gmail.com <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;password&#39;</span>
-</span></span><span class="line"><span class="cl">  --dbname wordpress <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser wp_user <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;password&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>25/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>465/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>587/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>143/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>993/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>110/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>995/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>80/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>443/tcp --permanent
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>7080/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>8088/tcp --permanent
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>重新加载防火墙规则</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查看已开放的端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --list-all
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="安装libcryptso1">安装<code>libcrypt.so.1</code>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo yum install libxcrypt-compat -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart lshttpd
+</span></span><span class="line"><span class="cl">sudo systemctl status lshttpd  <span class="c1"># 检查状态是否正常</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="一键安装">一键安装
+</h2><p>openlitespeed提供的<a class="link" href="https://docs.openlitespeed.org/installation/script/https://docs.openlitespeed.org/installation/script/"  target="_blank" rel="noopener"
+    >一键安装</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash &lt;<span class="o">(</span>curl -k https://raw.githubusercontent.com/litespeedtech/ols1clk/master/ols1clk.sh<span class="o">)</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -A <span class="s1">&#39;YourWebAdminPassword&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -E your_email@example.com <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -R <span class="s1">&#39;YourDBRootPassword&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -W <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wordpresspath <span class="s1">&#39;/usr/local/lsws/DEFAULT/html/&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbname <span class="s1">&#39;wordpress_db&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbuser <span class="s1">&#39;wp_user&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dbpassword <span class="s1">&#39;WP_DB_UserPassword&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wpuser <span class="s1">&#39;admin_username&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --wppassword <span class="s1">&#39;WordPressAdminPassword&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -449,11 +599,9 @@
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">site1</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>你可以将 <code>site1</code> 替换为你想要的数据库名称。</p>
-</li>
+</div></li>
 <li>
-<p>创建一个新的 MariaDB 用户：
-将 <code>wp_user</code> 替换为你想要的用户名，并将 <code>your_strong_password</code> 替换为一个强密码。</p>
+<p>创建一个新的 MariaDB 用户：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -473,11 +621,7 @@
 <pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">site1</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wp_user&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li><code>site1.*</code>: 这表示将对 <code>site1</code> 数据库中的所有表授予权限。</li>
-<li><code>'wp_user'@'localhost'</code>: 这是你之前创建的用户名和主机。</li>
-</ul>
-</li>
+</div></li>
 <li>
 <p>刷新权限：</p>
 <div class="highlight"><div class="chroma">
@@ -2071,7 +2215,8 @@
 </ul>
 <p>系统默认没有安装防火墙，即端口全开。如需安装配置防火墙可参考以下</p>
 <ul>
-<li>安装firewalld。(或者安装静态简单版的ufw)
+<li>
+<p>安装firewalld。(或者安装静态简单版的ufw)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2081,7 +2226,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>启动并设置开机启动
+<li>
+<p>启动并设置开机启动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2093,7 +2239,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>查看已开放的端口
+<li>
+<p>查看已开放的端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2103,7 +2250,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>开启端口
+<li>
+<p>开启端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2128,8 +2276,19 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>443/tcp --permanent
 </span></span></code></pre></td></tr></table>
 </div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>7080/tcp --permanent <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                  --add-port<span class="o">=</span>8088/tcp --permanent
+</span></span></code></pre></td></tr></table>
+</div>
 </div></li>
-<li>重新加载防火墙规则
+<li>
+<p>重新加载防火墙规则</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2139,7 +2298,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>查看已开放的端口
+<li>
+<p>查看已开放的端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
