@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="字符集概念 1、字符（Character） 字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。\n2、字符编码 计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。\n">
+<title>字符编码</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="字符编码">
+<meta property='og:description' content="字符集概念 1、字符（Character） 字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。\n2、字符编码 计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。\n">
+<meta property='og:url' content='https://ydashu.github.io/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:tag' content='mariadb' /><meta property='article:tag' content='unicode' /><meta property='article:published_time' content='2025-06-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-10T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="字符编码">
+<meta name="twitter:description" content="字符集概念 1、字符（Character） 字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。\n2、字符编码 计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#字符集概念">字符集概念</a></li>
+    <li><a href="#mysql后缀">mysql后缀</a></li>
+    <li><a href="#mariadb默认编码">mariadb默认编码</a>
+      <ol>
+        <li><a href="#字符集和字符序">字符集和字符序</a>
+          <ol>
+            <li><a href="#字符集层级关系">字符集层级关系</a></li>
+          </ol>
+        </li>
+        <li><a href="#查看编码">查看编码</a>
+          <ol>
+            <li><a href="#字符集相关配置">字符集相关配置</a></li>
+            <li><a href="#排序规则相关配置">排序规则相关配置</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+            <a href="/categories/wordpress/" >
+                Wordpress
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符编码</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-10</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="字符集概念">字符集概念
+</h2><p>1、字符（Character）
+字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。</p>
+<p>2、字符编码
+计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。</p>
+<p>3、字符集（Character set）
+字符集是多个字符的集合，包含一组字符以及对应的编码方式。字符集种类较多，每个字符集包含的字符个数和编码方式不同，常见字符集名称：ASCII 、latin1 、GB2312 、Unicode 等。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>维度</th>
+          <th>ASCII</th>
+          <th>Latin1 (ISO-8859-1)</th>
+          <th>GB2312</th>
+          <th>Unicode</th>
+          <th>UTF8MB3 (MySQL)</th>
+          <th>UTF8MB4 (MySQL)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>编码范围</strong></td>
+          <td>0x00-0x7F (7位)</td>
+          <td>0x00-0xFF (8位)</td>
+          <td>双字节（0xA1A1-0xF7FE）</td>
+          <td>变长（UTF-8/16/32）</td>
+          <td>UTF-8（3字节最大）</td>
+          <td>UTF-8（4字节最大）</td>
+      </tr>
+      <tr>
+          <td><strong>字符数量</strong></td>
+          <td>128个</td>
+          <td>256个</td>
+          <td>7445个（汉字6763个）</td>
+          <td>超14万（持续扩展）</td>
+          <td>基本多文种平面（BMP）</td>
+          <td>完整Unicode（含补充字符）</td>
+      </tr>
+      <tr>
+          <td><strong>语言支持</strong></td>
+          <td>英文基础符号</td>
+          <td>西欧语言</td>
+          <td>简体中文</td>
+          <td>全球所有语言</td>
+          <td>全球主要语言</td>
+          <td>全球所有语言（含emoji）</td>
+      </tr>
+      <tr>
+          <td><strong>兼容性</strong></td>
+          <td>所有编码的基础</td>
+          <td>兼容ASCII</td>
+          <td>不兼容ASCII双字节</td>
+          <td>兼容ASCII（UTF-8）</td>
+          <td>兼容ASCII</td>
+          <td>兼容ASCII</td>
+      </tr>
+      <tr>
+          <td><strong>存储效率</strong></td>
+          <td>最高（1字节/字符）</td>
+          <td>高（1字节/字符）</td>
+          <td>中等（2字节/汉字）</td>
+          <td>变长（UTF-8:1-4字节）</td>
+          <td>1-3字节/字符</td>
+          <td>1-4字节/字符</td>
+      </tr>
+      <tr>
+          <td><strong>扩展性</strong></td>
+          <td>不可扩展</td>
+          <td>有限扩展</td>
+          <td>仅限中文</td>
+          <td>无限扩展</td>
+          <td>有限（仅BMP）</td>
+          <td>完整Unicode支持</td>
+      </tr>
+      <tr>
+          <td><strong>典型应用场景</strong></td>
+          <td>早期计算机、基础文本</td>
+          <td>西欧网页/旧系统</td>
+          <td>中国大陆早期系统</td>
+          <td>现代操作系统/互联网</td>
+          <td>MySQL旧版本（&lt;5.5.3）</td>
+          <td>MySQL 5.5.3+（推荐）</td>
+      </tr>
+      <tr>
+          <td><strong>版本/标准</strong></td>
+          <td>ANSI X3.4-1968</td>
+          <td>ISO/IEC 8859-1:1998</td>
+          <td>中国国家标准1980</td>
+          <td>Unicode标准（最新15.0）</td>
+          <td>MySQL UTF-8实现</td>
+          <td>MySQL UTF-8改进版</td>
+      </tr>
+      <tr>
+          <td><strong>特殊说明</strong></td>
+          <td>控制字符占32个</td>
+          <td>ASCII的超集</td>
+          <td>已逐步被GBK取代</td>
+          <td>包含UTF-8/16/32等方案</td>
+          <td>不支持4字节字符（如emoji）</td>
+          <td>支持4字节字符（如emoji）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="mysql后缀">mysql后缀
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>后缀</strong></th>
+          <th><strong>全称</strong></th>
+          <th><strong>含义</strong></th>
+          <th><strong>适用场景</strong></th>
+          <th><strong>示例</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>bin</strong></td>
+          <td>Binary</td>
+          <td><strong>二进制比较</strong>，严格区分大小写、口音、假名等</td>
+          <td>密码、哈希值、二进制数据</td>
+          <td><code>utf8mb4_bin</code></td>
+      </tr>
+      <tr>
+          <td><strong>ci</strong></td>
+          <td>Case Insensitive</td>
+          <td><strong>大小写不敏感</strong>（A = a）</td>
+          <td>通用文本搜索（用户名、邮箱）</td>
+          <td><code>utf8mb4_general_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>cs</strong></td>
+          <td>Case Sensitive</td>
+          <td><strong>大小写敏感</strong>（A ≠ a）</td>
+          <td>区分大小写的场景（如编程关键字、区分ID）</td>
+          <td><code>utf8mb4_0900_as_cs</code></td>
+      </tr>
+      <tr>
+          <td><strong>ai</strong></td>
+          <td>Accent Insensitive</td>
+          <td><strong>口音不敏感</strong>（é = e）</td>
+          <td>法语、西班牙语等忽略重音符号的搜索</td>
+          <td><code>utf8mb4_0900_ai_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>as</strong></td>
+          <td>Accent Sensitive</td>
+          <td><strong>口音敏感</strong>（é ≠ e）</td>
+          <td>精确匹配带口音的字符（如法语正式文档）</td>
+          <td><code>utf8mb4_0900_as_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>ks</strong></td>
+          <td>Kana Sensitive</td>
+          <td><strong>假名敏感</strong>（あ ≠ ア，平假名 ≠ 片假名）</td>
+          <td>日语文本处理</td>
+          <td><code>utf8mb4_ja_0900_as_cs_ks</code></td>
+      </tr>
+      <tr>
+          <td><strong>uca</strong></td>
+          <td>Unicode Collation Algorithm</td>
+          <td>基于Unicode标准的排序规则（更精确的多语言支持）</td>
+          <td>国际化应用（推荐替代<code>general_ci</code>）</td>
+          <td><code>utf8mb4_unicode_ci</code>（旧）<br><code>utf8mb4_0900_ai_ci</code>（新）</td>
+      </tr>
+      <tr>
+          <td><strong>unicode</strong></td>
+          <td>Unicode</td>
+          <td>旧版Unicode排序规则（兼容性高，但不如<code>uca</code>精确）</td>
+          <td>旧系统兼容</td>
+          <td><code>utf8mb4_unicode_520_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>general</strong></td>
+          <td>General</td>
+          <td>简化版排序规则（性能高，但准确性低）</td>
+          <td>旧版MySQL默认</td>
+          <td><code>utf8mb4_general_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>0900</strong></td>
+          <td>Unicode 9.0</td>
+          <td>基于Unicode 9.0标准的排序规则（更现代）</td>
+          <td>新项目推荐</td>
+          <td><code>utf8mb4_0900_ai_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>520</strong></td>
+          <td>Unicode 5.2.0</td>
+          <td>基于Unicode 5.2.0标准的排序规则（旧版）</td>
+          <td>兼容旧数据</td>
+          <td><code>utf8mb4_unicode_520_ci</code></td>
+      </tr>
+      <tr>
+          <td><strong>ja</strong></td>
+          <td>Japanese</td>
+          <td>日语专用排序规则（考虑假名、汉字读音等）</td>
+          <td>日语文本</td>
+          <td><code>utf8mb4_ja_0900_as_cs_ks</code></td>
+      </tr>
+      <tr>
+          <td><strong>zh</strong></td>
+          <td>Chinese</td>
+          <td>中文专用排序规则（拼音或笔画排序）</td>
+          <td>中文文本搜索</td>
+          <td><code>utf8mb4_zh_0900_as_cs</code></td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="mariadb默认编码">mariadb默认编码
+</h2><blockquote>
+<p>版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1</p></blockquote>
+<h3 id="字符集和字符序">字符集和字符序
+</h3><blockquote>
+<p>Charset and Collation</p></blockquote>
+<p>字符序是字符集的子集</p>
+<ul>
+<li>每个字符集都有一个或多个字符序；</li>
+<li>每个字符集都有一个默认的字符序；</li>
+<li>每个字符序都关联一个且只有一个字符集；</li>
+<li>两个不同的字符集没有相同的字符序。</li>
+</ul>
+<h4 id="字符集层级关系">字符集层级关系
+</h4><p>MySQL 是按层级来设定字符集与字符序的，MySQL 可以设置：<strong>服务器级字符集、数据库级字符集、数据表级字符集、表列级别字符集。(server, DB, table, column)</strong></p>
+<p>下一层级如果没有指定字符集与字符序，就采用上一层级的字符集与字符序</p>
+<h3 id="查看编码">查看编码
+</h3><ul>
+<li>进入 mariadb： 输入 <code>mysql</code></li>
+<li>显示当前编码
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;character_set%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SHOW</span><span class="w"> </span><span class="n">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;collation%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>显示和解释如下</li>
+</ul>
+<h4 id="字符集相关配置">字符集相关配置
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>变量名</th>
+          <th>当前值</th>
+          <th>详细解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>character_set_client</code></td>
+          <td><code>utf8mb3</code></td>
+          <td><strong>客户端发送的查询语句的字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_collations</code></td>
+          <td>(空)</td>
+          <td><strong>可用的排序规则列表</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_connection</code></td>
+          <td><code>utf8mb3</code></td>
+          <td><strong>查询处理使用的字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_database</code></td>
+          <td><code>latin1</code></td>
+          <td><strong>默认数据库的字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_filesystem</code></td>
+          <td><code>binary</code></td>
+          <td><strong>文件系统字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_results</code></td>
+          <td><code>utf8mb3</code></td>
+          <td><strong>返回结果的字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_server</code></td>
+          <td><code>latin1</code></td>
+          <td><strong>服务器默认字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_system</code></td>
+          <td><code>utf8mb3</code></td>
+          <td><strong>系统元数据字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_sets_dir</code></td>
+          <td><code>/usr/share/mariadb/charsets/</code></td>
+          <td><strong>字符集文件目录</strong></td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="排序规则相关配置">排序规则相关配置
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>变量名</th>
+          <th>当前值</th>
+          <th>详细解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>collation_connection</code></td>
+          <td><code>utf8mb3_general_ci</code></td>
+          <td><strong>当前连接的排序规则</strong></td>
+      </tr>
+      <tr>
+          <td><code>collation_database</code></td>
+          <td><code>latin1_swedish_ci</code></td>
+          <td><strong>默认数据库的排序规则</strong></td>
+      </tr>
+      <tr>
+          <td><code>collation_server</code></td>
+          <td><code>latin1_swedish_ci</code></td>
+          <td><strong>服务器默认排序规则</strong></td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/mysql/">MySQL</a>
+        
+            <a href="/tags/mariadb/">Mariadb</a>
+        
+            <a href="/tags/unicode/">Unicode</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置Gmail的SMTP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E8%BF%81%E7%A7%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress迁移</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mailserver%E5%A4%87%E4%BB%BD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">mailserver备份</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/slider%E6%8F%92%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">slider插件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E5%A4%87%E4%BB%BD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress备份</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

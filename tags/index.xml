@@ -7,7 +7,39 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mariadb</title>
+        <link>https://ydashu.github.io/tags/mariadb/</link>
+        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/mariadb/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>MySQL</title>
+        <link>https://ydashu.github.io/tags/mysql/</link>
+        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/mysql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>SMTP</title>
+        <link>https://ydashu.github.io/tags/smtp/</link>
+        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/smtp/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Unicode</title>
+        <link>https://ydashu.github.io/tags/unicode/</link>
+        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/unicode/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>张祥前</title>
         <link>https://ydashu.github.io/tags/%E5%BC%A0%E7%A5%A5%E5%89%8D/</link>
         <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
@@ -29,14 +61,6 @@
         <pubDate>Wed, 16 Apr 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/meow/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>SMTP</title>
-        <link>https://ydashu.github.io/tags/smtp/</link>
-        <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/smtp/</guid>
         <description></description>
         </item>
         <item>
@@ -93,14 +117,6 @@
         <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/javascript/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>MySQL</title>
-        <link>https://ydashu.github.io/tags/mysql/</link>
-        <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/mysql/</guid>
         <description></description>
         </item>
         <item>

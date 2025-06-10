@@ -2,16 +2,16 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="hugo:The world’s fastest framework for building websites\n自称是最快的建站框架 静态网站，hugo比hexo快 网站速度hugo &gt; hexo &gt; (wordpresss ? shopify) 可以零成本搭建（本地计算机 + github page等免费host + github action自动触发） 官网：gohugo.io 下面以 windows本地计算机 + github page + github action展示建站流程\n">
-<title>hugo建站流程</title>
+<title>hugo建站流程-windows</title>
 
-<link rel='canonical' href='https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/'>
+<link rel='canonical' href='https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B-windows/'>
 
-<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="hugo建站流程">
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="hugo建站流程-windows">
 <meta property='og:description' content="hugo:The world’s fastest framework for building websites\n自称是最快的建站框架 静态网站，hugo比hexo快 网站速度hugo &gt; hexo &gt; (wordpresss ? shopify) 可以零成本搭建（本地计算机 + github page等免费host + github action自动触发） 官网：gohugo.io 下面以 windows本地计算机 + github page + github action展示建站流程\n">
-<meta property='og:url' content='https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/'>
+<meta property='og:url' content='https://ydashu.github.io/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B-windows/'>
 <meta property='og:site_name' content='ydashu'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github' /><meta property='article:tag' content='stack' /><meta property='article:tag' content='yaml' /><meta property='article:published_time' content='2024-12-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-24T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="hugo建站流程">
+<meta name="twitter:title" content="hugo建站流程-windows">
 <meta name="twitter:description" content="hugo:The world’s fastest framework for building websites\n自称是最快的建站框架 静态网站，hugo比hexo快 网站速度hugo &gt; hexo &gt; (wordpresss ? shopify) 可以零成本搭建（本地计算机 + github page等免费host + github action自动触发） 官网：gohugo.io 下面以 windows本地计算机 + github page + github action展示建站流程\n">
     <link rel="shortcut icon" href="/001.ico" />
 
@@ -282,12 +282,7 @@
         <li><a href="#创建github账号token">创建github账号token</a></li>
         <li><a href="#创建github-action触发代码">创建github action触发代码</a></li>
         <li><a href="#创建gitignore文件">创建<code>.gitignore</code>文件</a></li>
-        <li><a href="#token配置">Token配置</a>
-          <ol>
-            <li><a href="#github设置token">github设置Token</a></li>
-            <li><a href="#hugo设置token">hugo设置Token</a></li>
-          </ol>
-        </li>
+        <li><a href="#token配置">Token配置</a></li>
         <li><a href="#hugo主文件上传">hugo主文件上传</a></li>
         <li><a href="#检查-1">检查</a></li>
         <li><a href="#post编辑">post编辑</a>
@@ -337,7 +332,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B/">hugo建站流程</a>
+            <a href="/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B-windows/">hugo建站流程-windows</a>
         </h2>
     
         
@@ -1158,33 +1153,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="token配置">Token配置
-</h3><h4 id="github设置token">github设置Token
-</h4><blockquote>
-<p>为保证安全，将生成的 Token 保存在仓库的环境变量中</p></blockquote>
-<ul>
-<li>前往仓库<code>my_github_username_main</code>的 <code>Settings/Secuits/Secrets and variables/Actions</code></li>
-<li>点击<code>New repository secret</code>
-<ul>
-<li>Name: HUGO_TOKEN</li>
-<li>Secret: hugo_deploy_token</li>
-</ul>
-<blockquote>
-<p>是上面的<a class="link" href="/p/hugo%e5%bb%ba%e7%ab%99%e6%b5%81%e7%a8%8b/#%e5%88%9b%e5%bb%bagithub%e8%b4%a6%e5%8f%b7token" >创建github账号token</a>生成的token</p></blockquote>
-</li>
-</ul>
-<h4 id="hugo设置token">hugo设置Token
-</h4><p>更改<code>/test_site/.github/workflows/deploy.yaml</code>中的参数PERSONAL_TOKEN</p>
-<ul>
-<li>方法一：直接把HUGO_TOKEN_secret复制过去。这种方法不安全，不推荐</li>
-<li>方法二：设置<code>/test_site/.github/workflows/deploy.yaml</code>中的参数PERSONAL_TOKEN
-<ul>
-<li>PERSONAL_TOKEN: ${{ secrets.HUGO_TOKEN }}</li>
-</ul>
-<blockquote>
-<p>通过调用github仓库<code>my_github_username_main</code>环境变量，比方法一更安全</p></blockquote>
-</li>
-</ul>
-<h3 id="hugo主文件上传">hugo主文件上传
+</h3><h3 id="hugo主文件上传">hugo主文件上传
 </h3><blockquote>
 <p>hugo主文件上传至my_github_username_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面</p></blockquote>
 <p><code>/test_site/</code>界面<code>cmd</code>后，输入以下命令</p>
@@ -1347,6 +1316,19 @@
             
                 
 <article class="">
+    <a href="/p/hugo%E5%BB%BA%E7%AB%99%E6%B5%81%E7%A8%8B-linux/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">hugo建站流程-linux</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/hugo-front-matter-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E/">
         
         
@@ -1360,51 +1342,38 @@
             
                 
 <article class="">
+    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">字符编码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置Gmail的SMTP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/wordpress%E8%BF%81%E7%A7%BB/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">wordpress迁移</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/mailserver%E5%A4%87%E4%BB%BD/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">mailserver备份</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/slider%E6%8F%92%E4%BB%B6/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">slider插件</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E5%A4%87%E4%BB%BD/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress备份</h2>
         </div>
     </a>
 </article>

@@ -7,223 +7,39 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/smtp/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>wordpress配置SMTP</title>
-        <link>https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/</link>
-        <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/smtp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>设置Gmail的SMTP</title>
+        <link>https://ydashu.github.io/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/</link>
+        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://ydashu.github.io/p/wordpress%E9%85%8D%E7%BD%AEsmtp/</guid>
-        <description>&lt;h2 id=&#34;插件&#34;&gt;插件
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;轻量级
+        <guid>https://ydashu.github.io/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;Google帐户启用&lt;a class=&#34;link&#34; href=&#34;https://support.google.com/accounts/answer/185839&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;两步骤验证&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;设置&lt;a class=&#34;link&#34; href=&#34;https://support.google.com/accounts/answer/185833&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;应用程序密码&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;SMTP Mailer
-&lt;ul&gt;
-&lt;li&gt;推荐&lt;code&gt;1.15&lt;/code&gt;版本，无pro&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://myaccount.google.com/apppasswords&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;创建和管理应用专用密码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;设置保存记录16位密码&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;SMTP Connector&lt;/li&gt;
+&lt;li&gt;根据以下说明填写必填字段
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SMTP服务器&lt;/strong&gt;smtp.gmail.com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SMTP端口&lt;/strong&gt;587&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需要验证&lt;/strong&gt;勾选复选框。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户名&lt;/strong&gt;输入您的 Gmail 地址。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;密码&lt;/strong&gt;输入保存的16位密码&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;常用
-&lt;ul&gt;
-&lt;li&gt;FluentSMTP&lt;/li&gt;
-&lt;li&gt;WP Mail SMTP&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;smtp常用字段&#34;&gt;SMTP常用字段
-&lt;/h2&gt;&lt;h3 id=&#34;1-smtp-host&#34;&gt;1. SMTP Host
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 主机是邮件服务器的地址，用于处理邮件的发送。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入邮件服务提供商提供的 SMTP 服务器地址。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail：&lt;code&gt;smtp.gmail.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Outlook：&lt;code&gt;smtp-mail.outlook.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SendGrid：&lt;code&gt;smtp.sendgrid.net&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;自有服务器：可能是 &lt;code&gt;mail.yourdomain.com&lt;/code&gt;（需咨询主机提供商）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：确保准确无误，通常在邮件服务商的帮助文档中可以找到。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-smtp-authentication&#34;&gt;2. SMTP Authentication
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：是否需要身份验证才能使用 SMTP 服务器。大多数现代邮件服务都要求验证，以防止未经授权的发送。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：通常选择“Yes”或“Enabled”（是/启用）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail、Outlook、SendGrid 等都要求认证，选择“Yes”。&lt;/li&gt;
-&lt;li&gt;如果是本地未加密服务器，可能选“No”（极少见）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：除非明确知道服务器不需要认证，默认选“Yes”。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3-smtp-username&#34;&gt;3. SMTP Username
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：登录 SMTP 服务器的用户名，通常是你的邮箱地址或服务提供的特定用户名。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入完整的邮箱地址或服务分配的用户名。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail：&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SendGrid：通常是 &lt;code&gt;apikey&lt;/code&gt;（而不是邮箱）。&lt;/li&gt;
-&lt;li&gt;自有服务器：可能是 &lt;code&gt;user@yourdomain.com&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：与密码配对使用，区分大小写。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4-smtp-password&#34;&gt;4. SMTP Password
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 用户名的对应密码，用于身份验证。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;输入你的邮箱密码（传统方式）。&lt;/li&gt;
-&lt;li&gt;对于启用了双重验证（2FA）的服务（如 Gmail），需生成并使用“应用专用密码”。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail：
-&lt;ul&gt;
-&lt;li&gt;普通密码：&lt;code&gt;yourpassword&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;双重验证：前往 &lt;a class=&#34;link&#34; href=&#34;https://myaccount.google.com/security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Google 账户安全设置&lt;/a&gt;，生成 16 位应用专用密码（如 &lt;code&gt;abcd efgh ijkl mnop&lt;/code&gt;）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;SendGrid：输入 API Key（而不是密码）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：不要使用空格，确保密码正确。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;5-type-of-encryption&#34;&gt;5. Type of Encryption
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件传输时的加密方式，用于保护数据安全。常见选项包括 None（无）、SSL、TLS。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：根据邮件服务商的要求选择。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail：&lt;code&gt;TLS&lt;/code&gt;（推荐）或 &lt;code&gt;SSL&lt;/code&gt;（较老）。&lt;/li&gt;
-&lt;li&gt;Outlook：&lt;code&gt;TLS&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;SendGrid：&lt;code&gt;TLS&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;无加密：&lt;code&gt;None&lt;/code&gt;（不安全，仅限本地测试）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;TLS&lt;/code&gt; 是现代标准，优先选择。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;SSL&lt;/code&gt; 是较老的协议，端口不同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TLS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;发件人名称&lt;/strong&gt;根据需要输入名称&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;发件人电子邮件&lt;/strong&gt;输入您的 Gmail 地址&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;6-smtp-port&#34;&gt;6. SMTP Port
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：SMTP 服务器监听的端口号，与加密方式相关。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：根据服务商和加密类型选择对应端口。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;587&lt;/code&gt;：TLS 加密的常用端口（Gmail、Outlook）。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;465&lt;/code&gt;：SSL 加密的端口（Gmail 备用）。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;25&lt;/code&gt;：无加密的默认端口（不推荐）。&lt;/li&gt;
-&lt;li&gt;SendGrid：&lt;code&gt;587&lt;/code&gt;（TLS）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：端口错误会导致连接失败，需与加密类型匹配。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;7-from-email-address&#34;&gt;7. From Email Address
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件显示的发件人邮箱地址，收件人会看到这个地址。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入一个有效的邮箱地址，通常与 SMTP Username 一致。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail：&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;自有域名：&lt;code&gt;contact@yourdomain.com&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;某些服务（如 Gmail）要求与 SMTP Username 匹配，否则会被拒绝。&lt;/li&gt;
-&lt;li&gt;自有域名需确保与服务器配置一致。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;8-from-name&#34;&gt;8. From Name
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：邮件显示的发件人名称，个性化邮件的发送者身份。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：输入你希望收件人看到的名称，可以是人名或品牌名。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;John Doe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;My Website Team&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Your Company Name&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：随意填写，但保持专业性，避免过长。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;9-disable-ssl-certificate-verification&#34;&gt;9. Disable SSL Certificate Verification
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;：是否禁用 SSL/TLS 证书验证。如果服务器的证书有问题（如自签名证书），启用此选项可绕过验证。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何填写&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;默认：&lt;code&gt;No&lt;/code&gt; 或 &lt;code&gt;Disabled&lt;/code&gt;（不禁用）。&lt;/li&gt;
-&lt;li&gt;如果连接失败且确认是证书问题：选 &lt;code&gt;Yes&lt;/code&gt; 或 &lt;code&gt;Enabled&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;Gmail、SendGrid 等正规服务：&lt;code&gt;No&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;本地测试服务器或自签名证书：&lt;code&gt;Yes&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：启用此选项会降低安全性，仅用于调试或特殊情况。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;示例配置使用-gmail-smtp&#34;&gt;示例配置：使用 Gmail SMTP
-&lt;/h3&gt;&lt;p&gt;假设你用 Gmail 配置 SMTP Mailer 或 SMTP Connector：&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;字段&lt;/th&gt;
-          &lt;th&gt;填写内容&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SMTP Host&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;smtp.gmail.com&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SMTP Authentication&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;Yes&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SMTP Username&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SMTP Password&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;abcd efgh ijkl mnop&lt;/code&gt;（应用专用密码）&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Type of Encryption&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;TLS&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SMTP Port&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;587&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;From Email Address&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;yourname@gmail.com&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;From Name&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;John Doe&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Disable SSL Certificate Verification&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;No&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </description>
         </item>
         
