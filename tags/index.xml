@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Mariadb</title>
         <link>https://ydashu.github.io/tags/mariadb/</link>
-        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/mariadb/</guid>
         <description></description>
@@ -18,9 +18,49 @@
         <item>
         <title>MySQL</title>
         <link>https://ydashu.github.io/tags/mysql/</link>
-        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/mysql/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Unicode</title>
+        <link>https://ydashu.github.io/tags/unicode/</link>
+        <pubDate>Thu, 12 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/unicode/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Json</title>
+        <link>https://ydashu.github.io/tags/json/</link>
+        <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/json/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Mail-Server</title>
+        <link>https://ydashu.github.io/tags/mail-server/</link>
+        <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/mail-server/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Toml</title>
+        <link>https://ydashu.github.io/tags/toml/</link>
+        <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/toml/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Yaml</title>
+        <link>https://ydashu.github.io/tags/yaml/</link>
+        <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/tags/yaml/</guid>
         <description></description>
         </item>
         <item>
@@ -29,14 +69,6 @@
         <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/smtp/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Unicode</title>
-        <link>https://ydashu.github.io/tags/unicode/</link>
-        <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/unicode/</guid>
         <description></description>
         </item>
         <item>
@@ -232,14 +264,6 @@
         <description></description>
         </item>
         <item>
-        <title>Json</title>
-        <link>https://ydashu.github.io/tags/json/</link>
-        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/json/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Kadence</title>
         <link>https://ydashu.github.io/tags/kadence/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
@@ -272,14 +296,6 @@
         <description></description>
         </item>
         <item>
-        <title>Toml</title>
-        <link>https://ydashu.github.io/tags/toml/</link>
-        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/toml/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Vps</title>
         <link>https://ydashu.github.io/tags/vps/</link>
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
@@ -301,14 +317,6 @@
         <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/tags/wordpress/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Yaml</title>
-        <link>https://ydashu.github.io/tags/yaml/</link>
-        <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/tags/yaml/</guid>
         <description></description>
         </item>
         <item>

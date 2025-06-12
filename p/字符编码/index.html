@@ -10,7 +10,7 @@
 <meta property='og:description' content="字符集概念 1、字符（Character） 字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。\n2、字符编码 计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。\n">
 <meta property='og:url' content='https://ydashu.github.io/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/'>
 <meta property='og:site_name' content='ydashu'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:tag' content='mariadb' /><meta property='article:tag' content='unicode' /><meta property='article:published_time' content='2025-06-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-10T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='mysql' /><meta property='article:tag' content='mariadb' /><meta property='article:tag' content='unicode' /><meta property='article:published_time' content='2025-06-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-12T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="字符编码">
 <meta name="twitter:description" content="字符集概念 1、字符（Character） 字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字、😀（emoji表情）等属于字符的范畴。\n2、字符编码 计算机是通过 BIT 来存储数据的，将人类可识别的字符转换成计算机能够存储的形式，这个过程就是字符编码。\n">
     <link rel="shortcut icon" href="/001.ico" />
@@ -258,8 +258,32 @@
         </li>
         <li><a href="#查看编码">查看编码</a>
           <ol>
-            <li><a href="#字符集相关配置">字符集相关配置</a></li>
+            <li><a href="#字符集相关配置">字符集相关配置</a>
+              <ol>
+                <li><a href="#wordpress的db_charset作用">wordpress的DB_CHARSET作用</a></li>
+              </ol>
+            </li>
             <li><a href="#排序规则相关配置">排序规则相关配置</a></li>
+          </ol>
+        </li>
+        <li><a href="#字符集的作用-以wordpress的db_charset为例">字符集的作用-以wordpress的DB_CHARSET为例</a>
+          <ol>
+            <li><a href="#情况一">情况一</a>
+              <ol>
+                <li><a href="#insert">INSERT</a></li>
+                <li><a href="#update">UPDATE</a></li>
+                <li><a href="#select">SELECT</a></li>
+                <li><a href="#select-id">SELECT ID</a></li>
+              </ol>
+            </li>
+            <li><a href="#情况二">情况二</a>
+              <ol>
+                <li><a href="#insert-1">INSERT</a></li>
+                <li><a href="#update-1">UPDATE</a></li>
+                <li><a href="#select-1">SELECT</a></li>
+                <li><a href="#select-id-1">SELECT ID</a></li>
+              </ol>
+            </li>
           </ol>
         </li>
       </ol>
@@ -290,6 +314,10 @@
                 Wordpress
             </a>
         
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
     </header>
     
 
@@ -317,7 +345,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-06-10</time>
+                <time class="article-time--published">2025-06-12</time>
             </div>
         
 
@@ -436,6 +464,7 @@
       </tr>
   </tbody>
 </table></div>
+<p>UTF: Unicode Transformation Format</p>
 <h2 id="mysql后缀">mysql后缀
 </h2><div class="table-wrapper"><table>
   <thead>
@@ -544,6 +573,48 @@
 <h2 id="mariadb默认编码">mariadb默认编码
 </h2><blockquote>
 <p>版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1</p></blockquote>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>数据库</strong></th>
+          <th><strong>版本</strong></th>
+          <th><strong>utf8 默认指向</strong></th>
+          <th><strong>推荐使用的字符集</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MySQL</td>
+          <td>&lt; 8.0</td>
+          <td><code>utf8mb3</code></td>
+          <td><code>utf8mb4</code></td>
+      </tr>
+      <tr>
+          <td>MySQL</td>
+          <td>≥ 8.0</td>
+          <td><code>utf8mb3</code> (但已弃用)</td>
+          <td><strong><code>utf8mb4</code> (默认)</strong></td>
+      </tr>
+      <tr>
+          <td>MariaDB</td>
+          <td>&lt; 10.6</td>
+          <td><code>utf8mb3</code></td>
+          <td><code>utf8mb4</code></td>
+      </tr>
+      <tr>
+          <td>MariaDB</td>
+          <td>10.6 - 11.7</td>
+          <td><code>utf8mb3</code> (可通过 <code>old_mode</code> 更改)</td>
+          <td><code>utf8mb4</code></td>
+      </tr>
+      <tr>
+          <td>MariaDB</td>
+          <td>≥ 11.8</td>
+          <td><strong><code>utf8mb4</code> (默认)</strong></td>
+          <td><strong><code>utf8mb4</code> (默认)</strong></td>
+      </tr>
+  </tbody>
+</table></div>
 <h3 id="字符集和字符序">字符集和字符序
 </h3><blockquote>
 <p>Charset and Collation</p></blockquote>
@@ -560,7 +631,7 @@
 <h3 id="查看编码">查看编码
 </h3><ul>
 <li>进入 mariadb： 输入 <code>mysql</code></li>
-<li>显示当前编码
+<li>输入以下代码
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -587,12 +658,7 @@
       <tr>
           <td><code>character_set_client</code></td>
           <td><code>utf8mb3</code></td>
-          <td><strong>客户端发送的查询语句的字符集</strong></td>
-      </tr>
-      <tr>
-          <td><code>character_set_collations</code></td>
-          <td>(空)</td>
-          <td><strong>可用的排序规则列表</strong></td>
+          <td>*<em>客户端发送的查询语句的字符集</em></td>
       </tr>
       <tr>
           <td><code>character_set_connection</code></td>
@@ -605,9 +671,9 @@
           <td><strong>默认数据库的字符集</strong></td>
       </tr>
       <tr>
-          <td><code>character_set_filesystem</code></td>
-          <td><code>binary</code></td>
-          <td><strong>文件系统字符集</strong></td>
+          <td><code>character_set_server</code></td>
+          <td><code>latin1</code></td>
+          <td><strong>服务器默认字符集</strong></td>
       </tr>
       <tr>
           <td><code>character_set_results</code></td>
@@ -615,9 +681,14 @@
           <td><strong>返回结果的字符集</strong></td>
       </tr>
       <tr>
-          <td><code>character_set_server</code></td>
-          <td><code>latin1</code></td>
-          <td><strong>服务器默认字符集</strong></td>
+          <td><code>character_set_filesystem</code></td>
+          <td><code>binary</code></td>
+          <td><strong>文件系统字符集</strong></td>
+      </tr>
+      <tr>
+          <td><code>character_set_collations</code></td>
+          <td>(空)</td>
+          <td><strong>可用的排序规则列表</strong></td>
       </tr>
       <tr>
           <td><code>character_set_system</code></td>
@@ -631,6 +702,20 @@
       </tr>
   </tbody>
 </table></div>
+<p>这些是启动数据库默认的字符集</p>
+<h5 id="wordpress的db_charset作用">wordpress的DB_CHARSET作用
+</h5><blockquote>
+<p>默认<code>define( 'DB_CHARSET', 'utf8' )</code></p></blockquote>
+<ul>
+<li>wordpress作为client影响数据库的连接字符集
+<ul>
+<li>character_set_client</li>
+<li>character_set_connection</li>
+<li>character_set_results</li>
+</ul>
+</li>
+</ul>
+<p>Remark: WordPress 会根据 MySQL/mariadb 版本决定使用 utf8mb3 或 utf8mb4 , 主要看版本支不支持utfmb4, 支持的话优先utfmb4</p>
 <h4 id="排序规则相关配置">排序规则相关配置
 </h4><div class="table-wrapper"><table>
   <thead>
@@ -658,7 +743,572 @@
       </tr>
   </tbody>
 </table></div>
-
+<h3 id="字符集的作用-以wordpress的db_charset为例">字符集的作用-以wordpress的DB_CHARSET为例
+</h3><blockquote>
+<p><a class="link" href="https://relph1119.github.io/mysql-learning-notes/#/mysql/03-%E4%B9%B1%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99"  target="_blank" rel="noopener"
+    >参考文档: MySQL是怎样运行的</a></p></blockquote>
+<h4 id="情况一">情况一
+</h4><p>条件：<code>define( 'DB_CHARSET', 'latin1' )</code></p>
+<h5 id="insert">INSERT
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF-8)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: INSERT INTO wp_posts &lt;br&gt;(post_title) VALUES (&#39;标题&#39;)&lt;br&gt;(UTF-8字节: 0xE6A087E9A298)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 错误配置&lt;br&gt;character_set_client=latin1
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. 按latin1解码:&lt;br&gt;0xE6A087E9A298 → &#39;æ ‡é¢˜&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. 按character_set_connection(latin1)编码:&lt;br&gt;→ 0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,100,255,0.1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8)≠connection(latin1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 转换到列字符集(utf8):&lt;br&gt;a. latin1解码 → &#39;æ ‡é¢˜&#39;&lt;br&gt;b. utf8编码 → 0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 存储转换后的值: &lt;br&gt;0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 存储成功
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,150,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Storage: 存储的乱码数据:&lt;br&gt;原始: 标题 (0xE6A087E9A298)&lt;br&gt;实际存储: æ ‡é¢˜ &lt;br&gt;(0xC3A6C2A0C287C3A9C2A2CB9C)
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="update">UPDATE
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">wp_posts</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SET</span><span class="w"> </span><span class="n">post_content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;新内容&#39;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">post_title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;标题&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>编码：字符 ==&gt; 0x
+解码：0x ==&gt; 字符</p>
+<ul>
+<li>客户端编码</li>
+<li>客户端→服务器：<code>character_set_client</code> 解码</li>
+<li>服务器内部：<code>character_set_connection</code> 编码</li>
+<li>0x 保存到数据库中</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF-8)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: UPDATE wp_posts&lt;br&gt;SET post_content=&#39;新内容&#39;&lt;br&gt;WHERE post_title=&#39;标题&#39;&lt;br&gt;(UTF-8字节: 标题=0xE6A087E9A298,&lt;br&gt; 新内容=0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 保持错误配置&lt;br&gt;character_set_client=latin1
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. 按latin1解码:&lt;br&gt;标题→&#39;æ ‡é¢˜&#39;, 新内容→&#39;æ–°å†…å®¹&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. 按character_set_connection(latin1)编码:&lt;br&gt;标题→0xE6A087E9A298&lt;br&gt;新内容→0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,100,255,0.1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8)≠connection(latin1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 转换条件值:&lt;br&gt;a. latin1解码 → &#39;æ ‡é¢˜&#39;&lt;br&gt;b. utf8编码 → 0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 查找 WHERE post_title=&lt;br&gt;0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 找到匹配行（之前存储的乱码数据）
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,100,255,0.1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 5. 转换SET值:&lt;br&gt;a. latin1解码 → &#39;æ–°å†…å®¹&#39;&lt;br&gt;b. utf8编码 → 0xC3A6E28093C3A5E280A6C3A5C2AEC2B9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: SET post_content=&lt;br&gt;0xC3A6E28093C3A5E280A6C3A5C2AEC2B9
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,150,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Storage: 更新后存储:&lt;br&gt;post_title: æ ‡é¢˜ &lt;br&gt;(0xC3A6C2A0C287C3A9C2A2CB9C)&lt;br&gt;post_content: æ–°å†…å®¹ &lt;br&gt;(0xC3A6E28093C3A5E280A6C3A5C2AEC2B9)
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回更新成功
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(255,150,150,0.3)
+</span></span><span class="line"><span class="cl">    Note over Client: 操作&#34;成功&#34;但数据双重损坏&lt;br&gt;WHERE匹配了乱码数据&lt;br&gt;SET值新增乱码
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="select">SELECT
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">post_content</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">wp_posts</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">post_title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;标题&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>编码：字符 ==&gt; 0x
+解码：0x ==&gt; 字符</p>
+<ul>
+<li>客户端编码</li>
+<li>客户端→服务器：<code>character_set_client</code> 解码</li>
+<li>服务器内部：<code>character_set_connection</code> 编码</li>
+<li>服务器查询数据库：<code>character_set_server</code>, <code>character_set_database</code>, 表列级别的character 匹配后  解码</li>
+<li>服务器→客户端：<code>character_set_results</code> 编码</li>
+<li>客户端解码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF-8)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: SELECT post_content&lt;br&gt;FROM wp_posts&lt;br&gt;WHERE post_title=&#39;标题&#39;&lt;br&gt;(UTF-8字节: 标题=0xE6A087E9A298)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 错误配置&lt;br&gt;character_set_client=latin1
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. 按latin1解码:&lt;br&gt;0xE6A087E9A298 → &#39;æ ‡é¢˜&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. 按character_set_connection(latin1)编码:&lt;br&gt;→ 0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,100,255,0.1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8)≠connection(latin1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 转换到列字符集(utf8):&lt;br&gt;a. latin1解码 → &#39;æ ‡é¢˜&#39;&lt;br&gt;b. utf8编码 → 0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 查找 WHERE post_title=&lt;br&gt;0xC3A6C2A0C287C3A9C2A2CB9C
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 返回匹配行(post_content=&lt;br&gt;0xC3A6E28093C3A5E280A6C3A5C2AEC2B9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,100,255,0.1)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 5. 转换结果值:&lt;br&gt;a. 按列字符集(utf8)解码 → &#39;æ–°å†…å®¹&#39;&lt;br&gt;b. 按character_set_results(latin1)编码 → 0xC3A6E28093C3A5E280A6C3A5C2AEC2B9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回结果: æ–°å†…å®¹&lt;br&gt;(0xC3A6E28093C3A5E280A6C3A5C2AEC2B9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(255,150,150,0.3)
+</span></span><span class="line"><span class="cl">    Note over Client: 客户端显示乱码&lt;br&gt;原始数据: 新内容&lt;br&gt;显示结果: æ–°å†…å®¹
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="select-id">SELECT ID
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">post_content</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">wp_posts</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>编码：字符 ==&gt; 0x
+解码：0x ==&gt; 字符</p>
+<ul>
+<li>服务器查询数据库：<code>character_set_server</code>, <code>character_set_database</code>, 表列级别的character 匹配后解码</li>
+<li>服务器→客户端：<code>character_set_results</code> 编码</li>
+<li>客户端解码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF-8)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: SELECT post_content&lt;br&gt;FROM wp_posts&lt;br&gt;WHERE ID=1
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: WHERE条件处理&lt;br&gt;ID是整数，无需字符转换
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 查找 WHERE ID=1
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 返回匹配行&lt;br&gt;(post_content=0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 错误配置&lt;br&gt;character_set_results=latin1
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 结果值转换:&lt;br&gt;1. 按列字符集(utf8)解码 → &#39;新内容&#39;&lt;br&gt;2. 按latin1编码 → 0xC3A6E28093C3A5E280A6C3A5C2AEC2B9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回结果字节: &lt;br&gt;0xC3A6E28093C3A5E280A6C3A5C2AEC2B9
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(255,150,150,0.3)
+</span></span><span class="line"><span class="cl">    Note over Client: 客户端尝试UTF-8解码:&lt;br&gt;0xC3A6E28093C3A5E280A6C3A5C2AEC2B9 → æ–°å†…å®¹
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="情况二">情况二
+</h4><p>条件：<code>define( 'DB_CHARSET', 'utf8' )</code></p>
+<h5 id="insert-1">INSERT
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF8mb4)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: INSERT INTO wp_posts (post_title) VALUES (&#39;标题&#39;)&lt;br&gt;(UTF-8字节: 0xE6A087E9A298)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 正确配置&lt;br&gt;SET NAMES utf8mb4
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. character_set_client(utf8mb4)解码 → &#39;标题&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. character_set_connection(utf8mb4)编码 → 0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8mb4)=connection(utf8mb4)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 无需转换，直接使用原字节
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 存储值: 0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 存储成功
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Storage: 正确存储数据:&lt;br&gt;post_title: 标题 (0xE6A087E9A298)
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回插入成功
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="update-1">UPDATE
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF8mb4)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: UPDATE wp_posts&lt;br&gt;SET post_content=&#39;新内容&#39;&lt;br&gt;WHERE post_title=&#39;标题&#39;&lt;br&gt;(UTF-8字节: 标题=0xE6A087E9A298,&lt;br&gt; 新内容=0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 正确配置&lt;br&gt;SET NAMES utf8mb4
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. character_set_client(utf8mb4)解码 → &#39;标题&#39;,&#39;新内容&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. character_set_connection(utf8mb4)编码 → 原字节保持
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8mb4)=connection(utf8mb4)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 无需转换，直接使用原字节
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 1. 查找 WHERE post_title=0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 找到匹配行（之前正确存储的&#39;标题&#39;）
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 2. SET post_content=0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Storage: 更新后存储:&lt;br&gt;post_title: 标题 (0xE6A087E9A298)&lt;br&gt;post_content: 新内容 &lt;br&gt;(0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回更新成功
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="select-1">SELECT
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF8mb4)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: SELECT post_content&lt;br&gt;FROM wp_posts&lt;br&gt;WHERE post_title=&#39;标题&#39;&lt;br&gt;(UTF-8字节: 标题=0xE6A087E9A298)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 正确配置&lt;br&gt;SET NAMES utf8mb4
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 1. character_set_client(utf8mb4)解码 → &#39;标题&#39;
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 2. character_set_connection(utf8mb4)编码 → 0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 3. 检测列字符集(utf8mb4)=connection(utf8mb4)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 4. 无需转换，直接使用原字节
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 查找 WHERE post_title=0xE6A087E9A298
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 返回匹配行(post_content=&lt;br&gt;0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 5. 转换结果值:&lt;br&gt;a. 按列字符集(utf8mb4)解码 → &#39;新内容&#39;&lt;br&gt;b. 按character_set_results(utf8mb4)编码 → 0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回结果: 新内容&lt;br&gt;(0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Client: 客户端正确显示中文&lt;br&gt;显示结果: 新内容
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="select-id-1">SELECT ID
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant Client as 客户端(UTF-8)
+</span></span><span class="line"><span class="cl">    participant Server as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 表存储(UTF8mb4)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Client-&gt;&gt;Server: SELECT post_content&lt;br&gt;FROM wp_posts&lt;br&gt;WHERE ID=1
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: WHERE条件处理&lt;br&gt;ID是整数，无需字符转换
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Storage: 查找 WHERE ID=1
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Server: 返回匹配行&lt;br&gt;(post_content=0xE696B0E58685E5AEB9)
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.2)
+</span></span><span class="line"><span class="cl">    Note over Server: 正确配置&lt;br&gt;character_set_results=utf8mb4
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Server: 结果值转换:&lt;br&gt;1. 按列字符集(utf8mb4)解码 → &#39;新内容&#39;&lt;br&gt;2. 按utf8mb4编码 → 0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    Server-&gt;&gt;Client: 返回结果字节: 0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    rect rgba(150,200,150,0.2)
+</span></span><span class="line"><span class="cl">    Note over Client: 客户端UTF-8解码:&lt;br&gt;0xE696B0E58685E5AEB9 → 新内容
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -701,6 +1351,19 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/docker-mail-server%E9%82%AE%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E8%AE%BE%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">docker mail-server邮件大小限制设置</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
@@ -749,19 +1412,6 @@
 
         <div class="article-details">
             <h2 class="article-title">slider插件</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E5%A4%87%E4%BB%BD/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress备份</h2>
         </div>
     </a>
 </article>
