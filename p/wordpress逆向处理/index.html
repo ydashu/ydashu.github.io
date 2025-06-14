@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 一种 数据修复机制，主要用于解决因错误配置 DB_CHARSET='latin1' 导致的字符集错乱问题\n核心作用 错误配置兼容 当数据库实际存储的是 UTF-8 数据但连接字符集被误设为 Latin1 时 通过逆向转换修复被双重编码的数据 历史数据救赎 修复早期 WordPress 版本（4.2 之前）因默认使用 Latin1 存储 UTF-8 数据导致的历史遗留问题 防止数据断裂 保证即使存在错误配置，用户在前端仍能看到正确内容（后台可能显示乱码） 触发条件 需 同时满足 以下条件才会触发：\n">
+<title>wordpress逆向处理</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="wordpress逆向处理">
+<meta property='og:description' content=" 一种 数据修复机制，主要用于解决因错误配置 DB_CHARSET='latin1' 导致的字符集错乱问题\n核心作用 错误配置兼容 当数据库实际存储的是 UTF-8 数据但连接字符集被误设为 Latin1 时 通过逆向转换修复被双重编码的数据 历史数据救赎 修复早期 WordPress 版本（4.2 之前）因默认使用 Latin1 存储 UTF-8 数据导致的历史遗留问题 防止数据断裂 保证即使存在错误配置，用户在前端仍能看到正确内容（后台可能显示乱码） 触发条件 需 同时满足 以下条件才会触发：\n">
+<meta property='og:url' content='https://ydashu.github.io/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-14T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="wordpress逆向处理">
+<meta name="twitter:description" content=" 一种 数据修复机制，主要用于解决因错误配置 DB_CHARSET='latin1' 导致的字符集错乱问题\n核心作用 错误配置兼容 当数据库实际存储的是 UTF-8 数据但连接字符集被误设为 Latin1 时 通过逆向转换修复被双重编码的数据 历史数据救赎 修复早期 WordPress 版本（4.2 之前）因默认使用 Latin1 存储 UTF-8 数据导致的历史遗留问题 防止数据断裂 保证即使存在错误配置，用户在前端仍能看到正确内容（后台可能显示乱码） 触发条件 需 同时满足 以下条件才会触发：\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#核心作用">核心作用</a></li>
+    <li><a href="#触发条件">触发条件</a></li>
+    <li><a href="#不会触发的场景">不会触发的场景</a></li>
+    <li><a href="#技术实现">技术实现</a></li>
+    <li><a href="#逆向处理条件的树状图">逆向处理条件的树状图</a></li>
+    <li><a href="#举例">举例</a>
+      <ol>
+        <li><a href="#前提条件">前提条件</a></li>
+        <li><a href="#情况">情况</a></li>
+        <li><a href="#流程图">流程图</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+            <a href="/categories/wordpress/" >
+                Wordpress
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/">wordpress逆向处理</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-14</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>一种 <strong>数据修复机制</strong>，主要用于解决因错误配置 <code>DB_CHARSET='latin1'</code> 导致的字符集错乱问题</p></blockquote>
+<h2 id="核心作用">核心作用
+</h2><ol>
+<li><strong>错误配置兼容</strong>
+<ul>
+<li>当数据库实际存储的是 UTF-8 数据但连接字符集被误设为 Latin1 时</li>
+<li>通过逆向转换修复被双重编码的数据</li>
+</ul>
+</li>
+<li><strong>历史数据救赎</strong>
+<ul>
+<li>修复早期 WordPress 版本（4.2 之前）因默认使用 Latin1 存储 UTF-8 数据导致的历史遗留问题</li>
+</ul>
+</li>
+<li><strong>防止数据断裂</strong>
+<ul>
+<li>保证即使存在错误配置，用户在前端仍能看到正确内容（后台可能显示乱码）</li>
+</ul>
+</li>
+</ol>
+<h2 id="触发条件">触发条件
+</h2><p>需 <strong>同时满足</strong> 以下条件才会触发：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>触发条件</th>
+          <th>典型场景</th>
+          <th>验证方法</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>DB_CHARSET='latin1'</code></td>
+          <td><code>wp-config.php</code> 中明确定义</td>
+          <td><code>grep DB_CHARSET wp-config.php</code></td>
+      </tr>
+      <tr>
+          <td>数据实际为 UTF-8</td>
+          <td>通过错误配置写入的 UTF-8 数据</td>
+          <td><code>SELECT HEX(post_content) FROM wp_posts LIMIT 1</code></td>
+      </tr>
+      <tr>
+          <td>未设置 <code>DB_COLLATE</code></td>
+          <td><code>define('DB_COLLATE', '');</code></td>
+          <td>检查 wp-config.php</td>
+      </tr>
+      <tr>
+          <td>MySQL 表字符集 ≠ Latin1</td>
+          <td>表字符集为 utf8/utf8mb4</td>
+          <td><code>SHOW CREATE TABLE wp_posts</code></td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="不会触发的场景">不会触发的场景
+</h2><p>以下任一情况都会绕过该机制：</p>
+<ol>
+<li>
+<p><strong>正确配置 UTF-8</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// wp-config.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_CHARSET&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_COLLATE&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8mb4_unicode_ci&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>纯 Latin1 数据环境</strong></p>
+<ul>
+<li>数据库从始至终使用 Latin1 存储真实 Latin1 字符（非 UTF-8 数据）</li>
+</ul>
+</li>
+<li>
+<p><strong>使用 <code>set_charset()</code> 覆盖</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// 插件或主题中强制设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$wpdb</span><span class="o">-&gt;</span><span class="na">set_charset</span><span class="p">(</span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h2 id="技术实现">技术实现
+</h2><p>WordPress 通过 <code>wpdb::init_charset()</code> 实现该逻辑：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// wp-includes/wp-db.php
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span> <span class="s1">&#39;latin1&#39;</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">charset</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">is_utf8</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 标记需要特殊处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 读取数据时的转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">function</span> <span class="nf">_real_escape</span><span class="p">(</span> <span class="nv">$data</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">charset</span> <span class="o">===</span> <span class="s1">&#39;latin1&#39;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">mb_convert_encoding</span><span class="p">(</span> <span class="nv">$data</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO-8859-1&#39;</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="逆向处理条件的树状图">逆向处理条件的树状图
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flowchart TD
+</span></span><span class="line"><span class="cl">    A[发现乱码] --&gt; B{检查DB_CHARSET}
+</span></span><span class="line"><span class="cl">    B --&gt;|latin1| C[检查表字符集]
+</span></span><span class="line"><span class="cl">    B --&gt;|utf8mb4| D[排除逆向处理]
+</span></span><span class="line"><span class="cl">    C --&gt;|utf8/utf8mb4| E[确认逆向处理激活]
+</span></span><span class="line"><span class="cl">    C --&gt;|latin1| F[真实Latin1数据]
+</span></span><span class="line"><span class="cl">    E --&gt; G[修复方案选择]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="举例">举例
+</h2><h3 id="前提条件">前提条件
+</h3><ul>
+<li>mariadb11.4.7</li>
+<li>数据表的字符集 utf8mb4</li>
+<li>wordpress 6.8.1</li>
+<li>wordpress wp-config.php中 wp-config define( &lsquo;DB_CHARSET&rsquo;, &rsquo;latin1&rsquo; )：
+<ul>
+<li>影响wordpress作为client的以下参数
+<ul>
+<li>character_set_client</li>
+<li>character_set_connection</li>
+<li>character_set_results</li>
+</ul>
+</li>
+<li>影响逆向处理触发条件和逆向处理的编码转换</li>
+</ul>
+</li>
+</ul>
+<p>Remark: WordPress 会根据 MySQL/mariadb 版本决定使用 utf8mb3 或 utf8mb4 , 主要看版本支不支持utfmb4, 支持的话优先utfmb4</p>
+<h3 id="情况">情况
+</h3><p>post_content显示:</p>
+<ul>
+<li>wordpress后台：<code>内容</code></li>
+<li>linux后台：<code>å†…å®¹</code></li>
+</ul>
+<h3 id="流程图">流程图
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sequenceDiagram
+</span></span><span class="line"><span class="cl">    participant User as WordPress用户(UTF-8)
+</span></span><span class="line"><span class="cl">    participant WP as WordPress后台
+</span></span><span class="line"><span class="cl">    participant MySQL as MySQL服务器
+</span></span><span class="line"><span class="cl">    participant Storage as 数据库存储(latin1)
+</span></span><span class="line"><span class="cl">    participant Linux as Linux终端(UTF-8)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Note over User,WP: 写入过程
+</span></span><span class="line"><span class="cl">    User-&gt;&gt;WP: 提交UPDATE请求:&lt;br&gt;SET post_content=&#39;新内容&#39;&lt;br&gt;WHERE post_title=&#39;标题&#39;
+</span></span><span class="line"><span class="cl">    WP-&gt;&gt;MySQL: 发送SQL命令(UTF-8原始字节):&lt;br&gt;标题=0xE6A087E9A298&lt;br&gt;新内容=0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,100,0.3)
+</span></span><span class="line"><span class="cl">    Note right of MySQL: 错误配置处理阶段&lt;br&gt;character_set_client=latin1
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;MySQL: 1. 按latin1解码条件值:&lt;br&gt;0xE6A087E9A298 → &#39;æ ‡é¢˜&#39;
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;MySQL: 2. 按latin1解码SET值:&lt;br&gt;0xE696B0E58685E5AEB9 → &#39;æ–°å†…å®¹&#39;
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    rect rgba(100,200,100,0.3)
+</span></span><span class="line"><span class="cl">    Note right of MySQL: 字符集转换阶段
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;MySQL: 3. 检测列字符集(latin1)=connection(latin1)&lt;br&gt;无需转换条件值
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;MySQL: 4. 直接使用解码后的值:&lt;br&gt;WHERE post_title=&#39;æ ‡é¢˜&#39;
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;Storage: 查找匹配行:&lt;br&gt;WHERE post_title=&#39;æ ‡é¢˜&#39;&lt;br&gt;(存储的乱码数据)
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;MySQL: 返回匹配行ID=6270
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    rect rgba(100,100,200,0.3)
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;MySQL: 5. 处理SET值:&lt;br&gt;将&#39;æ–°å†…å®¹&#39;按latin1编码&lt;br&gt;存储原始字节:0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    end
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;Storage: 更新数据:&lt;br&gt;SET post_content=0xE696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;Storage: 存储为latin1字符串:&lt;br&gt;&#39;æ–°å†…å®¹&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;WP: 返回更新成功
+</span></span><span class="line"><span class="cl">    WP-&gt;&gt;User: 显示操作成功
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Note over Linux,WP: 读取过程
+</span></span><span class="line"><span class="cl">    Linux-&gt;&gt;MySQL: SELECT * FROM wp_posts
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;Storage: 获取原始数据
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;MySQL: 返回HEX: E696B0E58685E5AEB9
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;Linux: 按latin1显示为&#39;æ–°å†…å®¹&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    rect rgba(200,100,200,0.3)
+</span></span><span class="line"><span class="cl">    WP-&gt;&gt;MySQL: SELECT post_content FROM wp_posts
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;Storage: 获取相同数据
+</span></span><span class="line"><span class="cl">    Storage-&gt;&gt;MySQL: 返回相同HEX
+</span></span><span class="line"><span class="cl">    MySQL-&gt;&gt;WP: 返回&#39;æ–°å†…å®¹&#39;
+</span></span><span class="line"><span class="cl">    WP-&gt;&gt;WP: 逆向转换处理:&lt;br&gt;1. 按latin1解码字节&lt;br&gt;2. 重新解释为UTF-8
+</span></span><span class="line"><span class="cl">    WP-&gt;&gt;User: 最终显示&#39;新内容&#39;
+</span></span><span class="line"><span class="cl">    end
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">字符编码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置Gmail的SMTP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E8%BF%81%E7%A7%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress迁移</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mailserver%E5%A4%87%E4%BB%BD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">mailserver备份</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/slider%E6%8F%92%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">slider插件</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
