@@ -1,0 +1,2993 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="常用快捷键 快捷键 英文全称 作用描述 i Insert 进入插入模式（当前光标前） a Append 进入插入模式（当前光标后） o Open line below 在当前行下方插入新行并进入插入模式 O Open line above 在当前行上方插入新行并进入插入模式 ESC Escape 退出插入模式，返回普通模式 h j k l Left/Down/Up/Right 方向键（左/下/上/右） w Word 移动到下一个单词开头 b Back 移动到上一个单词开头 e End of word 移动到当前单词末尾 0 Zero 移动到行首 $ End of line 移动到行尾 gg Go to top 移动到文件第一行 G Go to bottom 移动到文件最后一行 :n Line number 跳转到第 n 行（如 :10 跳转到第 10 行） x Delete character 删除当前光标下的字符 dd Delete line 删除当前行 yy Yank (copy) line 复制当前行 p Paste 粘贴到光标后 P Paste before 粘贴到光标前 u Undo 撤销上一步操作 Ctrl + r Redo 重做撤销的操作 /pattern Search forward 向前搜索指定文本 ?pattern Search backward 向后搜索指定文本 n Next match 跳转到下一个匹配项 N Previous match 跳转到上一个匹配项 :%s/old/new/g Substitute globally 全局替换文本（将 old 替换为 new） :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出（不保存修改） v Visual mode 进入可视模式（字符选择） V Visual line mode 进入可视模式（行选择） Ctrl + v Visual block mode 进入可视模式（块选择） 所有核心快捷键 分类 快捷键 英文全称 作用描述 1. 光标移动 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 2. 插入模式 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 3. 删除操作 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 4. 修改与替换 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 5. 复制粘贴 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 6. 撤销与重做 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 7. 搜索与替换 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 8. 可视模式 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 9. 窗口管理 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 10. 标签页 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 11. 寄存器与宏 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 12. 命令模式 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 13. 高级操作 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 14. 折叠操作 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 15. 书签 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 16. 特殊模式 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 17. 帮助系统 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 光标移动（Cursor Movement） 快捷键 英文全称 作用描述 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 插入模式（Insert Mode） 快捷键 英文全称 作用描述 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 删除操作（Deletion） 快捷键 英文全称 作用描述 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 修改与替换（Changing &amp; Replacing） 快捷键 英文全称 作用描述 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 复制粘贴（Yank &amp; Paste） 快捷键 英文全称 作用描述 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 撤销与重做（Undo &amp; Redo） 快捷键 英文全称 作用描述 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 搜索与替换（Search &amp; Replace） 快捷键 英文全称 作用描述 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 可视模式（Visual Mode） 快捷键 英文全称 作用描述 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 窗口管理（Window Management） 快捷键 英文全称 作用描述 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 标签页（Tabs） 快捷键 英文全称 作用描述 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 寄存器与宏（Registers &amp; Macros） 快捷键 英文全称 作用描述 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 命令模式（Command Line） 快捷键 英文全称 作用描述 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 高级操作（Advanced） 快捷键 英文全称 作用描述 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 折叠操作（Folding） 快捷键 英文全称 作用描述 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 书签（Marks） 快捷键 英文全称 作用描述 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 特殊模式（Special Modes） 快捷键 英文全称 作用描述 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 帮助系统（Help System） 快捷键 英文全称 作用描述 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 总说明：\n">
+<title>Vim快捷键</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="Vim快捷键">
+<meta property='og:description' content="常用快捷键 快捷键 英文全称 作用描述 i Insert 进入插入模式（当前光标前） a Append 进入插入模式（当前光标后） o Open line below 在当前行下方插入新行并进入插入模式 O Open line above 在当前行上方插入新行并进入插入模式 ESC Escape 退出插入模式，返回普通模式 h j k l Left/Down/Up/Right 方向键（左/下/上/右） w Word 移动到下一个单词开头 b Back 移动到上一个单词开头 e End of word 移动到当前单词末尾 0 Zero 移动到行首 $ End of line 移动到行尾 gg Go to top 移动到文件第一行 G Go to bottom 移动到文件最后一行 :n Line number 跳转到第 n 行（如 :10 跳转到第 10 行） x Delete character 删除当前光标下的字符 dd Delete line 删除当前行 yy Yank (copy) line 复制当前行 p Paste 粘贴到光标后 P Paste before 粘贴到光标前 u Undo 撤销上一步操作 Ctrl + r Redo 重做撤销的操作 /pattern Search forward 向前搜索指定文本 ?pattern Search backward 向后搜索指定文本 n Next match 跳转到下一个匹配项 N Previous match 跳转到上一个匹配项 :%s/old/new/g Substitute globally 全局替换文本（将 old 替换为 new） :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出（不保存修改） v Visual mode 进入可视模式（字符选择） V Visual line mode 进入可视模式（行选择） Ctrl + v Visual block mode 进入可视模式（块选择） 所有核心快捷键 分类 快捷键 英文全称 作用描述 1. 光标移动 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 2. 插入模式 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 3. 删除操作 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 4. 修改与替换 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 5. 复制粘贴 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 6. 撤销与重做 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 7. 搜索与替换 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 8. 可视模式 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 9. 窗口管理 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 10. 标签页 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 11. 寄存器与宏 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 12. 命令模式 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 13. 高级操作 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 14. 折叠操作 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 15. 书签 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 16. 特殊模式 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 17. 帮助系统 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 光标移动（Cursor Movement） 快捷键 英文全称 作用描述 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 插入模式（Insert Mode） 快捷键 英文全称 作用描述 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 删除操作（Deletion） 快捷键 英文全称 作用描述 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 修改与替换（Changing &amp; Replacing） 快捷键 英文全称 作用描述 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 复制粘贴（Yank &amp; Paste） 快捷键 英文全称 作用描述 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 撤销与重做（Undo &amp; Redo） 快捷键 英文全称 作用描述 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 搜索与替换（Search &amp; Replace） 快捷键 英文全称 作用描述 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 可视模式（Visual Mode） 快捷键 英文全称 作用描述 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 窗口管理（Window Management） 快捷键 英文全称 作用描述 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 标签页（Tabs） 快捷键 英文全称 作用描述 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 寄存器与宏（Registers &amp; Macros） 快捷键 英文全称 作用描述 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 命令模式（Command Line） 快捷键 英文全称 作用描述 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 高级操作（Advanced） 快捷键 英文全称 作用描述 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 折叠操作（Folding） 快捷键 英文全称 作用描述 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 书签（Marks） 快捷键 英文全称 作用描述 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 特殊模式（Special Modes） 快捷键 英文全称 作用描述 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 帮助系统（Help System） 快捷键 英文全称 作用描述 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 总说明：\n">
+<meta property='og:url' content='https://ydashu.github.io/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-18T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Vim快捷键">
+<meta name="twitter:description" content="常用快捷键 快捷键 英文全称 作用描述 i Insert 进入插入模式（当前光标前） a Append 进入插入模式（当前光标后） o Open line below 在当前行下方插入新行并进入插入模式 O Open line above 在当前行上方插入新行并进入插入模式 ESC Escape 退出插入模式，返回普通模式 h j k l Left/Down/Up/Right 方向键（左/下/上/右） w Word 移动到下一个单词开头 b Back 移动到上一个单词开头 e End of word 移动到当前单词末尾 0 Zero 移动到行首 $ End of line 移动到行尾 gg Go to top 移动到文件第一行 G Go to bottom 移动到文件最后一行 :n Line number 跳转到第 n 行（如 :10 跳转到第 10 行） x Delete character 删除当前光标下的字符 dd Delete line 删除当前行 yy Yank (copy) line 复制当前行 p Paste 粘贴到光标后 P Paste before 粘贴到光标前 u Undo 撤销上一步操作 Ctrl + r Redo 重做撤销的操作 /pattern Search forward 向前搜索指定文本 ?pattern Search backward 向后搜索指定文本 n Next match 跳转到下一个匹配项 N Previous match 跳转到上一个匹配项 :%s/old/new/g Substitute globally 全局替换文本（将 old 替换为 new） :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出（不保存修改） v Visual mode 进入可视模式（字符选择） V Visual line mode 进入可视模式（行选择） Ctrl + v Visual block mode 进入可视模式（块选择） 所有核心快捷键 分类 快捷键 英文全称 作用描述 1. 光标移动 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 2. 插入模式 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 3. 删除操作 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 4. 修改与替换 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 5. 复制粘贴 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 6. 撤销与重做 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 7. 搜索与替换 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 8. 可视模式 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 9. 窗口管理 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 10. 标签页 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 11. 寄存器与宏 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 12. 命令模式 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 13. 高级操作 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 14. 折叠操作 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 15. 书签 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 16. 特殊模式 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 17. 帮助系统 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 光标移动（Cursor Movement） 快捷键 英文全称 作用描述 h j k l Left/Down/Up/Right 基础方向移动 w Word forward 移到下一个单词开头 W WORD forward 移到下一个空格分隔单词开头 b Back word 移到上一个单词开头 B Back WORD 移到上一个空格分隔单词开头 e End of word 移到单词末尾 E End of WORD 移到空格分隔单词末尾 0 Zero 移到行首 ^ First non-blank 移到行首非空白字符 $ End of line 移到行尾 gg Go to top 移到文件首行 G Go to bottom 移到文件末行 :n Line number 跳转到第 n 行 H Home screen 移到屏幕顶部 M Middle screen 移到屏幕中间 L Last screen 移到屏幕底部 Ctrl + f Forward 向下翻页 Ctrl + b Backward 向上翻页 Ctrl + d Down half page 向下半页 Ctrl + u Up half page 向上半页 % Match bracket 跳转到匹配括号 { Paragraph back 上一段落 } Paragraph forward 下一段落 ( Sentence back 上一句子 ) Sentence forward 下一句子 f{char} Find character 向右查找字符 F{char} Find character backward 向左查找字符 ; Repeat find 重复查找 , Repeat find reverse 反向重复查找 Ctrl + o Jump older 返回上一个位置 Ctrl + i Jump newer 前进到下一个位置 插入模式（Insert Mode） 快捷键 英文全称 作用描述 i Insert 光标前插入 a Append 光标后插入 I Insert at line start 行首插入 A Append at line end 行尾插入 o Open line below 下方插入新行 O Open line above 上方插入新行 s Substitute character 删除字符并插入 S Substitute line 删除整行并插入 Ctrl + h Backspace 删除前字符 Ctrl + w Delete word 删除前单词 Ctrl + u Delete to start 删除到行首 Ctrl + ] Escape 强制退出插入模式 Ctrl + r {reg} Insert register 插入寄存器内容 删除操作（Deletion） 快捷键 英文全称 作用描述 x Delete character 删除光标下字符 X Delete before 删除光标前字符 dd Delete line 删除整行 dw Delete word 删除到单词尾 d$ / D Delete to end 删除到行尾 d^ Delete to start 删除到行首 dG Delete to EOF 删除到文件尾 dgg Delete to BOF 删除到文件头 d{motion} Delete motion 按动作删除 J Join lines 合并当前行和下一行 修改与替换（Changing &amp; Replacing） 快捷键 英文全称 作用描述 r{char} Replace character 替换单个字符 R Replace mode 进入替换模式 cc Change line 修改整行 cw Change word 修改单词 c$ / C Change to end 修改到行尾 c^ Change to start 修改到行首 ~ Toggle case 切换大小写 gU{motion} Uppercase motion 转大写 gu{motion} Lowercase motion 转小写 g~~ Toggle case line 整行切换大小写 xp Transpose characters 交换相邻字符 &gt;&gt; Indent right 增加缩进 &lt;&lt; Indent left 减少缩进 复制粘贴（Yank &amp; Paste） 快捷键 英文全称 作用描述 yy Yank line 复制整行 yw Yank word 复制单词 y$ Yank to end 复制到行尾 y^ Yank to start 复制到行首 p Paste after 粘贴到光标后 P Paste before 粘贴到光标前 &quot;*y Yank to system clipboard 复制到系统剪贴板 &quot;*p Paste from system clipboard 从系统剪贴板粘贴 ]p Paste with indent 自动缩进粘贴 撤销与重做（Undo &amp; Redo） 快捷键 英文全称 作用描述 u Undo 撤销操作 Ctrl + r Redo 重做操作 U Undo line 整行撤销 搜索与替换（Search &amp; Replace） 快捷键 英文全称 作用描述 /pattern Search forward 向前搜索 ?pattern Search backward 向后搜索 n Next match 下一个匹配项 N Previous match 上一个匹配项 * Search word under cursor 搜索当前单词 # Search word backward 反向搜索当前单词 :%s/old/new/g Substitute globally 全局替换 :s/old/new/g Substitute in line 当前行替换 :s/old/new/gc Substitute with confirm 带确认的替换 &amp; Repeat last substitute 重复上次替换 可视模式（Visual Mode） 快捷键 英文全称 作用描述 v Visual character 字符选择模式 V Visual line 行选择模式 Ctrl + v Visual block 块选择模式 y Yank selection 复制选中内容 d Delete selection 删除选中内容 c Change selection 修改选中内容 &gt; Indent right 向右缩进 &lt; Indent left 向左缩进 ~ Toggle case selection 切换选中内容大小写 o Move to other end 切换选择端点 窗口管理（Window Management） 快捷键 英文全称 作用描述 :sp [file] Horizontal split 水平分屏 :vsp [file] Vertical split 垂直分屏 Ctrl + w s Split window 水平分割当前窗口 Ctrl + w v Vertical split window 垂直分割当前窗口 Ctrl + w h Window left 切换到左窗口 Ctrl + w j Window down 切换到下窗口 Ctrl + w k Window up 切换到上窗口 Ctrl + w l Window right 切换到右窗口 Ctrl + w c Close window 关闭当前窗口 Ctrl + w o Only window 关闭其他窗口 Ctrl + w = Equal window size 等分窗口尺寸 Ctrl + w + Increase height 增加窗口高度 Ctrl + w - Decrease height 减少窗口高度 Ctrl + w &gt; Increase width 增加窗口宽度 Ctrl + w &lt; Decrease width 减少窗口宽度 Ctrl + w r Rotate windows 轮换窗口位置 Ctrl + w T Move to new tab 将窗口移到新标签页 标签页（Tabs） 快捷键 英文全称 作用描述 :tabe [file] Tab edit 新建标签页 gt Go to next tab 下一个标签页 gT Go to previous tab 上一个标签页 :tabm [n] Tab move 移动标签页位置 :tabc Tab close 关闭当前标签页 :tabo Tab only 关闭其他标签页 寄存器与宏（Registers &amp; Macros） 快捷键 英文全称 作用描述 &quot;{reg}y Yank to register 复制到指定寄存器 &quot;{reg}p Paste from register 从寄存器粘贴 :reg Show registers 显示寄存器内容 qa Record macro &lsquo;a&rsquo; 录制宏到寄存器 a q Stop recording 停止录制 @a Execute macro &lsquo;a&rsquo; 执行寄存器 a 的宏 @@ Repeat last macro 重复上次宏 命令模式（Command Line） 快捷键 英文全称 作用描述 :w Write 保存文件 :q Quit 退出 Vim :wq Write and quit 保存并退出 :q! Quit without saving 强制退出 :e [file] Edit file 打开文件 :saveas [file] Save as 另存为 :bn Buffer next 下一个缓冲区 :bp Buffer previous 上一个缓冲区 :bd Buffer delete 关闭缓冲区 :ls List buffers 列出缓冲区 :r [file] Read file 插入文件内容 :r !cmd Read command output 插入命令输出 :!cmd Execute shell command 执行 shell 命令 高级操作（Advanced） 快捷键 英文全称 作用描述 . Repeat last command 重复上一次操作 Ctrl + a Increment number 增加数字 Ctrl + x Decrement number 减少数字 gf Go to file 打开光标下文件 Ctrl + ^ Switch to alternate file 切换上一个文件 :make Run make 执行 make 命令 :cnext Next error 下一个错误 :cprev Previous error 上一个错误 K Keyword help 查看光标下单词帮助 Ctrl + ] Jump to tag 跳转到标签定义 Ctrl + t Jump back from tag 从标签返回 zz Center screen 当前行居中屏幕 zt Top screen 当前行置顶 zb Bottom screen 当前行置底 g; Last change position 跳转到上次修改位置 g, Next change position 跳转到下一个修改位置 :set wrap Enable line wrap 启用自动换行 :set nowrap Disable line wrap 禁用自动换行 折叠操作（Folding） 快捷键 英文全称 作用描述 zc Close fold 关闭折叠 zo Open fold 打开折叠 za Toggle fold 切换折叠状态 zR Open all folds 打开所有折叠 zM Close all folds 关闭所有折叠 zf{motion} Create fold 创建折叠区域 zd Delete fold 删除折叠 书签（Marks） 快捷键 英文全称 作用描述 m{a-z} Set mark 设置书签 (a-z 本地, A-Z 全局) `{mark} Jump to mark 跳转到书签 '{mark} Jump to mark line start 跳转到书签行首 :marks List marks 列出所有书签 特殊模式（Special Modes） 快捷键 英文全称 作用描述 Q Ex mode 进入 Ex 模式 gQ Ex mode with return 可返回的 Ex 模式 Ctrl + v (插入模式) Insert literal character 插入原义字符 Ctrl + k {char}{char} Digraph input 输入特殊字符 帮助系统（Help System） 快捷键 英文全称 作用描述 :help Open help 打开帮助文档 :help topic Help on topic 查看特定主题帮助 Ctrl + ] (帮助) Jump to tag 跳转到帮助标签 Ctrl + t (帮助) Jump back 从帮助标签返回 总说明：\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#常用快捷键">常用快捷键</a></li>
+    <li><a href="#所有核心快捷键">所有核心快捷键</a>
+      <ol>
+        <li><a href="#光标移动cursor-movement"><strong>光标移动（Cursor Movement）</strong></a></li>
+        <li><a href="#插入模式insert-mode"><strong>插入模式（Insert Mode）</strong></a></li>
+        <li><a href="#删除操作deletion"><strong>删除操作（Deletion）</strong></a></li>
+        <li><a href="#修改与替换changing--replacing"><strong>修改与替换（Changing &amp; Replacing）</strong></a></li>
+        <li><a href="#复制粘贴yank--paste"><strong>复制粘贴（Yank &amp; Paste）</strong></a></li>
+        <li><a href="#撤销与重做undo--redo"><strong>撤销与重做（Undo &amp; Redo）</strong></a></li>
+        <li><a href="#搜索与替换search--replace"><strong>搜索与替换（Search &amp; Replace）</strong></a></li>
+        <li><a href="#可视模式visual-mode"><strong>可视模式（Visual Mode）</strong></a></li>
+        <li><a href="#窗口管理window-management"><strong>窗口管理（Window Management）</strong></a></li>
+        <li><a href="#标签页tabs"><strong>标签页（Tabs）</strong></a></li>
+        <li><a href="#寄存器与宏registers--macros"><strong>寄存器与宏（Registers &amp; Macros）</strong></a></li>
+        <li><a href="#命令模式command-line"><strong>命令模式（Command Line）</strong></a></li>
+        <li><a href="#高级操作advanced"><strong>高级操作（Advanced）</strong></a></li>
+        <li><a href="#折叠操作folding"><strong>折叠操作（Folding）</strong></a></li>
+        <li><a href="#书签marks"><strong>书签（Marks）</strong></a></li>
+        <li><a href="#特殊模式special-modes"><strong>特殊模式（Special Modes）</strong></a></li>
+        <li><a href="#帮助系统help-system"><strong>帮助系统（Help System）</strong></a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+            <a href="/categories/vim/" >
+                Vim
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/">Vim快捷键</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-18</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="常用快捷键">常用快捷键
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>i</code></td>
+          <td>Insert</td>
+          <td>进入插入模式（当前光标前）</td>
+      </tr>
+      <tr>
+          <td><code>a</code></td>
+          <td>Append</td>
+          <td>进入插入模式（当前光标后）</td>
+      </tr>
+      <tr>
+          <td><code>o</code></td>
+          <td>Open line below</td>
+          <td>在当前行下方插入新行并进入插入模式</td>
+      </tr>
+      <tr>
+          <td><code>O</code></td>
+          <td>Open line above</td>
+          <td>在当前行上方插入新行并进入插入模式</td>
+      </tr>
+      <tr>
+          <td><code>ESC</code></td>
+          <td>Escape</td>
+          <td>退出插入模式，返回普通模式</td>
+      </tr>
+      <tr>
+          <td><code>h</code> <code>j</code> <code>k</code> <code>l</code></td>
+          <td>Left/Down/Up/Right</td>
+          <td>方向键（左/下/上/右）</td>
+      </tr>
+      <tr>
+          <td><code>w</code></td>
+          <td>Word</td>
+          <td>移动到下一个单词开头</td>
+      </tr>
+      <tr>
+          <td><code>b</code></td>
+          <td>Back</td>
+          <td>移动到上一个单词开头</td>
+      </tr>
+      <tr>
+          <td><code>e</code></td>
+          <td>End of word</td>
+          <td>移动到当前单词末尾</td>
+      </tr>
+      <tr>
+          <td><code>0</code></td>
+          <td>Zero</td>
+          <td>移动到行首</td>
+      </tr>
+      <tr>
+          <td><code>$</code></td>
+          <td>End of line</td>
+          <td>移动到行尾</td>
+      </tr>
+      <tr>
+          <td><code>gg</code></td>
+          <td>Go to top</td>
+          <td>移动到文件第一行</td>
+      </tr>
+      <tr>
+          <td><code>G</code></td>
+          <td>Go to bottom</td>
+          <td>移动到文件最后一行</td>
+      </tr>
+      <tr>
+          <td><code>:n</code></td>
+          <td>Line number</td>
+          <td>跳转到第 n 行（如 <code>:10</code> 跳转到第 10 行）</td>
+      </tr>
+      <tr>
+          <td><code>x</code></td>
+          <td>Delete character</td>
+          <td>删除当前光标下的字符</td>
+      </tr>
+      <tr>
+          <td><code>dd</code></td>
+          <td>Delete line</td>
+          <td>删除当前行</td>
+      </tr>
+      <tr>
+          <td><code>yy</code></td>
+          <td>Yank (copy) line</td>
+          <td>复制当前行</td>
+      </tr>
+      <tr>
+          <td><code>p</code></td>
+          <td>Paste</td>
+          <td>粘贴到光标后</td>
+      </tr>
+      <tr>
+          <td><code>P</code></td>
+          <td>Paste before</td>
+          <td>粘贴到光标前</td>
+      </tr>
+      <tr>
+          <td><code>u</code></td>
+          <td>Undo</td>
+          <td>撤销上一步操作</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + r</code></td>
+          <td>Redo</td>
+          <td>重做撤销的操作</td>
+      </tr>
+      <tr>
+          <td><code>/pattern</code></td>
+          <td>Search forward</td>
+          <td>向前搜索指定文本</td>
+      </tr>
+      <tr>
+          <td><code>?pattern</code></td>
+          <td>Search backward</td>
+          <td>向后搜索指定文本</td>
+      </tr>
+      <tr>
+          <td><code>n</code></td>
+          <td>Next match</td>
+          <td>跳转到下一个匹配项</td>
+      </tr>
+      <tr>
+          <td><code>N</code></td>
+          <td>Previous match</td>
+          <td>跳转到上一个匹配项</td>
+      </tr>
+      <tr>
+          <td><code>:%s/old/new/g</code></td>
+          <td>Substitute globally</td>
+          <td>全局替换文本（将 old 替换为 new）</td>
+      </tr>
+      <tr>
+          <td><code>:w</code></td>
+          <td>Write</td>
+          <td>保存文件</td>
+      </tr>
+      <tr>
+          <td><code>:q</code></td>
+          <td>Quit</td>
+          <td>退出 Vim</td>
+      </tr>
+      <tr>
+          <td><code>:wq</code></td>
+          <td>Write and quit</td>
+          <td>保存并退出</td>
+      </tr>
+      <tr>
+          <td><code>:q!</code></td>
+          <td>Quit without saving</td>
+          <td>强制退出（不保存修改）</td>
+      </tr>
+      <tr>
+          <td><code>v</code></td>
+          <td>Visual mode</td>
+          <td>进入可视模式（字符选择）</td>
+      </tr>
+      <tr>
+          <td><code>V</code></td>
+          <td>Visual line mode</td>
+          <td>进入可视模式（行选择）</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + v</code></td>
+          <td>Visual block mode</td>
+          <td>进入可视模式（块选择）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="所有核心快捷键">所有核心快捷键
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>分类</strong></th>
+          <th><strong>快捷键</strong></th>
+          <th><strong>英文全称</strong></th>
+          <th><strong>作用描述</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1. 光标移动</strong></td>
+          <td><code>h</code> <code>j</code> <code>k</code> <code>l</code></td>
+          <td>Left/Down/Up/Right</td>
+          <td>基础方向移动</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>w</code></td>
+          <td>Word forward</td>
+          <td>移到下一个单词开头</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>W</code></td>
+          <td>WORD forward</td>
+          <td>移到下一个空格分隔单词开头</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>b</code></td>
+          <td>Back word</td>
+          <td>移到上一个单词开头</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>B</code></td>
+          <td>Back WORD</td>
+          <td>移到上一个空格分隔单词开头</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>e</code></td>
+          <td>End of word</td>
+          <td>移到单词末尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>E</code></td>
+          <td>End of WORD</td>
+          <td>移到空格分隔单词末尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>0</code></td>
+          <td>Zero</td>
+          <td>移到行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>^</code></td>
+          <td>First non-blank</td>
+          <td>移到行首非空白字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>$</code></td>
+          <td>End of line</td>
+          <td>移到行尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gg</code></td>
+          <td>Go to top</td>
+          <td>移到文件首行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>G</code></td>
+          <td>Go to bottom</td>
+          <td>移到文件末行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:n</code></td>
+          <td>Line number</td>
+          <td>跳转到第 n 行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>H</code></td>
+          <td>Home screen</td>
+          <td>移到屏幕顶部</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>M</code></td>
+          <td>Middle screen</td>
+          <td>移到屏幕中间</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>L</code></td>
+          <td>Last screen</td>
+          <td>移到屏幕底部</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + f</code></td>
+          <td>Forward</td>
+          <td>向下翻页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + b</code></td>
+          <td>Backward</td>
+          <td>向上翻页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + d</code></td>
+          <td>Down half page</td>
+          <td>向下半页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + u</code></td>
+          <td>Up half page</td>
+          <td>向上半页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>%</code></td>
+          <td>Match bracket</td>
+          <td>跳转到匹配括号</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>{</code></td>
+          <td>Paragraph back</td>
+          <td>上一段落</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>}</code></td>
+          <td>Paragraph forward</td>
+          <td>下一段落</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>(</code></td>
+          <td>Sentence back</td>
+          <td>上一句子</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>)</code></td>
+          <td>Sentence forward</td>
+          <td>下一句子</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>f{char}</code></td>
+          <td>Find character</td>
+          <td>向右查找字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>F{char}</code></td>
+          <td>Find character backward</td>
+          <td>向左查找字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>;</code></td>
+          <td>Repeat find</td>
+          <td>重复查找</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>,</code></td>
+          <td>Repeat find reverse</td>
+          <td>反向重复查找</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + o</code></td>
+          <td>Jump older</td>
+          <td>返回上一个位置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + i</code></td>
+          <td>Jump newer</td>
+          <td>前进到下一个位置</td>
+      </tr>
+      <tr>
+          <td><strong>2. 插入模式</strong></td>
+          <td><code>i</code></td>
+          <td>Insert</td>
+          <td>光标前插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>a</code></td>
+          <td>Append</td>
+          <td>光标后插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>I</code></td>
+          <td>Insert at line start</td>
+          <td>行首插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>A</code></td>
+          <td>Append at line end</td>
+          <td>行尾插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>o</code></td>
+          <td>Open line below</td>
+          <td>下方插入新行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>O</code></td>
+          <td>Open line above</td>
+          <td>上方插入新行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>s</code></td>
+          <td>Substitute character</td>
+          <td>删除字符并插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>S</code></td>
+          <td>Substitute line</td>
+          <td>删除整行并插入</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + h</code></td>
+          <td>Backspace</td>
+          <td>删除前字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w</code></td>
+          <td>Delete word</td>
+          <td>删除前单词</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + u</code></td>
+          <td>Delete to start</td>
+          <td>删除到行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + ]</code></td>
+          <td>Escape</td>
+          <td>强制退出插入模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + r {reg}</code></td>
+          <td>Insert register</td>
+          <td>插入寄存器内容</td>
+      </tr>
+      <tr>
+          <td><strong>3. 删除操作</strong></td>
+          <td><code>x</code></td>
+          <td>Delete character</td>
+          <td>删除光标下字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>X</code></td>
+          <td>Delete before</td>
+          <td>删除光标前字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>dd</code></td>
+          <td>Delete line</td>
+          <td>删除整行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>dw</code></td>
+          <td>Delete word</td>
+          <td>删除到单词尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>d$</code> / <code>D</code></td>
+          <td>Delete to end</td>
+          <td>删除到行尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>d^</code></td>
+          <td>Delete to start</td>
+          <td>删除到行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>dG</code></td>
+          <td>Delete to EOF</td>
+          <td>删除到文件尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>dgg</code></td>
+          <td>Delete to BOF</td>
+          <td>删除到文件头</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>d{motion}</code></td>
+          <td>Delete motion</td>
+          <td>按动作删除</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>J</code></td>
+          <td>Join lines</td>
+          <td>合并当前行和下一行</td>
+      </tr>
+      <tr>
+          <td><strong>4. 修改与替换</strong></td>
+          <td><code>r{char}</code></td>
+          <td>Replace character</td>
+          <td>替换单个字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>R</code></td>
+          <td>Replace mode</td>
+          <td>进入替换模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>cc</code></td>
+          <td>Change line</td>
+          <td>修改整行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>cw</code></td>
+          <td>Change word</td>
+          <td>修改单词</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>c$</code> / <code>C</code></td>
+          <td>Change to end</td>
+          <td>修改到行尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>c^</code></td>
+          <td>Change to start</td>
+          <td>修改到行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>~</code></td>
+          <td>Toggle case</td>
+          <td>切换大小写</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gU{motion}</code></td>
+          <td>Uppercase motion</td>
+          <td>转大写</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gu{motion}</code></td>
+          <td>Lowercase motion</td>
+          <td>转小写</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>g~~</code></td>
+          <td>Toggle case line</td>
+          <td>整行切换大小写</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>xp</code></td>
+          <td>Transpose characters</td>
+          <td>交换相邻字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&gt;&gt;</code></td>
+          <td>Indent right</td>
+          <td>增加缩进</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&lt;&lt;</code></td>
+          <td>Indent left</td>
+          <td>减少缩进</td>
+      </tr>
+      <tr>
+          <td><strong>5. 复制粘贴</strong></td>
+          <td><code>yy</code></td>
+          <td>Yank line</td>
+          <td>复制整行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>yw</code></td>
+          <td>Yank word</td>
+          <td>复制单词</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>y$</code></td>
+          <td>Yank to end</td>
+          <td>复制到行尾</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>y^</code></td>
+          <td>Yank to start</td>
+          <td>复制到行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>p</code></td>
+          <td>Paste after</td>
+          <td>粘贴到光标后</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>P</code></td>
+          <td>Paste before</td>
+          <td>粘贴到光标前</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&quot;*y</code></td>
+          <td>Yank to system clipboard</td>
+          <td>复制到系统剪贴板</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&quot;*p</code></td>
+          <td>Paste from system clipboard</td>
+          <td>从系统剪贴板粘贴</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>]p</code></td>
+          <td>Paste with indent</td>
+          <td>自动缩进粘贴</td>
+      </tr>
+      <tr>
+          <td><strong>6. 撤销与重做</strong></td>
+          <td><code>u</code></td>
+          <td>Undo</td>
+          <td>撤销操作</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + r</code></td>
+          <td>Redo</td>
+          <td>重做操作</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>U</code></td>
+          <td>Undo line</td>
+          <td>整行撤销</td>
+      </tr>
+      <tr>
+          <td><strong>7. 搜索与替换</strong></td>
+          <td><code>/pattern</code></td>
+          <td>Search forward</td>
+          <td>向前搜索</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>?pattern</code></td>
+          <td>Search backward</td>
+          <td>向后搜索</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>n</code></td>
+          <td>Next match</td>
+          <td>下一个匹配项</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>N</code></td>
+          <td>Previous match</td>
+          <td>上一个匹配项</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>*</code></td>
+          <td>Search word under cursor</td>
+          <td>搜索当前单词</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>#</code></td>
+          <td>Search word backward</td>
+          <td>反向搜索当前单词</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:%s/old/new/g</code></td>
+          <td>Substitute globally</td>
+          <td>全局替换</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:s/old/new/g</code></td>
+          <td>Substitute in line</td>
+          <td>当前行替换</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:s/old/new/gc</code></td>
+          <td>Substitute with confirm</td>
+          <td>带确认的替换</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&amp;</code></td>
+          <td>Repeat last substitute</td>
+          <td>重复上次替换</td>
+      </tr>
+      <tr>
+          <td><strong>8. 可视模式</strong></td>
+          <td><code>v</code></td>
+          <td>Visual character</td>
+          <td>字符选择模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>V</code></td>
+          <td>Visual line</td>
+          <td>行选择模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + v</code></td>
+          <td>Visual block</td>
+          <td>块选择模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>y</code></td>
+          <td>Yank selection</td>
+          <td>复制选中内容</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>d</code></td>
+          <td>Delete selection</td>
+          <td>删除选中内容</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>c</code></td>
+          <td>Change selection</td>
+          <td>修改选中内容</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&gt;</code></td>
+          <td>Indent right</td>
+          <td>向右缩进</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&lt;</code></td>
+          <td>Indent left</td>
+          <td>向左缩进</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>~</code></td>
+          <td>Toggle case selection</td>
+          <td>切换选中内容大小写</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>o</code></td>
+          <td>Move to other end</td>
+          <td>切换选择端点</td>
+      </tr>
+      <tr>
+          <td><strong>9. 窗口管理</strong></td>
+          <td><code>:sp [file]</code></td>
+          <td>Horizontal split</td>
+          <td>水平分屏</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:vsp [file]</code></td>
+          <td>Vertical split</td>
+          <td>垂直分屏</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w s</code></td>
+          <td>Split window</td>
+          <td>水平分割当前窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w v</code></td>
+          <td>Vertical split window</td>
+          <td>垂直分割当前窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w h</code></td>
+          <td>Window left</td>
+          <td>切换到左窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w j</code></td>
+          <td>Window down</td>
+          <td>切换到下窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w k</code></td>
+          <td>Window up</td>
+          <td>切换到上窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w l</code></td>
+          <td>Window right</td>
+          <td>切换到右窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w c</code></td>
+          <td>Close window</td>
+          <td>关闭当前窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w o</code></td>
+          <td>Only window</td>
+          <td>关闭其他窗口</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w =</code></td>
+          <td>Equal window size</td>
+          <td>等分窗口尺寸</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w +</code></td>
+          <td>Increase height</td>
+          <td>增加窗口高度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w -</code></td>
+          <td>Decrease height</td>
+          <td>减少窗口高度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w &gt;</code></td>
+          <td>Increase width</td>
+          <td>增加窗口宽度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w &lt;</code></td>
+          <td>Decrease width</td>
+          <td>减少窗口宽度</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w r</code></td>
+          <td>Rotate windows</td>
+          <td>轮换窗口位置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + w T</code></td>
+          <td>Move to new tab</td>
+          <td>将窗口移到新标签页</td>
+      </tr>
+      <tr>
+          <td><strong>10. 标签页</strong></td>
+          <td><code>:tabe [file]</code></td>
+          <td>Tab edit</td>
+          <td>新建标签页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gt</code></td>
+          <td>Go to next tab</td>
+          <td>下一个标签页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gT</code></td>
+          <td>Go to previous tab</td>
+          <td>上一个标签页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:tabm [n]</code></td>
+          <td>Tab move</td>
+          <td>移动标签页位置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:tabc</code></td>
+          <td>Tab close</td>
+          <td>关闭当前标签页</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:tabo</code></td>
+          <td>Tab only</td>
+          <td>关闭其他标签页</td>
+      </tr>
+      <tr>
+          <td><strong>11. 寄存器与宏</strong></td>
+          <td><code>&quot;{reg}y</code></td>
+          <td>Yank to register</td>
+          <td>复制到指定寄存器</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>&quot;{reg}p</code></td>
+          <td>Paste from register</td>
+          <td>从寄存器粘贴</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:reg</code></td>
+          <td>Show registers</td>
+          <td>显示寄存器内容</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>qa</code></td>
+          <td>Record macro &lsquo;a&rsquo;</td>
+          <td>录制宏到寄存器 a</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>q</code></td>
+          <td>Stop recording</td>
+          <td>停止录制</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>@a</code></td>
+          <td>Execute macro &lsquo;a&rsquo;</td>
+          <td>执行寄存器 a 的宏</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>@@</code></td>
+          <td>Repeat last macro</td>
+          <td>重复上次宏</td>
+      </tr>
+      <tr>
+          <td><strong>12. 命令模式</strong></td>
+          <td><code>:w</code></td>
+          <td>Write</td>
+          <td>保存文件</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:q</code></td>
+          <td>Quit</td>
+          <td>退出 Vim</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:wq</code></td>
+          <td>Write and quit</td>
+          <td>保存并退出</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:q!</code></td>
+          <td>Quit without saving</td>
+          <td>强制退出</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:e [file]</code></td>
+          <td>Edit file</td>
+          <td>打开文件</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:saveas [file]</code></td>
+          <td>Save as</td>
+          <td>另存为</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:bn</code></td>
+          <td>Buffer next</td>
+          <td>下一个缓冲区</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:bp</code></td>
+          <td>Buffer previous</td>
+          <td>上一个缓冲区</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:bd</code></td>
+          <td>Buffer delete</td>
+          <td>关闭缓冲区</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:ls</code></td>
+          <td>List buffers</td>
+          <td>列出缓冲区</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:r [file]</code></td>
+          <td>Read file</td>
+          <td>插入文件内容</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:r !cmd</code></td>
+          <td>Read command output</td>
+          <td>插入命令输出</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:!cmd</code></td>
+          <td>Execute shell command</td>
+          <td>执行 shell 命令</td>
+      </tr>
+      <tr>
+          <td><strong>13. 高级操作</strong></td>
+          <td><code>.</code></td>
+          <td>Repeat last command</td>
+          <td>重复上一次操作</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + a</code></td>
+          <td>Increment number</td>
+          <td>增加数字</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + x</code></td>
+          <td>Decrement number</td>
+          <td>减少数字</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gf</code></td>
+          <td>Go to file</td>
+          <td>打开光标下文件</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + ^</code></td>
+          <td>Switch to alternate file</td>
+          <td>切换上一个文件</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:make</code></td>
+          <td>Run make</td>
+          <td>执行 make 命令</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:cnext</code></td>
+          <td>Next error</td>
+          <td>下一个错误</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:cprev</code></td>
+          <td>Previous error</td>
+          <td>上一个错误</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>K</code></td>
+          <td>Keyword help</td>
+          <td>查看光标下单词帮助</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + ]</code></td>
+          <td>Jump to tag</td>
+          <td>跳转到标签定义</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + t</code></td>
+          <td>Jump back from tag</td>
+          <td>从标签返回</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zz</code></td>
+          <td>Center screen</td>
+          <td>当前行居中屏幕</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zt</code></td>
+          <td>Top screen</td>
+          <td>当前行置顶</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zb</code></td>
+          <td>Bottom screen</td>
+          <td>当前行置底</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>g;</code></td>
+          <td>Last change position</td>
+          <td>跳转到上次修改位置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>g,</code></td>
+          <td>Next change position</td>
+          <td>跳转到下一个修改位置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:set wrap</code></td>
+          <td>Enable line wrap</td>
+          <td>启用自动换行</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:set nowrap</code></td>
+          <td>Disable line wrap</td>
+          <td>禁用自动换行</td>
+      </tr>
+      <tr>
+          <td><strong>14. 折叠操作</strong></td>
+          <td><code>zc</code></td>
+          <td>Close fold</td>
+          <td>关闭折叠</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zo</code></td>
+          <td>Open fold</td>
+          <td>打开折叠</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>za</code></td>
+          <td>Toggle fold</td>
+          <td>切换折叠状态</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zR</code></td>
+          <td>Open all folds</td>
+          <td>打开所有折叠</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zM</code></td>
+          <td>Close all folds</td>
+          <td>关闭所有折叠</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zf{motion}</code></td>
+          <td>Create fold</td>
+          <td>创建折叠区域</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>zd</code></td>
+          <td>Delete fold</td>
+          <td>删除折叠</td>
+      </tr>
+      <tr>
+          <td><strong>15. 书签</strong></td>
+          <td><code>m{a-z}</code></td>
+          <td>Set mark</td>
+          <td>设置书签 (a-z 本地, A-Z 全局)</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>`{mark}</code></td>
+          <td>Jump to mark</td>
+          <td>跳转到书签</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>'{mark}</code></td>
+          <td>Jump to mark line start</td>
+          <td>跳转到书签行首</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:marks</code></td>
+          <td>List marks</td>
+          <td>列出所有书签</td>
+      </tr>
+      <tr>
+          <td><strong>16. 特殊模式</strong></td>
+          <td><code>Q</code></td>
+          <td>Ex mode</td>
+          <td>进入 Ex 模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>gQ</code></td>
+          <td>Ex mode with return</td>
+          <td>可返回的 Ex 模式</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + v</code> (插入模式)</td>
+          <td>Insert literal character</td>
+          <td>插入原义字符</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + k {char}{char}</code></td>
+          <td>Digraph input</td>
+          <td>输入特殊字符</td>
+      </tr>
+      <tr>
+          <td><strong>17. 帮助系统</strong></td>
+          <td><code>:help</code></td>
+          <td>Open help</td>
+          <td>打开帮助文档</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>:help topic</code></td>
+          <td>Help on topic</td>
+          <td>查看特定主题帮助</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + ]</code> (帮助)</td>
+          <td>Jump to tag</td>
+          <td>跳转到帮助标签</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>Ctrl + t</code> (帮助)</td>
+          <td>Jump back</td>
+          <td>从帮助标签返回</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="光标移动cursor-movement"><strong>光标移动（Cursor Movement）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>h</code> <code>j</code> <code>k</code> <code>l</code></td>
+          <td>Left/Down/Up/Right</td>
+          <td>基础方向移动</td>
+      </tr>
+      <tr>
+          <td><code>w</code></td>
+          <td>Word forward</td>
+          <td>移到下一个单词开头</td>
+      </tr>
+      <tr>
+          <td><code>W</code></td>
+          <td>WORD forward</td>
+          <td>移到下一个空格分隔单词开头</td>
+      </tr>
+      <tr>
+          <td><code>b</code></td>
+          <td>Back word</td>
+          <td>移到上一个单词开头</td>
+      </tr>
+      <tr>
+          <td><code>B</code></td>
+          <td>Back WORD</td>
+          <td>移到上一个空格分隔单词开头</td>
+      </tr>
+      <tr>
+          <td><code>e</code></td>
+          <td>End of word</td>
+          <td>移到单词末尾</td>
+      </tr>
+      <tr>
+          <td><code>E</code></td>
+          <td>End of WORD</td>
+          <td>移到空格分隔单词末尾</td>
+      </tr>
+      <tr>
+          <td><code>0</code></td>
+          <td>Zero</td>
+          <td>移到行首</td>
+      </tr>
+      <tr>
+          <td><code>^</code></td>
+          <td>First non-blank</td>
+          <td>移到行首非空白字符</td>
+      </tr>
+      <tr>
+          <td><code>$</code></td>
+          <td>End of line</td>
+          <td>移到行尾</td>
+      </tr>
+      <tr>
+          <td><code>gg</code></td>
+          <td>Go to top</td>
+          <td>移到文件首行</td>
+      </tr>
+      <tr>
+          <td><code>G</code></td>
+          <td>Go to bottom</td>
+          <td>移到文件末行</td>
+      </tr>
+      <tr>
+          <td><code>:n</code></td>
+          <td>Line number</td>
+          <td>跳转到第 n 行</td>
+      </tr>
+      <tr>
+          <td><code>H</code></td>
+          <td>Home screen</td>
+          <td>移到屏幕顶部</td>
+      </tr>
+      <tr>
+          <td><code>M</code></td>
+          <td>Middle screen</td>
+          <td>移到屏幕中间</td>
+      </tr>
+      <tr>
+          <td><code>L</code></td>
+          <td>Last screen</td>
+          <td>移到屏幕底部</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + f</code></td>
+          <td>Forward</td>
+          <td>向下翻页</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + b</code></td>
+          <td>Backward</td>
+          <td>向上翻页</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + d</code></td>
+          <td>Down half page</td>
+          <td>向下半页</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + u</code></td>
+          <td>Up half page</td>
+          <td>向上半页</td>
+      </tr>
+      <tr>
+          <td><code>%</code></td>
+          <td>Match bracket</td>
+          <td>跳转到匹配括号</td>
+      </tr>
+      <tr>
+          <td><code>{</code></td>
+          <td>Paragraph back</td>
+          <td>上一段落</td>
+      </tr>
+      <tr>
+          <td><code>}</code></td>
+          <td>Paragraph forward</td>
+          <td>下一段落</td>
+      </tr>
+      <tr>
+          <td><code>(</code></td>
+          <td>Sentence back</td>
+          <td>上一句子</td>
+      </tr>
+      <tr>
+          <td><code>)</code></td>
+          <td>Sentence forward</td>
+          <td>下一句子</td>
+      </tr>
+      <tr>
+          <td><code>f{char}</code></td>
+          <td>Find character</td>
+          <td>向右查找字符</td>
+      </tr>
+      <tr>
+          <td><code>F{char}</code></td>
+          <td>Find character backward</td>
+          <td>向左查找字符</td>
+      </tr>
+      <tr>
+          <td><code>;</code></td>
+          <td>Repeat find</td>
+          <td>重复查找</td>
+      </tr>
+      <tr>
+          <td><code>,</code></td>
+          <td>Repeat find reverse</td>
+          <td>反向重复查找</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + o</code></td>
+          <td>Jump older</td>
+          <td>返回上一个位置</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + i</code></td>
+          <td>Jump newer</td>
+          <td>前进到下一个位置</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="插入模式insert-mode"><strong>插入模式（Insert Mode）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>i</code></td>
+          <td>Insert</td>
+          <td>光标前插入</td>
+      </tr>
+      <tr>
+          <td><code>a</code></td>
+          <td>Append</td>
+          <td>光标后插入</td>
+      </tr>
+      <tr>
+          <td><code>I</code></td>
+          <td>Insert at line start</td>
+          <td>行首插入</td>
+      </tr>
+      <tr>
+          <td><code>A</code></td>
+          <td>Append at line end</td>
+          <td>行尾插入</td>
+      </tr>
+      <tr>
+          <td><code>o</code></td>
+          <td>Open line below</td>
+          <td>下方插入新行</td>
+      </tr>
+      <tr>
+          <td><code>O</code></td>
+          <td>Open line above</td>
+          <td>上方插入新行</td>
+      </tr>
+      <tr>
+          <td><code>s</code></td>
+          <td>Substitute character</td>
+          <td>删除字符并插入</td>
+      </tr>
+      <tr>
+          <td><code>S</code></td>
+          <td>Substitute line</td>
+          <td>删除整行并插入</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + h</code></td>
+          <td>Backspace</td>
+          <td>删除前字符</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w</code></td>
+          <td>Delete word</td>
+          <td>删除前单词</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + u</code></td>
+          <td>Delete to start</td>
+          <td>删除到行首</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + ]</code></td>
+          <td>Escape</td>
+          <td>强制退出插入模式</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + r {reg}</code></td>
+          <td>Insert register</td>
+          <td>插入寄存器内容</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="删除操作deletion"><strong>删除操作（Deletion）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>x</code></td>
+          <td>Delete character</td>
+          <td>删除光标下字符</td>
+      </tr>
+      <tr>
+          <td><code>X</code></td>
+          <td>Delete before</td>
+          <td>删除光标前字符</td>
+      </tr>
+      <tr>
+          <td><code>dd</code></td>
+          <td>Delete line</td>
+          <td>删除整行</td>
+      </tr>
+      <tr>
+          <td><code>dw</code></td>
+          <td>Delete word</td>
+          <td>删除到单词尾</td>
+      </tr>
+      <tr>
+          <td><code>d$</code> / <code>D</code></td>
+          <td>Delete to end</td>
+          <td>删除到行尾</td>
+      </tr>
+      <tr>
+          <td><code>d^</code></td>
+          <td>Delete to start</td>
+          <td>删除到行首</td>
+      </tr>
+      <tr>
+          <td><code>dG</code></td>
+          <td>Delete to EOF</td>
+          <td>删除到文件尾</td>
+      </tr>
+      <tr>
+          <td><code>dgg</code></td>
+          <td>Delete to BOF</td>
+          <td>删除到文件头</td>
+      </tr>
+      <tr>
+          <td><code>d{motion}</code></td>
+          <td>Delete motion</td>
+          <td>按动作删除</td>
+      </tr>
+      <tr>
+          <td><code>J</code></td>
+          <td>Join lines</td>
+          <td>合并当前行和下一行</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="修改与替换changing--replacing"><strong>修改与替换（Changing &amp; Replacing）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>r{char}</code></td>
+          <td>Replace character</td>
+          <td>替换单个字符</td>
+      </tr>
+      <tr>
+          <td><code>R</code></td>
+          <td>Replace mode</td>
+          <td>进入替换模式</td>
+      </tr>
+      <tr>
+          <td><code>cc</code></td>
+          <td>Change line</td>
+          <td>修改整行</td>
+      </tr>
+      <tr>
+          <td><code>cw</code></td>
+          <td>Change word</td>
+          <td>修改单词</td>
+      </tr>
+      <tr>
+          <td><code>c$</code> / <code>C</code></td>
+          <td>Change to end</td>
+          <td>修改到行尾</td>
+      </tr>
+      <tr>
+          <td><code>c^</code></td>
+          <td>Change to start</td>
+          <td>修改到行首</td>
+      </tr>
+      <tr>
+          <td><code>~</code></td>
+          <td>Toggle case</td>
+          <td>切换大小写</td>
+      </tr>
+      <tr>
+          <td><code>gU{motion}</code></td>
+          <td>Uppercase motion</td>
+          <td>转大写</td>
+      </tr>
+      <tr>
+          <td><code>gu{motion}</code></td>
+          <td>Lowercase motion</td>
+          <td>转小写</td>
+      </tr>
+      <tr>
+          <td><code>g~~</code></td>
+          <td>Toggle case line</td>
+          <td>整行切换大小写</td>
+      </tr>
+      <tr>
+          <td><code>xp</code></td>
+          <td>Transpose characters</td>
+          <td>交换相邻字符</td>
+      </tr>
+      <tr>
+          <td><code>&gt;&gt;</code></td>
+          <td>Indent right</td>
+          <td>增加缩进</td>
+      </tr>
+      <tr>
+          <td><code>&lt;&lt;</code></td>
+          <td>Indent left</td>
+          <td>减少缩进</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="复制粘贴yank--paste"><strong>复制粘贴（Yank &amp; Paste）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>yy</code></td>
+          <td>Yank line</td>
+          <td>复制整行</td>
+      </tr>
+      <tr>
+          <td><code>yw</code></td>
+          <td>Yank word</td>
+          <td>复制单词</td>
+      </tr>
+      <tr>
+          <td><code>y$</code></td>
+          <td>Yank to end</td>
+          <td>复制到行尾</td>
+      </tr>
+      <tr>
+          <td><code>y^</code></td>
+          <td>Yank to start</td>
+          <td>复制到行首</td>
+      </tr>
+      <tr>
+          <td><code>p</code></td>
+          <td>Paste after</td>
+          <td>粘贴到光标后</td>
+      </tr>
+      <tr>
+          <td><code>P</code></td>
+          <td>Paste before</td>
+          <td>粘贴到光标前</td>
+      </tr>
+      <tr>
+          <td><code>&quot;*y</code></td>
+          <td>Yank to system clipboard</td>
+          <td>复制到系统剪贴板</td>
+      </tr>
+      <tr>
+          <td><code>&quot;*p</code></td>
+          <td>Paste from system clipboard</td>
+          <td>从系统剪贴板粘贴</td>
+      </tr>
+      <tr>
+          <td><code>]p</code></td>
+          <td>Paste with indent</td>
+          <td>自动缩进粘贴</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="撤销与重做undo--redo"><strong>撤销与重做（Undo &amp; Redo）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>u</code></td>
+          <td>Undo</td>
+          <td>撤销操作</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + r</code></td>
+          <td>Redo</td>
+          <td>重做操作</td>
+      </tr>
+      <tr>
+          <td><code>U</code></td>
+          <td>Undo line</td>
+          <td>整行撤销</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="搜索与替换search--replace"><strong>搜索与替换（Search &amp; Replace）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>/pattern</code></td>
+          <td>Search forward</td>
+          <td>向前搜索</td>
+      </tr>
+      <tr>
+          <td><code>?pattern</code></td>
+          <td>Search backward</td>
+          <td>向后搜索</td>
+      </tr>
+      <tr>
+          <td><code>n</code></td>
+          <td>Next match</td>
+          <td>下一个匹配项</td>
+      </tr>
+      <tr>
+          <td><code>N</code></td>
+          <td>Previous match</td>
+          <td>上一个匹配项</td>
+      </tr>
+      <tr>
+          <td><code>*</code></td>
+          <td>Search word under cursor</td>
+          <td>搜索当前单词</td>
+      </tr>
+      <tr>
+          <td><code>#</code></td>
+          <td>Search word backward</td>
+          <td>反向搜索当前单词</td>
+      </tr>
+      <tr>
+          <td><code>:%s/old/new/g</code></td>
+          <td>Substitute globally</td>
+          <td>全局替换</td>
+      </tr>
+      <tr>
+          <td><code>:s/old/new/g</code></td>
+          <td>Substitute in line</td>
+          <td>当前行替换</td>
+      </tr>
+      <tr>
+          <td><code>:s/old/new/gc</code></td>
+          <td>Substitute with confirm</td>
+          <td>带确认的替换</td>
+      </tr>
+      <tr>
+          <td><code>&amp;</code></td>
+          <td>Repeat last substitute</td>
+          <td>重复上次替换</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="可视模式visual-mode"><strong>可视模式（Visual Mode）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>v</code></td>
+          <td>Visual character</td>
+          <td>字符选择模式</td>
+      </tr>
+      <tr>
+          <td><code>V</code></td>
+          <td>Visual line</td>
+          <td>行选择模式</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + v</code></td>
+          <td>Visual block</td>
+          <td>块选择模式</td>
+      </tr>
+      <tr>
+          <td><code>y</code></td>
+          <td>Yank selection</td>
+          <td>复制选中内容</td>
+      </tr>
+      <tr>
+          <td><code>d</code></td>
+          <td>Delete selection</td>
+          <td>删除选中内容</td>
+      </tr>
+      <tr>
+          <td><code>c</code></td>
+          <td>Change selection</td>
+          <td>修改选中内容</td>
+      </tr>
+      <tr>
+          <td><code>&gt;</code></td>
+          <td>Indent right</td>
+          <td>向右缩进</td>
+      </tr>
+      <tr>
+          <td><code>&lt;</code></td>
+          <td>Indent left</td>
+          <td>向左缩进</td>
+      </tr>
+      <tr>
+          <td><code>~</code></td>
+          <td>Toggle case selection</td>
+          <td>切换选中内容大小写</td>
+      </tr>
+      <tr>
+          <td><code>o</code></td>
+          <td>Move to other end</td>
+          <td>切换选择端点</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="窗口管理window-management"><strong>窗口管理（Window Management）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:sp [file]</code></td>
+          <td>Horizontal split</td>
+          <td>水平分屏</td>
+      </tr>
+      <tr>
+          <td><code>:vsp [file]</code></td>
+          <td>Vertical split</td>
+          <td>垂直分屏</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w s</code></td>
+          <td>Split window</td>
+          <td>水平分割当前窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w v</code></td>
+          <td>Vertical split window</td>
+          <td>垂直分割当前窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w h</code></td>
+          <td>Window left</td>
+          <td>切换到左窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w j</code></td>
+          <td>Window down</td>
+          <td>切换到下窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w k</code></td>
+          <td>Window up</td>
+          <td>切换到上窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w l</code></td>
+          <td>Window right</td>
+          <td>切换到右窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w c</code></td>
+          <td>Close window</td>
+          <td>关闭当前窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w o</code></td>
+          <td>Only window</td>
+          <td>关闭其他窗口</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w =</code></td>
+          <td>Equal window size</td>
+          <td>等分窗口尺寸</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w +</code></td>
+          <td>Increase height</td>
+          <td>增加窗口高度</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w -</code></td>
+          <td>Decrease height</td>
+          <td>减少窗口高度</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w &gt;</code></td>
+          <td>Increase width</td>
+          <td>增加窗口宽度</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w &lt;</code></td>
+          <td>Decrease width</td>
+          <td>减少窗口宽度</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w r</code></td>
+          <td>Rotate windows</td>
+          <td>轮换窗口位置</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + w T</code></td>
+          <td>Move to new tab</td>
+          <td>将窗口移到新标签页</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="标签页tabs"><strong>标签页（Tabs）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:tabe [file]</code></td>
+          <td>Tab edit</td>
+          <td>新建标签页</td>
+      </tr>
+      <tr>
+          <td><code>gt</code></td>
+          <td>Go to next tab</td>
+          <td>下一个标签页</td>
+      </tr>
+      <tr>
+          <td><code>gT</code></td>
+          <td>Go to previous tab</td>
+          <td>上一个标签页</td>
+      </tr>
+      <tr>
+          <td><code>:tabm [n]</code></td>
+          <td>Tab move</td>
+          <td>移动标签页位置</td>
+      </tr>
+      <tr>
+          <td><code>:tabc</code></td>
+          <td>Tab close</td>
+          <td>关闭当前标签页</td>
+      </tr>
+      <tr>
+          <td><code>:tabo</code></td>
+          <td>Tab only</td>
+          <td>关闭其他标签页</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="寄存器与宏registers--macros"><strong>寄存器与宏（Registers &amp; Macros）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>&quot;{reg}y</code></td>
+          <td>Yank to register</td>
+          <td>复制到指定寄存器</td>
+      </tr>
+      <tr>
+          <td><code>&quot;{reg}p</code></td>
+          <td>Paste from register</td>
+          <td>从寄存器粘贴</td>
+      </tr>
+      <tr>
+          <td><code>:reg</code></td>
+          <td>Show registers</td>
+          <td>显示寄存器内容</td>
+      </tr>
+      <tr>
+          <td><code>qa</code></td>
+          <td>Record macro &lsquo;a&rsquo;</td>
+          <td>录制宏到寄存器 a</td>
+      </tr>
+      <tr>
+          <td><code>q</code></td>
+          <td>Stop recording</td>
+          <td>停止录制</td>
+      </tr>
+      <tr>
+          <td><code>@a</code></td>
+          <td>Execute macro &lsquo;a&rsquo;</td>
+          <td>执行寄存器 a 的宏</td>
+      </tr>
+      <tr>
+          <td><code>@@</code></td>
+          <td>Repeat last macro</td>
+          <td>重复上次宏</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="命令模式command-line"><strong>命令模式（Command Line）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:w</code></td>
+          <td>Write</td>
+          <td>保存文件</td>
+      </tr>
+      <tr>
+          <td><code>:q</code></td>
+          <td>Quit</td>
+          <td>退出 Vim</td>
+      </tr>
+      <tr>
+          <td><code>:wq</code></td>
+          <td>Write and quit</td>
+          <td>保存并退出</td>
+      </tr>
+      <tr>
+          <td><code>:q!</code></td>
+          <td>Quit without saving</td>
+          <td>强制退出</td>
+      </tr>
+      <tr>
+          <td><code>:e [file]</code></td>
+          <td>Edit file</td>
+          <td>打开文件</td>
+      </tr>
+      <tr>
+          <td><code>:saveas [file]</code></td>
+          <td>Save as</td>
+          <td>另存为</td>
+      </tr>
+      <tr>
+          <td><code>:bn</code></td>
+          <td>Buffer next</td>
+          <td>下一个缓冲区</td>
+      </tr>
+      <tr>
+          <td><code>:bp</code></td>
+          <td>Buffer previous</td>
+          <td>上一个缓冲区</td>
+      </tr>
+      <tr>
+          <td><code>:bd</code></td>
+          <td>Buffer delete</td>
+          <td>关闭缓冲区</td>
+      </tr>
+      <tr>
+          <td><code>:ls</code></td>
+          <td>List buffers</td>
+          <td>列出缓冲区</td>
+      </tr>
+      <tr>
+          <td><code>:r [file]</code></td>
+          <td>Read file</td>
+          <td>插入文件内容</td>
+      </tr>
+      <tr>
+          <td><code>:r !cmd</code></td>
+          <td>Read command output</td>
+          <td>插入命令输出</td>
+      </tr>
+      <tr>
+          <td><code>:!cmd</code></td>
+          <td>Execute shell command</td>
+          <td>执行 shell 命令</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="高级操作advanced"><strong>高级操作（Advanced）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>.</code></td>
+          <td>Repeat last command</td>
+          <td>重复上一次操作</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + a</code></td>
+          <td>Increment number</td>
+          <td>增加数字</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + x</code></td>
+          <td>Decrement number</td>
+          <td>减少数字</td>
+      </tr>
+      <tr>
+          <td><code>gf</code></td>
+          <td>Go to file</td>
+          <td>打开光标下文件</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + ^</code></td>
+          <td>Switch to alternate file</td>
+          <td>切换上一个文件</td>
+      </tr>
+      <tr>
+          <td><code>:make</code></td>
+          <td>Run make</td>
+          <td>执行 make 命令</td>
+      </tr>
+      <tr>
+          <td><code>:cnext</code></td>
+          <td>Next error</td>
+          <td>下一个错误</td>
+      </tr>
+      <tr>
+          <td><code>:cprev</code></td>
+          <td>Previous error</td>
+          <td>上一个错误</td>
+      </tr>
+      <tr>
+          <td><code>K</code></td>
+          <td>Keyword help</td>
+          <td>查看光标下单词帮助</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + ]</code></td>
+          <td>Jump to tag</td>
+          <td>跳转到标签定义</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + t</code></td>
+          <td>Jump back from tag</td>
+          <td>从标签返回</td>
+      </tr>
+      <tr>
+          <td><code>zz</code></td>
+          <td>Center screen</td>
+          <td>当前行居中屏幕</td>
+      </tr>
+      <tr>
+          <td><code>zt</code></td>
+          <td>Top screen</td>
+          <td>当前行置顶</td>
+      </tr>
+      <tr>
+          <td><code>zb</code></td>
+          <td>Bottom screen</td>
+          <td>当前行置底</td>
+      </tr>
+      <tr>
+          <td><code>g;</code></td>
+          <td>Last change position</td>
+          <td>跳转到上次修改位置</td>
+      </tr>
+      <tr>
+          <td><code>g,</code></td>
+          <td>Next change position</td>
+          <td>跳转到下一个修改位置</td>
+      </tr>
+      <tr>
+          <td><code>:set wrap</code></td>
+          <td>Enable line wrap</td>
+          <td>启用自动换行</td>
+      </tr>
+      <tr>
+          <td><code>:set nowrap</code></td>
+          <td>Disable line wrap</td>
+          <td>禁用自动换行</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="折叠操作folding"><strong>折叠操作（Folding）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>zc</code></td>
+          <td>Close fold</td>
+          <td>关闭折叠</td>
+      </tr>
+      <tr>
+          <td><code>zo</code></td>
+          <td>Open fold</td>
+          <td>打开折叠</td>
+      </tr>
+      <tr>
+          <td><code>za</code></td>
+          <td>Toggle fold</td>
+          <td>切换折叠状态</td>
+      </tr>
+      <tr>
+          <td><code>zR</code></td>
+          <td>Open all folds</td>
+          <td>打开所有折叠</td>
+      </tr>
+      <tr>
+          <td><code>zM</code></td>
+          <td>Close all folds</td>
+          <td>关闭所有折叠</td>
+      </tr>
+      <tr>
+          <td><code>zf{motion}</code></td>
+          <td>Create fold</td>
+          <td>创建折叠区域</td>
+      </tr>
+      <tr>
+          <td><code>zd</code></td>
+          <td>Delete fold</td>
+          <td>删除折叠</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="书签marks"><strong>书签（Marks）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>m{a-z}</code></td>
+          <td>Set mark</td>
+          <td>设置书签 (a-z 本地, A-Z 全局)</td>
+      </tr>
+      <tr>
+          <td><code>`{mark}</code></td>
+          <td>Jump to mark</td>
+          <td>跳转到书签</td>
+      </tr>
+      <tr>
+          <td><code>'{mark}</code></td>
+          <td>Jump to mark line start</td>
+          <td>跳转到书签行首</td>
+      </tr>
+      <tr>
+          <td><code>:marks</code></td>
+          <td>List marks</td>
+          <td>列出所有书签</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="特殊模式special-modes"><strong>特殊模式（Special Modes）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Q</code></td>
+          <td>Ex mode</td>
+          <td>进入 Ex 模式</td>
+      </tr>
+      <tr>
+          <td><code>gQ</code></td>
+          <td>Ex mode with return</td>
+          <td>可返回的 Ex 模式</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + v</code> (插入模式)</td>
+          <td>Insert literal character</td>
+          <td>插入原义字符</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + k {char}{char}</code></td>
+          <td>Digraph input</td>
+          <td>输入特殊字符</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="帮助系统help-system"><strong>帮助系统（Help System）</strong>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>快捷键</th>
+          <th>英文全称</th>
+          <th>作用描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>:help</code></td>
+          <td>Open help</td>
+          <td>打开帮助文档</td>
+      </tr>
+      <tr>
+          <td><code>:help topic</code></td>
+          <td>Help on topic</td>
+          <td>查看特定主题帮助</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + ]</code> (帮助)</td>
+          <td>Jump to tag</td>
+          <td>跳转到帮助标签</td>
+      </tr>
+      <tr>
+          <td><code>Ctrl + t</code> (帮助)</td>
+          <td>Jump back</td>
+          <td>从帮助标签返回</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<blockquote>
+<p><strong>总说明</strong>：</p>
+<ol>
+<li>Vim 有 <strong>7 种基本模式</strong>：普通模式(Normal)、插入模式(Insert)、可视模式(Visual)、命令行模式(Command-line)、Ex 模式、选择模式(Select)和替换模式(Replace)</li>
+<li>所有快捷键默认在<strong>普通模式</strong>生效，除非特别标注</li>
+<li>可通过 <code>:map</code> 查看所有自定义映射</li>
+<li>使用 <code>:verb map &lt;key&gt;</code> 可查看特定键位的映射来源</li>
+</ol></blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/debian12-gnome%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12&#43;GNOME快捷键</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux远程连接ssh和sftp</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mpv.conf%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">mpv.conf常用设置</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">字符编码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/docker-mail-server%E9%82%AE%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E8%AE%BE%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">docker mail-server邮件大小限制设置</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

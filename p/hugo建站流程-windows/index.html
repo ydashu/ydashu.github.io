@@ -384,12 +384,12 @@
 </h2><p>在 Hugo 的 <a class="link" href="https://github.com/gohugoio/hugo/releases"  target="_blank" rel="noopener"
     >Release</a> 页面找到最新版本的 Hugo ，选择相应版本下载。windows为<code>hugo_extended_X.XXX.X_windows-amd64.zip</code>，X.XXX.X为版本号。</p>
 <h2 id="创建站点">创建站点
-</h2><p>解压文件。在文件夹上方地址栏输入 <code>cmd</code> ，唤起命令行。在命令行中输入 <code>hugo new site test_site</code> ，创建站点。</p>
+</h2><p>解压文件。在文件夹上方地址栏输入 <code>cmd</code> ，唤起命令行。在命令行中输入 <code>hugo new site ydashu</code> ，创建站点。</p>
 <h3 id="环境变量">环境变量
-</h3><p>将 hugo.exe 复制到test_site文件夹中，以避免配置环境变量。</p>
+</h3><p>将 hugo.exe 复制到ydashu文件夹中，以避免配置环境变量。</p>
 <h3 id="启动hugo">启动hugo
 </h3><ul>
-<li>cmd中输入<code>cd test_site</code> 或者关闭cmd窗口并在test_site中重新输入<code>cmd</code></li>
+<li>cmd中输入<code>cd ydashu 或者关闭cmd窗口并在ydashu中重新输入</code>cmd`</li>
 <li>cmd中输入命令<code>hugo server</code> 启动本地站点(通过 <code>Ctrl + C</code> 关闭这一服务)。地址通常是 <code>localhost:1313</code> 。如果页面显示“Page not found”，说明此前的所有配置都是正常无误的。
 具体的hugo命令参考官网<a class="link" href="https://gohugo.io/commands/"  target="_blank" rel="noopener"
     >hugo conmands</a></li>
@@ -402,7 +402,7 @@
     >hugo-theme-stack</a></p>
 <h3 id="文件调整">文件调整
 </h3><ul>
-<li>将主题下载完成后重命名为<code>hugo-theme-stack</code>并解压至 <code>themes</code> 文件夹中，将<code>test_site/themes/hugo-theme-stack/exampleSite/</code> 文件夹中 <code>content</code> 和<code>hugo.yaml</code> 复制到<code>test_site/</code>中，并删掉原来的 <code>hugo.toml</code> 和 <code>Content/post/rich-content</code> （rich-content中有需要梯子的链接，<code>hugo server</code>会出现错误），避免出现不兼容的错误。</li>
+<li>将主题下载完成后重命名为<code>hugo-theme-stack</code>并解压至 <code>themes</code> 文件夹中，将<code>ydashu/themes/hugo-theme-stack/exampleSite/</code> 文件夹中 <code>content</code> 和<code>hugo.yaml</code> 复制到<code>ydashu/</code>中，并删掉原来的 <code>hugo.toml</code> 和 <code>Content/post/rich-content</code> （rich-content中有需要梯子的链接，<code>hugo server</code>会出现错误），避免出现不兼容的错误。</li>
 <li>修改 <code>hugo.yaml</code> 中的 theme 选项，将其修改为<code>theme: hugo-theme-stack</code></li>
 </ul>
 <h3 id="检查网站">检查网站
@@ -700,7 +700,7 @@
 </span><span class="lnt">251
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">baseurl</span><span class="p">:</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w">  </span><span class="c1"># 网站的基本 URL 。替换为你自己的网站域名。
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">baseurl</span><span class="p">:</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ydashu</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="w">  </span><span class="c1"># 网站的基本 URL 。替换为你自己的网站域名。
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">languageCode</span><span class="p">:</span><span class="w"> </span><span class="n">en</span><span class="o">-</span><span class="n">us</span><span class="w">  </span><span class="c1"># 网站的默认语言代码，zh-cn 指中文简体。
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">theme</span><span class="p">:</span><span class="w"> </span><span class="n">hugo</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">stack</span><span class="w">  </span><span class="c1"># 使用的 Hugo 主题，这里是 Stack 主题。
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">paginate</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">  </span><span class="c1"># 每页显示的内容数量，通常用于分页设置。
@@ -954,7 +954,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="撰写文章">撰写文章
-</h2><p><code>test_site/content/post/</code>中新建文件夹<code>test_post</code>，在<code>test_post</code>中新建<code>index.md</code>文件，文章需要的图片文件也放入<code>test_post</code>或者床图中。</p>
+</h2><p><code>ydashu/content/post/</code>中新建文件夹<code>test_post</code>，在<code>test_post</code>中新建<code>index.md</code>文件，文章需要的图片文件也放入<code>test_post</code>或者床图中。</p>
 <p>在使用 hugo 命令生成的文章的最上面，都有一块被 <code>+++</code> 或 <code>---</code> 包裹出来的区域，它的官方名称是 “Front matter”， 用以指定文章的各项属性。参考如下链接：
 <a class="link" href="/p/front-matter-%e5%ad%97%e6%ae%b5%e8%af%b4%e6%98%8e/" >Front Matter 字段说明</a></p>
 <h2 id="部署到github-page">部署到Github page
@@ -966,14 +966,14 @@
 </ul>
 <h3 id="新建github仓库">新建Github仓库
 </h3><ul>
-<li>登录github账号,假设账号名为<code>my_github_username</code></li>
-<li>新建一个 Github 仓库，仓库名为 <code>my_github_username.github.io</code>，权限设置为 <code>public</code>.
-备注（如果仓库中已经存在这个仓库名，可以换成<code>my_github_account.github.io/XXX</code>）</li>
+<li>登录github账号,假设账号名为<code>ydashu</code></li>
+<li>新建一个 Github 仓库，仓库名为 <code>ydashu.github.io</code>，权限设置为 <code>public</code>.
+备注（如果仓库中已经存在这个仓库名，可以换成<code>ydashu.github.io/XXX</code>）</li>
 </ul>
 <h3 id="修改hugo配置文件">修改hugo配置文件
-</h3><p><code>/test_site/hugo.yaml</code>中修改<code>baseurl: https://my_github_username.github.io/</code></p>
+</h3><p><code>/ydashu/hugo.yaml</code>中修改<code>baseurl: https://ydashu.github.io/</code></p>
 <h3 id="选择main分支">选择main分支
-</h3><p>前往本仓库中的<code>Setting -&gt; Pages -&gt; Branch</code>选择<code>main</code>分支，然后保存，会自动开启 <code>https://my_github_username.github.io</code> 的地址，这地址也是以后访问博客的地址</p>
+</h3><p>前往本仓库中的<code>Setting -&gt; Pages -&gt; Branch</code>选择<code>main</code>分支，然后保存，会自动开启 <code>https://ydashu.github.io</code> 的地址，这地址也是以后访问博客的地址</p>
 <h3 id="设置git全局账号信息">设置git全局账号信息
 </h3><p>按下<code>Win</code> + <code>R</code>, 输入<code>cmd</code>，输入以下代码：</p>
 <div class="highlight"><div class="chroma">
@@ -982,13 +982,13 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git config --global user.name &#34;my_github_username&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git config --global user.name &#34;ydashu&#34;
 </span></span><span class="line"><span class="cl">git config --global user.email &#34;你注册 Github 的邮箱&#34;
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="编译">编译
 </h3><p>生成public网页静态文件夹。
-<code>test_site</code>中输入<code>cmd</code>，输入<code>hugo server</code>。从而本地编译执行生成了<code>test_site/public</code>文件夹</p>
+<code>ydashu</code>中输入<code>cmd</code>，输入<code>hugo server</code>。从而本地编译执行生成了<code>ydashu/public</code>文件夹</p>
 <h3 id="推送">推送
 </h3><p>推送仓库至 Github Pages。</p>
 <div class="highlight"><div class="chroma">
@@ -1013,7 +1013,7 @@
 </span></span><span class="line"><span class="cl">git add . # 将当前文件夹的所有文件加入到暂存区
 </span></span><span class="line"><span class="cl">git commit -m &#34;first commit&#34;  # 把相关文件提交到本地仓库
 </span></span><span class="line"><span class="cl">git branch -M main
-</span></span><span class="line"><span class="cl">git remote add origin https://github.com/my_github_username/my_github_username.github.io.git
+</span></span><span class="line"><span class="cl">git remote add origin https://github.com/ydashu/ydashu.github.io.git
 </span></span><span class="line"><span class="cl"># 关联远程仓库。
 </span></span><span class="line"><span class="cl"># 远程仓库地址（git@github.com:username/username.github.io）
 </span></span><span class="line"><span class="cl"># 也可以进入 Github 仓库-&gt; Code -&gt; SSH 复制远程仓库地址
@@ -1022,12 +1022,12 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="检查">检查
-</h3><p>检查网站是否正常。<code>https://my_github_username.github.io/</code></p>
+</h3><p>检查网站是否正常。<code>https://ydashu.github.io/</code></p>
 <h2 id="github-action自动部署">Github action自动部署
 </h2><blockquote>
 <p>如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。</p></blockquote>
 <h3 id="新建github仓库-1">新建Github仓库
-</h3><p>新建一个 Github 仓库，仓库名为 <code>my_github_username_main</code>，权限设置为 <code>private</code>.</p>
+</h3><p>新建一个 Github 仓库，仓库名为 <code>ydashu_main</code>，权限设置为 <code>private</code>.</p>
 <h3 id="创建github账号token">创建github账号token
 </h3><ul>
 <li>点击github右上角账号界面中的<code>Settings/Developer Settings/Personal access tokens/Tokens(classic)</code>或者直接点开下面链接 <a class="link" href="https://github.com/settings/tokens/new"  target="_blank" rel="noopener"
@@ -1048,7 +1048,7 @@
 <li>保存好token，这个token只会出现一次，假设是<code>hugo_deploy_token</code></li>
 </ul>
 <h3 id="创建github-action触发代码">创建github action触发代码
-</h3><p>新建<code>/test_site/.github/workflows/deploy.yaml</code>,复制以下代码到该文件中：</p>
+</h3><p>新建<code>/ydashu/.github/workflows/deploy.yaml</code>,复制以下代码到该文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1119,7 +1119,7 @@
 </span></span><span class="line"><span class="cl">          uses: peaceiris/actions-gh-pages@v4
 </span></span><span class="line"><span class="cl">          with:
 </span></span><span class="line"><span class="cl">              PERSONAL_TOKEN: ${{ secrets.你的 Token 变量名 }}
-</span></span><span class="line"><span class="cl">              EXTERNAL_REPOSITORY: 用户名/仓库名
+</span></span><span class="line"><span class="cl">              EXTERNAL_REPOSITORY: ydashu/ydashu.github.io
 </span></span><span class="line"><span class="cl">              PUBLISH_BRANCH: main
 </span></span><span class="line"><span class="cl">              PUBLISH_DIR: ./public
 </span></span><span class="line"><span class="cl">              commit_message: auto deploy
@@ -1129,7 +1129,7 @@
 </h3><blockquote>
 <p>在hugo主文件创建<code>.gitignore</code>文件，来避免提交不必要的文件</p></blockquote>
 <ul>
-<li>新建<code>/test_site/.gitignore</code></li>
+<li>新建<code>/ydashu/.gitignore</code></li>
 <li>将下面代码复制进去</li>
 </ul>
 <div class="highlight"><div class="chroma">
@@ -1155,8 +1155,8 @@
 </div><h3 id="token配置">Token配置
 </h3><h3 id="hugo主文件上传">hugo主文件上传
 </h3><blockquote>
-<p>hugo主文件上传至my_github_username_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面</p></blockquote>
-<p><code>/test_site/</code>界面<code>cmd</code>后，输入以下命令</p>
+<p>hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面</p></blockquote>
+<p><code>/ydashu/</code>界面<code>cmd</code>后，输入以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1171,19 +1171,19 @@
 </span></span><span class="line"><span class="cl">git add .
 </span></span><span class="line"><span class="cl">git commit -m &#34;first commit&#34;
 </span></span><span class="line"><span class="cl">git branch -M main
-</span></span><span class="line"><span class="cl">git remote add origin https://github.com/my_github_username/my_github_username_main.git
+</span></span><span class="line"><span class="cl">git remote add origin https://github.com/ydashu/ydashu_main.git
 </span></span><span class="line"><span class="cl">git push -u origin main
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="检查-1">检查
 </h3><ul>
-<li>检查<code>my_github_username_main</code>中的<code>action</code>，看是否有update记录</li>
-<li>检查网站 <code>https://my_github_username.github.io</code>是否更新，github编译需要时间，<code>git push</code>成功后不会立马生效</li>
+<li>检查<code>ydashu_main</code>中的<code>action</code>，看是否有update记录</li>
+<li>检查网站 <code>https://ydashu.github.io</code>是否更新，github编译需要时间，<code>git push</code>成功后不会立马生效</li>
 </ul>
 <h3 id="post编辑">post编辑
 </h3><p>推荐使用<code>Obsidian</code>编辑post</p>
 <h4 id="打开本地仓库">打开本地仓库
-</h4><p><code>/test_site/content/post</code>作为<code>Obsidian</code>的本地仓库路径</p>
+</h4><p><code>/ydashu/content/post</code>作为<code>Obsidian</code>的本地仓库路径</p>
 <h4 id="编辑">编辑
 </h4><p>格式如下图
 <img src="/image/%e5%bb%ba%e7%ab%99/20241227145626.jpg"
@@ -1195,7 +1195,7 @@
 	
 ></p>
 <ul>
-<li><code>/test_site/content/post</code>下面有多个post文件夹</li>
+<li><code>/ydashu/content/post</code>下面有多个post文件夹</li>
 <li>文件夹中有个index.md文件</li>
 <li>post的图片放在各个post的文件夹中</li>
 </ul>
@@ -1220,7 +1220,7 @@
 </span></span><span class="line"><span class="cl">hugo.exe
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>Obsidian</code>编辑在<code>/test_site/content/post</code>下会生成一个<code>.obsidian</code>文件夹，需要将这个文件夹也添加进<code>.igniore</code>文件中，修改后如下：</p>
+</div><p><code>Obsidian</code>编辑在<code>/ydashu/content/post</code>下会生成一个<code>.obsidian</code>文件夹，需要将这个文件夹也添加进<code>.igniore</code>文件中，修改后如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1240,7 +1240,7 @@
 </div><h3 id="更新网站">更新网站
 </h3><blockquote>
 <p>首次上传成功后，如果后面又需要上传更新网站</p></blockquote>
-<p><code>/test_site/</code>界面<code>cmd</code>后，输入以下命令</p>
+<p><code>/ydashu/</code>界面<code>cmd</code>后，输入以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1

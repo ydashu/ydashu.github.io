@@ -3,13 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ydashu.github.io/</loc>
-    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
-    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/debian12-gnome%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/it/</loc>
-    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/post/</loc>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/vim/</loc>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/</loc>
     <lastmod>2025-06-14T00:00:00+00:00</lastmod>
@@ -18,9 +30,6 @@
     <lastmod>2025-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/mpv.conf%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2025-06-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/post/</loc>
     <lastmod>2025-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/tags/</loc>
