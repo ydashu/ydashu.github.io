@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 网站网址 GTM google ads google tag assistant GA4 ads添加website目标 google ads-Goals-Conversersion-Summary-create conversion action 选择website-Create conversion actions manually using code 填写 目标1 Goal and action optimization = Submit lead form Conversion name = Submit form done 目标2 Goal and action optimization = Contact Conversion name = email done 目标3 Goal and action optimization = Contact Conversion name = whatsapp done save and continue Use Google Tag Manager 保存 Conversion ID * 1 和 Conversion label * 3 创建GTM账户 登录 tag manage create account 填写相关信息 Install Google Tag Manager 出现两段代码 分别添加到 head 和 body(或者footer中) 创建GA4账户 create account Choose how to set up a Google tag：选择第三个 Install with Wordpress Install manually Use a Google tag you already have 查看并复制 Measurement Id &ndash; 供绑定GTM GA4绑定Google ads GA4-admin-product links-Google Ads links\n">
+<title>GTM设置google ads的转化目标</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/gtm%E8%AE%BE%E7%BD%AEgoogle-ads%E7%9A%84%E8%BD%AC%E5%8C%96%E7%9B%AE%E6%A0%87/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="GTM设置google ads的转化目标">
+<meta property='og:description' content=" 网站网址 GTM google ads google tag assistant GA4 ads添加website目标 google ads-Goals-Conversersion-Summary-create conversion action 选择website-Create conversion actions manually using code 填写 目标1 Goal and action optimization = Submit lead form Conversion name = Submit form done 目标2 Goal and action optimization = Contact Conversion name = email done 目标3 Goal and action optimization = Contact Conversion name = whatsapp done save and continue Use Google Tag Manager 保存 Conversion ID * 1 和 Conversion label * 3 创建GTM账户 登录 tag manage create account 填写相关信息 Install Google Tag Manager 出现两段代码 分别添加到 head 和 body(或者footer中) 创建GA4账户 create account Choose how to set up a Google tag：选择第三个 Install with Wordpress Install manually Use a Google tag you already have 查看并复制 Measurement Id &ndash; 供绑定GTM GA4绑定Google ads GA4-admin-product links-Google Ads links\n">
+<meta property='og:url' content='https://ydashu.github.io/p/gtm%E8%AE%BE%E7%BD%AEgoogle-ads%E7%9A%84%E8%BD%AC%E5%8C%96%E7%9B%AE%E6%A0%87/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-05-13T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="GTM设置google ads的转化目标">
+<meta name="twitter:description" content=" 网站网址 GTM google ads google tag assistant GA4 ads添加website目标 google ads-Goals-Conversersion-Summary-create conversion action 选择website-Create conversion actions manually using code 填写 目标1 Goal and action optimization = Submit lead form Conversion name = Submit form done 目标2 Goal and action optimization = Contact Conversion name = email done 目标3 Goal and action optimization = Contact Conversion name = whatsapp done save and continue Use Google Tag Manager 保存 Conversion ID * 1 和 Conversion label * 3 创建GTM账户 登录 tag manage create account 填写相关信息 Install Google Tag Manager 出现两段代码 分别添加到 head 和 body(或者footer中) 创建GA4账户 create account Choose how to set up a Google tag：选择第三个 Install with Wordpress Install manually Use a Google tag you already have 查看并复制 Measurement Id &ndash; 供绑定GTM GA4绑定Google ads GA4-admin-product links-Google Ads links\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ads添加website目标">ads添加website目标</a></li>
+    <li><a href="#创建gtm账户">创建GTM账户</a></li>
+    <li><a href="#创建ga4账户">创建GA4账户</a></li>
+    <li><a href="#ga4绑定google-ads">GA4绑定Google ads</a></li>
+    <li><a href="#gtm中创建tags和triggers">GTM中创建Tags和Triggers</a>
+      <ol>
+        <li><a href="#创建triggers">创建Triggers</a></li>
+        <li><a href="#创建tags">创建Tags</a></li>
+      </ol>
+    </li>
+    <li><a href="#gta测试">GTA测试</a></li>
+    <li><a href="#google-ads-goal是否生效">google ads goal是否生效</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/google/" >
+                Google
+            </a>
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gtm%E8%AE%BE%E7%BD%AEgoogle-ads%E7%9A%84%E8%BD%AC%E5%8C%96%E7%9B%AE%E6%A0%87/">GTM设置google ads的转化目标</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-05-13</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <ul>
+<li>网站网址
+<ul>
+<li><a class="link" href="tagmanager.google.com" >GTM</a></li>
+<li><a class="link" href="ads.google.com" >google ads</a></li>
+<li><a class="link" href="tagassistant.google.com/" >google tag assistant</a></li>
+<li><a class="link" href="analytics.google.com" >GA4</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="ads添加website目标">ads添加website目标
+</h2><ul>
+<li>google ads-Goals-Conversersion-Summary-create conversion action</li>
+<li>选择website-Create conversion actions manually using code
+<ul>
+<li>填写
+<ul>
+<li>目标1
+<ul>
+<li>Goal and action optimization = Submit lead form</li>
+<li>Conversion name = Submit form</li>
+<li>done</li>
+</ul>
+</li>
+<li>目标2
+<ul>
+<li>Goal and action optimization = Contact</li>
+<li>Conversion name = email</li>
+<li>done</li>
+</ul>
+</li>
+<li>目标3
+<ul>
+<li>Goal and action optimization = Contact</li>
+<li>Conversion name = whatsapp</li>
+<li>done</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>save and continue</li>
+</ul>
+</li>
+<li>Use Google Tag Manager
+<ul>
+<li>保存 <code>Conversion ID</code>  * 1 和 <code>Conversion label</code>  * 3</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建gtm账户">创建GTM账户
+</h2><ul>
+<li>登录 tag manage</li>
+<li>create account
+<ul>
+<li>填写相关信息</li>
+</ul>
+</li>
+<li>Install Google Tag Manager
+<ul>
+<li>出现两段代码
+<ul>
+<li>分别添加到 head 和 body(或者footer中)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建ga4账户">创建GA4账户
+</h2><ul>
+<li>create account</li>
+<li>Choose how to set up a Google tag：选择第三个
+<ul>
+<li>Install with Wordpress</li>
+<li>Install manually</li>
+<li>Use a Google tag you already have</li>
+</ul>
+</li>
+<li>查看并复制 <code>Measurement Id</code> &ndash; 供绑定GTM</li>
+</ul>
+<h2 id="ga4绑定google-ads">GA4绑定Google ads
+</h2><p>GA4-admin-product links-Google Ads links</p>
+<h2 id="gtm中创建tags和triggers">GTM中创建Tags和Triggers
+</h2><h3 id="创建triggers">创建Triggers
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>触发器名称</th>
+          <th>触发器类型</th>
+          <th>触发条件</th>
+          <th>具体条件</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>email</td>
+          <td>Click - Just Links</td>
+          <td>Some Link Clicks</td>
+          <td>{{Click URL}} contains mailto:</td>
+      </tr>
+      <tr>
+          <td>whatsapp</td>
+          <td>Click - Just Links</td>
+          <td>Some Link Clicks</td>
+          <td>{{Click URL}} contains wa.me</td>
+      </tr>
+      <tr>
+          <td>contact form 7</td>
+          <td>Form Submission</td>
+          <td>Some Form</td>
+          <td>{{Form Classes}} equals wpcf7-form submitting</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>Remark: 可以按照情况选择<code>Form Classes</code>或者<code>Form ID</code>；使用的是contact form 7插件，不同插件的class名称不同，具体按照情况或者GTA测试后查看</p>
+<h3 id="创建tags">创建Tags
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>类型</th>
+          <th>触发器</th>
+          <th>备注</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ads</td>
+          <td>Google Tag</td>
+          <td>Initialization - All Pages</td>
+          <td>Tag ID 为 Google Ads 的 ID</td>
+      </tr>
+      <tr>
+          <td>Ads-whatsapp</td>
+          <td>Google Ads Conversion Tracking</td>
+          <td>whatsapp</td>
+          <td>Conversion ID 和 Conversion Label</td>
+      </tr>
+      <tr>
+          <td>Ads-email</td>
+          <td>Google Ads Conversion Tracking</td>
+          <td>email</td>
+          <td>Conversion ID 和 Conversion Label</td>
+      </tr>
+      <tr>
+          <td>Ads-form</td>
+          <td>Google Ads Conversion Tracking</td>
+          <td>contact form 7</td>
+          <td>Conversion ID 和 Conversion Label</td>
+      </tr>
+      <tr>
+          <td>GA4</td>
+          <td>Google Tag</td>
+          <td>Initialization - All Pages</td>
+          <td>Tag ID 为 GA4 的 ID</td>
+      </tr>
+      <tr>
+          <td>GA4-whatsapp</td>
+          <td>Google Analytics: GA4 Event</td>
+          <td>whatsapp</td>
+          <td>Measurement ID 为 GA4 的 ID<br>Event Name = whatsapp</td>
+      </tr>
+      <tr>
+          <td>GA4-email</td>
+          <td>Google Analytics: GA4 Event</td>
+          <td>email</td>
+          <td>Measurement ID 为 GA4 的 ID<br>Event Name = email</td>
+      </tr>
+      <tr>
+          <td>GA4-form</td>
+          <td>Google Analytics: GA4 Event</td>
+          <td>contact form 7</td>
+          <td>Measurement ID 为 GA4 的 ID<br>Event Name = form</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>Conversion ID 和 Conversion Label <a class="link" href="#ads%e6%b7%bb%e5%8a%a0website%e7%9b%ae%e6%a0%87" >ads添加website目标</a>查看，注意对应名称</p>
+<h2 id="gta测试">GTA测试
+</h2><ul>
+<li>登录 tagassistant</li>
+<li>连接对应的网址</li>
+<li>分别点击 邮箱、whatsapp链接，提交表单。summary中6个是否全都<code>Tags Fired</code>
+<ul>
+<li>如果<code>form</code>这个<code>tags</code>为<code>Not Fired</code>
+<ul>
+<li>点击Form Submit - Variables 可以查看Form Classes.将<a class="link" href="#%e5%88%9b%e5%bb%baTriggers" >创建Triggers</a>中的<code>{{Form Classes}} equals</code>替换成查看的真实的</li>
+<li>重新提交表单，检查<code>form</code>这个<code>tags</code>是否转为<code>Fired</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="google-ads-goal是否生效">google ads goal是否生效
+</h2><p>google ads - Goals - Conversions - Summary - Status</p>
+<p>查看为<code>No recent conversions</code>或者<code>Active</code>，则正常生效。</p>
+<p>如果为<code>No recent conversions</code>，那么后期广告开启后有一些转化了，检查是否转为<code>Active</code></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>状态</th>
+          <th>描述</th>
+          <th>颜色提示</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Active</td>
+          <td>转化操作正常工作，Google Ads 检测到标签正在记录转化数据。</td>
+          <td>绿色</td>
+      </tr>
+      <tr>
+          <td>Inactive</td>
+          <td>转化操作未正常工作，可能由于标签未正确安装或未触发转化。</td>
+          <td>红色</td>
+      </tr>
+      <tr>
+          <td>No recent conversions</td>
+          <td>转化操作已设置，但近期（通常过去7天）未记录到任何转化数据。</td>
+          <td>无特定颜色</td>
+      </tr>
+      <tr>
+          <td>Other</td>
+          <td>其他未明确分类的状态，需悬停查看详细信息（可能包括特定问题或配置状态）。</td>
+          <td>无特定颜色</td>
+      </tr>
+      <tr>
+          <td>Recently created</td>
+          <td>转化操作刚创建，Google Ads 尚未检测到任何转化数据（通常少于24小时）。</td>
+          <td>无特定颜色</td>
+      </tr>
+      <tr>
+          <td>Removed</td>
+          <td>转化操作已被移除，不再跟踪数据，但仍可在历史记录中查看。</td>
+          <td>无特定颜色</td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/google%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">google搜索技巧</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/linux-apt%E9%95%9C%E5%83%8F%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">linux apt镜像修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/debian12%E5%AE%89%E8%A3%85%E9%97%AD%E6%BA%90nvidia%E9%A9%B1%E5%8A%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12安装闭源nvidia驱动</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vim快捷键</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/debian12-gnome%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12&#43;GNOME快捷键</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
