@@ -7,7 +7,26 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 19 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%A4%96%E8%B4%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%A4%96%E8%B4%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>thunderbird设置签名文字后取消默认分隔符</title>
+        <link>https://ydashu.github.io/p/thunderbird%E8%AE%BE%E7%BD%AE%E7%AD%BE%E5%90%8D%E6%96%87%E5%AD%97%E5%90%8E%E5%8F%96%E6%B6%88%E9%BB%98%E8%AE%A4%E5%88%86%E9%9A%94%E7%AC%A6/</link>
+        <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/thunderbird%E8%AE%BE%E7%BD%AE%E7%AD%BE%E5%90%8D%E6%96%87%E5%AD%97%E5%90%8E%E5%8F%96%E6%B6%88%E9%BB%98%E8%AE%A4%E5%88%86%E9%9A%94%E7%AC%A6/</guid>
+        <description>&lt;p&gt;thunderbird设置签名文字后取消默认分隔符&lt;code&gt;--&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;设置签名文字&#34;&gt;设置签名文字
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;账户设置-账户邮箱-默认身份-签名文字-添加文字&lt;/li&gt;
+&lt;li&gt;使用html添加签名(html中添加了分隔符)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;取消分隔符&#34;&gt;取消分隔符
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;设置-配置编辑器-输入&lt;code&gt;suppress_signature_separator&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;切换为&lt;code&gt;true&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>沙特阿拉伯、阿联酋和卡塔尔的税务情况（针对中国公民）</title>
         <link>https://ydashu.github.io/p/%E6%B2%99%E7%89%B9%E9%98%BF%E6%8B%89%E4%BC%AF%E9%98%BF%E8%81%94%E9%85%8B%E5%92%8C%E5%8D%A1%E5%A1%94%E5%B0%94%E7%9A%84%E7%A8%8E%E5%8A%A1%E6%83%85%E5%86%B5%E9%92%88%E5%AF%B9%E4%B8%AD%E5%9B%BD%E5%85%AC%E6%B0%91/</link>
         <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>

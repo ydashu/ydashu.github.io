@@ -4932,7 +4932,7 @@
 &lt;/li&gt;
 &lt;li&gt;site2
 &lt;ul&gt;
-&lt;li&gt;如果不创建网站则不需要A记录。如果site2也通过Webroot验证SSL，则Server IP和site1的相同（不设置反向代理的情况下）&lt;/li&gt;
+&lt;li&gt;可以直接复用site1的邮箱服务&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -5327,8 +5327,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;重新创建受影响的容器&lt;/p&gt;
-&lt;h5 id=&#34;多域名的情况&#34;&gt;多域名的情况
-&lt;/h5&gt;&lt;ul&gt;
+&lt;h5 id=&#34;多域名的情况1&#34;&gt;多域名的情况1
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;操作步骤同&lt;code&gt;单域名&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;多域名的情况2&#34;&gt;多域名的情况2
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;compose.yaml&lt;/code&gt;和&lt;code&gt;mailserver.env&lt;/code&gt;不用动&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openlitespeed配置&lt;/code&gt;：用site2替代site1&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;certbot配置邮箱的SSL&lt;/code&gt;
@@ -6727,7 +6733,7 @@
 &lt;/li&gt;
 &lt;li&gt;site2
 &lt;ul&gt;
-&lt;li&gt;如果不创建网站则不需要A记录。如果site2也通过Webroot验证SSL，则Server IP和site1的相同（不设置反向代理的情况下）&lt;/li&gt;
+&lt;li&gt;可以直接复用site1的邮箱服务&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -7122,8 +7128,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;重新创建受影响的容器&lt;/p&gt;
-&lt;h5 id=&#34;多域名的情况&#34;&gt;多域名的情况
-&lt;/h5&gt;&lt;ul&gt;
+&lt;h5 id=&#34;多域名的情况1&#34;&gt;多域名的情况1
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;操作步骤同&lt;code&gt;单域名&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;多域名的情况2&#34;&gt;多域名的情况2
+&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;compose.yaml&lt;/code&gt;和&lt;code&gt;mailserver.env&lt;/code&gt;不用动&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openlitespeed配置&lt;/code&gt;：用site2替代site1&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;certbot配置邮箱的SSL&lt;/code&gt;

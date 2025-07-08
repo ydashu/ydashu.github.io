@@ -302,7 +302,8 @@
             <li><a href="#方法3webroot验证模式">方法3：Webroot验证模式</a>
               <ol>
                 <li><a href="#单域名">单域名</a></li>
-                <li><a href="#多域名的情况">多域名的情况</a></li>
+                <li><a href="#多域名的情况1">多域名的情况1</a></li>
+                <li><a href="#多域名的情况2">多域名的情况2</a></li>
                 <li><a href="#自动更新ssl">自动更新SSL</a></li>
               </ol>
             </li>
@@ -1505,7 +1506,7 @@
 </li>
 <li>site2
 <ul>
-<li>如果不创建网站则不需要A记录。如果site2也通过Webroot验证SSL，则Server IP和site1的相同（不设置反向代理的情况下）</li>
+<li>可以直接复用site1的邮箱服务</li>
 </ul>
 <div class="table-wrapper"><table>
   <thead>
@@ -1900,8 +1901,14 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>重新创建受影响的容器</p>
-<h5 id="多域名的情况">多域名的情况
-</h5><ul>
+<h5 id="多域名的情况1">多域名的情况1
+</h5><blockquote>
+<p>只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com</p></blockquote>
+<p>操作步骤同<code>单域名</code></p>
+<h5 id="多域名的情况2">多域名的情况2
+</h5><blockquote>
+<p>各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com</p></blockquote>
+<ul>
 <li><code>compose.yaml</code>和<code>mailserver.env</code>不用动</li>
 <li><code>openlitespeed配置</code>：用site2替代site1</li>
 <li><code>certbot配置邮箱的SSL</code>
