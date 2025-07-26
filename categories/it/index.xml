@@ -7,7 +7,996 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Sun, 22 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</title>
+        <link>https://ydashu.github.io/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/</link>
+        <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/</guid>
+        <description>&lt;p&gt;参考链接
+&lt;a class=&#34;link&#34; href=&#34;https://lmu5.com/pve.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;落幕屋&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://post.smzdm.com/p/arrq4q3g/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;什么值得买&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;架构&#34;&gt;架构
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;接口&lt;/th&gt;
+          &lt;th&gt;物理网卡&lt;/th&gt;
+          &lt;th&gt;角色&lt;/th&gt;
+          &lt;th&gt;用途&lt;/th&gt;
+          &lt;th&gt;接入设备&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;eth0&lt;/td&gt;
+          &lt;td&gt;PVE&lt;/td&gt;
+          &lt;td&gt;管理口&lt;/td&gt;
+          &lt;td&gt;192.168.100.2，独立后台访问&lt;/td&gt;
+          &lt;td&gt;办公网 / 管理网&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;eth1&lt;/td&gt;
+          &lt;td&gt;桥接&lt;/td&gt;
+          &lt;td&gt;LAN 桥接接口&lt;/td&gt;
+          &lt;td&gt;OpenWrt LAN 网络桥接 VM、PVE 后台&lt;/td&gt;
+          &lt;td&gt;Debian VM + Proxmox&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;eth2&lt;/td&gt;
+          &lt;td&gt;PCI Passthrough&lt;/td&gt;
+          &lt;td&gt;WAN直通网口&lt;/td&gt;
+          &lt;td&gt;给 OpenWrt 使用作为外网口&lt;/td&gt;
+          &lt;td&gt;光猫 / 上级网络&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;eth3&lt;/td&gt;
+          &lt;td&gt;PCI Passthrough&lt;/td&gt;
+          &lt;td&gt;LAN直通专口&lt;/td&gt;
+          &lt;td&gt;专门给 AP 的 LAN 物理网口&lt;/td&gt;
+          &lt;td&gt;AP + 无线设备&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[ 光猫 / ISP ]                          [ 办公网络/管理设备 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     │                                       │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     ▼                                       ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌─────────┐                             ┌─────────┐
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ eth2    │                             │ eth0    │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ (WAN直通)│                             │ (管理口) │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───┬─────┘                             └────┬────┘
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    │                                        │
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▼                                        ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌───────────────────┐                       PVE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ immortalwrt VM    │           
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│                   │             
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───┬───────────┬───┘            
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    │           │                 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ▼           ▼                   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌─────┐   ┌─────────┐               
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ eth1│   │ eth3    │             
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│(桥接)│   │(LAN直通)│              
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──┬──┘   └───┬─────┘               
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   │          │                         
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   ▼          ▼                        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌───────┐  ┌───────┐               
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│ Debian│  │  AP   │              
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│  PVE  │  └───┬───┘               
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└───────┘      ▼                  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         无线客户端设备
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;网口&#34;&gt;网口
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;设备&lt;/th&gt;
+          &lt;th&gt;网口&lt;/th&gt;
+          &lt;th&gt;网关&lt;/th&gt;
+          &lt;th&gt;后台管理地址&lt;/th&gt;
+          &lt;th&gt;子网掩码&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;PVE&lt;/td&gt;
+          &lt;td&gt;eth0&lt;/td&gt;
+          &lt;td&gt;192.168.100.1&lt;/td&gt;
+          &lt;td&gt;192.168.100.2&lt;/td&gt;
+          &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ImmortalWrt&lt;/td&gt;
+          &lt;td&gt;eth1 (LAN)&lt;/td&gt;
+          &lt;td&gt;192.168.2.1&lt;/td&gt;
+          &lt;td&gt;192.168.2.2&lt;/td&gt;
+          &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AP&lt;/td&gt;
+          &lt;td&gt;eth3&lt;/td&gt;
+          &lt;td&gt;192.168.2.1&lt;/td&gt;
+          &lt;td&gt;192.168.2.3&lt;/td&gt;
+          &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Debian&lt;/td&gt;
+          &lt;td&gt;eth1&lt;/td&gt;
+          &lt;td&gt;192.168.2.1&lt;/td&gt;
+          &lt;td&gt;192.168.2.4&lt;/td&gt;
+          &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;PVE&lt;/td&gt;
+          &lt;td&gt;eth1/vmbr1&lt;/td&gt;
+          &lt;td&gt;192.168.2.1&lt;/td&gt;
+          &lt;td&gt;192.168.2.10&lt;/td&gt;
+          &lt;td&gt;255.255.255.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ImmortalWrt&lt;/td&gt;
+          &lt;td&gt;eth2 (WAN)&lt;/td&gt;
+          &lt;td&gt;DHCP/PPPOE&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;本机网口对应pve不同机器显示不同&#34;&gt;本机网口对应PVE（不同机器显示不同）
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Bridge 接口&lt;/th&gt;
+          &lt;th&gt;绑定物理网卡&lt;/th&gt;
+          &lt;th&gt;机器上物理标识显示&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vmbr0&lt;/td&gt;
+          &lt;td&gt;enp1s0&lt;/td&gt;
+          &lt;td&gt;ETH0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vmbr1&lt;/td&gt;
+          &lt;td&gt;enp2s0&lt;/td&gt;
+          &lt;td&gt;ETH1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vmbr2&lt;/td&gt;
+          &lt;td&gt;eno1&lt;/td&gt;
+          &lt;td&gt;ETH2&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vmbr3&lt;/td&gt;
+          &lt;td&gt;enp4s0&lt;/td&gt;
+          &lt;td&gt;ETH3&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;pve安装和设置&#34;&gt;PVE安装和设置
+&lt;/h2&gt;&lt;h3 id=&#34;安装pve&#34;&gt;安装PVE
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.proxmox.com/en/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载PVE镜像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ventoy导入PVE镜像&lt;/li&gt;
+&lt;li&gt;BIOS设置&lt;/li&gt;
+&lt;li&gt;刷PVE
+&lt;ul&gt;
+&lt;li&gt;PVE管理地址：192.168.100.2:8006&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;电脑登录pve管理后台&#34;&gt;电脑登录PVE管理后台
+&lt;/h3&gt;&lt;p&gt;windows为例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网线连接PVE安装过程中设置的端口&lt;/li&gt;
+&lt;li&gt;控制面板-网络和共享中心-以太网-属性-Internet 协议版本 4 (TCP/IPv4)-属性-使用下面的IP地址
+&lt;ul&gt;
+&lt;li&gt;ip地址: &lt;code&gt;192.168.100.100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;子网掩码: &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;默认网关: &lt;code&gt;192.168.100.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;确定保存&lt;/li&gt;
+&lt;li&gt;网页打开 &lt;code&gt;192.168.100.2:8006&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装immortalwrt&#34;&gt;安装immortalwrt
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://downloads.immortalwrt.org/releases/24.10.2/targets/x86/64/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载immortalwrt镜像&lt;/a&gt; - 版本和架构自行选择
+&lt;ul&gt;
+&lt;li&gt;下载&lt;code&gt;generic-squashfs-combined-efi.qcow2&lt;/code&gt; PVE属于KVM
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;推荐文件格式/后缀&lt;/th&gt;
+          &lt;th&gt;适用场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;实体机安装&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;.img.gz&lt;/code&gt; (combined)&lt;/td&gt;
+          &lt;td&gt;软路由/物理设备刷机&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;虚拟机专用&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;.vmdk&lt;/code&gt; (VMware) &lt;code&gt;.qcow2&lt;/code&gt; (KVM)&lt;/td&gt;
+          &lt;td&gt;对应虚拟机平台直接加载&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;UEFI支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;含&lt;code&gt;efi&lt;/code&gt;的文件名&lt;/td&gt;
+          &lt;td&gt;新型主板/UEFI启动环境&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;BIOS支持&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;不含&lt;code&gt;efi&lt;/code&gt;的文件名&lt;/td&gt;
+          &lt;td&gt;传统Legacy启动模式&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;稳定运行&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;squashfs&lt;/code&gt;后缀&lt;/td&gt;
+          &lt;td&gt;只读系统，防配置错误&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;可写系统&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ext4&lt;/code&gt;后缀&lt;/td&gt;
+          &lt;td&gt;需要频繁修改系统的开发者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;ISO启动&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;.iso&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;光盘/U盘启动安装&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ftps连接PVE&lt;/li&gt;
+&lt;li&gt;复制刚刚下载的文件到&lt;code&gt;/var/lib/vz/template/iso/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;创建虚拟机
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;操作系统：不适用任何介质&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SCSI控制器：VirtIO SCSI single
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;控制器类型&lt;/th&gt;
+          &lt;th&gt;性能&lt;/th&gt;
+          &lt;th&gt;兼容性&lt;/th&gt;
+          &lt;th&gt;特点&lt;/th&gt;
+          &lt;th&gt;推荐场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VirtIO SCSI&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;中等&lt;/td&gt;
+          &lt;td&gt;高性能、支持多队列/热插拔&lt;/td&gt;
+          &lt;td&gt;Linux/Windows（推荐主力使用）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LSI SAS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;兼容性好，适合无VirtIO驱动系统&lt;/td&gt;
+          &lt;td&gt;Windows 7/10等通用系统&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VMware PVSCSI&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;中等&lt;/td&gt;
+          &lt;td&gt;VMware专用控制器&lt;/td&gt;
+          &lt;td&gt;VMware迁移系统&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VirtIO SCSI Single&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅✅&lt;/td&gt;
+          &lt;td&gt;中等&lt;/td&gt;
+          &lt;td&gt;单磁盘独立控制器&lt;/td&gt;
+          &lt;td&gt;OpenWRT等简单场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LSI 53C895A&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;❌&lt;/td&gt;
+          &lt;td&gt;✅✅✅&lt;/td&gt;
+          &lt;td&gt;兼容旧系统但性能差&lt;/td&gt;
+          &lt;td&gt;Windows XP/2003等旧系统&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;磁盘：删除不要（后面命令行安装immortalwrt时会自动创建一个磁盘）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CPU&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插槽：&lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;核心：&lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内存：&lt;code&gt;2048&lt;/code&gt;或&lt;code&gt;1024&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型：&lt;code&gt;VirtIO(半虚拟化)&lt;/code&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;模型名&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;性能&lt;/th&gt;
+          &lt;th&gt;兼容性&lt;/th&gt;
+          &lt;th&gt;驱动需求&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Intel E1000&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;仿真&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;系统自带&lt;/td&gt;
+          &lt;td&gt;模拟英特尔千兆网卡 82540EM，几乎所有系统都能识别。适合旧系统使用。性能较低。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Intel E1000E&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;仿真&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;系统自带&lt;/td&gt;
+          &lt;td&gt;模拟较新 E1000e（如 I217LM）型号，稍快于 E1000。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VirtIO (半虚拟化)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;半虚拟化&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;需安装 VirtIO 驱动&lt;/td&gt;
+          &lt;td&gt;最快、最轻量，占资源最少。推荐 Linux 系统或安装了 virtio 驱动的 Windows 系统使用。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Realtek RTL8139&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;仿真&lt;/td&gt;
+          &lt;td&gt;⭐&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;系统自带&lt;/td&gt;
+          &lt;td&gt;速度慢，仅 100Mbps，兼容性极强，适合非常旧的系统。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VMware vmxnet3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;半虚拟化&lt;/td&gt;
+          &lt;td&gt;⭐⭐⭐⭐&lt;/td&gt;
+          &lt;td&gt;⭐⭐&lt;/td&gt;
+          &lt;td&gt;需 VMware 驱动&lt;/td&gt;
+          &lt;td&gt;VMware 专用，PVE/KVM 中不常用。性能好，但需要额外驱动。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;桥接：&lt;code&gt;vmbr1&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ssh登录PVE后台
+&lt;ul&gt;
+&lt;li&gt;输入命令安装
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;qm disk import &lt;span class=&#34;m&#34;&gt;100&lt;/span&gt; /var/lib/vz/template/iso/immortalwrt-24.10.2-x86-64-generic-squashfs-combined-efi.qcow2 local-lvm --format&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;qcow2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;登录PVE网页端
+&lt;ul&gt;
+&lt;li&gt;虚拟机100-硬件-未使用的磁盘-编辑-添加&lt;/li&gt;
+&lt;li&gt;虚拟机100-选项-启动项-刚刚添加的磁盘添加为启动项并置顶，其他的已启动项取消勾选&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;immortalwrt设置network配置文件&#34;&gt;immortalwrt设置network配置文件
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;虚拟机100-控制台&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vi /etc/config/network&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;新增&lt;code&gt;list ports &#39;eth2&#39;&lt;/code&gt;，修改&lt;code&gt;option ipaddr &#39;192.168.2.2&#39;&lt;/code&gt;和&lt;code&gt;option gateway &#39;192.168.2.1&#39;&lt;/code&gt;，其他的展示不变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;config device
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option name &amp;#39;br-lan&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option type &amp;#39;bridge&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        list ports &amp;#39;eth0&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        list ports &amp;#39;eth2&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;config interface &amp;#39;lan&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option device &amp;#39;br-lan&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option proto &amp;#39;static&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option ipaddr &amp;#39;192.168.2.2&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option netmask &amp;#39;255.255.255.0&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option gateway &amp;#39;192.168.2.1&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        option ip6assign &amp;#39;60&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;保存&lt;/li&gt;
+&lt;li&gt;重启
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;service network restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;切换网口eth1和eth3&lt;/li&gt;
+&lt;li&gt;控制面板-网络和共享中心-以太网-属性-Internet 协议版本 4 (TCP/IPv4)-属性-使用下面的IP地址
+&lt;ul&gt;
+&lt;li&gt;ip地址: &lt;code&gt;192.168.2.100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;子网掩码: &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;默认网关: &lt;code&gt;192.168.2.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;网页输入 &lt;code&gt;192.168.2.2&lt;/code&gt;，查看是否成功打开&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;换主题-argon&#34;&gt;换主题-argon
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;浏览器打开&lt;a class=&#34;link&#34; href=&#34;https://downloads.immortalwrt.org/releases/24.10.2/packages/x86_64/luci/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+f&lt;/code&gt;搜索&lt;code&gt;argon&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;找到&lt;code&gt;https://downloads.immortalwrt.org/releases/24.10.2/packages/x86_64/luci/&lt;/code&gt;并下载
+&lt;ul&gt;
+&lt;li&gt;wrt后台-系统-软件包-上传软件包-安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;openclash设置&#34;&gt;openclash设置
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github参考链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;pve设置eth1vmbr1&#34;&gt;PVE设置eth1/vmbr1
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;ssh连接PVE&lt;/li&gt;
+&lt;li&gt;输入
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/network/interfaces
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;配置文件
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;auto vmbr1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iface vmbr1 inet static
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-ports enp2s0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-stp off
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-fd 0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;修改为
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;auto vmbr1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iface vmbr1 inet static
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    address 192.168.2.10/24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-ports enp2s0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-stp off
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    bridge-fd 0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;重启网络服务
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart networking
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;切换网口eth1&lt;/li&gt;
+&lt;li&gt;连接&lt;code&gt;192.168.2.10:8006&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;成功说明设置成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装debian&#34;&gt;安装debian
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.debian.org/CD/http-ftp/#mirrors&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;下载debian镜像&lt;/a&gt; - 版本和架构自行选择&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载&lt;a class=&#34;link&#34; href=&#34;https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.11.0-amd64-netinst.iso&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;debian-12.11.0-amd64-netinst.iso&lt;/a&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;项目&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;CD 镜像&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;DVD 镜像&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📦 镜像体积&lt;/td&gt;
+          &lt;td&gt;较小（通常约 650MB～700MB）&lt;/td&gt;
+          &lt;td&gt;较大（每张约 4.4GB，一般有多张）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🧩 包含软件量&lt;/td&gt;
+          &lt;td&gt;较少，只包含最小安装环境或常见组件&lt;/td&gt;
+          &lt;td&gt;较多，包含绝大部分常用软件包&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🌐 网络依赖&lt;/td&gt;
+          &lt;td&gt;安装过程中强依赖网络下载组件&lt;/td&gt;
+          &lt;td&gt;多数软件包本地可用，&lt;strong&gt;脱机安装更方便&lt;/strong&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💻 安装模式&lt;/td&gt;
+          &lt;td&gt;通常是**网络安装（netinst）**或基本系统&lt;/td&gt;
+          &lt;td&gt;可安装完整桌面环境（如 GNOME/KDE/XFCE）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔄 更新方式&lt;/td&gt;
+          &lt;td&gt;安装时需联网下载更新&lt;/td&gt;
+          &lt;td&gt;可用本地包安装，但仍需联网获取最新补丁&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;登录PVE网页后台&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pve-local(pve)-ISO镜像-上传(上面下载的镜像)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建虚拟机&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;操作系统：ISO镜像 - &lt;code&gt;debian-12.11.0-amd64-netinst.iso&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SCSI控制器：VirtIO SCSI single&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;磁盘&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;磁盘大小：&lt;code&gt;32&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;总线/设备：&lt;code&gt;SCSI&lt;/code&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;接口类型&lt;/th&gt;
+          &lt;th&gt;特点描述&lt;/th&gt;
+          &lt;th&gt;性能&lt;/th&gt;
+          &lt;th&gt;启动兼容性&lt;/th&gt;
+          &lt;th&gt;热插拔支持&lt;/th&gt;
+          &lt;th&gt;推荐使用场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IDE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;最老的虚拟化磁盘接口，兼容性最好，但速度慢&lt;/td&gt;
+          &lt;td&gt;🚫 最差&lt;/td&gt;
+          &lt;td&gt;✅ 最兼容&lt;/td&gt;
+          &lt;td&gt;❌ 不支持&lt;/td&gt;
+          &lt;td&gt;仅用于旧系统或特殊用途&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;SATA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;模拟现代物理硬盘接口，速度适中，兼容性也较好&lt;/td&gt;
+          &lt;td&gt;🟡 中等&lt;/td&gt;
+          &lt;td&gt;✅ 良好&lt;/td&gt;
+          &lt;td&gt;✅ 支持&lt;/td&gt;
+          &lt;td&gt;一般兼容性需求的系统&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;VirtIO Block&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;QEMU/KVM 提供的高性能磁盘接口，需额外驱动支持（Linux原生支持）&lt;/td&gt;
+          &lt;td&gt;✅ 非常快&lt;/td&gt;
+          &lt;td&gt;❌ 需驱动&lt;/td&gt;
+          &lt;td&gt;❌ 部分支持&lt;/td&gt;
+          &lt;td&gt;Linux系统，追求性能优先&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;SCSI (VirtIO SCSI)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持多磁盘、热插拔、性能略低于 VirtIO Block，功能更全面（推荐）&lt;/td&gt;
+          &lt;td&gt;🟢 高&lt;/td&gt;
+          &lt;td&gt;✅ 支持&lt;/td&gt;
+          &lt;td&gt;✅ 完整支持&lt;/td&gt;
+          &lt;td&gt;多磁盘 VM，现代 Linux，OpenWrt等&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CPU&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插槽：&lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;核心：&lt;code&gt;1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;内存：&lt;code&gt;4096&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型：&lt;code&gt;VirtIO(半虚拟化)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;debian配置network&#34;&gt;debian配置network
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;进入interfaces
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nano /etc/network/interfaces
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;配置
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# loopback interface
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;auto lo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iface lo inet loopback
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 静态 IP 配置，ens18 即 eth1（桥接口）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;auto ens18
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iface ens18 inet static
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    address 192.168.2.4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    netmask 255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    gateway 192.168.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    dns-nameservers 192.168.2.1 8.8.8.8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 自动 IPv6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iface ens18 inet6 auto
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	accept_ra 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	autoconf 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	privext 0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;重启
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart networking
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;或者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;开启ssh&#34;&gt;开启ssh
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;安装ssh服务
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install openssh-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;手动启动并设置开机启动
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl start ssh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; ssh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;查看ip地址-看是否是&lt;code&gt;192.168.2.4&lt;/code&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;从其他设备远程登录
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh 用户名@192.168.2.4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;debian12默认不允许&lt;code&gt;root&lt;/code&gt;远程登录，解决方法
+&lt;ul&gt;
+&lt;li&gt;切换普通用户登录&lt;/li&gt;
+&lt;li&gt;修改配置文件，设置允许&lt;code&gt;root&lt;/code&gt;远程登录（不推荐，不安全）&lt;/li&gt;
+&lt;li&gt;修改配置文件，禁用密码登录，仅允许密钥（推荐，更安全）
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;重启ssh服务
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart ssh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;sshd_config-常用配置参数表&#34;&gt;&lt;code&gt;sshd_config&lt;/code&gt; 常用配置参数表
+&lt;/h5&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;默认值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;Port&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;22&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;SSH 服务监听端口，可自定义为其他端口增强安全性&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;AddressFamily&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;any&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定监听的地址族（&lt;code&gt;inet&lt;/code&gt;：IPv4，&lt;code&gt;inet6&lt;/code&gt;：IPv6，&lt;code&gt;any&lt;/code&gt;：全部）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ListenAddress&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;0.0.0.0&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定监听的 IP 地址（默认所有网卡）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;PermitRootLogin&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;prohibit-password&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否允许 root 用户登录，常见值：&lt;code&gt;yes&lt;/code&gt;、&lt;code&gt;no&lt;/code&gt;、&lt;code&gt;without-password&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;PasswordAuthentication&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yes&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否允许密码方式登录&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;PubkeyAuthentication&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yes&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否允许使用 SSH 公钥认证&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ChallengeResponseAuthentication&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;no&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否启用质询响应（如 OTP 认证）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;UsePAM&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yes&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;启用 PAM（Pluggable Authentication Modules），控制登录策略&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;AllowUsers&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;(未设置)&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;只允许指定用户连接（可多个，用空格分隔）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;AllowGroups&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;(未设置)&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;只允许指定用户组成员连接&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;DenyUsers&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;(未设置)&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;拒绝指定用户连接&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;DenyGroups&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;(未设置)&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;拒绝指定用户组成员连接&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;LoginGraceTime&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;120&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;用户认证超时时间（秒）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;MaxAuthTries&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;6&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;最大认证失败次数，超过后断开连接&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;MaxSessions&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;每个连接允许的最大并发 session 数量（例如 shell、端口转发等）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;PermitEmptyPasswords&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;no&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否允许空密码用户登录（&lt;strong&gt;强烈建议保持为 no&lt;/strong&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;X11Forwarding&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yes&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否允许 X11 图形界面转发&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;PrintMotd&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;yes&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;登录后是否显示 &lt;code&gt;/etc/motd&lt;/code&gt; 消息&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;Banner&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;em&gt;(未设置)&lt;/em&gt;&lt;/td&gt;
+          &lt;td&gt;登录前显示的横幅文件路径（如安全警告等）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;LogLevel&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;INFO&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;日志详细程度（如：&lt;code&gt;QUIET&lt;/code&gt;、&lt;code&gt;FATAL&lt;/code&gt;、&lt;code&gt;ERROR&lt;/code&gt;、&lt;code&gt;INFO&lt;/code&gt;、&lt;code&gt;VERBOSE&lt;/code&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;Subsystem&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;sftp /usr/lib/openssh/sftp-server&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定 SFTP 子系统路径&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>linux apt镜像修改</title>
         <link>https://ydashu.github.io/p/linux-apt%E9%95%9C%E5%83%8F%E4%BF%AE%E6%94%B9/</link>
         <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>

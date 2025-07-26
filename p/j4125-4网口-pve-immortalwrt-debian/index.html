@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参考链接 落幕屋 什么值得买\n架构 接口 物理网卡 角色 用途 接入设备 eth0 PVE 管理口 192.168.100.2，独立后台访问 办公网 / 管理网 eth1 桥接 LAN 桥接接口 OpenWrt LAN 网络桥接 VM、PVE 后台 Debian VM + Proxmox eth2 PCI Passthrough WAN直通网口 给 OpenWrt 使用作为外网口 光猫 / 上级网络 eth3 PCI Passthrough LAN直通专口 专门给 AP 的 LAN 物理网口 AP + 无线设备 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 [ 光猫 / ISP ] [ 办公网络/管理设备 ] │ │ ▼ ▼ ┌─────────┐ ┌─────────┐ │ eth2 │ │ eth0 │ │ (WAN直通)│ │ (管理口) │ └───┬─────┘ └────┬────┘ │ │ ▼ ▼ ┌───────────────────┐ PVE │ immortalwrt VM │ │ │ └───┬───────────┬───┘ │ │ ▼ ▼ ┌─────┐ ┌─────────┐ │ eth1│ │ eth3 │ │(桥接)│ │(LAN直通)│ └──┬──┘ └───┬─────┘ │ │ ▼ ▼ ┌───────┐ ┌───────┐ │ Debian│ │ AP │ │ PVE │ └───┬───┘ └───────┘ ▼ 无线客户端设备 网口 设备 网口 网关 后台管理地址 子网掩码 PVE eth0 192.168.100.1 192.168.100.2 255.255.255.0 ImmortalWrt eth1 (LAN) 192.168.2.1 192.168.2.2 255.255.255.0 AP eth3 192.168.2.1 192.168.2.3 255.255.255.0 Debian eth1 192.168.2.1 192.168.2.4 255.255.255.0 PVE eth1/vmbr1 192.168.2.1 192.168.2.10 255.255.255.0 ImmortalWrt eth2 (WAN) DHCP/PPPOE 本机网口对应PVE（不同机器显示不同） Bridge 接口 绑定物理网卡 机器上物理标识显示 vmbr0 enp1s0 ETH0 vmbr1 enp2s0 ETH1 vmbr2 eno1 ETH2 vmbr3 enp4s0 ETH3 PVE安装和设置 安装PVE 下载PVE镜像 ventoy导入PVE镜像 BIOS设置 刷PVE PVE管理地址：192.168.100.2:8006 电脑登录PVE管理后台 windows为例\n">
+<title>j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="j4125+4网口+PVE+immortalwrt+debian">
+<meta property='og:description' content="参考链接 落幕屋 什么值得买\n架构 接口 物理网卡 角色 用途 接入设备 eth0 PVE 管理口 192.168.100.2，独立后台访问 办公网 / 管理网 eth1 桥接 LAN 桥接接口 OpenWrt LAN 网络桥接 VM、PVE 后台 Debian VM + Proxmox eth2 PCI Passthrough WAN直通网口 给 OpenWrt 使用作为外网口 光猫 / 上级网络 eth3 PCI Passthrough LAN直通专口 专门给 AP 的 LAN 物理网口 AP + 无线设备 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 [ 光猫 / ISP ] [ 办公网络/管理设备 ] │ │ ▼ ▼ ┌─────────┐ ┌─────────┐ │ eth2 │ │ eth0 │ │ (WAN直通)│ │ (管理口) │ └───┬─────┘ └────┬────┘ │ │ ▼ ▼ ┌───────────────────┐ PVE │ immortalwrt VM │ │ │ └───┬───────────┬───┘ │ │ ▼ ▼ ┌─────┐ ┌─────────┐ │ eth1│ │ eth3 │ │(桥接)│ │(LAN直通)│ └──┬──┘ └───┬─────┘ │ │ ▼ ▼ ┌───────┐ ┌───────┐ │ Debian│ │ AP │ │ PVE │ └───┬───┘ └───────┘ ▼ 无线客户端设备 网口 设备 网口 网关 后台管理地址 子网掩码 PVE eth0 192.168.100.1 192.168.100.2 255.255.255.0 ImmortalWrt eth1 (LAN) 192.168.2.1 192.168.2.2 255.255.255.0 AP eth3 192.168.2.1 192.168.2.3 255.255.255.0 Debian eth1 192.168.2.1 192.168.2.4 255.255.255.0 PVE eth1/vmbr1 192.168.2.1 192.168.2.10 255.255.255.0 ImmortalWrt eth2 (WAN) DHCP/PPPOE 本机网口对应PVE（不同机器显示不同） Bridge 接口 绑定物理网卡 机器上物理标识显示 vmbr0 enp1s0 ETH0 vmbr1 enp2s0 ETH1 vmbr2 eno1 ETH2 vmbr3 enp4s0 ETH3 PVE安装和设置 安装PVE 下载PVE镜像 ventoy导入PVE镜像 BIOS设置 刷PVE PVE管理地址：192.168.100.2:8006 电脑登录PVE管理后台 windows为例\n">
+<meta property='og:url' content='https://ydashu.github.io/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-07-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-07-16T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="j4125+4网口+PVE+immortalwrt+debian">
+<meta name="twitter:description" content="参考链接 落幕屋 什么值得买\n架构 接口 物理网卡 角色 用途 接入设备 eth0 PVE 管理口 192.168.100.2，独立后台访问 办公网 / 管理网 eth1 桥接 LAN 桥接接口 OpenWrt LAN 网络桥接 VM、PVE 后台 Debian VM + Proxmox eth2 PCI Passthrough WAN直通网口 给 OpenWrt 使用作为外网口 光猫 / 上级网络 eth3 PCI Passthrough LAN直通专口 专门给 AP 的 LAN 物理网口 AP + 无线设备 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 [ 光猫 / ISP ] [ 办公网络/管理设备 ] │ │ ▼ ▼ ┌─────────┐ ┌─────────┐ │ eth2 │ │ eth0 │ │ (WAN直通)│ │ (管理口) │ └───┬─────┘ └────┬────┘ │ │ ▼ ▼ ┌───────────────────┐ PVE │ immortalwrt VM │ │ │ └───┬───────────┬───┘ │ │ ▼ ▼ ┌─────┐ ┌─────────┐ │ eth1│ │ eth3 │ │(桥接)│ │(LAN直通)│ └──┬──┘ └───┬─────┘ │ │ ▼ ▼ ┌───────┐ ┌───────┐ │ Debian│ │ AP │ │ PVE │ └───┬───┘ └───────┘ ▼ 无线客户端设备 网口 设备 网口 网关 后台管理地址 子网掩码 PVE eth0 192.168.100.1 192.168.100.2 255.255.255.0 ImmortalWrt eth1 (LAN) 192.168.2.1 192.168.2.2 255.255.255.0 AP eth3 192.168.2.1 192.168.2.3 255.255.255.0 Debian eth1 192.168.2.1 192.168.2.4 255.255.255.0 PVE eth1/vmbr1 192.168.2.1 192.168.2.10 255.255.255.0 ImmortalWrt eth2 (WAN) DHCP/PPPOE 本机网口对应PVE（不同机器显示不同） Bridge 接口 绑定物理网卡 机器上物理标识显示 vmbr0 enp1s0 ETH0 vmbr1 enp2s0 ETH1 vmbr2 eno1 ETH2 vmbr3 enp4s0 ETH3 PVE安装和设置 安装PVE 下载PVE镜像 ventoy导入PVE镜像 BIOS设置 刷PVE PVE管理地址：192.168.100.2:8006 电脑登录PVE管理后台 windows为例\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#架构">架构</a>
+      <ol>
+        <li><a href="#网口">网口</a>
+          <ol>
+            <li><a href="#本机网口对应pve不同机器显示不同">本机网口对应PVE（不同机器显示不同）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#pve安装和设置">PVE安装和设置</a>
+      <ol>
+        <li><a href="#安装pve">安装PVE</a></li>
+        <li><a href="#电脑登录pve管理后台">电脑登录PVE管理后台</a></li>
+        <li><a href="#安装immortalwrt">安装immortalwrt</a>
+          <ol>
+            <li><a href="#immortalwrt设置network配置文件">immortalwrt设置network配置文件</a></li>
+            <li><a href="#换主题-argon">换主题-argon</a></li>
+            <li><a href="#openclash设置">openclash设置</a></li>
+          </ol>
+        </li>
+        <li><a href="#pve设置eth1vmbr1">PVE设置eth1/vmbr1</a></li>
+        <li><a href="#安装debian">安装debian</a>
+          <ol>
+            <li><a href="#debian配置network">debian配置network</a></li>
+            <li><a href="#开启ssh">开启ssh</a>
+              <ol>
+                <li><a href="#sshd_config-常用配置参数表"><code>sshd_config</code> 常用配置参数表</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/">j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-07-16</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>参考链接
+<a class="link" href="https://lmu5.com/pve.html"  target="_blank" rel="noopener"
+    >落幕屋</a>
+<a class="link" href="https://post.smzdm.com/p/arrq4q3g/"  target="_blank" rel="noopener"
+    >什么值得买</a></p>
+<h2 id="架构">架构
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>接口</th>
+          <th>物理网卡</th>
+          <th>角色</th>
+          <th>用途</th>
+          <th>接入设备</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>eth0</td>
+          <td>PVE</td>
+          <td>管理口</td>
+          <td>192.168.100.2，独立后台访问</td>
+          <td>办公网 / 管理网</td>
+      </tr>
+      <tr>
+          <td>eth1</td>
+          <td>桥接</td>
+          <td>LAN 桥接接口</td>
+          <td>OpenWrt LAN 网络桥接 VM、PVE 后台</td>
+          <td>Debian VM + Proxmox</td>
+      </tr>
+      <tr>
+          <td>eth2</td>
+          <td>PCI Passthrough</td>
+          <td>WAN直通网口</td>
+          <td>给 OpenWrt 使用作为外网口</td>
+          <td>光猫 / 上级网络</td>
+      </tr>
+      <tr>
+          <td>eth3</td>
+          <td>PCI Passthrough</td>
+          <td>LAN直通专口</td>
+          <td>专门给 AP 的 LAN 物理网口</td>
+          <td>AP + 无线设备</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[ 光猫 / ISP ]                          [ 办公网络/管理设备 ]
+</span></span><span class="line"><span class="cl">     │                                       │
+</span></span><span class="line"><span class="cl">     ▼                                       ▼
+</span></span><span class="line"><span class="cl">┌─────────┐                             ┌─────────┐
+</span></span><span class="line"><span class="cl">│ eth2    │                             │ eth0    │
+</span></span><span class="line"><span class="cl">│ (WAN直通)│                             │ (管理口) │
+</span></span><span class="line"><span class="cl">└───┬─────┘                             └────┬────┘
+</span></span><span class="line"><span class="cl">    │                                        │
+</span></span><span class="line"><span class="cl">    ▼                                        ▼
+</span></span><span class="line"><span class="cl">┌───────────────────┐                       PVE
+</span></span><span class="line"><span class="cl">│ immortalwrt VM    │           
+</span></span><span class="line"><span class="cl">│                   │             
+</span></span><span class="line"><span class="cl">└───┬───────────┬───┘            
+</span></span><span class="line"><span class="cl">    │           │                 
+</span></span><span class="line"><span class="cl">    ▼           ▼                   
+</span></span><span class="line"><span class="cl">┌─────┐   ┌─────────┐               
+</span></span><span class="line"><span class="cl">│ eth1│   │ eth3    │             
+</span></span><span class="line"><span class="cl">│(桥接)│   │(LAN直通)│              
+</span></span><span class="line"><span class="cl">└──┬──┘   └───┬─────┘               
+</span></span><span class="line"><span class="cl">   │          │                         
+</span></span><span class="line"><span class="cl">   ▼          ▼                        
+</span></span><span class="line"><span class="cl">┌───────┐  ┌───────┐               
+</span></span><span class="line"><span class="cl">│ Debian│  │  AP   │              
+</span></span><span class="line"><span class="cl">│  PVE  │  └───┬───┘               
+</span></span><span class="line"><span class="cl">└───────┘      ▼                  
+</span></span><span class="line"><span class="cl">         无线客户端设备
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网口">网口
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>设备</th>
+          <th>网口</th>
+          <th>网关</th>
+          <th>后台管理地址</th>
+          <th>子网掩码</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>PVE</td>
+          <td>eth0</td>
+          <td>192.168.100.1</td>
+          <td>192.168.100.2</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>ImmortalWrt</td>
+          <td>eth1 (LAN)</td>
+          <td>192.168.2.1</td>
+          <td>192.168.2.2</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>AP</td>
+          <td>eth3</td>
+          <td>192.168.2.1</td>
+          <td>192.168.2.3</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>Debian</td>
+          <td>eth1</td>
+          <td>192.168.2.1</td>
+          <td>192.168.2.4</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>PVE</td>
+          <td>eth1/vmbr1</td>
+          <td>192.168.2.1</td>
+          <td>192.168.2.10</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>ImmortalWrt</td>
+          <td>eth2 (WAN)</td>
+          <td>DHCP/PPPOE</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="本机网口对应pve不同机器显示不同">本机网口对应PVE（不同机器显示不同）
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Bridge 接口</th>
+          <th>绑定物理网卡</th>
+          <th>机器上物理标识显示</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>vmbr0</td>
+          <td>enp1s0</td>
+          <td>ETH0</td>
+      </tr>
+      <tr>
+          <td>vmbr1</td>
+          <td>enp2s0</td>
+          <td>ETH1</td>
+      </tr>
+      <tr>
+          <td>vmbr2</td>
+          <td>eno1</td>
+          <td>ETH2</td>
+      </tr>
+      <tr>
+          <td>vmbr3</td>
+          <td>enp4s0</td>
+          <td>ETH3</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="pve安装和设置">PVE安装和设置
+</h2><h3 id="安装pve">安装PVE
+</h3><ul>
+<li><a class="link" href="https://www.proxmox.com/en/downloads"  target="_blank" rel="noopener"
+    >下载PVE镜像</a></li>
+<li>ventoy导入PVE镜像</li>
+<li>BIOS设置</li>
+<li>刷PVE
+<ul>
+<li>PVE管理地址：192.168.100.2:8006</li>
+</ul>
+</li>
+</ul>
+<h3 id="电脑登录pve管理后台">电脑登录PVE管理后台
+</h3><p>windows为例</p>
+<ul>
+<li>网线连接PVE安装过程中设置的端口</li>
+<li>控制面板-网络和共享中心-以太网-属性-Internet 协议版本 4 (TCP/IPv4)-属性-使用下面的IP地址
+<ul>
+<li>ip地址: <code>192.168.100.100</code></li>
+<li>子网掩码: <code>255.255.255.0</code></li>
+<li>默认网关: <code>192.168.100.1</code></li>
+</ul>
+</li>
+<li>确定保存</li>
+<li>网页打开 <code>192.168.100.2:8006</code></li>
+</ul>
+<h3 id="安装immortalwrt">安装immortalwrt
+</h3><ul>
+<li><a class="link" href="https://downloads.immortalwrt.org/releases/24.10.2/targets/x86/64/"  target="_blank" rel="noopener"
+    >下载immortalwrt镜像</a> - 版本和架构自行选择
+<ul>
+<li>下载<code>generic-squashfs-combined-efi.qcow2</code> PVE属于KVM
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>推荐文件格式/后缀</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>实体机安装</strong></td>
+          <td><code>.img.gz</code> (combined)</td>
+          <td>软路由/物理设备刷机</td>
+      </tr>
+      <tr>
+          <td><strong>虚拟机专用</strong></td>
+          <td><code>.vmdk</code> (VMware) <code>.qcow2</code> (KVM)</td>
+          <td>对应虚拟机平台直接加载</td>
+      </tr>
+      <tr>
+          <td><strong>UEFI支持</strong></td>
+          <td>含<code>efi</code>的文件名</td>
+          <td>新型主板/UEFI启动环境</td>
+      </tr>
+      <tr>
+          <td><strong>BIOS支持</strong></td>
+          <td>不含<code>efi</code>的文件名</td>
+          <td>传统Legacy启动模式</td>
+      </tr>
+      <tr>
+          <td><strong>稳定运行</strong></td>
+          <td><code>squashfs</code>后缀</td>
+          <td>只读系统，防配置错误</td>
+      </tr>
+      <tr>
+          <td><strong>可写系统</strong></td>
+          <td><code>ext4</code>后缀</td>
+          <td>需要频繁修改系统的开发者</td>
+      </tr>
+      <tr>
+          <td><strong>ISO启动</strong></td>
+          <td><code>.iso</code></td>
+          <td>光盘/U盘启动安装</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li>ftps连接PVE</li>
+<li>复制刚刚下载的文件到<code>/var/lib/vz/template/iso/</code></li>
+<li>创建虚拟机
+<ul>
+<li>
+<p>操作系统：不适用任何介质</p>
+</li>
+<li>
+<p>系统</p>
+<ul>
+<li>SCSI控制器：VirtIO SCSI single
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>控制器类型</th>
+          <th>性能</th>
+          <th>兼容性</th>
+          <th>特点</th>
+          <th>推荐场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>VirtIO SCSI</strong></td>
+          <td>✅✅✅</td>
+          <td>中等</td>
+          <td>高性能、支持多队列/热插拔</td>
+          <td>Linux/Windows（推荐主力使用）</td>
+      </tr>
+      <tr>
+          <td><strong>LSI SAS</strong></td>
+          <td>✅</td>
+          <td>✅✅</td>
+          <td>兼容性好，适合无VirtIO驱动系统</td>
+          <td>Windows 7/10等通用系统</td>
+      </tr>
+      <tr>
+          <td><strong>VMware PVSCSI</strong></td>
+          <td>✅✅</td>
+          <td>中等</td>
+          <td>VMware专用控制器</td>
+          <td>VMware迁移系统</td>
+      </tr>
+      <tr>
+          <td><strong>VirtIO SCSI Single</strong></td>
+          <td>✅✅</td>
+          <td>中等</td>
+          <td>单磁盘独立控制器</td>
+          <td>OpenWRT等简单场景</td>
+      </tr>
+      <tr>
+          <td><strong>LSI 53C895A</strong></td>
+          <td>❌</td>
+          <td>✅✅✅</td>
+          <td>兼容旧系统但性能差</td>
+          <td>Windows XP/2003等旧系统</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li>
+<p>磁盘：删除不要（后面命令行安装immortalwrt时会自动创建一个磁盘）</p>
+</li>
+<li>
+<p>CPU</p>
+<ul>
+<li>插槽：<code>1</code></li>
+<li>核心：<code>2</code></li>
+</ul>
+</li>
+<li>
+<p>内存：<code>2048</code>或<code>1024</code></p>
+</li>
+<li>
+<p>网络</p>
+<ul>
+<li>模型：<code>VirtIO(半虚拟化)</code>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>模型名</th>
+          <th>类型</th>
+          <th>性能</th>
+          <th>兼容性</th>
+          <th>驱动需求</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Intel E1000</strong></td>
+          <td>仿真</td>
+          <td>⭐⭐</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>系统自带</td>
+          <td>模拟英特尔千兆网卡 82540EM，几乎所有系统都能识别。适合旧系统使用。性能较低。</td>
+      </tr>
+      <tr>
+          <td><strong>Intel E1000E</strong></td>
+          <td>仿真</td>
+          <td>⭐⭐</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>系统自带</td>
+          <td>模拟较新 E1000e（如 I217LM）型号，稍快于 E1000。</td>
+      </tr>
+      <tr>
+          <td><strong>VirtIO (半虚拟化)</strong></td>
+          <td>半虚拟化</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>⭐⭐</td>
+          <td>需安装 VirtIO 驱动</td>
+          <td>最快、最轻量，占资源最少。推荐 Linux 系统或安装了 virtio 驱动的 Windows 系统使用。</td>
+      </tr>
+      <tr>
+          <td><strong>Realtek RTL8139</strong></td>
+          <td>仿真</td>
+          <td>⭐</td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td>系统自带</td>
+          <td>速度慢，仅 100Mbps，兼容性极强，适合非常旧的系统。</td>
+      </tr>
+      <tr>
+          <td><strong>VMware vmxnet3</strong></td>
+          <td>半虚拟化</td>
+          <td>⭐⭐⭐⭐</td>
+          <td>⭐⭐</td>
+          <td>需 VMware 驱动</td>
+          <td>VMware 专用，PVE/KVM 中不常用。性能好，但需要额外驱动。</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li>
+<p>桥接：<code>vmbr1</code></p>
+</li>
+</ul>
+</li>
+<li>ssh登录PVE后台
+<ul>
+<li>输入命令安装
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">qm disk import <span class="m">100</span> /var/lib/vz/template/iso/immortalwrt-24.10.2-x86-64-generic-squashfs-combined-efi.qcow2 local-lvm --format<span class="o">=</span>qcow2
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>登录PVE网页端
+<ul>
+<li>虚拟机100-硬件-未使用的磁盘-编辑-添加</li>
+<li>虚拟机100-选项-启动项-刚刚添加的磁盘添加为启动项并置顶，其他的已启动项取消勾选</li>
+</ul>
+</li>
+</ul>
+<h4 id="immortalwrt设置network配置文件">immortalwrt设置network配置文件
+</h4><ul>
+<li>虚拟机100-控制台</li>
+<li><code>vi /etc/config/network</code></li>
+<li>新增<code>list ports 'eth2'</code>，修改<code>option ipaddr '192.168.2.2'</code>和<code>option gateway '192.168.2.1'</code>，其他的展示不变</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">config device
+</span></span><span class="line"><span class="cl">        option name &#39;br-lan&#39;
+</span></span><span class="line"><span class="cl">        option type &#39;bridge&#39;
+</span></span><span class="line"><span class="cl">        list ports &#39;eth0&#39;
+</span></span><span class="line"><span class="cl">        list ports &#39;eth2&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">config interface &#39;lan&#39;
+</span></span><span class="line"><span class="cl">        option device &#39;br-lan&#39;
+</span></span><span class="line"><span class="cl">        option proto &#39;static&#39;
+</span></span><span class="line"><span class="cl">        option ipaddr &#39;192.168.2.2&#39;
+</span></span><span class="line"><span class="cl">        option netmask &#39;255.255.255.0&#39;
+</span></span><span class="line"><span class="cl">        option gateway &#39;192.168.2.1&#39;
+</span></span><span class="line"><span class="cl">        option ip6assign &#39;60&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>保存</li>
+<li>重启
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">service network restart
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>切换网口eth1和eth3</li>
+<li>控制面板-网络和共享中心-以太网-属性-Internet 协议版本 4 (TCP/IPv4)-属性-使用下面的IP地址
+<ul>
+<li>ip地址: <code>192.168.2.100</code></li>
+<li>子网掩码: <code>255.255.255.0</code></li>
+<li>默认网关: <code>192.168.2.1</code></li>
+</ul>
+</li>
+<li>网页输入 <code>192.168.2.2</code>，查看是否成功打开</li>
+</ul>
+<h4 id="换主题-argon">换主题-argon
+</h4><ul>
+<li>浏览器打开<a class="link" href="https://downloads.immortalwrt.org/releases/24.10.2/packages/x86_64/luci/"  target="_blank" rel="noopener"
+    >官方链接</a></li>
+<li><code>Ctrl+f</code>搜索<code>argon</code></li>
+<li>找到<code>https://downloads.immortalwrt.org/releases/24.10.2/packages/x86_64/luci/</code>并下载
+<ul>
+<li>wrt后台-系统-软件包-上传软件包-安装</li>
+</ul>
+</li>
+</ul>
+<h4 id="openclash设置">openclash设置
+</h4><p><a class="link" href="https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki"  target="_blank" rel="noopener"
+    >github参考链接</a></p>
+<h3 id="pve设置eth1vmbr1">PVE设置eth1/vmbr1
+</h3><ul>
+<li>ssh连接PVE</li>
+<li>输入
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/network/interfaces
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>配置文件
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auto vmbr1
+</span></span><span class="line"><span class="cl">iface vmbr1 inet static
+</span></span><span class="line"><span class="cl">    bridge-ports enp2s0
+</span></span><span class="line"><span class="cl">    bridge-stp off
+</span></span><span class="line"><span class="cl">    bridge-fd 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div>修改为
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auto vmbr1
+</span></span><span class="line"><span class="cl">iface vmbr1 inet static
+</span></span><span class="line"><span class="cl">    address 192.168.2.10/24
+</span></span><span class="line"><span class="cl">    bridge-ports enp2s0
+</span></span><span class="line"><span class="cl">    bridge-stp off
+</span></span><span class="line"><span class="cl">    bridge-fd 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>重启网络服务
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart networking
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>切换网口eth1</li>
+<li>连接<code>192.168.2.10:8006</code></li>
+<li>成功说明设置成功</li>
+</ul>
+<h3 id="安装debian">安装debian
+</h3><ul>
+<li>
+<p><a class="link" href="https://www.debian.org/CD/http-ftp/#mirrors"  target="_blank" rel="noopener"
+    >下载debian镜像</a> - 版本和架构自行选择</p>
+<ul>
+<li>下载<a class="link" href="https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.11.0-amd64-netinst.iso"  target="_blank" rel="noopener"
+    >debian-12.11.0-amd64-netinst.iso</a>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th><strong>CD 镜像</strong></th>
+          <th><strong>DVD 镜像</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>📦 镜像体积</td>
+          <td>较小（通常约 650MB～700MB）</td>
+          <td>较大（每张约 4.4GB，一般有多张）</td>
+      </tr>
+      <tr>
+          <td>🧩 包含软件量</td>
+          <td>较少，只包含最小安装环境或常见组件</td>
+          <td>较多，包含绝大部分常用软件包</td>
+      </tr>
+      <tr>
+          <td>🌐 网络依赖</td>
+          <td>安装过程中强依赖网络下载组件</td>
+          <td>多数软件包本地可用，<strong>脱机安装更方便</strong></td>
+      </tr>
+      <tr>
+          <td>💻 安装模式</td>
+          <td>通常是**网络安装（netinst）**或基本系统</td>
+          <td>可安装完整桌面环境（如 GNOME/KDE/XFCE）</td>
+      </tr>
+      <tr>
+          <td>🔄 更新方式</td>
+          <td>安装时需联网下载更新</td>
+          <td>可用本地包安装，但仍需联网获取最新补丁</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li>
+<p>登录PVE网页后台</p>
+</li>
+<li>
+<p>pve-local(pve)-ISO镜像-上传(上面下载的镜像)</p>
+</li>
+<li>
+<p>创建虚拟机</p>
+<ul>
+<li>
+<p>操作系统：ISO镜像 - <code>debian-12.11.0-amd64-netinst.iso</code></p>
+</li>
+<li>
+<p>系统</p>
+<ul>
+<li>SCSI控制器：VirtIO SCSI single</li>
+</ul>
+</li>
+<li>
+<p>磁盘</p>
+<ul>
+<li>磁盘大小：<code>32</code></li>
+<li>总线/设备：<code>SCSI</code>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>接口类型</th>
+          <th>特点描述</th>
+          <th>性能</th>
+          <th>启动兼容性</th>
+          <th>热插拔支持</th>
+          <th>推荐使用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>IDE</strong></td>
+          <td>最老的虚拟化磁盘接口，兼容性最好，但速度慢</td>
+          <td>🚫 最差</td>
+          <td>✅ 最兼容</td>
+          <td>❌ 不支持</td>
+          <td>仅用于旧系统或特殊用途</td>
+      </tr>
+      <tr>
+          <td><strong>SATA</strong></td>
+          <td>模拟现代物理硬盘接口，速度适中，兼容性也较好</td>
+          <td>🟡 中等</td>
+          <td>✅ 良好</td>
+          <td>✅ 支持</td>
+          <td>一般兼容性需求的系统</td>
+      </tr>
+      <tr>
+          <td><strong>VirtIO Block</strong></td>
+          <td>QEMU/KVM 提供的高性能磁盘接口，需额外驱动支持（Linux原生支持）</td>
+          <td>✅ 非常快</td>
+          <td>❌ 需驱动</td>
+          <td>❌ 部分支持</td>
+          <td>Linux系统，追求性能优先</td>
+      </tr>
+      <tr>
+          <td><strong>SCSI (VirtIO SCSI)</strong></td>
+          <td>支持多磁盘、热插拔、性能略低于 VirtIO Block，功能更全面（推荐）</td>
+          <td>🟢 高</td>
+          <td>✅ 支持</td>
+          <td>✅ 完整支持</td>
+          <td>多磁盘 VM，现代 Linux，OpenWrt等</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+</li>
+<li>
+<p>CPU</p>
+<ul>
+<li>插槽：<code>1</code></li>
+<li>核心：<code>1</code></li>
+</ul>
+</li>
+<li>
+<p>内存：<code>4096</code></p>
+</li>
+<li>
+<p>网络</p>
+<ul>
+<li>模型：<code>VirtIO(半虚拟化)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="debian配置network">debian配置network
+</h4><ul>
+<li>进入interfaces
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/network/interfaces
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>配置
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># loopback interface
+</span></span><span class="line"><span class="cl">auto lo
+</span></span><span class="line"><span class="cl">iface lo inet loopback
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 静态 IP 配置，ens18 即 eth1（桥接口）
+</span></span><span class="line"><span class="cl">auto ens18
+</span></span><span class="line"><span class="cl">iface ens18 inet static
+</span></span><span class="line"><span class="cl">    address 192.168.2.4
+</span></span><span class="line"><span class="cl">    netmask 255.255.255.0
+</span></span><span class="line"><span class="cl">    gateway 192.168.2.1
+</span></span><span class="line"><span class="cl">    dns-nameservers 192.168.2.1 8.8.8.8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 自动 IPv6
+</span></span><span class="line"><span class="cl">iface ens18 inet6 auto
+</span></span><span class="line"><span class="cl">	accept_ra 1
+</span></span><span class="line"><span class="cl">	autoconf 1
+</span></span><span class="line"><span class="cl">	privext 0
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>重启
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart networking
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>或者</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="开启ssh">开启ssh
+</h4><ul>
+<li>安装ssh服务
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install openssh-server
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>手动启动并设置开机启动
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start ssh
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> ssh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>查看ip地址-看是否是<code>192.168.2.4</code>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip a
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>从其他设备远程登录
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh 用户名@192.168.2.4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>debian12默认不允许<code>root</code>远程登录，解决方法
+<ul>
+<li>切换普通用户登录</li>
+<li>修改配置文件，设置允许<code>root</code>远程登录（不推荐，不安全）</li>
+<li>修改配置文件，禁用密码登录，仅允许密钥（推荐，更安全）
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/ssh/sshd_config
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重启ssh服务
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart ssh
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h5 id="sshd_config-常用配置参数表"><code>sshd_config</code> 常用配置参数表
+</h5><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>参数名</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Port</code></td>
+          <td><code>22</code></td>
+          <td>SSH 服务监听端口，可自定义为其他端口增强安全性</td>
+      </tr>
+      <tr>
+          <td><code>AddressFamily</code></td>
+          <td><code>any</code></td>
+          <td>指定监听的地址族（<code>inet</code>：IPv4，<code>inet6</code>：IPv6，<code>any</code>：全部）</td>
+      </tr>
+      <tr>
+          <td><code>ListenAddress</code></td>
+          <td><code>0.0.0.0</code></td>
+          <td>指定监听的 IP 地址（默认所有网卡）</td>
+      </tr>
+      <tr>
+          <td><code>PermitRootLogin</code></td>
+          <td><code>prohibit-password</code></td>
+          <td>是否允许 root 用户登录，常见值：<code>yes</code>、<code>no</code>、<code>without-password</code></td>
+      </tr>
+      <tr>
+          <td><code>PasswordAuthentication</code></td>
+          <td><code>yes</code></td>
+          <td>是否允许密码方式登录</td>
+      </tr>
+      <tr>
+          <td><code>PubkeyAuthentication</code></td>
+          <td><code>yes</code></td>
+          <td>是否允许使用 SSH 公钥认证</td>
+      </tr>
+      <tr>
+          <td><code>ChallengeResponseAuthentication</code></td>
+          <td><code>no</code></td>
+          <td>是否启用质询响应（如 OTP 认证）</td>
+      </tr>
+      <tr>
+          <td><code>UsePAM</code></td>
+          <td><code>yes</code></td>
+          <td>启用 PAM（Pluggable Authentication Modules），控制登录策略</td>
+      </tr>
+      <tr>
+          <td><code>AllowUsers</code></td>
+          <td><em>(未设置)</em></td>
+          <td>只允许指定用户连接（可多个，用空格分隔）</td>
+      </tr>
+      <tr>
+          <td><code>AllowGroups</code></td>
+          <td><em>(未设置)</em></td>
+          <td>只允许指定用户组成员连接</td>
+      </tr>
+      <tr>
+          <td><code>DenyUsers</code></td>
+          <td><em>(未设置)</em></td>
+          <td>拒绝指定用户连接</td>
+      </tr>
+      <tr>
+          <td><code>DenyGroups</code></td>
+          <td><em>(未设置)</em></td>
+          <td>拒绝指定用户组成员连接</td>
+      </tr>
+      <tr>
+          <td><code>LoginGraceTime</code></td>
+          <td><code>120</code></td>
+          <td>用户认证超时时间（秒）</td>
+      </tr>
+      <tr>
+          <td><code>MaxAuthTries</code></td>
+          <td><code>6</code></td>
+          <td>最大认证失败次数，超过后断开连接</td>
+      </tr>
+      <tr>
+          <td><code>MaxSessions</code></td>
+          <td><code>10</code></td>
+          <td>每个连接允许的最大并发 session 数量（例如 shell、端口转发等）</td>
+      </tr>
+      <tr>
+          <td><code>PermitEmptyPasswords</code></td>
+          <td><code>no</code></td>
+          <td>是否允许空密码用户登录（<strong>强烈建议保持为 no</strong>）</td>
+      </tr>
+      <tr>
+          <td><code>X11Forwarding</code></td>
+          <td><code>yes</code></td>
+          <td>是否允许 X11 图形界面转发</td>
+      </tr>
+      <tr>
+          <td><code>PrintMotd</code></td>
+          <td><code>yes</code></td>
+          <td>登录后是否显示 <code>/etc/motd</code> 消息</td>
+      </tr>
+      <tr>
+          <td><code>Banner</code></td>
+          <td><em>(未设置)</em></td>
+          <td>登录前显示的横幅文件路径（如安全警告等）</td>
+      </tr>
+      <tr>
+          <td><code>LogLevel</code></td>
+          <td><code>INFO</code></td>
+          <td>日志详细程度（如：<code>QUIET</code>、<code>FATAL</code>、<code>ERROR</code>、<code>INFO</code>、<code>VERBOSE</code>）</td>
+      </tr>
+      <tr>
+          <td><code>Subsystem</code></td>
+          <td><code>sftp /usr/lib/openssh/sftp-server</code></td>
+          <td>指定 SFTP 子系统路径</td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/linux-apt%E9%95%9C%E5%83%8F%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">linux apt镜像修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/debian12%E5%AE%89%E8%A3%85%E9%97%AD%E6%BA%90nvidia%E9%A9%B1%E5%8A%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12安装闭源nvidia驱动</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/vim%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Vim快捷键</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/debian12-gnome%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12&#43;GNOME快捷键</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux远程连接ssh和sftp</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
