@@ -7,7 +7,119 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Sat, 21 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>屏幕原理</title>
+        <link>https://ydashu.github.io/p/%E5%B1%8F%E5%B9%95%E5%8E%9F%E7%90%86/</link>
+        <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E5%B1%8F%E5%B9%95%E5%8E%9F%E7%90%86/</guid>
+        <description>&lt;h2 id=&#34;发展&#34;&gt;发展
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;CRT (Cathode Ray Tube) 阴极射线管&lt;/li&gt;
+&lt;li&gt;PDP (Plasma Display Panel) 等离子&lt;/li&gt;
+&lt;li&gt;LCD (Liquid Crystal Display) 液晶显示器
+&lt;ul&gt;
+&lt;li&gt;背光源
+&lt;ul&gt;
+&lt;li&gt;CCFL (Cold Cathode Fluorescent Lamp) 冷阴极荧光灯管&lt;/li&gt;
+&lt;li&gt;LED (Light Emitting Diode) 发光二极管&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;调光方式
+&lt;ul&gt;
+&lt;li&gt;背光调节
+&lt;ul&gt;
+&lt;li&gt;按光信号
+&lt;ul&gt;
+&lt;li&gt;dc (Direct Current) 直流 : 屏幕不闪、容易偏色、较难实现&lt;/li&gt;
+&lt;li&gt;pwm (Pulse Width Modulation) 脉冲宽度调制 :屏幕完全熄灭、调整占空比改亮度、理论上3kHZ 以上无害&lt;/li&gt;
+&lt;li&gt;类dc :屏幕轻微闪烁、偏色情况稍好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;按区域
+&lt;ul&gt;
+&lt;li&gt;全局调光&lt;/li&gt;
+&lt;li&gt;区域调光（Local Dimming）
+&lt;ul&gt;
+&lt;li&gt;背光分成多个区域，每个区域可独立控制亮度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;参考链接
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1oV411p7ek&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bilibili-吉米田&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV168411T7Gg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bilibili-985本硕&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;液晶层控制
+&lt;ul&gt;
+&lt;li&gt;液晶分子通过电场调整排列，控制背光通过的多少，从而影响像素亮度&lt;/li&gt;
+&lt;li&gt;但亮度主要由背光决定，液晶层更负责色彩和图像细节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;液晶排列
+&lt;ul&gt;
+&lt;li&gt;TN (Twisted Nematic) 扭曲向列型 :软屏，响应快，可视角小&lt;/li&gt;
+&lt;li&gt;VA (Vertical Alignment) 垂直对齐  :软屏，对比度高，黑色深邃&lt;/li&gt;
+&lt;li&gt;IPS (In-Plane Switching) 平面转换 :硬屏，色彩好，背光灯亮度大&lt;/li&gt;
+&lt;li&gt;参考链接
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.san-star.com/industry-news/551283&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;赛时达&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.topwaydisplay.com/en/blog/lcd-panel-type&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;topwaydisplay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1X14y197fH&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bilibili&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OLED (Organic Light-Emitting Diode) 有机发光二极管
+&lt;ul&gt;
+&lt;li&gt;自发光，没有液晶层&lt;/li&gt;
+&lt;li&gt;调光方式 &amp;ndash; 像素级调光
+&lt;ul&gt;
+&lt;li&gt;dc&lt;/li&gt;
+&lt;li&gt;pwm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;问题&#34;&gt;问题
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;常见的IPS为什么伤眼
+&lt;ul&gt;
+&lt;li&gt;低频pwm+背光亮度大&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;为什么iphone11和iphone16同样是pwm, iphone11的led比iphone16的oled更护眼
+&lt;ul&gt;
+&lt;li&gt;更高的PWM频率（&amp;gt;1kHz vs 480Hz）：高频率减少了人眼可察觉的闪烁&lt;/li&gt;
+&lt;li&gt;液晶延迟效应：液晶分子的缓慢响应平滑了PWM的亮度变化，降低闪烁感&lt;/li&gt;
+&lt;li&gt;背光均匀性：LCD的背光层提供均匀光源，闪烁影响被分散，而OLED的像素级闪烁更直接&lt;/li&gt;
+&lt;li&gt;参考chatgpt、grok&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;为什么CCFL(基本上低频PWM调光，100-300Hz)比LED更护眼
+&lt;ul&gt;
+&lt;li&gt;CCFL接近自然光，蓝光峰值（450-460nm）相对较低&lt;/li&gt;
+&lt;li&gt;CCFL的荧光涂层有一定余辉（phosphor persistence），能稍微平滑PWM闪烁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>网球击球</title>
         <link>https://ydashu.github.io/p/%E7%BD%91%E7%90%83%E5%87%BB%E7%90%83/</link>
         <pubDate>Sat, 21 Jun 2025 00:00:00 +0000</pubDate>

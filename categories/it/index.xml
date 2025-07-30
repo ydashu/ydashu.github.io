@@ -7,7 +7,296 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>linux常用系统</title>
+        <link>https://ydashu.github.io/p/linux%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/linux%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;h2 id=&#34;树状图&#34;&gt;树状图
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── Debian系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Debian
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── Linux Mint
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── Pop!_OS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── elementary OS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── Zorin OS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── MX Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── antiX
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Deepin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── Arch系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Arch Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Manjaro
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── EndeavourOS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── CachyOS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Garuda Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Artix Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── Red Hat系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── RHEL (Red Hat Enterprise Linux)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── CentOS（旧）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Rocky Linux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── AlmaLinux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Fedora
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── openSUSE/SUSE系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── SUSE Linux Enterprise (SLES)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── openSUSE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       ├── Leap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       └── Tumbleweed
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── Gentoo系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Gentoo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── ChromeOS / Chromium OS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── Slackware系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Slackware
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Salix OS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Zenwalk
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── 独立/其他系
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── NixOS          ← 🆕 特殊的声明式配置系统
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Void Linux     ← runit 轻量发行版
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Alpine Linux   ← 极轻量系统，广泛用于Docker
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Bedrock Linux  ← 融合多个发行版特性的Meta发行版
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Tiny Core Linux← 超轻量系统（几MB）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Tails          ← 匿名隐私安全系统（基于Debian）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Qubes OS       ← 安全导向虚拟化系统
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Rescuezilla    ← 系统备份恢复工具系统
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── 移动设备/特殊
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── Android        ← 基于Linux内核，非GNU用户空间
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── postmarketOS   ← Linux运行在手机上
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── Mobian         ← Debian on mobile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;对照表&#34;&gt;对照表
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;家族&lt;/th&gt;
+          &lt;th&gt;发行版&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;适用人群 / 适用场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟫 Debian系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Debian&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;上游稳定源头，极度可靠&lt;/td&gt;
+          &lt;td&gt;稳定优先的服务器、科研机构、保守派开发者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Ubuntu&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;桌面和服务器通用，社区活跃，软件支持好&lt;/td&gt;
+          &lt;td&gt;Linux 新手、开发者、企业、桌面用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Linux Mint&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;基于 Ubuntu，界面友好，开箱即用&lt;/td&gt;
+          &lt;td&gt;Windows 转换用户、轻松上手需求者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;MX Linux&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;基于 Debian，轻量级，不用 systemd&lt;/td&gt;
+          &lt;td&gt;老电脑、系统资源有限者、喜欢 antiX 风格的人&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟧 Arch系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Arch Linux&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;极简滚动更新，需动手配置&lt;/td&gt;
+          &lt;td&gt;高阶用户、极客、定制需求强者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Manjaro&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Arch 衍生，提供图形化安装和驱动管理&lt;/td&gt;
+          &lt;td&gt;想体验 Arch 又怕麻烦的用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;EndeavourOS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;接近原生 Arch，预设桌面环境，无多余软件&lt;/td&gt;
+          &lt;td&gt;追求纯粹 Arch 体验但懒得折腾安装的用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;CachyOS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;桌面优化型 Arch，性能调优，预设 Hyprland / KDE&lt;/td&gt;
+          &lt;td&gt;桌面游戏玩家、追求高性能和炫酷外观者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟥 Red Hat系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;CentOS（旧）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;原 RHEL 免费版（已停止更新）&lt;/td&gt;
+          &lt;td&gt;企业服务器（传统场景）、内网系统（遗留使用）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;AlmaLinux&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;CentOS 替代，兼容 RHEL，开源社区驱动&lt;/td&gt;
+          &lt;td&gt;企业生产服务器、云计算部署&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;RHEL 上游测试版，技术前沿，更新快&lt;/td&gt;
+          &lt;td&gt;程序员、技术尝鲜者、Red Hat 生态开发者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟦 SUSE系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;openSUSE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;企业稳定版（Leap）+ 滚动更新（Tumbleweed）&lt;/td&gt;
+          &lt;td&gt;企业桌面用户、服务器、DevOps 工程师&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟪 Gentoo系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;ChromeOS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Google 推出的基于 Gentoo 的桌面系统，主要运行 Web 应用&lt;/td&gt;
+          &lt;td&gt;教育市场、轻办公用户、Chromebook 用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🟨 独立系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;NixOS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;独特的声明式配置和包管理（Nix）&lt;/td&gt;
+          &lt;td&gt;DevOps、系统工程师、对构建一致性要求高的开发者&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔐 安全/隐私系&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Tails&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;基于 Debian，自动使用 Tor，使用后无痕&lt;/td&gt;
+          &lt;td&gt;隐私保护者、记者、调查人员、匿名网络使用者&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>Linux的常用软件</title>
+        <link>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
+        <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类目&lt;/th&gt;
+          &lt;th&gt;Windows 软件及 Linux 替代品&lt;/th&gt;
+          &lt;th&gt;说明或补充信息&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;视频播放&lt;/td&gt;
+          &lt;td&gt;PotPlayer → MPV / VLC&lt;/td&gt;
+          &lt;td&gt;MPV 轻量可定制，VLC 功能全面，支持硬件加速，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;办公套件&lt;/td&gt;
+          &lt;td&gt;onlyoffice/LibreOffice/WPS2019 → Microsoft Office&lt;/td&gt;
+          &lt;td&gt;WPS Linux 版有广告，推荐 WPS 2019（较旧但无广告）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文本编辑&lt;/td&gt;
+          &lt;td&gt;Notepad++ → Gedit / Nano / Vim&lt;/td&gt;
+          &lt;td&gt;Gedit 简单图形化，Nano 命令行轻量，Vim 强大但需学习&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;文件搜索&lt;/td&gt;
+          &lt;td&gt;Everything → FSearch&lt;/td&gt;
+          &lt;td&gt;FSearch 开源快速，需从官网或 PPA 安装&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;浏览器&lt;/td&gt;
+          &lt;td&gt;Chrome / Edge → Firefox / Chromium&lt;/td&gt;
+          &lt;td&gt;Firefox 注重隐私，Chromium 开源，洋葱（Tor）需单独配置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;搜索引擎&lt;/td&gt;
+          &lt;td&gt;Google → DuckDuckGo&lt;/td&gt;
+          &lt;td&gt;DuckDuckGo 隐私优先，无跟踪，需调整搜索习惯&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;代理工具&lt;/td&gt;
+          &lt;td&gt;Clash for Windows → Clash Verge&lt;/td&gt;
+          &lt;td&gt;Clash Verge 开源，支持 Clash 核心，需从官网下载&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;下载工具&lt;/td&gt;
+          &lt;td&gt;迅雷 → Motrix / qBittorrent&lt;/td&gt;
+          &lt;td&gt;Motrix 全能（BT+HTTP），qBittorrent 专注 BT，均无广告&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</title>
         <link>https://ydashu.github.io/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/</link>
         <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
@@ -6935,65 +7224,6 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-        </item>
-        <item>
-        <title>Linux的常用软件</title>
-        <link>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
-        <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid>
-        <description>&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;类目&lt;/th&gt;
-          &lt;th&gt;Windows 软件及 Linux 替代品&lt;/th&gt;
-          &lt;th&gt;说明或补充信息&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;视频播放&lt;/td&gt;
-          &lt;td&gt;PotPlayer → MPV / VLC&lt;/td&gt;
-          &lt;td&gt;MPV 轻量可定制，VLC 功能全面，支持硬件加速，均无广告&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;办公套件&lt;/td&gt;
-          &lt;td&gt;onlyoffice/LibreOffice/WPS2019 → Microsoft Office&lt;/td&gt;
-          &lt;td&gt;WPS Linux 版有广告，推荐 WPS 2019（较旧但无广告）&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;文本编辑&lt;/td&gt;
-          &lt;td&gt;Notepad++ → Gedit / Nano / Vim&lt;/td&gt;
-          &lt;td&gt;Gedit 简单图形化，Nano 命令行轻量，Vim 强大但需学习&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;文件搜索&lt;/td&gt;
-          &lt;td&gt;Everything → FSearch&lt;/td&gt;
-          &lt;td&gt;FSearch 开源快速，需从官网或 PPA 安装&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;浏览器&lt;/td&gt;
-          &lt;td&gt;Chrome / Edge → Firefox / Chromium&lt;/td&gt;
-          &lt;td&gt;Firefox 注重隐私，Chromium 开源，洋葱（Tor）需单独配置&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;搜索引擎&lt;/td&gt;
-          &lt;td&gt;Google → DuckDuckGo&lt;/td&gt;
-          &lt;td&gt;DuckDuckGo 隐私优先，无跟踪，需调整搜索习惯&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;代理工具&lt;/td&gt;
-          &lt;td&gt;Clash for Windows → Clash Verge&lt;/td&gt;
-          &lt;td&gt;Clash Verge 开源，支持 Clash 核心，需从官网下载&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;下载工具&lt;/td&gt;
-          &lt;td&gt;迅雷 → Motrix / qBittorrent&lt;/td&gt;
-          &lt;td&gt;Motrix 全能（BT+HTTP），qBittorrent 专注 BT，均无广告&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </description>
         </item>
         <item>
