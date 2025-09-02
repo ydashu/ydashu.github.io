@@ -7,7 +7,273 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>邮件端口及加密方式</title>
+        <link>https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/</link>
+        <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/</guid>
+        <description>&lt;h2 id=&#34;587-vs-465-端口--ssltlsstarttls-综合对比表&#34;&gt;&lt;strong&gt;587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表&lt;/strong&gt;
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;项目&lt;/th&gt;
+          &lt;th&gt;端口 587（Submission）&lt;/th&gt;
+          &lt;th&gt;端口 465（SMTPS）&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;全称&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Message Submission Agent (MSA)&lt;/td&gt;
+          &lt;td&gt;SMTP over SSL（旧称 SMTPS）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;用途&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;邮件提交（用户发送邮件）&lt;/td&gt;
+          &lt;td&gt;邮件发送（历史加密方式）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;加密方式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;STARTTLS&lt;/code&gt;（明文连接 → 协商升级为 TLS）&lt;/td&gt;
+          &lt;td&gt;直接 SSL/TLS 加密连接（一建立就加密）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;是否标准&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;IETF 官方推荐标准（RFC 6409）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;⚠️ 曾被废弃，后用于兼容性支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;安全性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;高（支持现代 TLS，防止降级）&lt;/td&gt;
+          &lt;td&gt;高（若配置得当），但依赖历史实现&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;是否需要认证&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 必须登录（用户名 + 密码/授权码）&lt;/td&gt;
+          &lt;td&gt;✅ 通常也需要认证&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;防火墙穿透能力&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 好（不被 ISP 封锁）&lt;/td&gt;
+          &lt;td&gt;✅ 一般也开放&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;使用场景&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;现代邮件客户端、云服务（Gmail、AWS SES）&lt;/td&gt;
+          &lt;td&gt;国内邮箱（腾讯企业邮、阿里邮箱）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;推荐程度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;强烈推荐（新项目首选）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;⚠️ 仅用于兼容旧系统&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ssltlsstarttls-术语解析表&#34;&gt;&lt;strong&gt;SSL、TLS、STARTTLS 术语解析表&lt;/strong&gt;
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;术语&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;含义&lt;/th&gt;
+          &lt;th&gt;状态&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;SSL&lt;/strong&gt;&lt;br&gt;(Secure Sockets Layer)&lt;/td&gt;
+          &lt;td&gt;加密协议&lt;/td&gt;
+          &lt;td&gt;早期安全协议，用于加密网络通信&lt;/td&gt;
+          &lt;td&gt;❌ &lt;strong&gt;已淘汰&lt;/strong&gt;&lt;br&gt;（SSLv2/v3 有严重漏洞）&lt;/td&gt;
+          &lt;td&gt;虽然常说“SSL证书”，但实际上是指 TLS 证书&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;TLS&lt;/strong&gt;&lt;br&gt;(Transport Layer Security)&lt;/td&gt;
+          &lt;td&gt;加密协议&lt;/td&gt;
+          &lt;td&gt;SSL 的继任者，现代加密标准&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;当前主流协议&lt;/strong&gt;&lt;br&gt;（TLS 1.2/1.3 最安全）&lt;/td&gt;
+          &lt;td&gt;所有 HTTPS、SMTP、IMAP 安全通信的基础&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;STARTTLS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;协议命令&lt;/td&gt;
+          &lt;td&gt;用于将明文连接“升级”为 TLS 加密连接&lt;/td&gt;
+          &lt;td&gt;✅ &lt;strong&gt;推荐使用机制&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;工作在应用层，常见于端口 25、587、143、110&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 比喻：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSL = 老旧防盗门（已过时）&lt;/li&gt;
+&lt;li&gt;TLS = 新式智能锁（现代标准）&lt;/li&gt;
+&lt;li&gt;STARTTLS = “我现在要上锁了” 的指令，触发加密&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;关键关系说明&#34;&gt;&lt;strong&gt;关键关系说明&lt;/strong&gt;
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;关系描述&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;STARTTLS&lt;/code&gt; 使用的不是 SSL&lt;/td&gt;
+          &lt;td&gt;虽然名字叫 STARTTLS，但它实际启用的是 &lt;strong&gt;TLS 协议&lt;/strong&gt;，不是 SSL！&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;465 端口&lt;/code&gt; ≠ 不安全&lt;/td&gt;
+          &lt;td&gt;只要使用 &lt;strong&gt;TLS 1.2+&lt;/strong&gt;，即使走 465，也是安全的。安全性取决于加密算法，不是端口号&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;587 端口&lt;/code&gt; 是现代标准&lt;/td&gt;
+          &lt;td&gt;IETF 明确推荐 587 为“邮件提交”端口，是云服务、API 集成的首选&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;“SSL 加密”是口语说法&lt;/td&gt;
+          &lt;td&gt;实际上所有现代服务都使用 TLS，但习惯称“开启SSL”&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;主流邮箱服务对比支持情况&#34;&gt;&lt;strong&gt;主流邮箱服务对比（支持情况）&lt;/strong&gt;
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;服务商&lt;/th&gt;
+          &lt;th&gt;推荐端口&lt;/th&gt;
+          &lt;th&gt;支持 587&lt;/th&gt;
+          &lt;th&gt;支持 465&lt;/th&gt;
+          &lt;th&gt;推荐加密方式&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;腾讯企业邮 (exmail.qq.com)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;⚠️ 465（文档推荐）&lt;/td&gt;
+          &lt;td&gt;✅ 支持&lt;/td&gt;
+          &lt;td&gt;✅ 支持&lt;/td&gt;
+          &lt;td&gt;SSL (465) 或 STARTTLS (587)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;阿里企业邮箱&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;⚠️ 465&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;SSL&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Gmail / Google Workspace&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 587&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;❌（不支持传统 465）&lt;/td&gt;
+          &lt;td&gt;STARTTLS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Outlook.com / Hotmail&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 587&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;❌（不支持）&lt;/td&gt;
+          &lt;td&gt;STARTTLS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Amazon SES&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 587&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;❌（已停用）&lt;/td&gt;
+          &lt;td&gt;STARTTLS&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;SendGrid / Mailgun&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 587&lt;/td&gt;
+          &lt;td&gt;✅&lt;/td&gt;
+          &lt;td&gt;❌&lt;/td&gt;
+          &lt;td&gt;STARTTLS&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;✅ 国际趋势：全面转向 &lt;strong&gt;587 + STARTTLS&lt;/strong&gt;&lt;br&gt;
+⚠️ 国内现状：&lt;strong&gt;465 + SSL&lt;/strong&gt; 仍占主流，主要是历史和用户习惯原因&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;最佳实践建议总结&#34;&gt;&lt;strong&gt;最佳实践建议总结&lt;/strong&gt;
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;场景&lt;/th&gt;
+          &lt;th&gt;推荐配置&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🆕 新项目开发（网站、API、云服务）&lt;/td&gt;
+          &lt;td&gt;✅ 使用 &lt;strong&gt;587 + STARTTLS + TLS 1.2+&lt;/strong&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💼 企业内部系统、兼容老客户端&lt;/td&gt;
+          &lt;td&gt;可使用 &lt;strong&gt;465 + SSL/TLS&lt;/strong&gt;（需确保加密强度）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔐 安全性要求高&lt;/td&gt;
+          &lt;td&gt;强制启用加密、禁用 SSLv3 及弱算法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📧 客户端配置（如 Outlook、Thunderbird）&lt;/td&gt;
+          &lt;td&gt;优先选择“STARTTLS on port 587”&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📱 手机邮箱 App 配置&lt;/td&gt;
+          &lt;td&gt;根据服务商提示选择，腾讯邮可用 465&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;配置示例腾讯企业邮两种方式&#34;&gt;配置示例：腾讯企业邮（两种方式）
+&lt;/h2&gt;&lt;h3 id=&#34;方式一使用-587推荐符合标准&#34;&gt;方式一：使用 587（推荐，符合标准）
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;发送服务器（SMTP）: smtp.exmail.qq.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;端口: 587
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;加密: STARTTLS（或 TLS）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;认证: 开启（账号 + 授权码）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;方式二使用-465兼容模式常见于中文文档&#34;&gt;方式二：使用 465（兼容模式，常见于中文文档）
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;发送服务器（SMTP）: smtp.exmail.qq.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;端口: 465
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;加密: SSL/TLS（直接加密）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;认证: 开启（账号 + 授权码）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;总结一句话&#34;&gt;总结一句话：
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;✅ &lt;strong&gt;技术先进性排序：&lt;code&gt;587 + STARTTLS + TLS&lt;/code&gt; &amp;gt; &lt;code&gt;465 + TLS&lt;/code&gt; &amp;gt; &lt;code&gt;465 + SSL&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
+🔐 &lt;strong&gt;安全的关键是加密协议（TLS）和证书，而不是端口号。&lt;/strong&gt;&lt;br&gt;
+🌍 &lt;strong&gt;国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>linux常用系统</title>
         <link>https://ydashu.github.io/p/linux%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F/</link>
         <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>

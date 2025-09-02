@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表 项目 端口 587（Submission） 端口 465（SMTPS） 全称 Message Submission Agent (MSA) SMTP over SSL（旧称 SMTPS） 用途 邮件提交（用户发送邮件） 邮件发送（历史加密方式） 加密方式 STARTTLS（明文连接 → 协商升级为 TLS） 直接 SSL/TLS 加密连接（一建立就加密） 是否标准 ✅ IETF 官方推荐标准（RFC 6409） ⚠️ 曾被废弃，后用于兼容性支持 安全性 高（支持现代 TLS，防止降级） 高（若配置得当），但依赖历史实现 是否需要认证 ✅ 必须登录（用户名 + 密码/授权码） ✅ 通常也需要认证 防火墙穿透能力 ✅ 好（不被 ISP 封锁） ✅ 一般也开放 使用场景 现代邮件客户端、云服务（Gmail、AWS SES） 国内邮箱（腾讯企业邮、阿里邮箱） 推荐程度 ✅ 强烈推荐（新项目首选） ⚠️ 仅用于兼容旧系统 SSL、TLS、STARTTLS 术语解析表 术语 类型 含义 状态 说明 SSL\n(Secure Sockets Layer) 加密协议 早期安全协议，用于加密网络通信 ❌ 已淘汰\n（SSLv2/v3 有严重漏洞） 虽然常说“SSL证书”，但实际上是指 TLS 证书 TLS\n(Transport Layer Security) 加密协议 SSL 的继任者，现代加密标准 ✅ 当前主流协议\n（TLS 1.2/1.3 最安全） 所有 HTTPS、SMTP、IMAP 安全通信的基础 STARTTLS 协议命令 用于将明文连接“升级”为 TLS 加密连接 ✅ 推荐使用机制 工作在应用层，常见于端口 25、587、143、110 💡 比喻：\n">
+<title>邮件端口及加密方式</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="邮件端口及加密方式">
+<meta property='og:description' content="587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表 项目 端口 587（Submission） 端口 465（SMTPS） 全称 Message Submission Agent (MSA) SMTP over SSL（旧称 SMTPS） 用途 邮件提交（用户发送邮件） 邮件发送（历史加密方式） 加密方式 STARTTLS（明文连接 → 协商升级为 TLS） 直接 SSL/TLS 加密连接（一建立就加密） 是否标准 ✅ IETF 官方推荐标准（RFC 6409） ⚠️ 曾被废弃，后用于兼容性支持 安全性 高（支持现代 TLS，防止降级） 高（若配置得当），但依赖历史实现 是否需要认证 ✅ 必须登录（用户名 + 密码/授权码） ✅ 通常也需要认证 防火墙穿透能力 ✅ 好（不被 ISP 封锁） ✅ 一般也开放 使用场景 现代邮件客户端、云服务（Gmail、AWS SES） 国内邮箱（腾讯企业邮、阿里邮箱） 推荐程度 ✅ 强烈推荐（新项目首选） ⚠️ 仅用于兼容旧系统 SSL、TLS、STARTTLS 术语解析表 术语 类型 含义 状态 说明 SSL\n(Secure Sockets Layer) 加密协议 早期安全协议，用于加密网络通信 ❌ 已淘汰\n（SSLv2/v3 有严重漏洞） 虽然常说“SSL证书”，但实际上是指 TLS 证书 TLS\n(Transport Layer Security) 加密协议 SSL 的继任者，现代加密标准 ✅ 当前主流协议\n（TLS 1.2/1.3 最安全） 所有 HTTPS、SMTP、IMAP 安全通信的基础 STARTTLS 协议命令 用于将明文连接“升级”为 TLS 加密连接 ✅ 推荐使用机制 工作在应用层，常见于端口 25、587、143、110 💡 比喻：\n">
+<meta property='og:url' content='https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-09-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-09-02T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="邮件端口及加密方式">
+<meta name="twitter:description" content="587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表 项目 端口 587（Submission） 端口 465（SMTPS） 全称 Message Submission Agent (MSA) SMTP over SSL（旧称 SMTPS） 用途 邮件提交（用户发送邮件） 邮件发送（历史加密方式） 加密方式 STARTTLS（明文连接 → 协商升级为 TLS） 直接 SSL/TLS 加密连接（一建立就加密） 是否标准 ✅ IETF 官方推荐标准（RFC 6409） ⚠️ 曾被废弃，后用于兼容性支持 安全性 高（支持现代 TLS，防止降级） 高（若配置得当），但依赖历史实现 是否需要认证 ✅ 必须登录（用户名 + 密码/授权码） ✅ 通常也需要认证 防火墙穿透能力 ✅ 好（不被 ISP 封锁） ✅ 一般也开放 使用场景 现代邮件客户端、云服务（Gmail、AWS SES） 国内邮箱（腾讯企业邮、阿里邮箱） 推荐程度 ✅ 强烈推荐（新项目首选） ⚠️ 仅用于兼容旧系统 SSL、TLS、STARTTLS 术语解析表 术语 类型 含义 状态 说明 SSL\n(Secure Sockets Layer) 加密协议 早期安全协议，用于加密网络通信 ❌ 已淘汰\n（SSLv2/v3 有严重漏洞） 虽然常说“SSL证书”，但实际上是指 TLS 证书 TLS\n(Transport Layer Security) 加密协议 SSL 的继任者，现代加密标准 ✅ 当前主流协议\n（TLS 1.2/1.3 最安全） 所有 HTTPS、SMTP、IMAP 安全通信的基础 STARTTLS 协议命令 用于将明文连接“升级”为 TLS 加密连接 ✅ 推荐使用机制 工作在应用层，常见于端口 25、587、143、110 💡 比喻：\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#587-vs-465-端口--ssltlsstarttls-综合对比表"><strong>587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表</strong></a></li>
+    <li><a href="#ssltlsstarttls-术语解析表"><strong>SSL、TLS、STARTTLS 术语解析表</strong></a></li>
+    <li><a href="#关键关系说明"><strong>关键关系说明</strong></a></li>
+    <li><a href="#主流邮箱服务对比支持情况"><strong>主流邮箱服务对比（支持情况）</strong></a></li>
+    <li><a href="#最佳实践建议总结"><strong>最佳实践建议总结</strong></a></li>
+    <li><a href="#配置示例腾讯企业邮两种方式">配置示例：腾讯企业邮（两种方式）</a>
+      <ol>
+        <li><a href="#方式一使用-587推荐符合标准">方式一：使用 587（推荐，符合标准）</a></li>
+        <li><a href="#方式二使用-465兼容模式常见于中文文档">方式二：使用 465（兼容模式，常见于中文文档）</a></li>
+      </ol>
+    </li>
+    <li><a href="#总结一句话">总结一句话：</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/it/" >
+                IT
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/">邮件端口及加密方式</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-09-02</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="587-vs-465-端口--ssltlsstarttls-综合对比表"><strong>587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表</strong>
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>项目</th>
+          <th>端口 587（Submission）</th>
+          <th>端口 465（SMTPS）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>全称</strong></td>
+          <td>Message Submission Agent (MSA)</td>
+          <td>SMTP over SSL（旧称 SMTPS）</td>
+      </tr>
+      <tr>
+          <td><strong>用途</strong></td>
+          <td>邮件提交（用户发送邮件）</td>
+          <td>邮件发送（历史加密方式）</td>
+      </tr>
+      <tr>
+          <td><strong>加密方式</strong></td>
+          <td><code>STARTTLS</code>（明文连接 → 协商升级为 TLS）</td>
+          <td>直接 SSL/TLS 加密连接（一建立就加密）</td>
+      </tr>
+      <tr>
+          <td><strong>是否标准</strong></td>
+          <td>✅ <strong>IETF 官方推荐标准（RFC 6409）</strong></td>
+          <td>⚠️ 曾被废弃，后用于兼容性支持</td>
+      </tr>
+      <tr>
+          <td><strong>安全性</strong></td>
+          <td>高（支持现代 TLS，防止降级）</td>
+          <td>高（若配置得当），但依赖历史实现</td>
+      </tr>
+      <tr>
+          <td><strong>是否需要认证</strong></td>
+          <td>✅ 必须登录（用户名 + 密码/授权码）</td>
+          <td>✅ 通常也需要认证</td>
+      </tr>
+      <tr>
+          <td><strong>防火墙穿透能力</strong></td>
+          <td>✅ 好（不被 ISP 封锁）</td>
+          <td>✅ 一般也开放</td>
+      </tr>
+      <tr>
+          <td><strong>使用场景</strong></td>
+          <td>现代邮件客户端、云服务（Gmail、AWS SES）</td>
+          <td>国内邮箱（腾讯企业邮、阿里邮箱）</td>
+      </tr>
+      <tr>
+          <td><strong>推荐程度</strong></td>
+          <td>✅ <strong>强烈推荐（新项目首选）</strong></td>
+          <td>⚠️ 仅用于兼容旧系统</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="ssltlsstarttls-术语解析表"><strong>SSL、TLS、STARTTLS 术语解析表</strong>
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>术语</th>
+          <th>类型</th>
+          <th>含义</th>
+          <th>状态</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>SSL</strong><br>(Secure Sockets Layer)</td>
+          <td>加密协议</td>
+          <td>早期安全协议，用于加密网络通信</td>
+          <td>❌ <strong>已淘汰</strong><br>（SSLv2/v3 有严重漏洞）</td>
+          <td>虽然常说“SSL证书”，但实际上是指 TLS 证书</td>
+      </tr>
+      <tr>
+          <td><strong>TLS</strong><br>(Transport Layer Security)</td>
+          <td>加密协议</td>
+          <td>SSL 的继任者，现代加密标准</td>
+          <td>✅ <strong>当前主流协议</strong><br>（TLS 1.2/1.3 最安全）</td>
+          <td>所有 HTTPS、SMTP、IMAP 安全通信的基础</td>
+      </tr>
+      <tr>
+          <td><strong>STARTTLS</strong></td>
+          <td>协议命令</td>
+          <td>用于将明文连接“升级”为 TLS 加密连接</td>
+          <td>✅ <strong>推荐使用机制</strong></td>
+          <td>工作在应用层，常见于端口 25、587、143、110</td>
+      </tr>
+  </tbody>
+</table></div>
+<blockquote>
+<p>💡 比喻：</p>
+<ul>
+<li>SSL = 老旧防盗门（已过时）</li>
+<li>TLS = 新式智能锁（现代标准）</li>
+<li>STARTTLS = “我现在要上锁了” 的指令，触发加密</li>
+</ul></blockquote>
+<hr>
+<h2 id="关键关系说明"><strong>关键关系说明</strong>
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>关系描述</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>STARTTLS</code> 使用的不是 SSL</td>
+          <td>虽然名字叫 STARTTLS，但它实际启用的是 <strong>TLS 协议</strong>，不是 SSL！</td>
+      </tr>
+      <tr>
+          <td><code>465 端口</code> ≠ 不安全</td>
+          <td>只要使用 <strong>TLS 1.2+</strong>，即使走 465，也是安全的。安全性取决于加密算法，不是端口号</td>
+      </tr>
+      <tr>
+          <td><code>587 端口</code> 是现代标准</td>
+          <td>IETF 明确推荐 587 为“邮件提交”端口，是云服务、API 集成的首选</td>
+      </tr>
+      <tr>
+          <td>“SSL 加密”是口语说法</td>
+          <td>实际上所有现代服务都使用 TLS，但习惯称“开启SSL”</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="主流邮箱服务对比支持情况"><strong>主流邮箱服务对比（支持情况）</strong>
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>服务商</th>
+          <th>推荐端口</th>
+          <th>支持 587</th>
+          <th>支持 465</th>
+          <th>推荐加密方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>腾讯企业邮 (exmail.qq.com)</strong></td>
+          <td>⚠️ 465（文档推荐）</td>
+          <td>✅ 支持</td>
+          <td>✅ 支持</td>
+          <td>SSL (465) 或 STARTTLS (587)</td>
+      </tr>
+      <tr>
+          <td><strong>阿里企业邮箱</strong></td>
+          <td>⚠️ 465</td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>SSL</td>
+      </tr>
+      <tr>
+          <td><strong>Gmail / Google Workspace</strong></td>
+          <td>✅ 587</td>
+          <td>✅</td>
+          <td>❌（不支持传统 465）</td>
+          <td>STARTTLS</td>
+      </tr>
+      <tr>
+          <td><strong>Outlook.com / Hotmail</strong></td>
+          <td>✅ 587</td>
+          <td>✅</td>
+          <td>❌（不支持）</td>
+          <td>STARTTLS</td>
+      </tr>
+      <tr>
+          <td><strong>Amazon SES</strong></td>
+          <td>✅ 587</td>
+          <td>✅</td>
+          <td>❌（已停用）</td>
+          <td>STARTTLS</td>
+      </tr>
+      <tr>
+          <td><strong>SendGrid / Mailgun</strong></td>
+          <td>✅ 587</td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>STARTTLS</td>
+      </tr>
+  </tbody>
+</table></div>
+<blockquote>
+<p>✅ 国际趋势：全面转向 <strong>587 + STARTTLS</strong><br>
+⚠️ 国内现状：<strong>465 + SSL</strong> 仍占主流，主要是历史和用户习惯原因</p></blockquote>
+<hr>
+<h2 id="最佳实践建议总结"><strong>最佳实践建议总结</strong>
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>场景</th>
+          <th>推荐配置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🆕 新项目开发（网站、API、云服务）</td>
+          <td>✅ 使用 <strong>587 + STARTTLS + TLS 1.2+</strong></td>
+      </tr>
+      <tr>
+          <td>💼 企业内部系统、兼容老客户端</td>
+          <td>可使用 <strong>465 + SSL/TLS</strong>（需确保加密强度）</td>
+      </tr>
+      <tr>
+          <td>🔐 安全性要求高</td>
+          <td>强制启用加密、禁用 SSLv3 及弱算法</td>
+      </tr>
+      <tr>
+          <td>📧 客户端配置（如 Outlook、Thunderbird）</td>
+          <td>优先选择“STARTTLS on port 587”</td>
+      </tr>
+      <tr>
+          <td>📱 手机邮箱 App 配置</td>
+          <td>根据服务商提示选择，腾讯邮可用 465</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="配置示例腾讯企业邮两种方式">配置示例：腾讯企业邮（两种方式）
+</h2><h3 id="方式一使用-587推荐符合标准">方式一：使用 587（推荐，符合标准）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">发送服务器（SMTP）: smtp.exmail.qq.com
+</span></span><span class="line"><span class="cl">端口: 587
+</span></span><span class="line"><span class="cl">加密: STARTTLS（或 TLS）
+</span></span><span class="line"><span class="cl">认证: 开启（账号 + 授权码）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="方式二使用-465兼容模式常见于中文文档">方式二：使用 465（兼容模式，常见于中文文档）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">发送服务器（SMTP）: smtp.exmail.qq.com
+</span></span><span class="line"><span class="cl">端口: 465
+</span></span><span class="line"><span class="cl">加密: SSL/TLS（直接加密）
+</span></span><span class="line"><span class="cl">认证: 开启（账号 + 授权码）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="总结一句话">总结一句话：
+</h2><blockquote>
+<p>✅ <strong>技术先进性排序：<code>587 + STARTTLS + TLS</code> &gt; <code>465 + TLS</code> &gt; <code>465 + SSL</code></strong><br>
+🔐 <strong>安全的关键是加密协议（TLS）和证书，而不是端口号。</strong><br>
+🌍 <strong>国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。</strong></p></blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/linux%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux的常用软件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/linux%E5%B8%B8%E7%94%A8%E7%B3%BB%E7%BB%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">linux常用系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/linux-apt%E9%95%9C%E5%83%8F%E4%BF%AE%E6%94%B9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">linux apt镜像修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/debian12%E5%AE%89%E8%A3%85%E9%97%AD%E6%BA%90nvidia%E9%A9%B1%E5%8A%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">debian12安装闭源nvidia驱动</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

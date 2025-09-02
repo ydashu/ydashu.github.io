@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="🖱️ 鼠标参数与传感器对照表 核心参数 参数 定义/含义 常见范围/值 影响 DPI / CPI 分辨率灵敏度，CPI 为真实值，DPI 为处理后值 400–1600 常用；高端最高 30K–45K 灵敏度，指针移动速度 采样率 (FPS) CMOS 每秒拍摄帧数 6000–20000 fps 轨迹还原精度，避免丢帧 回报率 (Hz) 鼠标与电脑每秒通讯次数 125 / 500 / 1000 / 2000 / 4000 / 8000 越高越流畅，但 CPU 占用越大 最大追踪速度 (IPS) 最大可识别移动速度 200–650+ IPS 高速甩动是否丢帧 最大加速度 (G) 最大可识别加速度 40g–50g 快速变向是否丢帧 LOD (抬升高度) 鼠标抬起后不再识别的高度 &lt;1–2 mm（高端可调） 影响抬鼠标操作稳定性 主控 (MCU) 负责数据传输与带宽 Nordic / 瑞昱 / 上海博通 决定是否丢帧、DPI 偏移 功耗与续航 高采样+高回报=高功耗 分档模式优化 决定无线鼠标续航表现 主流传感器对比 传感器型号 采样率 (FPS) 最大 DPI 回报率支持 特点 典型产品 PAW3395 8000–12000 26K–30K 最高 8kHz 性价比高，满足绝大多数电竞需求 Razer Viper V2 Pro、ROG 龙鳞 ACE、中高端国产鼠标 PAW3950 12000–20000 30K / 42K（插值） 最高 8kHz 更细腻，支持玻璃垫、更低 LOD，但功耗高 炼狱蝰蛇 V3 Pro、ROG 月刃 2 ACE HERO (罗技) ~20000 25K+ 最高 8kHz 功耗极低，续航优秀，但只在罗技模具上 GPW / GPX Superlight / GPX 2 🖱️ 鼠标核心参数整理 DPI / CPI（分辨率灵敏度） CPI (Counts Per Inch)：传感器真实记录的每英寸数据点数量（更精确的指标）。\n">
+<title>鼠标参数</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/%E9%BC%A0%E6%A0%87%E5%8F%82%E6%95%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="鼠标参数">
+<meta property='og:description' content="🖱️ 鼠标参数与传感器对照表 核心参数 参数 定义/含义 常见范围/值 影响 DPI / CPI 分辨率灵敏度，CPI 为真实值，DPI 为处理后值 400–1600 常用；高端最高 30K–45K 灵敏度，指针移动速度 采样率 (FPS) CMOS 每秒拍摄帧数 6000–20000 fps 轨迹还原精度，避免丢帧 回报率 (Hz) 鼠标与电脑每秒通讯次数 125 / 500 / 1000 / 2000 / 4000 / 8000 越高越流畅，但 CPU 占用越大 最大追踪速度 (IPS) 最大可识别移动速度 200–650+ IPS 高速甩动是否丢帧 最大加速度 (G) 最大可识别加速度 40g–50g 快速变向是否丢帧 LOD (抬升高度) 鼠标抬起后不再识别的高度 &lt;1–2 mm（高端可调） 影响抬鼠标操作稳定性 主控 (MCU) 负责数据传输与带宽 Nordic / 瑞昱 / 上海博通 决定是否丢帧、DPI 偏移 功耗与续航 高采样+高回报=高功耗 分档模式优化 决定无线鼠标续航表现 主流传感器对比 传感器型号 采样率 (FPS) 最大 DPI 回报率支持 特点 典型产品 PAW3395 8000–12000 26K–30K 最高 8kHz 性价比高，满足绝大多数电竞需求 Razer Viper V2 Pro、ROG 龙鳞 ACE、中高端国产鼠标 PAW3950 12000–20000 30K / 42K（插值） 最高 8kHz 更细腻，支持玻璃垫、更低 LOD，但功耗高 炼狱蝰蛇 V3 Pro、ROG 月刃 2 ACE HERO (罗技) ~20000 25K+ 最高 8kHz 功耗极低，续航优秀，但只在罗技模具上 GPW / GPX Superlight / GPX 2 🖱️ 鼠标核心参数整理 DPI / CPI（分辨率灵敏度） CPI (Counts Per Inch)：传感器真实记录的每英寸数据点数量（更精确的指标）。\n">
+<meta property='og:url' content='https://ydashu.github.io/p/%E9%BC%A0%E6%A0%87%E5%8F%82%E6%95%B0/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-09-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-09-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="鼠标参数">
+<meta name="twitter:description" content="🖱️ 鼠标参数与传感器对照表 核心参数 参数 定义/含义 常见范围/值 影响 DPI / CPI 分辨率灵敏度，CPI 为真实值，DPI 为处理后值 400–1600 常用；高端最高 30K–45K 灵敏度，指针移动速度 采样率 (FPS) CMOS 每秒拍摄帧数 6000–20000 fps 轨迹还原精度，避免丢帧 回报率 (Hz) 鼠标与电脑每秒通讯次数 125 / 500 / 1000 / 2000 / 4000 / 8000 越高越流畅，但 CPU 占用越大 最大追踪速度 (IPS) 最大可识别移动速度 200–650+ IPS 高速甩动是否丢帧 最大加速度 (G) 最大可识别加速度 40g–50g 快速变向是否丢帧 LOD (抬升高度) 鼠标抬起后不再识别的高度 &lt;1–2 mm（高端可调） 影响抬鼠标操作稳定性 主控 (MCU) 负责数据传输与带宽 Nordic / 瑞昱 / 上海博通 决定是否丢帧、DPI 偏移 功耗与续航 高采样+高回报=高功耗 分档模式优化 决定无线鼠标续航表现 主流传感器对比 传感器型号 采样率 (FPS) 最大 DPI 回报率支持 特点 典型产品 PAW3395 8000–12000 26K–30K 最高 8kHz 性价比高，满足绝大多数电竞需求 Razer Viper V2 Pro、ROG 龙鳞 ACE、中高端国产鼠标 PAW3950 12000–20000 30K / 42K（插值） 最高 8kHz 更细腻，支持玻璃垫、更低 LOD，但功耗高 炼狱蝰蛇 V3 Pro、ROG 月刃 2 ACE HERO (罗技) ~20000 25K+ 最高 8kHz 功耗极低，续航优秀，但只在罗技模具上 GPW / GPX Superlight / GPX 2 🖱️ 鼠标核心参数整理 DPI / CPI（分辨率灵敏度） CPI (Counts Per Inch)：传感器真实记录的每英寸数据点数量（更精确的指标）。\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#-鼠标参数与传感器对照表">🖱️ 鼠标参数与传感器对照表</a>
+      <ol>
+        <li><a href="#核心参数">核心参数</a></li>
+        <li><a href="#主流传感器对比">主流传感器对比</a></li>
+      </ol>
+    </li>
+    <li><a href="#-鼠标核心参数整理">🖱️ 鼠标核心参数整理</a>
+      <ol>
+        <li><a href="#dpi--cpi分辨率灵敏度"><strong>DPI / CPI（分辨率灵敏度）</strong></a></li>
+        <li><a href="#采样率fps-frame-per-second"><strong>采样率（FPS, Frame Per Second）</strong></a></li>
+        <li><a href="#回报率--轮询率polling-rate-hz"><strong>回报率 / 轮询率（Polling Rate, Hz）</strong></a></li>
+        <li><a href="#最大追踪速度ips"><strong>最大追踪速度（IPS）</strong></a></li>
+        <li><a href="#最大加速度g"><strong>最大加速度（G）</strong></a></li>
+        <li><a href="#lodlift-off-distance抬升高度"><strong>LOD（Lift-off Distance，抬升高度）</strong></a></li>
+        <li><a href="#主控mcumicro-control-unit"><strong>主控（MCU，Micro Control Unit）</strong></a></li>
+        <li><a href="#功耗与续航"><strong>功耗与续航</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#-主流传感器">🏷️ 主流传感器</a></li>
+    <li><a href="#-总结选购要点">📌 总结选购要点</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" >
+                未分类
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E9%BC%A0%E6%A0%87%E5%8F%82%E6%95%B0/">鼠标参数</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-09-01</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="-鼠标参数与传感器对照表">🖱️ 鼠标参数与传感器对照表
+</h2><h3 id="核心参数">核心参数
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>定义/含义</th>
+          <th>常见范围/值</th>
+          <th>影响</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>DPI / CPI</strong></td>
+          <td>分辨率灵敏度，CPI 为真实值，DPI 为处理后值</td>
+          <td>400–1600 常用；高端最高 30K–45K</td>
+          <td>灵敏度，指针移动速度</td>
+      </tr>
+      <tr>
+          <td><strong>采样率 (FPS)</strong></td>
+          <td>CMOS 每秒拍摄帧数</td>
+          <td>6000–20000 fps</td>
+          <td>轨迹还原精度，避免丢帧</td>
+      </tr>
+      <tr>
+          <td><strong>回报率 (Hz)</strong></td>
+          <td>鼠标与电脑每秒通讯次数</td>
+          <td>125 / 500 / 1000 / 2000 / 4000 / 8000</td>
+          <td>越高越流畅，但 CPU 占用越大</td>
+      </tr>
+      <tr>
+          <td><strong>最大追踪速度 (IPS)</strong></td>
+          <td>最大可识别移动速度</td>
+          <td>200–650+ IPS</td>
+          <td>高速甩动是否丢帧</td>
+      </tr>
+      <tr>
+          <td><strong>最大加速度 (G)</strong></td>
+          <td>最大可识别加速度</td>
+          <td>40g–50g</td>
+          <td>快速变向是否丢帧</td>
+      </tr>
+      <tr>
+          <td><strong>LOD (抬升高度)</strong></td>
+          <td>鼠标抬起后不再识别的高度</td>
+          <td>&lt;1–2 mm（高端可调）</td>
+          <td>影响抬鼠标操作稳定性</td>
+      </tr>
+      <tr>
+          <td><strong>主控 (MCU)</strong></td>
+          <td>负责数据传输与带宽</td>
+          <td>Nordic / 瑞昱 / 上海博通</td>
+          <td>决定是否丢帧、DPI 偏移</td>
+      </tr>
+      <tr>
+          <td><strong>功耗与续航</strong></td>
+          <td>高采样+高回报=高功耗</td>
+          <td>分档模式优化</td>
+          <td>决定无线鼠标续航表现</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="主流传感器对比">主流传感器对比
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>传感器型号</th>
+          <th>采样率 (FPS)</th>
+          <th>最大 DPI</th>
+          <th>回报率支持</th>
+          <th>特点</th>
+          <th>典型产品</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>PAW3395</strong></td>
+          <td>8000–12000</td>
+          <td>26K–30K</td>
+          <td>最高 8kHz</td>
+          <td>性价比高，满足绝大多数电竞需求</td>
+          <td>Razer Viper V2 Pro、ROG 龙鳞 ACE、中高端国产鼠标</td>
+      </tr>
+      <tr>
+          <td><strong>PAW3950</strong></td>
+          <td>12000–20000</td>
+          <td>30K / 42K（插值）</td>
+          <td>最高 8kHz</td>
+          <td>更细腻，支持玻璃垫、更低 LOD，但功耗高</td>
+          <td>炼狱蝰蛇 V3 Pro、ROG 月刃 2 ACE</td>
+      </tr>
+      <tr>
+          <td><strong>HERO (罗技)</strong></td>
+          <td>~20000</td>
+          <td>25K+</td>
+          <td>最高 8kHz</td>
+          <td>功耗极低，续航优秀，但只在罗技模具上</td>
+          <td>GPW / GPX Superlight / GPX 2</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="-鼠标核心参数整理">🖱️ 鼠标核心参数整理
+</h2><h3 id="dpi--cpi分辨率灵敏度"><strong>DPI / CPI（分辨率灵敏度）</strong>
+</h3><ul>
+<li>
+<p><strong>CPI (Counts Per Inch)</strong>：传感器真实记录的每英寸数据点数量（更精确的指标）。</p>
+</li>
+<li>
+<p><strong>DPI (Dots Per Inch)</strong>：经过 DSP 处理后的数值，广告宣传常用。</p>
+</li>
+<li>
+<p><strong>常用范围</strong>：400 – 1600（职业选手常用区间，DPI 偏移较小）。</p>
+</li>
+<li>
+<p><strong>意义</strong>：决定鼠标移动 1 英寸时，屏幕上指针移动的点数。</p>
+</li>
+</ul>
+<hr>
+<h3 id="采样率fps-frame-per-second"><strong>采样率（FPS, Frame Per Second）</strong>
+</h3><ul>
+<li>
+<p><strong>定义</strong>：CMOS 每秒拍摄表面图像的帧数。</p>
+</li>
+<li>
+<p><strong>作用</strong>：保证轨迹还原精度，避免丢帧。</p>
+</li>
+<li>
+<p><strong>典型值</strong>：</p>
+<ul>
+<li>
+<p>IE3.0 时代：6000–9000 fps</p>
+</li>
+<li>
+<p>PAW3395：最高 12000 fps</p>
+</li>
+<li>
+<p>PAW3950：最高 20000 fps</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>注意</strong>：采样率越高，功耗越大。</p>
+</li>
+</ul>
+<hr>
+<h3 id="回报率--轮询率polling-rate-hz"><strong>回报率 / 轮询率（Polling Rate, Hz）</strong>
+</h3><ul>
+<li>
+<p><strong>定义</strong>：鼠标与电脑之间每秒通讯的次数。</p>
+</li>
+<li>
+<p><strong>常见值</strong>：125 Hz / 500 Hz / 1000 Hz / 2000 Hz / 4000 Hz / 8000 Hz。</p>
+</li>
+<li>
+<p><strong>效果</strong>：回报率越高，指针轨迹越细腻、延迟越低。</p>
+</li>
+<li>
+<p><strong>代价</strong>：高回报率对 CPU 占用更高（8kHz 下 CPU 需每 0.125ms 处理一次数据）。</p>
+</li>
+</ul>
+<hr>
+<h3 id="最大追踪速度ips"><strong>最大追踪速度（IPS）</strong>
+</h3><ul>
+<li>
+<p><strong>单位</strong>：Inch Per Second（英寸/秒）。</p>
+</li>
+<li>
+<p><strong>作用</strong>：鼠标在极高速甩动时，传感器是否还能准确捕捉。</p>
+</li>
+<li>
+<p><strong>一般数值</strong>：</p>
+<ul>
+<li>
+<p>普通传感器：200–300 IPS</p>
+</li>
+<li>
+<p>高端传感器（3395/3950 等）：650+ IPS（超过人手极限）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="最大加速度g"><strong>最大加速度（G）</strong>
+</h3><ul>
+<li>
+<p><strong>单位</strong>：重力加速度（1g ≈ 9.8 m/s²）。</p>
+</li>
+<li>
+<p><strong>作用</strong>：保证在快速变向操作时不丢帧。</p>
+</li>
+<li>
+<p><strong>常见值</strong>：40g – 50g（高端传感器）。</p>
+</li>
+</ul>
+<hr>
+<h3 id="lodlift-off-distance抬升高度"><strong>LOD（Lift-off Distance，抬升高度）</strong>
+</h3><ul>
+<li>
+<p><strong>定义</strong>：鼠标离开鼠标垫到一定高度后不再识别。</p>
+</li>
+<li>
+<p><strong>意义</strong>：越低越好，避免频繁抬鼠标时影响视角。</p>
+</li>
+<li>
+<p><strong>高端传感器</strong>：可调节，通常 &lt;1mm–2mm。</p>
+</li>
+</ul>
+<hr>
+<h3 id="主控mcumicro-control-unit"><strong>主控（MCU，Micro Control Unit）</strong>
+</h3><ul>
+<li>
+<p><strong>作用</strong>：负责数据传输与带宽控制。</p>
+</li>
+<li>
+<p><strong>常见厂商</strong>：Nordic、上海博通、瑞昱。</p>
+</li>
+<li>
+<p><strong>问题</strong>：带宽不足可能导致「丢帧」或 DPI 偏移。</p>
+</li>
+</ul>
+<hr>
+<h3 id="功耗与续航"><strong>功耗与续航</strong>
+</h3><ul>
+<li>
+<p><strong>高采样率 + 高回报率</strong> → 功耗暴涨（3950 传感器鼠标续航差）。</p>
+</li>
+<li>
+<p><strong>优化手段</strong>：分档模式（如「狂暴竞技模式」/「日常模式」），平衡性能与续航。</p>
+</li>
+</ul>
+<hr>
+<h2 id="-主流传感器">🏷️ 主流传感器
+</h2><ul>
+<li>
+<p><strong>PAW3395</strong>：</p>
+<ul>
+<li>
+<p>12000 fps，支持 8kHz 回报率。</p>
+</li>
+<li>
+<p>物美价廉，大量中高端鼠标采用。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PAW3950</strong>：</p>
+<ul>
+<li>
+<p>20000 fps，支持 8kHz 回报率。</p>
+</li>
+<li>
+<p>更细腻，支持玻璃垫、更低 LOD。</p>
+</li>
+<li>
+<p>部分版本 30K / 42K DPI（42K 多为插值超频）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>HERO（罗技专用）</strong>：</p>
+<ul>
+<li>
+<p>与 3950 同级，功耗极低，续航优秀。</p>
+</li>
+<li>
+<p>模具选择少（GPW/GPXS）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-总结选购要点">📌 总结选购要点
+</h2><ol>
+<li>
+<p><strong>普通玩家</strong>：1000 Hz 回报率 + PAW3395 足够，价格适中。</p>
+</li>
+<li>
+<p><strong>进阶/职业</strong>：PAW3950 或 HERO + 高采样率/低 LOD，更稳定。</p>
+</li>
+<li>
+<p><strong>办公/轻度游戏</strong>：125–500 Hz 回报率，省电为主。</p>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%B1%8F%E5%B9%95%E5%8E%9F%E7%90%86/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">屏幕原理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E7%BD%91%E7%90%83%E5%87%BB%E7%90%83/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">网球击球</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6-%E6%95%B0%E6%8D%AE%E5%8F%82%E6%95%B0%E7%9A%84%E8%A7%A3%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">音频文件和视频文件 - 数据参数的解析</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
