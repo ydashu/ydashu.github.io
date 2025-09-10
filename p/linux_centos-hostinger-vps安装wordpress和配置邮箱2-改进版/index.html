@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B12-%E6%94%B9%E8%BF%9B%E7%89%88/'>
 
-<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱2-改进版">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱2-改进版">
 <meta property='og:description' content=" 改进版和之前不同是wordpress目录由/usr/local/lsws/virtual_host_root/wordpress/site1改成/var/www/site1\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B12-%E6%94%B9%E8%BF%9B%E7%89%88/'>
 <meta property='og:site_name' content='ydashu'>
@@ -772,7 +772,7 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DB_NAME = shine
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DB_NAME = wp_db_name
 </span></span><span class="line"><span class="cl">DB_USER = wp_user
 </span></span><span class="line"><span class="cl">DB_PASSWORD = password
 </span></span></code></pre></td></tr></table>
@@ -917,26 +917,48 @@
 <li>rewrite Rules
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RewriteEngine On
+<pre tabindex="0" class="chroma"><code class="language-apache" data-lang="apache"><span class="line"><span class="cl"><span class="c"># 先处理 HTTPS / www 重定向</span>
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteEngine</span> <span class="k">On</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 强制 HTTP 到 HTTPS
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTPS} !=on
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</span></span><span class="line"><span class="cl"><span class="c"># 强制 HTTP 到 HTTPS</span>
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteCond</span> %{HTTPS} !=on
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteRule</span> ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 将 www 重定向到非 www（根域名）
-</span></span><span class="line"><span class="cl">RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-</span></span><span class="line"><span class="cl">RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</span></span><span class="line"><span class="cl"><span class="c"># 将 www 重定向到非 www</span>
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteCond</span> %{HTTP_HOST} ^www\.(.+)$ [NC]
+</span></span><span class="line"><span class="cl"><span class="nb">RewriteRule</span> ^(.*)$ https://%1/$1 [R=301,L]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># WordPress 伪静态</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteBase</span> /
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteRule</span> ^index\.php$ - [L]
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+</span></span><span class="line"><span class="cl">    <span class="nb">RewriteRule</span> . <span class="sx">/index.php</span> [L]
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/IfModule&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>

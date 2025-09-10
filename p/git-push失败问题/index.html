@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/'>
 
-<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="git push失败问题">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="git push失败问题">
 <meta property='og:description' content="git push失败的原因 一般为网络问题。需要设置代理 设置clash为git的HTTPS代理 1 git config --global http.proxy http://127.0.0.1:7890 根据情况选择端口 windows for clash: 7890 calsh Verge: 7897 验证配置是否生效 1 git config --global --get https.proxy 应该输出为http://127.0.0.1:7890 SOCKS5 代理 1 2 git config --global http.proxy socks5://127.0.0.1:7891 git config --global https.proxy socks5://127.0.0.1:7891 验证是否生效 1 2 git config --global --get http.proxy git config --global --get https.proxy 应该输出为socks5://127.0.0.1:7891 禁止代理 1 2 git config --global --unset http.proxy git config --global --unset https.proxy ">
 <meta property='og:url' content='https://ydashu.github.io/p/git-push%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/'>
 <meta property='og:site_name' content='ydashu'>

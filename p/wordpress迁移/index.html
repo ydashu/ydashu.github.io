@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/wordpress%E8%BF%81%E7%A7%BB/'>
 
-<link rel="stylesheet" href="/scss/style.min.d7419e7ddb07e91605e5f947b86e15036e7482d6d023656cb3deb771dc5e9cf1.css"><meta property='og:title' content="wordpress迁移">
+<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="wordpress迁移">
 <meta property='og:description' content="更改DNS 更改DNS的A记录到新的IP地址\nwordpress备份 参考链接\nwordpress恢复 恢复后需要注意的地方\n检查修改siteurl 和 home 1 mysql 1 2 3 4 5 6 USE your_database_name; UPDATE wp_options SET option_value = &#39;https://yournewdomain.com&#39; WHERE option_name = &#39;siteurl&#39;; UPDATE wp_options SET option_value = &#39;https://yournewdomain.com&#39; WHERE option_name = &#39;home&#39;; SELECT * FROM wp_options WHERE option_name IN (&#39;siteurl&#39;, &#39;home&#39;); 更改后删除浏览器cookie或者换个浏览器 最好先把Litespeed Cache插件先关闭，完全设置好了再开启。否则会很卡。 ">
 <meta property='og:url' content='https://ydashu.github.io/p/wordpress%E8%BF%81%E7%A7%BB/'>
 <meta property='og:site_name' content='ydashu'>
