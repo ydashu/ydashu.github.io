@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 22 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Wordpress</title>
+        <link>https://ydashu.github.io/categories/wordpress/</link>
+        <pubDate>Mon, 22 Sep 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/categories/wordpress/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>建站</title>
+        <link>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</link>
+        <pubDate>Mon, 22 Sep 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>IT</title>
         <link>https://ydashu.github.io/categories/it/</link>
         <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
@@ -29,22 +45,6 @@
         <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
         
         <guid>https://ydashu.github.io/categories/%E5%A4%96%E8%B4%B8/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Wordpress</title>
-        <link>https://ydashu.github.io/categories/wordpress/</link>
-        <pubDate>Sat, 14 Jun 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/categories/wordpress/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>建站</title>
-        <link>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</link>
-        <pubDate>Sat, 14 Jun 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</guid>
         <description></description>
         </item>
         <item>
