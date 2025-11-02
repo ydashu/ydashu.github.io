@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="环境 oracle Always Free\n主机配置：AMD based Compute VMs with 1/8 OCPU and 1 GB memory each ,默认50G硬盘空间 主机系统：Ubuntu 24.04 LTS 数据库：Oracle独立MySQL数据库，数据库账号为database_user 密码为database_password IP：固定公网IP（X.X.X.X），主机私有IP（Y.Y.Y.Y），数据库私有IP（Y.Y.Y.Z） 网络：主机和数据库在同一个子网\n">
+<title>oracle&#43;ubuntu安装wordpress</title>
+
+<link rel='canonical' href='https://ydashu.github.io/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/'>
+
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="oracle+ubuntu安装wordpress">
+<meta property='og:description' content="环境 oracle Always Free\n主机配置：AMD based Compute VMs with 1/8 OCPU and 1 GB memory each ,默认50G硬盘空间 主机系统：Ubuntu 24.04 LTS 数据库：Oracle独立MySQL数据库，数据库账号为database_user 密码为database_password IP：固定公网IP（X.X.X.X），主机私有IP（Y.Y.Y.Y），数据库私有IP（Y.Y.Y.Z） 网络：主机和数据库在同一个子网\n">
+<meta property='og:url' content='https://ydashu.github.io/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/'>
+<meta property='og:site_name' content='ydashu'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-31T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="oracle+ubuntu安装wordpress">
+<meta name="twitter:description" content="环境 oracle Always Free\n主机配置：AMD based Compute VMs with 1/8 OCPU and 1 GB memory each ,默认50G硬盘空间 主机系统：Ubuntu 24.04 LTS 数据库：Oracle独立MySQL数据库，数据库账号为database_user 密码为database_password IP：固定公网IP（X.X.X.X），主机私有IP（Y.Y.Y.Y），数据库私有IP（Y.Y.Y.Z） 网络：主机和数据库在同一个子网\n">
+    <link rel="shortcut icon" href="/001.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ydashu</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ydashu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#环境">环境</a></li>
+    <li><a href="#配置环境">配置环境</a></li>
+    <li><a href="#登录服务器并更新系统">登录服务器并更新系统</a></li>
+    <li><a href="#安装必要软件包">安装必要软件包</a></li>
+    <li><a href="#测试数据库网络连通性">测试数据库网络连通性</a></li>
+    <li><a href="#创建-wordpress-数据库和用户">创建 WordPress 数据库和用户</a>
+      <ol>
+        <li><a href="#登录">登录</a></li>
+        <li><a href="#创建">创建</a></li>
+      </ol>
+    </li>
+    <li><a href="#下载并部署-wordpress">下载并部署 WordPress</a>
+      <ol>
+        <li><a href="#下载最新版-wordpress">下载最新版 WordPress</a></li>
+        <li><a href="#移动文件到网站根目录">移动文件到网站根目录</a></li>
+        <li><a href="#设置文件权限">设置文件权限</a></li>
+      </ol>
+    </li>
+    <li><a href="#配置-wordpress-数据库连接">配置 WordPress 数据库连接</a></li>
+    <li><a href="#配置-nginx-站点">配置 Nginx 站点</a></li>
+    <li><a href="#浏览器完成-wordpress-安装">浏览器完成 WordPress 安装</a>
+      <ol>
+        <li><a href="#网页打不开的原因">网页打不开的原因</a>
+          <ol>
+            <li><a href="#解决方法">解决方法</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#上传插件出错">上传插件出错</a>
+      <ol>
+        <li><a href="#原因">原因</a></li>
+        <li><a href="#解决方案">解决方案</a>
+          <ol>
+            <li><a href="#步骤-1编辑-nginx-配置文件">步骤 1：编辑 Nginx 配置文件</a></li>
+            <li><a href="#步骤-2添加或修改-client_max_body_size">步骤 2：添加或修改 <code>client_max_body_size</code></a></li>
+            <li><a href="#步骤-3检查-php-上传限制可选但推荐">步骤 3：检查 PHP 上传限制（可选但推荐）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#启用-httpslets-encrypt">启用 HTTPS（Let’s Encrypt）</a>
+      <ol>
+        <li><a href="#certonly---webrootvs--nginx"><code>certonly --webroot</code> vs <code>--nginx</code></a></li>
+        <li><a href="#--nginx"><code>--nginx</code></a>
+          <ol>
+            <li><a href="#用途">用途</a></li>
+            <li><a href="#要求">要求</a></li>
+          </ol>
+        </li>
+        <li><a href="#certonly---webroot"><code>certonly --webroot</code></a>
+          <ol>
+            <li><a href="#用途-1">用途</a></li>
+            <li><a href="#需要">需要</a></li>
+            <li><a href="#示例">示例</a></li>
+            <li><a href="#修改-nginx-配置文件">修改 Nginx 配置文件</a></li>
+            <li><a href="#重载">重载</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#ssl自动续期">SSL自动续期</a></li>
+    <li><a href="#设置自动备份脚本">设置自动备份脚本</a></li>
+    <li><a href="#基础安全加固">基础安全加固</a>
+      <ol>
+        <li><a href="#安装-fail2ban防暴力破解">安装 Fail2ban（防暴力破解）</a></li>
+        <li><a href="#禁用-xml-rpc">禁用 XML-RPC</a></li>
+        <li><a href="#定期更新系统和-wordpress">定期更新系统和 WordPress</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%BB%BA%E7%AB%99/" >
+                建站
+            </a>
+        
+            <a href="/categories/wordpress/" >
+                Wordpress
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/">oracle&#43;ubuntu安装wordpress</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-10-31</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="环境">环境
+</h2><blockquote>
+<p>oracle Always Free</p>
+</blockquote>
+<p>主机配置：AMD based Compute VMs with 1/8 OCPU and 1 GB memory each ,默认50G硬盘空间
+主机系统：<code>Ubuntu 24.04 LTS</code>
+数据库：Oracle独立MySQL数据库，数据库账号为<code>database_user</code> 密码为<code>database_password</code>
+IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</code>），数据库私有IP（<code>Y.Y.Y.Z</code>）
+网络：主机和数据库在同一个子网</p>
+<h2 id="配置环境">配置环境
+</h2><ul>
+<li>创建主机
+<ul>
+<li>创建VNIC和子网</li>
+</ul>
+</li>
+<li>创建mysql数据库
+<ul>
+<li>和主机在同一个VNIC和子网</li>
+</ul>
+</li>
+<li>绑定固定IP
+<ul>
+<li>实例-网络-附加的VNIC-点击进入-IP管理</li>
+<li>没有IP的话assign IP</li>
+<li>绑定新建的IP地址</li>
+</ul>
+</li>
+<li>VNC-安全-安全列表-安全规则-添加入站规则
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Source CIDR</th>
+          <th>IP 协议</th>
+          <th>源端口范围</th>
+          <th>目的地端口范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Y.Y.Y.Y/16</code></td>
+          <td>TCP</td>
+          <td>全部</td>
+          <td>3306</td>
+      </tr>
+      <tr>
+          <td><code>0.0.0.0/0</code></td>
+          <td>TCP</td>
+          <td>全部</td>
+          <td>80</td>
+      </tr>
+      <tr>
+          <td><code>0.0.0.0/0</code></td>
+          <td>TCP</td>
+          <td>全部</td>
+          <td>443</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+</ul>
+<h2 id="登录服务器并更新系统">登录服务器并更新系统
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update <span class="o">&amp;&amp;</span> sudo apt upgrade -y
+</span></span><span class="line"><span class="cl">sudo reboot   <span class="c1"># 推荐重启确保新内核生效（可选）</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装必要软件包">安装必要软件包
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nginx <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-fpm <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    tree <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    telnet curl <span class="se">\ </span>
+</span></span><span class="line"><span class="cl">    mariadb-client <span class="se">\ </span>       <span class="c1"># 👉 用于命令行连接 Oracle MySQL 数据库</span>
+</span></span><span class="line"><span class="cl">    certbot python3-certbot-nginx <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    unzip <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    vim <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    corn
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>分类</th>
+          <th>包名</th>
+          <th>作用说明</th>
+          <th>是否建议安装</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Web 服务器相关</strong></td>
+          <td><strong>nginx</strong></td>
+          <td>高性能 Web 服务器，处理 HTTP/HTTPS 请求、反向代理、负载均衡。</td>
+          <td>✅ 强烈推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-fpm</strong></td>
+          <td>PHP 的 FastCGI 进程管理器，Nginx 运行 PHP 必需。</td>
+          <td>✅ 强烈推荐</td>
+      </tr>
+      <tr>
+          <td><strong>PHP 扩展</strong></td>
+          <td><strong>php-mysql</strong></td>
+          <td>PHP 连接 MySQL/MariaDB 数据库的扩展。WordPress 必需。</td>
+          <td>✅ 强烈推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-curl</strong></td>
+          <td>支持 HTTP 请求、API 通信、WordPress 插件/主题更新。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-gd</strong></td>
+          <td>图像处理扩展，用于缩略图、水印、验证码等。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-mbstring</strong></td>
+          <td>处理多字节字符串（中文、UTF-8），防止乱码。</td>
+          <td>✅ 强烈推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-xml</strong></td>
+          <td>支持 XML 数据解析（插件通信、RSS）。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-xmlrpc</strong></td>
+          <td>XML-RPC 接口通信（远程发布、API）。某些主机默认禁用。</td>
+          <td>⚙️ 可选</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-soap</strong></td>
+          <td>支持 SOAP 协议，常用于 ERP、CRM 对接。</td>
+          <td>⚙️ 可选</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-intl</strong></td>
+          <td>国际化与本地化支持，多语言网站推荐。</td>
+          <td>⚙️ 可选</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>php-zip</strong></td>
+          <td>支持 ZIP 压缩/解压（上传插件或主题）。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td><strong>系统与调试工具</strong></td>
+          <td><strong>tree</strong></td>
+          <td>查看目录结构的命令行工具。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>telnet</strong></td>
+          <td>测试 TCP 端口连通性（如 MySQL 3306 是否开放）。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>curl</strong></td>
+          <td>命令行 HTTP 工具，用于下载文件、测试接口。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td><strong>数据库客户端</strong></td>
+          <td><strong>mariadb-client</strong></td>
+          <td>MySQL/MariaDB 命令行客户端（兼容 Oracle MySQL）。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td><strong>证书管理</strong></td>
+          <td><strong>certbot</strong></td>
+          <td>自动申请与续签 Let’s Encrypt 免费 SSL 证书。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><strong>python3-certbot-nginx</strong></td>
+          <td>让 Certbot 自动配置 Nginx 的 HTTPS。</td>
+          <td>✅ 推荐</td>
+      </tr>
+      <tr>
+          <td><strong>系统与调试工具</strong></td>
+          <td><strong>unzip</strong></td>
+          <td>解压 zip 文件（安装 WordPress 插件</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="测试数据库网络连通性">测试数据库网络连通性
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ping Y.Y.Y.Z           # 替换为你的 MySQL 私有 IP
+</span></span><span class="line"><span class="cl">telnet Y.Y.Y.Z     # 测试端口是否可达（如无 telnet：sudo apt install telnet）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果 ping 不通或 telnet 失败：</p>
+<ul>
+<li>检查安全列表是否放行源 IP + 3306；</li>
+<li>确认 MySQL 和计算实例在同一子网；</li>
+<li>在 MySQL 实例详情页确认“访问控制”是否允许该子网。</li>
+</ul>
+<h2 id="创建-wordpress-数据库和用户">创建 WordPress 数据库和用户
+</h2><h3 id="登录">登录
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -h Y.Y.Y.Z -u database_user -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输入密码<code>database_password</code></p>
+<h3 id="创建">创建
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">-- 创建数据库
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="kt">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建用户（限制只能从你的 Web 服务器 IP 登录）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;YourStrongPassword!123&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 授权（只授权给 wordpress 库）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 刷新权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 退出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">EXIT</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="下载并部署-wordpress">下载并部署 WordPress
+</h2><h3 id="下载最新版-wordpress">下载最新版 WordPress
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
+</span></span><span class="line"><span class="cl">curl -O https://wordpress.org/latest.tar.gz
+</span></span><span class="line"><span class="cl">tar xzf latest.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="移动文件到网站根目录">移动文件到网站根目录
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /var/www/wordpress
+</span></span><span class="line"><span class="cl">sudo cp -a /tmp/wordpress/. /var/www/wordpress/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="设置文件权限">设置文件权限
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown -R www-data:www-data /var/www/wordpress
+</span></span><span class="line"><span class="cl">sudo find /var/www/wordpress -type d -exec chmod <span class="m">755</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="cl">sudo find /var/www/wordpress -type f -exec chmod <span class="m">644</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置-wordpress-数据库连接">配置 WordPress 数据库连接
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/wordpress
+</span></span><span class="line"><span class="cl">sudo cp wp-config-sample.php wp-config.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi wp-config.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>找到以下部分并修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define(&#39;DB_NAME&#39;, &#39;wordpress&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;DB_USER&#39;, &#39;wpuser&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;DB_PASSWORD&#39;, &#39;YourStrongPassword!123&#39;);  // ← 你在创建wordpress数据库设置的密码
+</span></span><span class="line"><span class="cl">define(&#39;DB_HOST&#39;, &#39;Y.Y.Y.Z&#39;);                   // ← MySQL 私有 IP
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>✅ 强烈推荐：生成安全密钥提升安全性</p>
+<p>打开浏览器访问：👉 <a class="link" href="https://api.wordpress.org/secret-key/1.1/salt/"  target="_blank" rel="noopener"
+    >https://api.wordpress.org/secret-key/1.1/salt/</a></p>
+<p>复制全部输出内容，粘贴覆盖 wp-config.php 中原有的密钥段落（从 define(&lsquo;AUTH_KEY&rsquo;, &hellip; 开始大约 8 行）。</p>
+<p>保存退出</p>
+<h2 id="配置-nginx-站点">配置 Nginx 站点
+</h2><ul>
+<li>
+<p>创建站点配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/nginx/sites-available/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>粘贴以下配置（替换成你的公网IP或域名）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span><span class="p">;</span>   <span class="c1"># 或者填你的公网 IP，例如：130.1.xxx.xxx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/var/www/wordpress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php8.3-fpm.sock</span><span class="p">;</span>  <span class="c1"># Ubuntu 24.04 是 8.3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>启用站点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ln -sf /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+</span></span><span class="line"><span class="cl">sudo rm -f /etc/nginx/sites-enabled/default
+</span></span><span class="line"><span class="cl">sudo nginx -t   <span class="c1"># 测试语法</span>
+</span></span><span class="line"><span class="cl">sudo systemctl reload nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="浏览器完成-wordpress-安装">浏览器完成 WordPress 安装
+</h2><p>打开浏览器，访问：</p>
+<p>👉 <code>http://你的公网IP</code> 或 <code>http://你绑定的域名</code></p>
+<p>你会看到 WordPress 安装向导界面：</p>
+<ol>
+<li>选择语言（如“简体中文”）→ 继续；</li>
+<li>填写：
+<ul>
+<li>站点标题</li>
+<li>用户名（⚠️ 不要用 admin！建议自定义）</li>
+<li>密码（生成强密码并保存！）</li>
+<li>邮箱（用于找回密码和通知）</li>
+</ul>
+</li>
+<li>点击“安装 WordPress”</li>
+</ol>
+<p>🎉 安装成功！</p>
+<p>登录后台：<code>http://你的IP或域名/wp-admin</code></p>
+<h3 id="网页打不开的原因">网页打不开的原因
+</h3><blockquote>
+<p>情况：nginx配置好后网页502错误并且另外一台不在改局域网的机器输入以下命令连接异常</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">	telnet X.X.X.X <span class="m">80</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -I http：//X.X.X.X
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="解决方法">解决方法
+</h4><ul>
+<li>第一步：临时放行测试
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo iptables -I INPUT -p tcp --dport <span class="m">80</span> -j ACCEPT
+</span></span><span class="line"><span class="cl">sudo iptables -I INPUT -p tcp --dport <span class="m">443</span> -j ACCEPT
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>第二步：确认能正常访问 (curl/telnet 测试通过)
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telnet X.X.X.X <span class="m">80</span>
+</span></span><span class="line"><span class="cl">curl -I http：//X.X.X.X
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>第三步：再保存规则为永久生效
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install iptables-persistent -y
+</span></span><span class="line"><span class="cl">sudo netfilter-persistent save
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="上传插件出错">上传插件出错
+</h2><blockquote>
+<p>wordpress手动上传插件显示 413 Request Entity Too Large nginx/1.24.0 (Ubuntu)</p>
+</blockquote>
+<h3 id="原因">原因
+</h3><p>这是 <strong>Nginx 限制了客户端请求体大小</strong>，默认通常是 1MB。当你上传较大的插件 ZIP 文件时，超过了这个限制，Nginx 就会返回 413 错误。</p>
+<h3 id="解决方案">解决方案
+</h3><h4 id="步骤-1编辑-nginx-配置文件">步骤 1：编辑 Nginx 配置文件
+</h4><p>打开你的 WordPress 站点对应的 Nginx 配置文件（通常在 <code>/etc/nginx/sites-available/</code> 或 <code>/etc/nginx/conf.d/</code>）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/nginx/sites-available/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="步骤-2添加或修改-client_max_body_size">步骤 2：添加或修改 <code>client_max_body_size</code>
+</h4><p>在 <code>server { ... }</code> 块内（或 http 块内），添加如下行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">yourdomain.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>   <span class="c1"># ← 添加这一行
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 其他配置...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>💡 建议值：对于 WordPress 插件/主题上传，一般设为 <code>32M</code>~<code>128M</code> 即可。</p>
+</blockquote>
+<h4 id="步骤-3检查-php-上传限制可选但推荐">步骤 3：检查 PHP 上传限制（可选但推荐）
+</h4><p>即使 Nginx 放行了，PHP 也可能限制上传大小。编辑 <code>php.ini</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/php/8.3/fpm/php.ini   <span class="c1"># x 是你的 PHP 版本，如 8.1、8.2、8.3...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改以下值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">upload_max_filesize</span> <span class="o">=</span> <span class="s">64M</span>
+</span></span><span class="line"><span class="cl"><span class="na">post_max_size</span> <span class="o">=</span> <span class="s">64M</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后重启服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl reload nginx
+</span></span><span class="line"><span class="cl">sudo systemctl restart php8.3-fpm   <span class="c1"># 替换为实际版本号</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="启用-httpslets-encrypt">启用 HTTPS（Let’s Encrypt）
+</h2><p>两种方法</p>
+<h3 id="certonly---webrootvs--nginx"><code>certonly --webroot</code> vs <code>--nginx</code>
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>特性 / 命令</th>
+          <th><code>certbot certonly --webroot</code></th>
+          <th><code>certbot --nginx</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>模式类型</strong></td>
+          <td>仅获取证书（手动模式）</td>
+          <td>自动化 Nginx 集成模式</td>
+      </tr>
+      <tr>
+          <td><strong>是否自动修改 Nginx 配置？</strong></td>
+          <td>❌ 否 —— 需要你手动配置 HTTPS</td>
+          <td>✅ 是 —— 自动添加 SSL 配置并重载 Nginx</td>
+      </tr>
+      <tr>
+          <td><strong>是否自动重定向 HTTP → HTTPS？</strong></td>
+          <td>❌ 不会</td>
+          <td>✅ 会提示并可选自动设置重定向</td>
+      </tr>
+      <tr>
+          <td><strong>证书安装位置</strong></td>
+          <td><code>/etc/letsencrypt/live/your-domain.com/</code></td>
+          <td>同左，但自动链接到 Nginx 配置中</td>
+      </tr>
+      <tr>
+          <td><strong>适合人群</strong></td>
+          <td>有经验用户、自定义 Web 服务器配置者</td>
+          <td>新手、希望一键完成 HTTPS 的用户</td>
+      </tr>
+      <tr>
+          <td><strong>续期是否自动？</strong></td>
+          <td>✅ 是（只要定时任务存在）</td>
+          <td>✅ 是（推荐方式）</td>
+      </tr>
+      <tr>
+          <td><strong>依赖条件</strong></td>
+          <td>必须能通过 <code>.well-known/acme-challenge/</code> 访问验证文件（需配置 webroot 路径）</td>
+          <td>需要 Nginx 正常运行，且 server_name 匹配域名</td>
+      </tr>
+      <tr>
+          <td><strong>命令示例（Ubuntu 24.04）</strong></td>
+          <td><code>sudo certbot certonly --webroot -w /var/www/wordpress -d example.com</code></td>
+          <td><code>sudo certbot --nginx -d example.com</code></td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="--nginx"><code>--nginx</code>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot --nginx -d your-domain.com --email youremail@example.com --agree-tos --non-interactive
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="用途">用途
+</h4><p>Certbot 会<strong>自动识别你的 Nginx 配置</strong>，并：</p>
+<ul>
+<li>创建或修改 <code>server {}</code> 块，添加 SSL 配置</li>
+<li>自动填充证书路径</li>
+<li>询问是否“将所有 HTTP 流量重定向到 HTTPS”，你选 Yes 即可一键完成</li>
+<li>自动重载 Nginx 生效</li>
+</ul>
+<h4 id="要求">要求
+</h4><ul>
+<li>Nginx 已安装并运行</li>
+<li>存在包含该域名的 <code>server_name</code> 的站点配置（在 <code>/etc/nginx/sites-enabled/</code> 下）</li>
+<li>域名已正确解析到本机公网 IP（通过 DNS A 记录）</li>
+<li>80 端口对外可访问（Let’s Encrypt 验证需要）</li>
+</ul>
+<h3 id="certonly---webroot"><code>certonly --webroot</code>
+</h3><h4 id="用途-1">用途
+</h4><p>用于在 <strong>不希望 Certbot 修改现有 Web 服务器配置</strong> 的情况下，<strong>仅申请和更新证书</strong></p>
+<h4 id="需要">需要
+</h4><ul>
+<li>指定一个“网站根目录”（webroot），让 Let’s Encrypt 在其中创建临时验证文件</li>
+<li>手动编辑 Nginx/Apache 配置以启用 SSL</li>
+<li>手动设置 HTTP → HTTPS 重定向（如需要）</li>
+</ul>
+<h4 id="示例">示例
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot certonly --webroot -w /var/www/wordpress -d yourdomain.com -d www.yourdomain.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行后，证书保存在：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">/etc/letsencrypt/live/yourdomain.com/fullchain.pem   # 证书链
+</span></span><span class="line"><span class="cl">/etc/letsencrypt/live/yourdomain.com/privkey.pem     # 私钥
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="修改-nginx-配置文件">修改 Nginx 配置文件
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/nginx/sites-available/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="c1"># ============ HTTP 自动跳转 HTTPS ============
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span> <span class="s">www.your-domain.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 全局设置：允许最大上传 64M（作用于此 server 块）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ============ HTTPS 主站点配置 ============
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span> <span class="s">www.your-domain.com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># SSL 证书路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_certificate</span> <span class="s">/etc/letsencrypt/live/your-domain.com/fullchain.pem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/letsencrypt/live/your-domain.com/privkey.pem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># SSL 安全设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_protocols</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_ciphers</span> <span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_cache</span> <span class="s">shared:SSL:10m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_timeout</span> <span class="mi">10m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=63072000&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># ⭐ 全局限制客户端上传大小（必须加在这里才对 HTTPS 生效）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 根目录 &amp; 默认首页
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">root</span> <span class="s">/var/www/wordpress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># WordPress 固定链接支持
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># PHP 支持
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php8.3-fpm.sock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_buffering</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 禁止访问敏感文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">=</span> <span class="s">/wp-config.php</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 💡 静态资源缓存 —— 图片/CSS/JS/字体等，缓存1年 + immutable 提升性能
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(jpg|jpeg|png|gif|ico|svg|webp|css|js|woff2?|eot|ttf|otf)</span>$ <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">expires</span> <span class="s">1y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">&#34;public,</span> <span class="s">immutable&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span> <span class="s">always</span><span class="p">;</span>     <span class="c1"># 可选：允许跨域用作CDN
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1"># 取消日志记录静态资源，减轻磁盘IO（可选）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 🔐 安全加固头（推荐）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">server_tokens</span> <span class="no">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">&#34;SAMEORIGIN&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">&#34;nosniff&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">Referrer-Policy</span> <span class="s">&#34;no-referrer-when-downgrade&#34;</span> <span class="s">always</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>分类</th>
+          <th>配置项</th>
+          <th>作用说明</th>
+          <th>推荐值/备注</th>
+          <th>注意事项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>🚦 HTTP 强制跳转 HTTPS</td>
+          <td><code>listen 80;</code></td>
+          <td>监听非加密端口，用于接收原始 HTTP 请求</td>
+          <td>保留</td>
+          <td>必需开启才能重定向</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>server_name your-domain.com www.your-domain.com;</code></td>
+          <td>指定哪些域名适用此 server 块</td>
+          <td>替换为实际域名</td>
+          <td>多域名用空格分隔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>client_max_body_size 64M;</code></td>
+          <td>设定客户端上传文件大小上限（仅用于本块）</td>
+          <td>64M 或根据需求调整</td>
+          <td>❗HTTPS 下还需再次设定才生效</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>return 301 https://$host$request_uri;</code></td>
+          <td>将所有 HTTP 请求永久重定向至 HTTPS，保留原路径和参数</td>
+          <td>保持不变</td>
+          <td><code>$host</code> 自动处理带不带 www</td>
+      </tr>
+      <tr>
+          <td>🔐 HTTPS 主配置 - 基础</td>
+          <td><code>listen 443 ssl http2;</code></td>
+          <td>启用加密端口 + SSL/TLS + HTTP/2 提高性能</td>
+          <td>必须开启 http2</td>
+          <td>Ubuntu 24.04 默认支持</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>server_name ...</code></td>
+          <td>匹配 HTTPS 域名</td>
+          <td>与 HTTP 块一致</td>
+          <td>证书域名必须包含此处列出的所有域名</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_certificate /.../fullchain.pem;</code></td>
+          <td>Let&rsquo;s Encrypt 证书链文件路径</td>
+          <td><code>/etc/letsencrypt/live/your-domain.com/fullchain.pem</code></td>
+          <td>路径必须存在且可读</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_certificate_key /.../privkey.pem;</code></td>
+          <td>私钥文件路径</td>
+          <td>同上，指向 privkey.pem</td>
+          <td>确保权限 600，Owner root</td>
+      </tr>
+      <tr>
+          <td>🔐 HTTPS 主配置 - 安全协议</td>
+          <td><code>ssl_protocols TLSv1.2 TLSv1.3;</code></td>
+          <td>仅启用现代安全协议，禁用旧版（如 TLSv1.0/1.1）</td>
+          <td>只保留 TLSv1.2 和 v1.3</td>
+          <td>兼容 IE11？可能需要保留 TLSv1.1 → 不推荐</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_ciphers ECDHE-...;</code></td>
+          <td>设置高强度加密套件（前向保密 + GCM 模式）</td>
+          <td>使用推荐列表（见原文）</td>
+          <td>可使用 <a class="link" href="https://ssl-config.mozilla.org/"  target="_blank" rel="noopener"
+    >Mozilla SSL Config Generator</a> 更新</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_prefer_server_ciphers off;</code></td>
+          <td>是否由服务器决定加密套件顺序</td>
+          <td><code>off</code> 更兼容；设为 <code>on</code> 更安全但有兼容风险</td>
+          <td>推荐测试后设置</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_session_cache shared:SSL:10m;</code></td>
+          <td>SSL 会话缓存共享内存，提升并发性能</td>
+          <td><code>shared:SSL:10m</code> 合理</td>
+          <td>集群部署需同步缓存机制</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>ssl_session_timeout 10m;</code></td>
+          <td>SSL 会话有效期</td>
+          <td>10m ~ 1h 合理</td>
+          <td>过长增加重放攻击风险</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header Strict-Transport-Security &quot;max-age=63072000&quot; always;</code></td>
+          <td>HSTS：强制浏览器未来 2 年内只通过 HTTPS 访问本站</td>
+          <td><code>max-age=63072000</code>（≈2年）+ <code>always</code></td>
+          <td>一旦启用不可轻易降级，确保 HTTPS 稳定</td>
+      </tr>
+      <tr>
+          <td>📤 上传限制</td>
+          <td><code>client_max_body_size 64M;</code></td>
+          <td>客户端上传最大文件大小（❗必须在此处设定，HTTPS 才生效）</td>
+          <td>64M / 128M 根据需求</td>
+          <td>❗必须同时修改 PHP 的 <code>upload_max_filesize</code> 和 <code>post_max_size</code></td>
+      </tr>
+      <tr>
+          <td>📂 WordPress 核心路由</td>
+          <td><code>root /var/www/wordpress;</code></td>
+          <td>网站根目录路径</td>
+          <td>根据你的部署路径调整</td>
+          <td>必须指向 WordPress 解压根目录</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>index index.php index.html index.htm;</code></td>
+          <td>默认首页文件查找顺序</td>
+          <td>一般无需修改</td>
+          <td><code>index.php</code> 必须在前</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>location / { try_files $uri $uri/ /index.php?$args; }</code></td>
+          <td>WordPress 固定链接核心规则 —— 若 URL 无对应物理文件，则交给 index.php 路由处理</td>
+          <td>严禁删除或修改</td>
+          <td>否则固定链接全站 404 ❗</td>
+      </tr>
+      <tr>
+          <td>💻 PHP 处理</td>
+          <td><code>include snippets/fastcgi-php.conf;</code></td>
+          <td>引入 Ubuntu 标准化 FastCGI 配置</td>
+          <td>保留</td>
+          <td>包含 SCRIPT_FILENAME 等关键参数</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>fastcgi_pass unix:/run/php/php8.3-fpm.sock;</code></td>
+          <td>将 PHP 请求转发给本地 PHP-FPM socket</td>
+          <td>使用 Unix Socket 性能优于 TCP</td>
+          <td>确认 PHP 版本号正确（Ubuntu 24.04 为 8.3）</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>fastcgi_param SCRIPT_FILENAME ...</code></td>
+          <td>明确指定脚本文件路径</td>
+          <td>通常已包含在 snippets 中，保留以防万一</td>
+          <td>如重复加载不影响</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>include fastcgi_params;</code></td>
+          <td>加载标准 FastCGI 参数</td>
+          <td>保留</td>
+          <td>Ubuntu 默认提供</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>fastcgi_buffering off;</code></td>
+          <td>关闭缓冲，实时输出（调试友好）</td>
+          <td>可选，常规站点可删除</td>
+          <td>降低性能，仅建议调试时开启</td>
+      </tr>
+      <tr>
+          <td>🚫 安全屏蔽</td>
+          <td><code>location ~ /\.ht { deny all; }</code></td>
+          <td>禁止访问 .ht 开头文件（如 .htaccess）</td>
+          <td>必须保留</td>
+          <td>防止配置泄露</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>location = /wp-config.php { deny all; }</code></td>
+          <td>明确拒绝直接访问 wp-config.php（数据库密码等敏感信息）</td>
+          <td>必须保留</td>
+          <td>千万不要省略！</td>
+      </tr>
+      <tr>
+          <td>⚡ 静态资源缓存 &amp; CDN 优化</td>
+          <td>正则匹配静态文件类型</td>
+          <td>识别 CSS/JS/图片/字体等资源</td>
+          <td>根据项目扩展后缀（如 avif, mp4）</td>
+          <td>支持大小写匹配 <code>~*</code></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>expires 1y;</code></td>
+          <td>设置浏览器缓存有效期 1 年</td>
+          <td>生产环境推荐 1y</td>
+          <td>文件需带 hash 变更名（如 app.a1b2c3.js）否则用户看不到更新</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header Cache-Control &quot;public, immutable&quot;;</code></td>
+          <td>告诉浏览器/代理该资源是公开且永不变更（配合带 hash 文件名极有效）</td>
+          <td>推荐生产环境启用</td>
+          <td><code>immutable</code> 对 SPA/前端构建项目极大提升体验</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header Access-Control-Allow-Origin &quot;*&quot;;</code></td>
+          <td>允许跨域请求（如 CDN 或外部字体）</td>
+          <td>按需启用或改为具体域名（如 <code>&quot;https://cdn.yoursite.com&quot;</code>）</td>
+          <td>仅对静态资源开，切勿全局开！</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>access_log off;</code></td>
+          <td>关闭静态资源访问日志 → 节省磁盘 IO + 减少日志体积</td>
+          <td>推荐开启</td>
+          <td>需要流量统计？用监控工具代替</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>log_not_found off;</code></td>
+          <td>忽略未找到文件（如 favicon.ico）的日志记录 → 避免刷屏错误日志</td>
+          <td>推荐开启</td>
+          <td>对 SEO 无影响</td>
+      </tr>
+      <tr>
+          <td>🛡️ 安全响应头</td>
+          <td><code>server_tokens off;</code></td>
+          <td>隐藏 Nginx 版本号 → 减少针对性攻击</td>
+          <td>必须开启</td>
+          <td>提升基础安全线</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header X-Frame-Options &quot;SAMEORIGIN&quot; always;</code></td>
+          <td>防止页面被嵌入 iframe → 抵御点击劫持攻击</td>
+          <td>必须开启</td>
+          <td>除特殊嵌入需求外永远设为 SAMEORIGIN</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header X-Content-Type-Options &quot;nosniff&quot; always;</code></td>
+          <td>禁止浏览器猜测 MIME 类型 → 防止恶意脚本伪装执行</td>
+          <td>必须开启</td>
+          <td>特别防范 XSS + 文件上传漏洞组合</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>add_header Referrer-Policy &quot;no-referrer-when-downgrade&quot; always;</code></td>
+          <td>控制 Referer 发送策略，避免降级到 HTTP 时泄露来源</td>
+          <td>推荐值</td>
+          <td>其他选项如 <code>strict-origin-when-cross-origin</code> 更隐私</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="重载">重载
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nginx -t <span class="o">&amp;&amp;</span> sudo systemctl reload nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ssl自动续期">SSL自动续期
+</h2><p>无论哪种方式，证书都由 Certbot 统一管理：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看所有证书</span>
+</span></span><span class="line"><span class="cl">sudo certbot certificates
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 手动测试续订（不会真的续订，只模拟）</span>
+</span></span><span class="line"><span class="cl">sudo certbot renew --dry-run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 手动强制续订（一般不需要，系统有定时任务）</span>
+</span></span><span class="line"><span class="cl">sudo certbot renew
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ubuntu/Debian 默认已设置自动续期定时任务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl list-timers <span class="p">|</span> grep certbot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>你会看到类似：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">● certbot.timer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>表明系统每天会自动尝试续期快过期的证书</p>
+<h2 id="设置自动备份脚本">设置自动备份脚本
+</h2><p>创建备份脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /backup
+</span></span><span class="line"><span class="cl">sudo vi /root/backup-wordpress.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>粘贴：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backup&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MYSQL_HOST</span><span class="o">=</span><span class="s2">&#34;YYYZ&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MYSQL_USER</span><span class="o">=</span><span class="s2">&#34;wpuser&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MYSQL_PASS</span><span class="o">=</span><span class="s2">&#34;YourStrongPassword!123&#34;</span>  <span class="c1"># 替换为你的真实密码</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&#34;wordpress&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">WP_DIR</span><span class="o">=</span><span class="s2">&#34;/var/www/wordpress&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$BACKUP_DIR</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">] 备份开始&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 备份数据库</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> mysqldump -h <span class="nv">$MYSQL_HOST</span> -u <span class="nv">$MYSQL_USER</span> -p<span class="nv">$MYSQL_PASS</span> <span class="nv">$DB_NAME</span> &gt; <span class="nv">$BACKUP_DIR</span>/wp_db_<span class="nv">$DATE</span>.sql<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;数据库备份成功&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;数据库备份失败!&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 备份网站文件</span>
+</span></span><span class="line"><span class="cl">tar -czf <span class="nv">$BACKUP_DIR</span>/wp_files_<span class="nv">$DATE</span>.tar.gz -C /var/www wordpress <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份成功&#34;</span> &gt;&gt; /var/log/backup.log <span class="o">||</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份失败&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除7天前的备份</span>
+</span></span><span class="line"><span class="cl">find <span class="nv">$BACKUP_DIR</span> -name <span class="s2">&#34;wp_*&#34;</span> -mtime +7 -delete
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">] 备份结束&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>添加执行权限：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod +x /root/backup-wordpress.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>设置每日凌晨2点自动备份：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo crontab -e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>粘贴：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">0 2 * * * /root/backup-wordpress.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="基础安全加固">基础安全加固
+</h2><h3 id="安装-fail2ban防暴力破解">安装 Fail2ban（防暴力破解）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install fail2ban -y
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> fail2ban
+</span></span><span class="line"><span class="cl">sudo systemctl start fail2ban
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="禁用-xml-rpc">禁用 XML-RPC
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/nginx/sites-available/wordpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 <code>server { ... }</code> 块内添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">location</span> <span class="p">=</span> <span class="s">/xmlrpc.php</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">return</span> <span class="mi">403</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重载 Nginx：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nginx -t <span class="o">&amp;&amp;</span> sudo systemctl reload nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="定期更新系统和-wordpress">定期更新系统和 WordPress
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update <span class="o">&amp;&amp;</span> sudo apt upgrade -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>WordPress 后台 → 仪表盘 → 更新 → 点击“更新现在”</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89post-type%E5%88%86%E7%B1%BB%E7%9A%84%E7%AD%9B%E9%80%89%E5%92%8C%E6%98%BE%E7%A4%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress添加自定义post type分类的筛选和显示</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress逆向处理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">字符编码</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E8%AE%BE%E7%BD%AEgmail%E7%9A%84smtp/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设置Gmail的SMTP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E8%BF%81%E7%A7%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress迁移</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2025 ydashu
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

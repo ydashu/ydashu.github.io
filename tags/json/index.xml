@@ -15,7 +15,8 @@
         <guid>https://ydashu.github.io/p/docker-mail-server%E9%82%AE%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/config/environment/#postfix_message_size_limit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;默认的邮件大小上限是10M，假设需要修改成100M&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mailserver.env&lt;/code&gt;中修改参数&lt;code&gt;POSTFIX_MESSAGE_SIZE_LIMIT=102400000&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;完成后重启&lt;/p&gt;

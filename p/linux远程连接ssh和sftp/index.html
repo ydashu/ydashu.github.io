@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="Linux远程连接ssh和sftp">
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="Linux远程连接ssh和sftp">
 <meta property='og:description' content=" 前提：本地和远程都是linux SSH密钥认证\n本地生成ssh 1 ssh-keygen -t rsa -b 4096 这将生成 id_rsa (私钥) 和 id_rsa.pub (公钥) 两个文件，默认保存在 ~/.ssh/ 钥复制到远程 1 ssh-copy-id myuser@192.168.1.100 它会提示你输入远程用户的密码，然后自动将你的公钥添加到远程服务器的 ~/.ssh/authorized_keys 文件中 连接 远程命令行后台 1 ssh myuser@192.168.1.100 sftp 1 sftp myuser@192.168.1.100 SCP (Secure Copy Protocol) 本地文件上传到远程 1 scp /path/to/local/file.txt myuser@192.168.1.100:/path/to/remote/directory/ 远程文件下载到本地 1 scp myuser@192.168.1.100:/path/to/remote/file.txt /path/to/local/directory/ sftp常用命令 查看远程当前目录：\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/'>
 <meta property='og:site_name' content='ydashu'>
@@ -315,7 +315,8 @@
     
     <blockquote>
 <p>前提：本地和远程都是linux
-SSH密钥认证</p></blockquote>
+SSH密钥认证</p>
+</blockquote>
 <ul>
 <li>本地生成ssh
 <div class="highlight"><div class="chroma">

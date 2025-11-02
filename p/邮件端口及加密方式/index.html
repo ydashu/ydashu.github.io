@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="邮件端口及加密方式">
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="邮件端口及加密方式">
 <meta property='og:description' content="587 vs 465 端口 + SSL/TLS/STARTTLS 综合对比表 项目 端口 587（Submission） 端口 465（SMTPS） 全称 Message Submission Agent (MSA) SMTP over SSL（旧称 SMTPS） 用途 邮件提交（用户发送邮件） 邮件发送（历史加密方式） 加密方式 STARTTLS（明文连接 → 协商升级为 TLS） 直接 SSL/TLS 加密连接（一建立就加密） 是否标准 ✅ IETF 官方推荐标准（RFC 6409） ⚠️ 曾被废弃，后用于兼容性支持 安全性 高（支持现代 TLS，防止降级） 高（若配置得当），但依赖历史实现 是否需要认证 ✅ 必须登录（用户名 + 密码/授权码） ✅ 通常也需要认证 防火墙穿透能力 ✅ 好（不被 ISP 封锁） ✅ 一般也开放 使用场景 现代邮件客户端、云服务（Gmail、AWS SES） 国内邮箱（腾讯企业邮、阿里邮箱） 推荐程度 ✅ 强烈推荐（新项目首选） ⚠️ 仅用于兼容旧系统 SSL、TLS、STARTTLS 术语解析表 术语 类型 含义 状态 说明 SSL\n(Secure Sockets Layer) 加密协议 早期安全协议，用于加密网络通信 ❌ 已淘汰\n（SSLv2/v3 有严重漏洞） 虽然常说“SSL证书”，但实际上是指 TLS 证书 TLS\n(Transport Layer Security) 加密协议 SSL 的继任者，现代加密标准 ✅ 当前主流协议\n（TLS 1.2/1.3 最安全） 所有 HTTPS、SMTP、IMAP 安全通信的基础 STARTTLS 协议命令 用于将明文连接“升级”为 TLS 加密连接 ✅ 推荐使用机制 工作在应用层，常见于端口 25、587、143、110 💡 比喻：\n">
 <meta property='og:url' content='https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/'>
 <meta property='og:site_name' content='ydashu'>
@@ -423,7 +423,8 @@
 <li>SSL = 老旧防盗门（已过时）</li>
 <li>TLS = 新式智能锁（现代标准）</li>
 <li>STARTTLS = “我现在要上锁了” 的指令，触发加密</li>
-</ul></blockquote>
+</ul>
+</blockquote>
 <hr>
 <h2 id="关键关系说明"><strong>关键关系说明</strong>
 </h2><div class="table-wrapper"><table>
@@ -511,7 +512,8 @@
 </table></div>
 <blockquote>
 <p>✅ 国际趋势：全面转向 <strong>587 + STARTTLS</strong><br>
-⚠️ 国内现状：<strong>465 + SSL</strong> 仍占主流，主要是历史和用户习惯原因</p></blockquote>
+⚠️ 国内现状：<strong>465 + SSL</strong> 仍占主流，主要是历史和用户习惯原因</p>
+</blockquote>
 <hr>
 <h2 id="最佳实践建议总结"><strong>最佳实践建议总结</strong>
 </h2><div class="table-wrapper"><table>
@@ -581,7 +583,8 @@
 </h2><blockquote>
 <p>✅ <strong>技术先进性排序：<code>587 + STARTTLS + TLS</code> &gt; <code>465 + TLS</code> &gt; <code>465 + SSL</code></strong><br>
 🔐 <strong>安全的关键是加密协议（TLS）和证书，而不是端口号。</strong><br>
-🌍 <strong>国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。</strong></p></blockquote>
+🌍 <strong>国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。</strong></p>
+</blockquote>
 
 </section>
 

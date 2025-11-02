@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 
-<link rel="stylesheet" href="/scss/style.min.5895bb066cdb4dd890d7be8b4f8e8b7a848f25a11b1a8cd32e51254582127517.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="linux_centos-hostinger-vps安装wordpress和配置邮箱">
 <meta property='og:description' content="安装防火墙，开启相关端口 邮件发送： 25/tcp - SMTP（简单邮件传输协议） 465/tcp - SMTPS（安全的 SMTP，使用 SSL/TLS） 587/tcp - Submission（邮件提交端口，通常用于客户端） 邮件接收： 110/tcp - POP3（邮局协议第 3 版） 143/tcp - IMAP（互联网消息访问协议） 995/tcp - POP3S（安全的 POP3，使用 SSL/TLS） 993/tcp - IMAPS（安全的 IMAP，使用 SSL/TLS） Web 邮箱界面： 80/tcp - HTTP（网页访问） 443/tcp - HTTPS（安全的网页访问，使用 SSL/TLS）。 系统默认没有安装防火墙，即端口全开。如需安装配置防火墙可参考以下\n">
 <meta property='og:url' content='https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B1/'>
 <meta property='og:site_name' content='ydashu'>
@@ -1241,7 +1241,8 @@
 <h2 id="配置lscache">配置LSCache
 </h2><blockquote>
 <p><a class="link" href="https://docs.openlitespeed.org/config/lscache/"  target="_blank" rel="noopener"
-    >参考官方连接</a></p></blockquote>
+    >参考官方连接</a></p>
+</blockquote>
 <p>备注：这里要配置好，如果这里没有配置好但是Litespeed Cache插件开启了，网站会很卡。可以考虑先关闭Litespeed Cache，等这里设置好了再启动插件。</p>
 <ul>
 <li>
@@ -1585,7 +1586,8 @@
 <p><a class="link" href="https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/"  target="_blank" rel="noopener"
     >官方链接</a>	<a class="link" href="https://webshanks.com/setup-docker-mailserver-on-debian-12"  target="_blank" rel="noopener"
     >参考链接-webshanks</a>	<a class="link" href="https://www.youtube.com/watch?v=kdH5eSo3_fY"  target="_blank" rel="noopener"
-    >参考视频-webshanks</a></p></blockquote>
+    >参考视频-webshanks</a></p>
+</blockquote>
 <ul>
 <li>创建文件夹和文件
 <div class="highlight"><div class="chroma">
@@ -1839,11 +1841,13 @@
 </div>
 </div><h4 id="方法2-暂停和开启80端口">方法2 暂停和开启80端口
 </h4><blockquote>
-<p>通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况</p></blockquote>
+<p>通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况</p>
+</blockquote>
 <p>略</p>
 <h4 id="方法3webroot验证模式">方法3：Webroot验证模式
 </h4><blockquote>
-<p>和网站的逻辑一样，只是添加了挂载docker步骤</p></blockquote>
+<p>和网站的逻辑一样，只是添加了挂载docker步骤</p>
+</blockquote>
 <h5 id="单域名">单域名
 </h5><h6 id="openlitespeed配置">openlitespeed配置
 </h6><ul>
@@ -1951,11 +1955,13 @@
 </div><p>重新创建受影响的容器</p>
 <h5 id="多域名的情况1">多域名的情况1
 </h5><blockquote>
-<p>只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com</p></blockquote>
+<p>只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com</p>
+</blockquote>
 <p>操作步骤同<code>单域名</code></p>
 <h5 id="多域名的情况2">多域名的情况2
 </h5><blockquote>
-<p>各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com</p></blockquote>
+<p>各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com</p>
+</blockquote>
 <ul>
 <li><code>compose.yaml</code>和<code>mailserver.env</code>不用动</li>
 <li><code>openlitespeed配置</code>：用site2替代site1</li>
@@ -2265,6 +2271,19 @@
             
                 
 <article class="">
+    <a href="/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">oracle&#43;ubuntu安装wordpress</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/wordpress%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89post-type%E5%88%86%E7%B1%BB%E7%9A%84%E7%AD%9B%E9%80%89%E5%92%8C%E6%98%BE%E7%A4%BA/">
         
         
@@ -2310,19 +2329,6 @@
 
         <div class="article-details">
             <h2 class="article-title">设置Gmail的SMTP</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E8%BF%81%E7%A7%BB/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress迁移</h2>
         </div>
     </a>
 </article>

@@ -224,7 +224,8 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;mariadb默认编码&#34;&gt;mariadb默认编码
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -269,7 +270,8 @@
 &lt;/table&gt;
 &lt;h3 id=&#34;字符集和字符序&#34;&gt;字符集和字符序
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Charset and Collation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Charset and Collation&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;字符序是字符集的子集&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;每个字符集都有一个或多个字符序；&lt;/li&gt;
@@ -357,7 +359,8 @@
 &lt;p&gt;这些是启动数据库默认的字符集&lt;/p&gt;
 &lt;h5 id=&#34;wordpress的db_charset作用&#34;&gt;wordpress的DB_CHARSET作用
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;wordpress作为client影响数据库的连接字符集
 &lt;ul&gt;
@@ -398,7 +401,8 @@
 &lt;h3 id=&#34;字符集的作用-以wordpress的db_charset为例&#34;&gt;字符集的作用-以wordpress的DB_CHARSET为例
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://relph1119.github.io/mysql-learning-notes/#/mysql/03-%E4%B9%B1%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;情况一&#34;&gt;情况一
 &lt;/h4&gt;&lt;p&gt;条件：&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;latin1&#39; )&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;insert&#34;&gt;INSERT

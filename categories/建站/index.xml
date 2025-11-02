@@ -7,7 +7,1377 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Mon, 22 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 31 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>oracle&#43;ubuntu安装wordpress</title>
+        <link>https://ydashu.github.io/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/</link>
+        <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/</guid>
+        <description>&lt;h2 id=&#34;环境&#34;&gt;环境
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;oracle Always Free&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;主机配置：AMD based Compute VMs with 1/8 OCPU and 1 GB memory each ,默认50G硬盘空间
+主机系统：&lt;code&gt;Ubuntu 24.04 LTS&lt;/code&gt;
+数据库：Oracle独立MySQL数据库，数据库账号为&lt;code&gt;database_user&lt;/code&gt; 密码为&lt;code&gt;database_password&lt;/code&gt;
+IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt;code&gt;Y.Y.Y.Y&lt;/code&gt;），数据库私有IP（&lt;code&gt;Y.Y.Y.Z&lt;/code&gt;）
+网络：主机和数据库在同一个子网&lt;/p&gt;
+&lt;h2 id=&#34;配置环境&#34;&gt;配置环境
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;创建主机
+&lt;ul&gt;
+&lt;li&gt;创建VNIC和子网&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;创建mysql数据库
+&lt;ul&gt;
+&lt;li&gt;和主机在同一个VNIC和子网&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;绑定固定IP
+&lt;ul&gt;
+&lt;li&gt;实例-网络-附加的VNIC-点击进入-IP管理&lt;/li&gt;
+&lt;li&gt;没有IP的话assign IP&lt;/li&gt;
+&lt;li&gt;绑定新建的IP地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;VNC-安全-安全列表-安全规则-添加入站规则
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Source CIDR&lt;/th&gt;
+          &lt;th&gt;IP 协议&lt;/th&gt;
+          &lt;th&gt;源端口范围&lt;/th&gt;
+          &lt;th&gt;目的地端口范围&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;Y.Y.Y.Y/16&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;TCP&lt;/td&gt;
+          &lt;td&gt;全部&lt;/td&gt;
+          &lt;td&gt;3306&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;0.0.0.0/0&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;TCP&lt;/td&gt;
+          &lt;td&gt;全部&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;0.0.0.0/0&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;TCP&lt;/td&gt;
+          &lt;td&gt;全部&lt;/td&gt;
+          &lt;td&gt;443&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;登录服务器并更新系统&#34;&gt;登录服务器并更新系统
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo reboot   &lt;span class=&#34;c1&#34;&gt;# 推荐重启确保新内核生效（可选）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;安装必要软件包&#34;&gt;安装必要软件包
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install -y &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    nginx &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    php-fpm &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    php-mysql &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    tree &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    telnet curl &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    mariadb-client &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;# 👉 用于命令行连接 Oracle MySQL 数据库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    certbot python3-certbot-nginx &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    unzip &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    vim &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    corn
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;分类&lt;/th&gt;
+          &lt;th&gt;包名&lt;/th&gt;
+          &lt;th&gt;作用说明&lt;/th&gt;
+          &lt;th&gt;是否建议安装&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Web 服务器相关&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;nginx&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;高性能 Web 服务器，处理 HTTP/HTTPS 请求、反向代理、负载均衡。&lt;/td&gt;
+          &lt;td&gt;✅ 强烈推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-fpm&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;PHP 的 FastCGI 进程管理器，Nginx 运行 PHP 必需。&lt;/td&gt;
+          &lt;td&gt;✅ 强烈推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;PHP 扩展&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-mysql&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;PHP 连接 MySQL/MariaDB 数据库的扩展。WordPress 必需。&lt;/td&gt;
+          &lt;td&gt;✅ 强烈推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-curl&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持 HTTP 请求、API 通信、WordPress 插件/主题更新。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-gd&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;图像处理扩展，用于缩略图、水印、验证码等。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-mbstring&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;处理多字节字符串（中文、UTF-8），防止乱码。&lt;/td&gt;
+          &lt;td&gt;✅ 强烈推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-xml&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持 XML 数据解析（插件通信、RSS）。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-xmlrpc&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;XML-RPC 接口通信（远程发布、API）。某些主机默认禁用。&lt;/td&gt;
+          &lt;td&gt;⚙️ 可选&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-soap&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持 SOAP 协议，常用于 ERP、CRM 对接。&lt;/td&gt;
+          &lt;td&gt;⚙️ 可选&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-intl&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;国际化与本地化支持，多语言网站推荐。&lt;/td&gt;
+          &lt;td&gt;⚙️ 可选&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;php-zip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;支持 ZIP 压缩/解压（上传插件或主题）。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;系统与调试工具&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;tree&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;查看目录结构的命令行工具。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;telnet&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;测试 TCP 端口连通性（如 MySQL 3306 是否开放）。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;curl&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;命令行 HTTP 工具，用于下载文件、测试接口。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;数据库客户端&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;mariadb-client&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;MySQL/MariaDB 命令行客户端（兼容 Oracle MySQL）。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;证书管理&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;certbot&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;自动申请与续签 Let’s Encrypt 免费 SSL 证书。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;python3-certbot-nginx&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;让 Certbot 自动配置 Nginx 的 HTTPS。&lt;/td&gt;
+          &lt;td&gt;✅ 推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;系统与调试工具&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;unzip&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;解压 zip 文件（安装 WordPress 插件&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;测试数据库网络连通性&#34;&gt;测试数据库网络连通性
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ping Y.Y.Y.Z           # 替换为你的 MySQL 私有 IP
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;telnet Y.Y.Y.Z     # 测试端口是否可达（如无 telnet：sudo apt install telnet）
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果 ping 不通或 telnet 失败：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检查安全列表是否放行源 IP + 3306；&lt;/li&gt;
+&lt;li&gt;确认 MySQL 和计算实例在同一子网；&lt;/li&gt;
+&lt;li&gt;在 MySQL 实例详情页确认“访问控制”是否允许该子网。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建-wordpress-数据库和用户&#34;&gt;创建 WordPress 数据库和用户
+&lt;/h2&gt;&lt;h3 id=&#34;登录&#34;&gt;登录
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql -h Y.Y.Y.Z -u database_user -p
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;输入密码&lt;code&gt;database_password&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建&#34;&gt;创建
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- 创建数据库
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;DATABASE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wordpress&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CHARACTER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;SET&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;utf8mb4&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;COLLATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;utf8mb4_unicode_ci&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 创建用户（限制只能从你的 Web 服务器 IP 登录）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CREATE&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;USER&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;wpuser&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Y.Y.Y.Y&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;IDENTIFIED&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;BY&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;YourStrongPassword!123&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 授权（只授权给 wordpress 库）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;GRANT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ALL&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIVILEGES&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wordpress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;TO&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;wpuser&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Y.Y.Y.Y&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 刷新权限
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FLUSH&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;PRIVILEGES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 退出
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;EXIT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;下载并部署-wordpress&#34;&gt;下载并部署 WordPress
+&lt;/h2&gt;&lt;h3 id=&#34;下载最新版-wordpress&#34;&gt;下载最新版 WordPress
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /tmp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -O https://wordpress.org/latest.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar xzf latest.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;移动文件到网站根目录&#34;&gt;移动文件到网站根目录
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkdir -p /var/www/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cp -a /tmp/wordpress/. /var/www/wordpress/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;设置文件权限&#34;&gt;设置文件权限
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chown -R www-data:www-data /var/www/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo find /var/www/wordpress -type d -exec chmod &lt;span class=&#34;m&#34;&gt;755&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo find /var/www/wordpress -type f -exec chmod &lt;span class=&#34;m&#34;&gt;644&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置-wordpress-数据库连接&#34;&gt;配置 WordPress 数据库连接
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /var/www/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cp wp-config-sample.php wp-config.php
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi wp-config.php
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;找到以下部分并修改：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;define(&amp;#39;DB_NAME&amp;#39;, &amp;#39;wordpress&amp;#39;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;define(&amp;#39;DB_USER&amp;#39;, &amp;#39;wpuser&amp;#39;);
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;define(&amp;#39;DB_PASSWORD&amp;#39;, &amp;#39;YourStrongPassword!123&amp;#39;);  // ← 你在创建wordpress数据库设置的密码
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;define(&amp;#39;DB_HOST&amp;#39;, &amp;#39;Y.Y.Y.Z&amp;#39;);                   // ← MySQL 私有 IP
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;✅ 强烈推荐：生成安全密钥提升安全性&lt;/p&gt;
+&lt;p&gt;打开浏览器访问：👉 &lt;a class=&#34;link&#34; href=&#34;https://api.wordpress.org/secret-key/1.1/salt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://api.wordpress.org/secret-key/1.1/salt/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;复制全部输出内容，粘贴覆盖 wp-config.php 中原有的密钥段落（从 define(&amp;lsquo;AUTH_KEY&amp;rsquo;, &amp;hellip; 开始大约 8 行）。&lt;/p&gt;
+&lt;p&gt;保存退出&lt;/p&gt;
+&lt;h2 id=&#34;配置-nginx-站点&#34;&gt;配置 Nginx 站点
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;创建站点配置文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /etc/nginx/sites-available/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;粘贴以下配置（替换成你的公网IP或域名）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;your-domain.com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# 或者填你的公网 IP，例如：130.1.xxx.xxx
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/wordpress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.php&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.htm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;try_files&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri/&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/index.php?&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;\.php$&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;snippets/fastcgi-php.conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;fastcgi_pass&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;unix:/run/php/php8.3-fpm.sock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Ubuntu 24.04 是 8.3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;fastcgi_param&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;SCRIPT_FILENAME&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$document_root$fastcgi_script_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;fastcgi_params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;/\.ht&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;deny&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;all&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启用站点&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ln -sf /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -f /etc/nginx/sites-enabled/default
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nginx -t   &lt;span class=&#34;c1&#34;&gt;# 测试语法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl reload nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;浏览器完成-wordpress-安装&#34;&gt;浏览器完成 WordPress 安装
+&lt;/h2&gt;&lt;p&gt;打开浏览器，访问：&lt;/p&gt;
+&lt;p&gt;👉 &lt;code&gt;http://你的公网IP&lt;/code&gt; 或 &lt;code&gt;http://你绑定的域名&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;你会看到 WordPress 安装向导界面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择语言（如“简体中文”）→ 继续；&lt;/li&gt;
+&lt;li&gt;填写：
+&lt;ul&gt;
+&lt;li&gt;站点标题&lt;/li&gt;
+&lt;li&gt;用户名（⚠️ 不要用 admin！建议自定义）&lt;/li&gt;
+&lt;li&gt;密码（生成强密码并保存！）&lt;/li&gt;
+&lt;li&gt;邮箱（用于找回密码和通知）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;点击“安装 WordPress”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;🎉 安装成功！&lt;/p&gt;
+&lt;p&gt;登录后台：&lt;code&gt;http://你的IP或域名/wp-admin&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;网页打不开的原因&#34;&gt;网页打不开的原因
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;情况：nginx配置好后网页502错误并且另外一台不在改局域网的机器输入以下命令连接异常&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	telnet X.X.X.X &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -I http：//X.X.X.X
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;解决方法&#34;&gt;解决方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;第一步：临时放行测试
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo iptables -I INPUT -p tcp --dport &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt; -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo iptables -I INPUT -p tcp --dport &lt;span class=&#34;m&#34;&gt;443&lt;/span&gt; -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;第二步：确认能正常访问 (curl/telnet 测试通过)
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;telnet X.X.X.X &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -I http：//X.X.X.X
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;第三步：再保存规则为永久生效
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install iptables-persistent -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo netfilter-persistent save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;上传插件出错&#34;&gt;上传插件出错
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;wordpress手动上传插件显示 413 Request Entity Too Large nginx/1.24.0 (Ubuntu)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;原因&#34;&gt;原因
+&lt;/h3&gt;&lt;p&gt;这是 &lt;strong&gt;Nginx 限制了客户端请求体大小&lt;/strong&gt;，默认通常是 1MB。当你上传较大的插件 ZIP 文件时，超过了这个限制，Nginx 就会返回 413 错误。&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案
+&lt;/h3&gt;&lt;h4 id=&#34;步骤-1编辑-nginx-配置文件&#34;&gt;步骤 1：编辑 Nginx 配置文件
+&lt;/h4&gt;&lt;p&gt;打开你的 WordPress 站点对应的 Nginx 配置文件（通常在 &lt;code&gt;/etc/nginx/sites-available/&lt;/code&gt; 或 &lt;code&gt;/etc/nginx/conf.d/&lt;/code&gt;）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /etc/nginx/sites-available/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;步骤-2添加或修改-client_max_body_size&#34;&gt;步骤 2：添加或修改 &lt;code&gt;client_max_body_size&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;在 &lt;code&gt;server { ... }&lt;/code&gt; 块内（或 http 块内），添加如下行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;client_max_body_size&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;yourdomain.com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;client_max_body_size&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;# ← 添加这一行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;try_files&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri/&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/index.php?&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 其他配置...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;💡 建议值：对于 WordPress 插件/主题上传，一般设为 &lt;code&gt;32M&lt;/code&gt;~&lt;code&gt;128M&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;步骤-3检查-php-上传限制可选但推荐&#34;&gt;步骤 3：检查 PHP 上传限制（可选但推荐）
+&lt;/h4&gt;&lt;p&gt;即使 Nginx 放行了，PHP 也可能限制上传大小。编辑 &lt;code&gt;php.ini&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nano /etc/php/8.3/fpm/php.ini   &lt;span class=&#34;c1&#34;&gt;# x 是你的 PHP 版本，如 8.1、8.2、8.3...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改以下值：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;upload_max_filesize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;na&#34;&gt;post_max_size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后重启服务：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl reload nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart php8.3-fpm   &lt;span class=&#34;c1&#34;&gt;# 替换为实际版本号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;启用-httpslets-encrypt&#34;&gt;启用 HTTPS（Let’s Encrypt）
+&lt;/h2&gt;&lt;p&gt;两种方法&lt;/p&gt;
+&lt;h3 id=&#34;certonly---webrootvs--nginx&#34;&gt;&lt;code&gt;certonly --webroot&lt;/code&gt; vs &lt;code&gt;--nginx&lt;/code&gt;
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;特性 / 命令&lt;/th&gt;
+          &lt;th&gt;&lt;code&gt;certbot certonly --webroot&lt;/code&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;code&gt;certbot --nginx&lt;/code&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;模式类型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;仅获取证书（手动模式）&lt;/td&gt;
+          &lt;td&gt;自动化 Nginx 集成模式&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;是否自动修改 Nginx 配置？&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;❌ 否 —— 需要你手动配置 HTTPS&lt;/td&gt;
+          &lt;td&gt;✅ 是 —— 自动添加 SSL 配置并重载 Nginx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;是否自动重定向 HTTP → HTTPS？&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;❌ 不会&lt;/td&gt;
+          &lt;td&gt;✅ 会提示并可选自动设置重定向&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;证书安装位置&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/etc/letsencrypt/live/your-domain.com/&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;同左，但自动链接到 Nginx 配置中&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;适合人群&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;有经验用户、自定义 Web 服务器配置者&lt;/td&gt;
+          &lt;td&gt;新手、希望一键完成 HTTPS 的用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;续期是否自动？&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;✅ 是（只要定时任务存在）&lt;/td&gt;
+          &lt;td&gt;✅ 是（推荐方式）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;依赖条件&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;必须能通过 &lt;code&gt;.well-known/acme-challenge/&lt;/code&gt; 访问验证文件（需配置 webroot 路径）&lt;/td&gt;
+          &lt;td&gt;需要 Nginx 正常运行，且 server_name 匹配域名&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;命令示例（Ubuntu 24.04）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;sudo certbot certonly --webroot -w /var/www/wordpress -d example.com&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;sudo certbot --nginx -d example.com&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;--nginx&#34;&gt;&lt;code&gt;--nginx&lt;/code&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo certbot --nginx -d your-domain.com --email youremail@example.com --agree-tos --non-interactive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;用途&#34;&gt;用途
+&lt;/h4&gt;&lt;p&gt;Certbot 会&lt;strong&gt;自动识别你的 Nginx 配置&lt;/strong&gt;，并：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建或修改 &lt;code&gt;server {}&lt;/code&gt; 块，添加 SSL 配置&lt;/li&gt;
+&lt;li&gt;自动填充证书路径&lt;/li&gt;
+&lt;li&gt;询问是否“将所有 HTTP 流量重定向到 HTTPS”，你选 Yes 即可一键完成&lt;/li&gt;
+&lt;li&gt;自动重载 Nginx 生效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;要求&#34;&gt;要求
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Nginx 已安装并运行&lt;/li&gt;
+&lt;li&gt;存在包含该域名的 &lt;code&gt;server_name&lt;/code&gt; 的站点配置（在 &lt;code&gt;/etc/nginx/sites-enabled/&lt;/code&gt; 下）&lt;/li&gt;
+&lt;li&gt;域名已正确解析到本机公网 IP（通过 DNS A 记录）&lt;/li&gt;
+&lt;li&gt;80 端口对外可访问（Let’s Encrypt 验证需要）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;certonly---webroot&#34;&gt;&lt;code&gt;certonly --webroot&lt;/code&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;用途-1&#34;&gt;用途
+&lt;/h4&gt;&lt;p&gt;用于在 &lt;strong&gt;不希望 Certbot 修改现有 Web 服务器配置&lt;/strong&gt; 的情况下，&lt;strong&gt;仅申请和更新证书&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;需要&#34;&gt;需要
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;指定一个“网站根目录”（webroot），让 Let’s Encrypt 在其中创建临时验证文件&lt;/li&gt;
+&lt;li&gt;手动编辑 Nginx/Apache 配置以启用 SSL&lt;/li&gt;
+&lt;li&gt;手动设置 HTTP → HTTPS 重定向（如需要）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;示例&#34;&gt;示例
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo certbot certonly --webroot -w /var/www/wordpress -d yourdomain.com -d www.yourdomain.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行后，证书保存在：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/etc/letsencrypt/live/yourdomain.com/fullchain.pem   # 证书链
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/etc/letsencrypt/live/yourdomain.com/privkey.pem     # 私钥
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;修改-nginx-配置文件&#34;&gt;修改 Nginx 配置文件
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /etc/nginx/sites-available/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ============ HTTP 自动跳转 HTTPS ============
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;your-domain.com&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;www.your-domain.com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 全局设置：允许最大上传 64M（作用于此 server 块）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;client_max_body_size&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;301&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;https://&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$host$request_uri&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ============ HTTPS 主站点配置 ============
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;server&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;listen&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;443&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;ssl&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;http2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;server_name&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;your-domain.com&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;www.your-domain.com&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# SSL 证书路径
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_certificate&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/etc/letsencrypt/live/your-domain.com/fullchain.pem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_certificate_key&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/etc/letsencrypt/live/your-domain.com/privkey.pem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# SSL 安全设置
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_protocols&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;TLSv1.2&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;TLSv1.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_ciphers&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_prefer_server_ciphers&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_session_cache&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;shared:SSL:10m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;ssl_session_timeout&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Strict-Transport-Security&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;max-age=63072000&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# ⭐ 全局限制客户端上传大小（必须加在这里才对 HTTPS 生效）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;client_max_body_size&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;64M&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 根目录 &amp;amp; 默认首页
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/var/www/wordpress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.php&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.html&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;index.htm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# WordPress 固定链接支持
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;try_files&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$uri/&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/index.php?&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$args&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# PHP 支持
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;\.php$&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;snippets/fastcgi-php.conf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;fastcgi_pass&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;unix:/run/php/php8.3-fpm.sock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;fastcgi_param&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;SCRIPT_FILENAME&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$document_root$fastcgi_script_name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;fastcgi_params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;fastcgi_buffering&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 禁止访问敏感文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;/\.ht&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;deny&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;all&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/wp-config.php&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;deny&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;all&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 💡 静态资源缓存 —— 图片/CSS/JS/字体等，缓存1年 + immutable 提升性能
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;\.(jpg|jpeg|png|gif|ico|svg|webp|css|js|woff2?|eot|ttf|otf)&lt;/span&gt;$ &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;expires&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;1y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Cache-Control&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;public,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;immutable&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Access-Control-Allow-Origin&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;# 可选：允许跨域用作CDN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;# 取消日志记录静态资源，减轻磁盘IO（可选）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kn&#34;&gt;access_log&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;kn&#34;&gt;log_not_found&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# 🔐 安全加固头（推荐）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kn&#34;&gt;server_tokens&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;off&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;X-Frame-Options&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;SAMEORIGIN&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;X-Content-Type-Options&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;nosniff&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;add_header&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;Referrer-Policy&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;no-referrer-when-downgrade&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;always&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;分类&lt;/th&gt;
+          &lt;th&gt;配置项&lt;/th&gt;
+          &lt;th&gt;作用说明&lt;/th&gt;
+          &lt;th&gt;推荐值/备注&lt;/th&gt;
+          &lt;th&gt;注意事项&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🚦 HTTP 强制跳转 HTTPS&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;listen 80;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;监听非加密端口，用于接收原始 HTTP 请求&lt;/td&gt;
+          &lt;td&gt;保留&lt;/td&gt;
+          &lt;td&gt;必需开启才能重定向&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;server_name your-domain.com www.your-domain.com;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定哪些域名适用此 server 块&lt;/td&gt;
+          &lt;td&gt;替换为实际域名&lt;/td&gt;
+          &lt;td&gt;多域名用空格分隔&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;client_max_body_size 64M;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;设定客户端上传文件大小上限（仅用于本块）&lt;/td&gt;
+          &lt;td&gt;64M 或根据需求调整&lt;/td&gt;
+          &lt;td&gt;❗HTTPS 下还需再次设定才生效&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;return 301 https://$host$request_uri;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;将所有 HTTP 请求永久重定向至 HTTPS，保留原路径和参数&lt;/td&gt;
+          &lt;td&gt;保持不变&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;$host&lt;/code&gt; 自动处理带不带 www&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔐 HTTPS 主配置 - 基础&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;listen 443 ssl http2;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;启用加密端口 + SSL/TLS + HTTP/2 提高性能&lt;/td&gt;
+          &lt;td&gt;必须开启 http2&lt;/td&gt;
+          &lt;td&gt;Ubuntu 24.04 默认支持&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;server_name ...&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;匹配 HTTPS 域名&lt;/td&gt;
+          &lt;td&gt;与 HTTP 块一致&lt;/td&gt;
+          &lt;td&gt;证书域名必须包含此处列出的所有域名&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_certificate /.../fullchain.pem;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Let&amp;rsquo;s Encrypt 证书链文件路径&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;/etc/letsencrypt/live/your-domain.com/fullchain.pem&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;路径必须存在且可读&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_certificate_key /.../privkey.pem;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;私钥文件路径&lt;/td&gt;
+          &lt;td&gt;同上，指向 privkey.pem&lt;/td&gt;
+          &lt;td&gt;确保权限 600，Owner root&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔐 HTTPS 主配置 - 安全协议&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_protocols TLSv1.2 TLSv1.3;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;仅启用现代安全协议，禁用旧版（如 TLSv1.0/1.1）&lt;/td&gt;
+          &lt;td&gt;只保留 TLSv1.2 和 v1.3&lt;/td&gt;
+          &lt;td&gt;兼容 IE11？可能需要保留 TLSv1.1 → 不推荐&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_ciphers ECDHE-...;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;设置高强度加密套件（前向保密 + GCM 模式）&lt;/td&gt;
+          &lt;td&gt;使用推荐列表（见原文）&lt;/td&gt;
+          &lt;td&gt;可使用 &lt;a class=&#34;link&#34; href=&#34;https://ssl-config.mozilla.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mozilla SSL Config Generator&lt;/a&gt; 更新&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_prefer_server_ciphers off;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;是否由服务器决定加密套件顺序&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;off&lt;/code&gt; 更兼容；设为 &lt;code&gt;on&lt;/code&gt; 更安全但有兼容风险&lt;/td&gt;
+          &lt;td&gt;推荐测试后设置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_session_cache shared:SSL:10m;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;SSL 会话缓存共享内存，提升并发性能&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;shared:SSL:10m&lt;/code&gt; 合理&lt;/td&gt;
+          &lt;td&gt;集群部署需同步缓存机制&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;ssl_session_timeout 10m;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;SSL 会话有效期&lt;/td&gt;
+          &lt;td&gt;10m ~ 1h 合理&lt;/td&gt;
+          &lt;td&gt;过长增加重放攻击风险&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header Strict-Transport-Security &amp;quot;max-age=63072000&amp;quot; always;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;HSTS：强制浏览器未来 2 年内只通过 HTTPS 访问本站&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;max-age=63072000&lt;/code&gt;（≈2年）+ &lt;code&gt;always&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;一旦启用不可轻易降级，确保 HTTPS 稳定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📤 上传限制&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;client_max_body_size 64M;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;客户端上传最大文件大小（❗必须在此处设定，HTTPS 才生效）&lt;/td&gt;
+          &lt;td&gt;64M / 128M 根据需求&lt;/td&gt;
+          &lt;td&gt;❗必须同时修改 PHP 的 &lt;code&gt;upload_max_filesize&lt;/code&gt; 和 &lt;code&gt;post_max_size&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📂 WordPress 核心路由&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;root /var/www/wordpress;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;网站根目录路径&lt;/td&gt;
+          &lt;td&gt;根据你的部署路径调整&lt;/td&gt;
+          &lt;td&gt;必须指向 WordPress 解压根目录&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;index index.php index.html index.htm;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;默认首页文件查找顺序&lt;/td&gt;
+          &lt;td&gt;一般无需修改&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;index.php&lt;/code&gt; 必须在前&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;location / { try_files $uri $uri/ /index.php?$args; }&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;WordPress 固定链接核心规则 —— 若 URL 无对应物理文件，则交给 index.php 路由处理&lt;/td&gt;
+          &lt;td&gt;严禁删除或修改&lt;/td&gt;
+          &lt;td&gt;否则固定链接全站 404 ❗&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💻 PHP 处理&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;include snippets/fastcgi-php.conf;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;引入 Ubuntu 标准化 FastCGI 配置&lt;/td&gt;
+          &lt;td&gt;保留&lt;/td&gt;
+          &lt;td&gt;包含 SCRIPT_FILENAME 等关键参数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;fastcgi_pass unix:/run/php/php8.3-fpm.sock;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;将 PHP 请求转发给本地 PHP-FPM socket&lt;/td&gt;
+          &lt;td&gt;使用 Unix Socket 性能优于 TCP&lt;/td&gt;
+          &lt;td&gt;确认 PHP 版本号正确（Ubuntu 24.04 为 8.3）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;fastcgi_param SCRIPT_FILENAME ...&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;明确指定脚本文件路径&lt;/td&gt;
+          &lt;td&gt;通常已包含在 snippets 中，保留以防万一&lt;/td&gt;
+          &lt;td&gt;如重复加载不影响&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;include fastcgi_params;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;加载标准 FastCGI 参数&lt;/td&gt;
+          &lt;td&gt;保留&lt;/td&gt;
+          &lt;td&gt;Ubuntu 默认提供&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;fastcgi_buffering off;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;关闭缓冲，实时输出（调试友好）&lt;/td&gt;
+          &lt;td&gt;可选，常规站点可删除&lt;/td&gt;
+          &lt;td&gt;降低性能，仅建议调试时开启&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🚫 安全屏蔽&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;location ~ /\.ht { deny all; }&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;禁止访问 .ht 开头文件（如 .htaccess）&lt;/td&gt;
+          &lt;td&gt;必须保留&lt;/td&gt;
+          &lt;td&gt;防止配置泄露&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;location = /wp-config.php { deny all; }&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;明确拒绝直接访问 wp-config.php（数据库密码等敏感信息）&lt;/td&gt;
+          &lt;td&gt;必须保留&lt;/td&gt;
+          &lt;td&gt;千万不要省略！&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;⚡ 静态资源缓存 &amp;amp; CDN 优化&lt;/td&gt;
+          &lt;td&gt;正则匹配静态文件类型&lt;/td&gt;
+          &lt;td&gt;识别 CSS/JS/图片/字体等资源&lt;/td&gt;
+          &lt;td&gt;根据项目扩展后缀（如 avif, mp4）&lt;/td&gt;
+          &lt;td&gt;支持大小写匹配 &lt;code&gt;~*&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;expires 1y;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;设置浏览器缓存有效期 1 年&lt;/td&gt;
+          &lt;td&gt;生产环境推荐 1y&lt;/td&gt;
+          &lt;td&gt;文件需带 hash 变更名（如 app.a1b2c3.js）否则用户看不到更新&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header Cache-Control &amp;quot;public, immutable&amp;quot;;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;告诉浏览器/代理该资源是公开且永不变更（配合带 hash 文件名极有效）&lt;/td&gt;
+          &lt;td&gt;推荐生产环境启用&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;immutable&lt;/code&gt; 对 SPA/前端构建项目极大提升体验&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header Access-Control-Allow-Origin &amp;quot;*&amp;quot;;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;允许跨域请求（如 CDN 或外部字体）&lt;/td&gt;
+          &lt;td&gt;按需启用或改为具体域名（如 &lt;code&gt;&amp;quot;https://cdn.yoursite.com&amp;quot;&lt;/code&gt;）&lt;/td&gt;
+          &lt;td&gt;仅对静态资源开，切勿全局开！&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;access_log off;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;关闭静态资源访问日志 → 节省磁盘 IO + 减少日志体积&lt;/td&gt;
+          &lt;td&gt;推荐开启&lt;/td&gt;
+          &lt;td&gt;需要流量统计？用监控工具代替&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;log_not_found off;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;忽略未找到文件（如 favicon.ico）的日志记录 → 避免刷屏错误日志&lt;/td&gt;
+          &lt;td&gt;推荐开启&lt;/td&gt;
+          &lt;td&gt;对 SEO 无影响&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🛡️ 安全响应头&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;server_tokens off;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;隐藏 Nginx 版本号 → 减少针对性攻击&lt;/td&gt;
+          &lt;td&gt;必须开启&lt;/td&gt;
+          &lt;td&gt;提升基础安全线&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header X-Frame-Options &amp;quot;SAMEORIGIN&amp;quot; always;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;防止页面被嵌入 iframe → 抵御点击劫持攻击&lt;/td&gt;
+          &lt;td&gt;必须开启&lt;/td&gt;
+          &lt;td&gt;除特殊嵌入需求外永远设为 SAMEORIGIN&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header X-Content-Type-Options &amp;quot;nosniff&amp;quot; always;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;禁止浏览器猜测 MIME 类型 → 防止恶意脚本伪装执行&lt;/td&gt;
+          &lt;td&gt;必须开启&lt;/td&gt;
+          &lt;td&gt;特别防范 XSS + 文件上传漏洞组合&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;add_header Referrer-Policy &amp;quot;no-referrer-when-downgrade&amp;quot; always;&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;控制 Referer 发送策略，避免降级到 HTTP 时泄露来源&lt;/td&gt;
+          &lt;td&gt;推荐值&lt;/td&gt;
+          &lt;td&gt;其他选项如 &lt;code&gt;strict-origin-when-cross-origin&lt;/code&gt; 更隐私&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;重载&#34;&gt;重载
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nginx -t &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo systemctl reload nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;ssl自动续期&#34;&gt;SSL自动续期
+&lt;/h2&gt;&lt;p&gt;无论哪种方式，证书都由 Certbot 统一管理：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看所有证书&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo certbot certificates
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 手动测试续订（不会真的续订，只模拟）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo certbot renew --dry-run
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 手动强制续订（一般不需要，系统有定时任务）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo certbot renew
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Ubuntu/Debian 默认已设置自动续期定时任务：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl list-timers &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep certbot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;你会看到类似：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;● certbot.timer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;表明系统每天会自动尝试续期快过期的证书&lt;/p&gt;
+&lt;h2 id=&#34;设置自动备份脚本&#34;&gt;设置自动备份脚本
+&lt;/h2&gt;&lt;p&gt;创建备份脚本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkdir -p /backup
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /root/backup-wordpress.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;粘贴：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;DATE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;BACKUP_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/backup&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;MYSQL_HOST&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;YYYZ&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;MYSQL_USER&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;wpuser&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;MYSQL_PASS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;YourStrongPassword!123&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 替换为你的真实密码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;DB_NAME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;wordpress&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;WP_DIR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/var/www/wordpress&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir -p &lt;span class=&#34;nv&#34;&gt;$BACKUP_DIR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;[&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;] 备份开始&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 备份数据库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; mysqldump -h &lt;span class=&#34;nv&#34;&gt;$MYSQL_HOST&lt;/span&gt; -u &lt;span class=&#34;nv&#34;&gt;$MYSQL_USER&lt;/span&gt; -p&lt;span class=&#34;nv&#34;&gt;$MYSQL_PASS&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$DB_NAME&lt;/span&gt; &amp;gt; &lt;span class=&#34;nv&#34;&gt;$BACKUP_DIR&lt;/span&gt;/wp_db_&lt;span class=&#34;nv&#34;&gt;$DATE&lt;/span&gt;.sql&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;数据库备份成功&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;数据库备份失败!&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 备份网站文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -czf &lt;span class=&#34;nv&#34;&gt;$BACKUP_DIR&lt;/span&gt;/wp_files_&lt;span class=&#34;nv&#34;&gt;$DATE&lt;/span&gt;.tar.gz -C /var/www wordpress &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;网站文件备份成功&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;网站文件备份失败&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除7天前的备份&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find &lt;span class=&#34;nv&#34;&gt;$BACKUP_DIR&lt;/span&gt; -name &lt;span class=&#34;s2&#34;&gt;&amp;#34;wp_*&amp;#34;&lt;/span&gt; -mtime +7 -delete
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;[&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;] 备份结束&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/backup.log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;添加执行权限：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod +x /root/backup-wordpress.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;设置每日凌晨2点自动备份：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo crontab -e
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;粘贴：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0 2 * * * /root/backup-wordpress.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;基础安全加固&#34;&gt;基础安全加固
+&lt;/h2&gt;&lt;h3 id=&#34;安装-fail2ban防暴力破解&#34;&gt;安装 Fail2ban（防暴力破解）
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install fail2ban -y
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; fail2ban
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl start fail2ban
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;禁用-xml-rpc&#34;&gt;禁用 XML-RPC
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nano /etc/nginx/sites-available/wordpress
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 &lt;code&gt;server { ... }&lt;/code&gt; 块内添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;location&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/xmlrpc.php&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;deny&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;all&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kn&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;403&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;重载 Nginx：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo nginx -t &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo systemctl reload nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;定期更新系统和-wordpress&#34;&gt;定期更新系统和 WordPress
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;WordPress 后台 → 仪表盘 → 更新 → 点击“更新现在”&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>wordpress添加自定义post type分类的筛选和显示</title>
         <link>https://ydashu.github.io/p/wordpress%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89post-type%E5%88%86%E7%B1%BB%E7%9A%84%E7%AD%9B%E9%80%89%E5%92%8C%E6%98%BE%E7%A4%BA/</link>
         <pubDate>Mon, 22 Sep 2025 00:00:00 +0000</pubDate>
@@ -92,7 +1462,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;一种 &lt;strong&gt;数据修复机制&lt;/strong&gt;，主要用于解决因错误配置 &lt;code&gt;DB_CHARSET=&#39;latin1&#39;&lt;/code&gt; 导致的字符集错乱问题&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;一种 &lt;strong&gt;数据修复机制&lt;/strong&gt;，主要用于解决因错误配置 &lt;code&gt;DB_CHARSET=&#39;latin1&#39;&lt;/code&gt; 导致的字符集错乱问题&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;核心作用&#34;&gt;核心作用
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;错误配置兼容&lt;/strong&gt;
@@ -588,7 +1959,8 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;mariadb默认编码&#34;&gt;mariadb默认编码
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -633,7 +2005,8 @@
 &lt;/table&gt;
 &lt;h3 id=&#34;字符集和字符序&#34;&gt;字符集和字符序
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Charset and Collation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Charset and Collation&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;字符序是字符集的子集&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;每个字符集都有一个或多个字符序；&lt;/li&gt;
@@ -721,7 +2094,8 @@
 &lt;p&gt;这些是启动数据库默认的字符集&lt;/p&gt;
 &lt;h5 id=&#34;wordpress的db_charset作用&#34;&gt;wordpress的DB_CHARSET作用
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;wordpress作为client影响数据库的连接字符集
 &lt;ul&gt;
@@ -762,7 +2136,8 @@
 &lt;h3 id=&#34;字符集的作用-以wordpress的db_charset为例&#34;&gt;字符集的作用-以wordpress的DB_CHARSET为例
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://relph1119.github.io/mysql-learning-notes/#/mysql/03-%E4%B9%B1%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;情况一&#34;&gt;情况一
 &lt;/h4&gt;&lt;p&gt;条件：&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;latin1&#39; )&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;insert&#34;&gt;INSERT
@@ -1334,7 +2709,8 @@
         <guid>https://ydashu.github.io/p/docker-mail-server%E9%82%AE%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/config/environment/#postfix_message_size_limit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;默认的邮件大小上限是10M，假设需要修改成100M&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mailserver.env&lt;/code&gt;中修改参数&lt;code&gt;POSTFIX_MESSAGE_SIZE_LIMIT=102400000&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;完成后重启&lt;/p&gt;
@@ -1413,7 +2789,8 @@
 &lt;/h2&gt;&lt;p&gt;更改DNS的A记录到新的IP地址&lt;/p&gt;
 &lt;h2 id=&#34;wordpress备份&#34;&gt;wordpress备份
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/p/wordpress%e5%a4%87%e4%bb%bd-2%e6%94%b9%e8%bf%9b%e7%89%88/&#34; &gt;参考链接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ydashu.github.io/p/wordpress%e5%a4%87%e4%bb%bd-2%e6%94%b9%e8%bf%9b%e7%89%88/&#34; &gt;参考链接&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;wordpress恢复&#34;&gt;wordpress恢复
 &lt;/h2&gt;&lt;p&gt;恢复后需要注意的地方&lt;/p&gt;
 &lt;ul&gt;
@@ -2270,7 +3647,8 @@
 &lt;h3 id=&#34;duplicator&#34;&gt;duplicator
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://duplicator.com/knowledge-base/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -2280,7 +3658,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E5%A4%87%E4%BB%BD-2%E6%94%B9%E8%BF%9B%E7%89%88/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;改进版和之前不同是wordpress目录由&lt;code&gt;/usr/local/lsws/virtual_host_root/wordpress/site1&lt;/code&gt;改成&lt;code&gt;/var/www/site1&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;改进版和之前不同是wordpress目录由&lt;code&gt;/usr/local/lsws/virtual_host_root/wordpress/site1&lt;/code&gt;改成&lt;code&gt;/var/www/site1&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;linux后台方法&#34;&gt;linux后台方法
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;备份结构
@@ -2751,7 +4130,8 @@
 &lt;h3 id=&#34;duplicator&#34;&gt;duplicator
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://duplicator.com/knowledge-base/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -2761,7 +4141,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;步骤&#34;&gt;步骤
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;安装Meow gallery和ACF&lt;/li&gt;
@@ -2867,10 +4248,12 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%E8%AE%BE%E8%AE%A1/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;基于generatepress&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;基于generatepress&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;颜色分类和设计&#34;&gt;颜色分类和设计
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;base和background参考的apple.com，contrast自定义&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;base和background参考的apple.com，contrast自定义&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -2939,7 +4322,8 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;color分类&#34;&gt;color分类
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;wordpress generatepress&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;wordpress generatepress&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Color
 &lt;ul&gt;
@@ -3914,7 +5298,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%842/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;个人看法，仅供参考&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;个人看法，仅供参考&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;b2b网站非电商&#34;&gt;B2B网站（非电商）
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;主题
@@ -4805,7 +6190,8 @@
 &lt;h2 id=&#34;配置lscache&#34;&gt;配置LSCache
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.openlitespeed.org/config/lscache/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考官方连接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考官方连接&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;备注：这里要配置好，如果这里没有配置好但是Litespeed Cache插件开启了，网站会很卡。可以考虑先关闭Litespeed Cache，等这里设置好了再启动插件。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -5149,7 +6535,8 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方链接&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://webshanks.com/setup-docker-mailserver-on-debian-12&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接-webshanks&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=kdH5eSo3_fY&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考视频-webshanks&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考视频-webshanks&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;创建文件夹和文件
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -5403,11 +6790,13 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;方法2-暂停和开启80端口&#34;&gt;方法2 暂停和开启80端口
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;略&lt;/p&gt;
 &lt;h4 id=&#34;方法3webroot验证模式&#34;&gt;方法3：Webroot验证模式
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;和网站的逻辑一样，只是添加了挂载docker步骤&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;和网站的逻辑一样，只是添加了挂载docker步骤&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h5 id=&#34;单域名&#34;&gt;单域名
 &lt;/h5&gt;&lt;h6 id=&#34;openlitespeed配置&#34;&gt;openlitespeed配置
 &lt;/h6&gt;&lt;ul&gt;
@@ -5515,11 +6904,13 @@
 &lt;/div&gt;&lt;p&gt;重新创建受影响的容器&lt;/p&gt;
 &lt;h5 id=&#34;多域名的情况1&#34;&gt;多域名的情况1
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;操作步骤同&lt;code&gt;单域名&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;多域名的情况2&#34;&gt;多域名的情况2
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;compose.yaml&lt;/code&gt;和&lt;code&gt;mailserver.env&lt;/code&gt;不用动&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openlitespeed配置&lt;/code&gt;：用site2替代site1&lt;/li&gt;
@@ -5802,7 +7193,8 @@
         
         <guid>https://ydashu.github.io/p/linux_centos-hostinger-vps%E5%AE%89%E8%A3%85wordpress%E5%92%8C%E9%85%8D%E7%BD%AE%E9%82%AE%E7%AE%B12-%E6%94%B9%E8%BF%9B%E7%89%88/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;改进版和之前不同是wordpress目录由&lt;code&gt;/usr/local/lsws/virtual_host_root/wordpress/site1&lt;/code&gt;改成&lt;code&gt;/var/www/site1&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;改进版和之前不同是wordpress目录由&lt;code&gt;/usr/local/lsws/virtual_host_root/wordpress/site1&lt;/code&gt;改成&lt;code&gt;/var/www/site1&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;安装防火墙开启相关端口&#34;&gt;安装防火墙，开启相关端口
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;邮件发送：
@@ -6628,7 +8020,8 @@
 &lt;h2 id=&#34;配置lscache&#34;&gt;配置LSCache
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.openlitespeed.org/config/lscache/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考官方连接&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考官方连接&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;备注：这里要配置好，如果这里没有配置好但是Litespeed Cache插件开启了，网站会很卡。可以考虑先关闭Litespeed Cache，等这里设置好了再启动插件。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -6972,7 +8365,8 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/examples/tutorials/basic-installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方链接&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://webshanks.com/setup-docker-mailserver-on-debian-12&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接-webshanks&lt;/a&gt;	&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=kdH5eSo3_fY&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考视频-webshanks&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考视频-webshanks&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;创建文件夹和文件
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -7226,11 +8620,13 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;方法2-暂停和开启80端口&#34;&gt;方法2 暂停和开启80端口
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;通过openlitespeed暂停端口80，调用方法1命令，再重新开启openlitespeed的80端口的情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;略&lt;/p&gt;
 &lt;h4 id=&#34;方法3webroot验证模式&#34;&gt;方法3：Webroot验证模式
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;和网站的逻辑一样，只是添加了挂载docker步骤&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;和网站的逻辑一样，只是添加了挂载docker步骤&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h5 id=&#34;单域名&#34;&gt;单域名
 &lt;/h5&gt;&lt;h6 id=&#34;openlitespeed配置&#34;&gt;openlitespeed配置
 &lt;/h6&gt;&lt;ul&gt;
@@ -7338,11 +8734,13 @@
 &lt;/div&gt;&lt;p&gt;重新创建受影响的容器&lt;/p&gt;
 &lt;h5 id=&#34;多域名的情况1&#34;&gt;多域名的情况1
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;只配置site1: 复用，全部都是site1的邮箱服务,MX全都指向mail.site1.com&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;操作步骤同&lt;code&gt;单域名&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;多域名的情况2&#34;&gt;多域名的情况2
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;各自单独配置：DNS中不复用site1的邮箱服务，单独配置mail.site2.com邮箱系统，并site2.com的MX指向mail.site2.com&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;compose.yaml&lt;/code&gt;和&lt;code&gt;mailserver.env&lt;/code&gt;不用动&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openlitespeed配置&lt;/code&gt;：用site2替代site1&lt;/li&gt;
@@ -7881,7 +9279,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90%E5%92%8C%E8%8E%B7%E5%8F%96%E6%B8%A0%E9%81%93/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;wordpress插件遵循非必要不安装和有必要尽可能安装轻量化的插件的原则&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;wordpress插件遵循非必要不安装和有必要尽可能安装轻量化的插件的原则&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;插件推荐&#34;&gt;插件推荐
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -8721,7 +10120,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E6%9E%B6%E6%9E%84/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;个人看法，仅供参考&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;个人看法，仅供参考&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -8901,7 +10301,8 @@
 &lt;/ol&gt;
 &lt;h2 id=&#34;测试网站性能&#34;&gt;测试网站性能
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;通过此，可以测试网站前后性能对比&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;通过此，可以测试网站前后性能对比&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;GTmetrix&lt;/li&gt;
 &lt;li&gt;google page insight&lt;/li&gt;
@@ -9671,7 +11072,8 @@
 &lt;/h3&gt;&lt;p&gt;检查网站是否正常。&lt;code&gt;https://ydashu.github.io/&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;ssh连接github&#34;&gt;SSH连接github
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;git push 前因当通过SSH配置连接&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;git push 前因当通过SSH配置连接&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;检查现有的 SSH 密钥
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -9800,7 +11202,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;github-action自动部署&#34;&gt;Github action自动部署
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;新建github仓库-1&#34;&gt;新建Github仓库
 &lt;/h3&gt;&lt;p&gt;新建一个 Github 仓库，仓库名为 &lt;code&gt;ydashu_main&lt;/code&gt;，权限设置为 &lt;code&gt;private&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;创建github账号token&#34;&gt;创建github账号token
@@ -9902,7 +11305,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;创建gitignore文件&#34;&gt;创建&lt;code&gt;.gitignore&lt;/code&gt;文件
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;新建&lt;code&gt;/ydashu/.gitignore&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;将下面代码复制进去&lt;/li&gt;
@@ -9930,7 +11334,8 @@
 &lt;/div&gt;&lt;h3 id=&#34;token配置&#34;&gt;Token配置
 &lt;/h3&gt;&lt;h3 id=&#34;hugo主文件上传&#34;&gt;hugo主文件上传
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;cd&lt;code&gt;/ydashu/&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -10008,7 +11413,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;更新网站&#34;&gt;更新网站
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -10700,7 +12106,8 @@
 &lt;/h3&gt;&lt;p&gt;检查网站是否正常。&lt;code&gt;https://ydashu.github.io/&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;github-action自动部署&#34;&gt;Github action自动部署
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;新建github仓库-1&#34;&gt;新建Github仓库
 &lt;/h3&gt;&lt;p&gt;新建一个 Github 仓库，仓库名为 &lt;code&gt;ydashu_main&lt;/code&gt;，权限设置为 &lt;code&gt;private&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;创建github账号token&#34;&gt;创建github账号token
@@ -10802,7 +12209,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;创建gitignore文件&#34;&gt;创建&lt;code&gt;.gitignore&lt;/code&gt;文件
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;新建&lt;code&gt;/ydashu/.gitignore&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;将下面代码复制进去&lt;/li&gt;
@@ -10830,7 +12238,8 @@
 &lt;/div&gt;&lt;h3 id=&#34;token配置&#34;&gt;Token配置
 &lt;/h3&gt;&lt;h3 id=&#34;hugo主文件上传&#34;&gt;hugo主文件上传
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -10914,7 +12323,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;更新网站&#34;&gt;更新网站
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -11016,7 +12426,8 @@
         
         <guid>https://ydashu.github.io/p/wordpress%E4%BD%BF%E7%94%A8vps%E5%92%8Chosting/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;备注：Hosting以honstinger为例，其他的Hosting博主目前还未使用&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;备注：Hosting以honstinger为例，其他的Hosting博主目前还未使用&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;vps-vs-hosting&#34;&gt;VPS vs Hosting
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -11089,7 +12500,8 @@
     &gt;top10.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;备注：这个技巧同样适用于域名的购买： domain coupon namecheap、domain coupon code namecheap等等关键词&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;备注：这个技巧同样适用于域名的购买： domain coupon namecheap、domain coupon code namecheap等等关键词&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;假设已经有另外一个服务商的账号，比如Hosinger。一般都有推广链接，会对推广人有返点并对被推广人优惠&lt;/p&gt;

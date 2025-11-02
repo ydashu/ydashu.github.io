@@ -782,7 +782,8 @@
 &lt;/h3&gt;&lt;p&gt;检查网站是否正常。&lt;code&gt;https://ydashu.github.io/&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;ssh连接github&#34;&gt;SSH连接github
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;git push 前因当通过SSH配置连接&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;git push 前因当通过SSH配置连接&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;检查现有的 SSH 密钥
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -911,7 +912,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;github-action自动部署&#34;&gt;Github action自动部署
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;新建github仓库-1&#34;&gt;新建Github仓库
 &lt;/h3&gt;&lt;p&gt;新建一个 Github 仓库，仓库名为 &lt;code&gt;ydashu_main&lt;/code&gt;，权限设置为 &lt;code&gt;private&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;创建github账号token&#34;&gt;创建github账号token
@@ -1013,7 +1015,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;创建gitignore文件&#34;&gt;创建&lt;code&gt;.gitignore&lt;/code&gt;文件
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;新建&lt;code&gt;/ydashu/.gitignore&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;将下面代码复制进去&lt;/li&gt;
@@ -1041,7 +1044,8 @@
 &lt;/div&gt;&lt;h3 id=&#34;token配置&#34;&gt;Token配置
 &lt;/h3&gt;&lt;h3 id=&#34;hugo主文件上传&#34;&gt;hugo主文件上传
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;cd&lt;code&gt;/ydashu/&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1119,7 +1123,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;更新网站&#34;&gt;更新网站
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1811,7 +1816,8 @@
 &lt;/h3&gt;&lt;p&gt;检查网站是否正常。&lt;code&gt;https://ydashu.github.io/&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;github-action自动部署&#34;&gt;Github action自动部署
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果没有进行自动部署，我们每次更新博客时，都需要在已经搭建好环境的电脑上进行、都要手动进行 Hugo 编译，再推送 Public 文件夹到 Github 仓库。自动部署让整个写作+发布流程更加快捷，相当于把Hogo编译推送public文件夹的工作交给了github action。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;新建github仓库-1&#34;&gt;新建Github仓库
 &lt;/h3&gt;&lt;p&gt;新建一个 Github 仓库，仓库名为 &lt;code&gt;ydashu_main&lt;/code&gt;，权限设置为 &lt;code&gt;private&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;创建github账号token&#34;&gt;创建github账号token
@@ -1913,7 +1919,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;创建gitignore文件&#34;&gt;创建&lt;code&gt;.gitignore&lt;/code&gt;文件
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在hugo主文件创建&lt;code&gt;.gitignore&lt;/code&gt;文件，来避免提交不必要的文件&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;新建&lt;code&gt;/ydashu/.gitignore&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;将下面代码复制进去&lt;/li&gt;
@@ -1941,7 +1948,8 @@
 &lt;/div&gt;&lt;h3 id=&#34;token配置&#34;&gt;Token配置
 &lt;/h3&gt;&lt;h3 id=&#34;hugo主文件上传&#34;&gt;hugo主文件上传
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;hugo主文件上传至ydashu_main仓库，上传成功后会触发Github Action，来自动部署你的静态页面&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2025,7 +2033,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;更新网站&#34;&gt;更新网站
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首次上传成功后，如果后面又需要上传更新网站&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;code&gt;/ydashu/&lt;/code&gt;界面&lt;code&gt;cmd&lt;/code&gt;后，输入以下命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

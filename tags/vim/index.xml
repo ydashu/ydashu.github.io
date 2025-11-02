@@ -2400,7 +2400,8 @@
 &lt;li&gt;所有快捷键默认在&lt;strong&gt;普通模式&lt;/strong&gt;生效，除非特别标注&lt;/li&gt;
 &lt;li&gt;可通过 &lt;code&gt;:map&lt;/code&gt; 查看所有自定义映射&lt;/li&gt;
 &lt;li&gt;使用 &lt;code&gt;:verb map &amp;lt;key&amp;gt;&lt;/code&gt; 可查看特定键位的映射来源&lt;/li&gt;
-&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         

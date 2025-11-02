@@ -112,7 +112,8 @@
 &lt;li&gt;SSL = 老旧防盗门（已过时）&lt;/li&gt;
 &lt;li&gt;TLS = 新式智能锁（现代标准）&lt;/li&gt;
 &lt;li&gt;STARTTLS = “我现在要上锁了” 的指令，触发加密&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;关键关系说明&#34;&gt;&lt;strong&gt;关键关系说明&lt;/strong&gt;
 &lt;/h2&gt;&lt;table&gt;
@@ -200,7 +201,8 @@
 &lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;✅ 国际趋势：全面转向 &lt;strong&gt;587 + STARTTLS&lt;/strong&gt;&lt;br&gt;
-⚠️ 国内现状：&lt;strong&gt;465 + SSL&lt;/strong&gt; 仍占主流，主要是历史和用户习惯原因&lt;/p&gt;&lt;/blockquote&gt;
+⚠️ 国内现状：&lt;strong&gt;465 + SSL&lt;/strong&gt; 仍占主流，主要是历史和用户习惯原因&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;最佳实践建议总结&#34;&gt;&lt;strong&gt;最佳实践建议总结&lt;/strong&gt;
 &lt;/h2&gt;&lt;table&gt;
@@ -270,7 +272,8 @@
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;✅ &lt;strong&gt;技术先进性排序：&lt;code&gt;587 + STARTTLS + TLS&lt;/code&gt; &amp;gt; &lt;code&gt;465 + TLS&lt;/code&gt; &amp;gt; &lt;code&gt;465 + SSL&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;
 🔐 &lt;strong&gt;安全的关键是加密协议（TLS）和证书，而不是端口号。&lt;/strong&gt;&lt;br&gt;
-🌍 &lt;strong&gt;国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+🌍 &lt;strong&gt;国际趋势用 587，国内习惯用 465 —— 了解差异，灵活选择。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -1729,7 +1732,8 @@
         
         <guid>https://ydashu.github.io/p/debian12-gnome%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;以下是一般意义下的快捷键，具体可以在&lt;code&gt;设置-键盘-键盘快捷键&lt;/code&gt;中查看和设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;以下是一般意义下的快捷键，具体可以在&lt;code&gt;设置-键盘-键盘快捷键&lt;/code&gt;中查看和设置&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -4456,7 +4460,8 @@
 &lt;li&gt;所有快捷键默认在&lt;strong&gt;普通模式&lt;/strong&gt;生效，除非特别标注&lt;/li&gt;
 &lt;li&gt;可通过 &lt;code&gt;:map&lt;/code&gt; 查看所有自定义映射&lt;/li&gt;
 &lt;li&gt;使用 &lt;code&gt;:verb map &amp;lt;key&amp;gt;&lt;/code&gt; 可查看特定键位的映射来源&lt;/li&gt;
-&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -4467,7 +4472,8 @@
         <guid>https://ydashu.github.io/p/linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5ssh%E5%92%8Csftp/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;前提：本地和远程都是linux
-SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
+SSH密钥认证&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;本地生成ssh
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -4656,7 +4662,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
         <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mpv.io/manual/stable/#configuration-files&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方文档&lt;/a&gt;  &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/opus/578674176592022351&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;&#34;&gt;
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5422,7 +5429,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;mariadb默认编码&#34;&gt;mariadb默认编码
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;版本：11.4.7   现代常用utf8mb4替换之前的utf8mb3和latin1&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -5467,7 +5475,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;字符集和字符序&#34;&gt;字符集和字符序
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;Charset and Collation&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Charset and Collation&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;字符序是字符集的子集&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;每个字符集都有一个或多个字符序；&lt;/li&gt;
@@ -5555,7 +5564,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;这些是启动数据库默认的字符集&lt;/p&gt;
 &lt;h5 id=&#34;wordpress的db_charset作用&#34;&gt;wordpress的DB_CHARSET作用
 &lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;默认&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; )&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;wordpress作为client影响数据库的连接字符集
 &lt;ul&gt;
@@ -5596,7 +5606,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;字符集的作用-以wordpress的db_charset为例&#34;&gt;字符集的作用-以wordpress的DB_CHARSET为例
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://relph1119.github.io/mysql-learning-notes/#/mysql/03-%E4%B9%B1%E7%A0%81%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%AF%94%E8%BE%83%E8%A7%84%E5%88%99&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考文档: MySQL是怎样运行的&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;情况一&#34;&gt;情况一
 &lt;/h4&gt;&lt;p&gt;条件：&lt;code&gt;define( &#39;DB_CHARSET&#39;, &#39;latin1&#39; )&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;insert&#34;&gt;INSERT
@@ -6168,7 +6179,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
         <guid>https://ydashu.github.io/p/docker-mail-server%E9%82%AE%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docker-mailserver.github.io/docker-mailserver/latest/config/environment/#postfix_message_size_limit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;官方参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;默认的邮件大小上限是10M，假设需要修改成100M&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mailserver.env&lt;/code&gt;中修改参数&lt;code&gt;POSTFIX_MESSAGE_SIZE_LIMIT=102400000&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;完成后重启&lt;/p&gt;
@@ -6659,7 +6671,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
         
         <guid>https://ydashu.github.io/p/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;待完成：dnsmasq，smartCDN研究，CDN到底应该怎么设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;待完成：dnsmasq，smartCDN研究，CDN到底应该怎么设置&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;光猫路由模式改桥接模式&#34;&gt;光猫路由模式改桥接模式
 &lt;/h2&gt;&lt;h3 id=&#34;获取超级管理员账号密码&#34;&gt;获取超级管理员账号密码
 &lt;/h3&gt;&lt;ul&gt;
@@ -7162,7 +7175,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.tencent.com/developer/article/2465053&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接1&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://www.right.com.cn/forum/thread-4059633-1-1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#%e5%b8%b8%e7%94%a8%e7%9a%84DNS&#34; &gt;常用的DNS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;主要的DNS配置&lt;/li&gt;
@@ -7224,7 +7238,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://post.smzdm.com/p/agq38g26/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考链接1&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/opus/647484062460542994&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考链接2&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Lienol&lt;/li&gt;
 &lt;li&gt;Lean
@@ -7272,7 +7287,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;如需选择
 &lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1114y1X7TA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;参考视频&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;参考视频&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;成功后拔掉电源，按住reset同时接上电源等10秒即可进入breed&lt;/li&gt;
 &lt;li&gt;breed写入其他固件
@@ -7286,7 +7302,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;红米ac2100救砖&#34;&gt;红米AC2100救砖
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;其他小米路由器类似&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;其他小米路由器类似&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1zS4y127PJ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考视频&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;变砖可能的原因&#34;&gt;变砖可能的原因
@@ -7346,7 +7363,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;小米路由器官方修复工具&#34;&gt;小米路由器官方修复工具
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;情况：刷机失误导致路由器一直亮黄橙灯&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;情况：刷机失误导致路由器一直亮黄橙灯&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;关闭防火墙。windows&amp;gt;&lt;code&gt;控制面板-系统和安全-Windows Defender 防火墙-启动或关闭windows defender防火墙&lt;/code&gt;
 &lt;ul&gt;
@@ -7369,7 +7387,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;bootloaders-损坏的情况下&#34;&gt;bootloaders 损坏的情况下
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;以上官方修复失败&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;以上官方修复失败&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;方法一：USB转TLL烧录刷机法&lt;/li&gt;
 &lt;li&gt;方法二：编程器刷机法&lt;/li&gt;
@@ -8556,7 +8575,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
         <description>&lt;h2 id=&#34;插件&#34;&gt;插件
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;chrome插件官方网站：&lt;a class=&#34;link&#34; href=&#34;https://chromewebstore.google.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;chromewebstore&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;chromewebstore&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;图片下载&#34;&gt;图片下载
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;fatkun
@@ -8733,7 +8753,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
         
         <guid>https://ydashu.github.io/p/tailscale-%E8%BF%9C%E7%A8%8B%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;本文以常见的windows为例，linux和macOS也类似&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;本文以常见的windows为例，linux和macOS也类似&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;远程连接的几种方式&#34;&gt;远程连接的几种方式
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;公网ip访问&lt;/li&gt;
@@ -8799,7 +8820,8 @@ SSH密钥认证&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;tailscale教程&#34;&gt;tailscale教程
 &lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;windows版为例&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;windows版为例&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;登录&#34;&gt;登录
 &lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tailscale.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tailscale · Best VPN Service for Secure Networks&lt;/a&gt;&lt;/p&gt;
