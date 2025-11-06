@@ -308,7 +308,16 @@
         </li>
       </ol>
     </li>
-    <li><a href="#ssl自动续期">SSL自动续期</a></li>
+    <li><a href="#ssl自动续期">SSL自动续期</a>
+      <ol>
+        <li><a href="#确认系统自带的自动续期任务">确认系统自带的自动续期任务</a></li>
+        <li><a href="#续期后自动重载-nginx">续期后自动重载 Nginx</a>
+          <ol>
+            <li><a href="#测试">测试</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
     <li><a href="#设置自动备份脚本">设置自动备份脚本</a></li>
     <li><a href="#基础安全加固">基础安全加固</a>
       <ol>
@@ -1543,7 +1552,9 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="ssl自动续期">SSL自动续期
-</h2><p>无论哪种方式，证书都由 Certbot 统一管理：</p>
+</h2><blockquote>
+<p><strong>Certbot 也是默认使用 systemd timer 自动续期的</strong>，因此 <strong>确实一般不需要再额外加 <code>crontab</code> 任务</strong></p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1563,11 +1574,11 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">sudo certbot renew --dry-run
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 手动强制续订（一般不需要，系统有定时任务）</span>
-</span></span><span class="line"><span class="cl">sudo certbot renew
+</span></span><span class="line"><span class="cl">sudo certbot renew --force-renewal
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Ubuntu/Debian 默认已设置自动续期定时任务：</p>
-<div class="highlight"><div class="chroma">
+</div><h3 id="确认系统自带的自动续期任务">确认系统自带的自动续期任务
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -1575,17 +1586,72 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl list-timers <span class="p">|</span> grep certbot
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>你会看到类似：</p>
+</div><p>通常你会看到：
+<code>certbot.timer</code>和<code>certbot.service</code></p>
+<p>表示 <code>certbot.timer</code> 已启用，会自动调用 <code>/usr/lib/systemd/system/certbot.service</code> 来执行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">● certbot.timer
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/bin/certbot -q renew
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>表明系统每天会自动尝试续期快过期的证书</p>
-<h2 id="设置自动备份脚本">设置自动备份脚本
+</div><h3 id="续期后自动重载-nginx">续期后自动重载 Nginx
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># 平滑重载 LiteSpeed 配置（不会中断请求）</span>
+</span></span><span class="line"><span class="cl">systemctl reload nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 记录执行时间与操作</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> - Nginx reloaded by Certbot&#34;</span> &gt;&gt; /var/log/certbot-renew.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存后赋权：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-nginx.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="测试">测试
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot renew --force-renewal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查log &ndash; 是否包含<code>$(date) - Nginx restarted by Certbot</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /var/log/certbot-renew.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="设置自动备份脚本">设置自动备份脚本
 </h2><p>创建备份脚本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

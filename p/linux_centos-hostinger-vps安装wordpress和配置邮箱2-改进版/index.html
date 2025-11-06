@@ -281,6 +281,16 @@
             <li><a href="#验证续期流程">验证续期流程</a></li>
           </ol>
         </li>
+        <li><a href="#ssl自动续签2">SSL自动续签2</a>
+          <ol>
+            <li><a href="#确认系统自带的自动续期任务">确认系统自带的自动续期任务</a></li>
+            <li><a href="#续期后自动重载-lsws">续期后自动重载 LSWS</a>
+              <ol>
+                <li><a href="#测试">测试</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#配置lscache">配置LSCache</a></li>
@@ -1136,7 +1146,10 @@
 </li>
 </ul>
 <h3 id="ssl自动续签">SSL自动续签
-</h3><h4 id="配置-certbot-自动续期">配置 Certbot 自动续期
+</h3><blockquote>
+<p>不需要了</p>
+</blockquote>
+<h4 id="配置-certbot-自动续期">配置 Certbot 自动续期
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1213,7 +1226,94 @@
 </div>
 </div></li>
 </ul>
-<h2 id="配置lscache">配置LSCache
+<h3 id="ssl自动续签2">SSL自动续签2
+</h3><p><strong>Certbot 也是默认使用 systemd timer 自动续期的</strong>，因此 <strong>确实一般不需要再额外加 <code>crontab</code> 任务</strong></p>
+<h4 id="确认系统自带的自动续期任务">确认系统自带的自动续期任务
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl list-timers <span class="p">|</span> grep certbot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通常你会看到：
+<code>certbot.timer</code>和<code>certbot.service</code></p>
+<p>表示 <code>certbot.timer</code> 已启用，会自动调用 <code>/usr/lib/systemd/system/certbot.service</code> 来执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/bin/certbot -q renew
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="续期后自动重载-lsws">续期后自动重载 LSWS
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/letsencrypt/renewal-hooks/deploy/reload-lsws.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># 平滑重载 LiteSpeed 配置（不会中断请求）</span>
+</span></span><span class="line"><span class="cl">/usr/local/lsws/bin/lswsctrl reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 记录执行时间与操作</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>date <span class="s1">&#39;+%F %T&#39;</span><span class="k">)</span><span class="s2"> - LSWS reloaded by Certbot&#34;</span> &gt;&gt; /var/log/certbot-renew.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>保存后赋权：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-lsws.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="测试">测试
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot renew --force-renewal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出显示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Hook</span> <span class="err">&#39;</span><span class="n">deploy</span><span class="p">-</span><span class="n">hook</span><span class="err">&#39;</span> <span class="n">ran</span> <span class="n">with</span> <span class="n">output</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="na"> [OK]</span> <span class="n">Send</span> <span class="n">SIGUSR1</span> <span class="n">to</span> <span class="n">XXXXXX</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查log &ndash; 是否包含<code>$(date) - LSWS restarted by Certbot</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /var/log/certbot-renew.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置lscache">配置LSCache
 </h2><blockquote>
 <p><a class="link" href="https://docs.openlitespeed.org/config/lscache/"  target="_blank" rel="noopener"
     >参考官方连接</a></p>

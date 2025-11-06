@@ -7,7 +7,179 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 23 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/it/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>oracle free always</title>
+        <link>https://ydashu.github.io/p/oracle-free-always/</link>
+        <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/oracle-free-always/</guid>
+        <description>&lt;h2 id=&#34;账号注册注意事项&#34;&gt;账号注册注意事项
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;不建议使用代理或VPN&lt;/li&gt;
+&lt;li&gt;外币信用卡信息正确填写，切换信用卡试试&lt;/li&gt;
+&lt;li&gt;试试无痕模式&lt;/li&gt;
+&lt;li&gt;失败切换服务器地址试试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;free-always内容&#34;&gt;free always内容
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;类别&lt;/th&gt;
+          &lt;th&gt;资源&lt;/th&gt;
+          &lt;th&gt;额度&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💻 计算&lt;/td&gt;
+          &lt;td&gt;VM.Standard.E2.1.Micro&lt;/td&gt;
+          &lt;td&gt;最多并发 2 台（x86）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💻 计算&lt;/td&gt;
+          &lt;td&gt;VM.Standard.A1.Flex&lt;/td&gt;
+          &lt;td&gt;最大 4 OCPU + 24GB 内存（Arm）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💾 存储&lt;/td&gt;
+          &lt;td&gt;块存储 Block Volume&lt;/td&gt;
+          &lt;td&gt;200 GB（不含 Boot Volume）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💾 存储&lt;/td&gt;
+          &lt;td&gt;对象存储 Object/Archive&lt;/td&gt;
+          &lt;td&gt;各 10GB = 共 20GB&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🗄️ 数据库&lt;/td&gt;
+          &lt;td&gt;Autonomous DB&lt;/td&gt;
+          &lt;td&gt;2 实例，共享 20GB 存储&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🗄️ 数据库&lt;/td&gt;
+          &lt;td&gt;MySQL HeatWave&lt;/td&gt;
+          &lt;td&gt;1 实例，50GB 主存储 + 50GB 备份&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🌐 网络&lt;/td&gt;
+          &lt;td&gt;公网 IPv4&lt;/td&gt;
+          &lt;td&gt;2 个保留型&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;⚖️ 网络&lt;/td&gt;
+          &lt;td&gt;负载均衡器 LB&lt;/td&gt;
+          &lt;td&gt;1 App LB + 1 Net LB&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📤 流量&lt;/td&gt;
+          &lt;td&gt;出站传输&lt;/td&gt;
+          &lt;td&gt;10TB / 月&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;📧 通讯&lt;/td&gt;
+          &lt;td&gt;Email Delivery&lt;/td&gt;
+          &lt;td&gt;3000 封/月&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔐 安全&lt;/td&gt;
+          &lt;td&gt;Vault Secrets&lt;/td&gt;
+          &lt;td&gt;150 个 secret / 20 HSM keys&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;🔄 自动化&lt;/td&gt;
+          &lt;td&gt;Resource Manager&lt;/td&gt;
+          &lt;td&gt;支持 Terraform 部署&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;💡 运维&lt;/td&gt;
+          &lt;td&gt;Bastion&lt;/td&gt;
+          &lt;td&gt;免费 SSH 隧道访问私有主机&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;核心注意事项&#34;&gt;核心注意事项
+&lt;/h3&gt;&lt;h4 id=&#34;always-free--永不变化&#34;&gt;“Always Free” ≠ “永不变化”
+&lt;/h4&gt;&lt;p&gt;Oracle 官方保留随时调整免费资源的权利。虽然很少大幅变动，但仍建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定期关注 &lt;a class=&#34;link&#34; href=&#34;https://www.oracle.com/cloud/free/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle Cloud Free Tier 页面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;关注公告邮件和控制台提醒&lt;/li&gt;
+&lt;li&gt;做好迁移预案（如导出数据、备份镜像）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;免费资源仅限特定区域region&#34;&gt;免费资源仅限特定区域（Region）
+&lt;/h4&gt;&lt;p&gt;👉 您必须选择&lt;strong&gt;支持 Always Free 的区域&lt;/strong&gt;才能使用免费资源。&lt;/p&gt;
+&lt;h4 id=&#34;autonomous-database-注意事项&#34;&gt;Autonomous Database 注意事项
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;✅ 2 个实例共享 20GB 存储&lt;/li&gt;
+&lt;li&gt;❗ 不要点击 “Scale Up” → 否则转为付费模式&lt;/li&gt;
+&lt;li&gt;⏸️ 如果暂时不用，请手动点击 “Stop” 释放资源，防止被误判为占用&lt;/li&gt;
+&lt;li&gt;💡 启动后约 5–15 分钟进入 Ready 状态，有冷启动延迟，不适合作为实时 API 数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mysql-heatwave-db-注意事项&#34;&gt;MySQL HeatWave DB 注意事项
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;免费版提供 50GB 主存储 + 50GB 备份&lt;/li&gt;
+&lt;li&gt;🔒 必须开启 “HeatWave Cluster” 才能获得高性能内存加速（否则只是普通 MySQL）&lt;/li&gt;
+&lt;li&gt;❗ HeatWave 节点本身是独立计费组件 → 但在 Always Free 中它包含在免费额度内，&lt;strong&gt;不要尝试 Scale Node Count！&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;公网ip数量严格限制只能有-2-个保留公网ip&#34;&gt;公网IP数量严格限制：只能有 2 个保留公网IP
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;✔ 可以创建超过2个临时公网IP（但实例重启就会变，风险高）&lt;/li&gt;
+&lt;li&gt;❗ 创建第3个 &lt;strong&gt;保留型公网IP&lt;/strong&gt; → 控制台直接拒绝 or 转为付费资源 → 被扣款！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;⛔ 切记：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“2个公网IP” = 2个 Reserved Public IP
+Ephemeral IP 不计入此限制，但极不稳定，不应依赖！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;禁止行为可能导致账户警告暂停&#34;&gt;禁止行为（可能导致账户警告/暂停）
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;禁止事项&lt;/th&gt;
+          &lt;th&gt;风险结果&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;挖矿 / 跑分 / 压力测试&lt;/td&gt;
+          &lt;td&gt;实例被删、账户警告&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;部署 Torrent / BT / 种子机&lt;/td&gt;
+          &lt;td&gt;网络阻断、IP封禁&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;部署代理、翻墙、VPN 对外提供服务&lt;/td&gt;
+          &lt;td&gt;账户暂停甚至永久封号&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;多账号薅羊毛（需不同真实信用卡+身份）&lt;/td&gt;
+          &lt;td&gt;高风险关联封禁&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;长期持续满负载运行 Micro 实例&lt;/td&gt;
+          &lt;td&gt;系统自动关机/回收资源&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;常见问题-faq&#34;&gt;常见问题 FAQ
+&lt;/h3&gt;&lt;h4 id=&#34;q1-我的-e2micro-实例突然变成-stopped-状态为什么&#34;&gt;Q1: 我的 E2.Micro 实例突然变成 Stopped 状态，为什么？
+&lt;/h4&gt;&lt;p&gt;→ 可能触发自动保护机制（长时间高负载）、或库存调整。尝试手动启动；若失败，考虑换区重建。&lt;/p&gt;
+&lt;h4 id=&#34;q2-我没有收到任何通知就被收费了怎么回事&#34;&gt;Q2: 我没有收到任何通知就被收费了，怎么回事？
+&lt;/h4&gt;&lt;p&gt;→ 很可能误选了付费服务（如 Standard VM, ADW 多于20GB, Load Balancer 超限）。立即检查账单 + 删除付费资源 + 提工单申诉（有时可退费）。&lt;/p&gt;
+&lt;h4 id=&#34;q3-我有两个实例都想对外服务但只有2个公网ip怎么办&#34;&gt;Q3: 我有两个实例，都想对外服务，但只有2个公网IP怎么办？
+&lt;/h4&gt;&lt;p&gt;→ ✅ 正确做法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将两个实例都绑定保留IP（刚好用完2个名额）&lt;/li&gt;
+&lt;li&gt;或者，只给一台分配保留IP作为跳板/Bastion/Nginx反向代理，另一台放在私有子网通过内网访问&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;📚 附官方参考文档：&lt;/p&gt;
+&lt;p&gt;🔗 &lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle Cloud Free Tier Overview&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>邮件端口及加密方式</title>
         <link>https://ydashu.github.io/p/%E9%82%AE%E4%BB%B6%E7%AB%AF%E5%8F%A3%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F/</link>
         <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
