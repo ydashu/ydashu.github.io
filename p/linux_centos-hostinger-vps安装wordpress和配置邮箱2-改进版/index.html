@@ -2076,8 +2076,7 @@
 </ul>
 <h5 id="自动更新ssl">自动更新SSL
 </h5><ul>
-<li>
-<p>创建脚本</p>
+<li>创建脚本
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2087,8 +2086,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>复制以下内容到其中</p>
+<li>复制以下内容到其中
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2109,31 +2107,84 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 确保脚本在正确的目录下执行</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出开始时间到日志</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;=======================================================&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;任务开始时间: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置环境变量，防止 Cron 找不到 docker</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查目录是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;/opt/mailserver&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;错误: 找不到 /opt/mailserver 目录&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/mailserver
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期并捕获所有输出（包括错误流）</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行 Certbot 续期 (记得加上之前修复的 -v 网站目录映射)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意：这里我们去掉 $OUTPUT 捕获，直接输出到日志，这样更直观，</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者保留捕获但出错时必须打印。</span>
 </span></span><span class="line"><span class="cl"><span class="nv">OUTPUT</span><span class="o">=</span><span class="k">$(</span>docker run --rm <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/certs/:/etc/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/opt/mailserver/docker-data/certbot/logs/:/var/log/letsencrypt/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="s2">&#34;/usr/local/lsws/virtual_host_root/wordpress/site1:/var/www/temp_site&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  certbot/certbot renew 2&gt;<span class="p">&amp;</span>1<span class="k">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 检查输出中是否包含 &#34;renewed&#34; 或 &#34;successfully&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 将 docker 的原始输出打印到日志文件中，方便排查</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Certbot 输出内容:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 逻辑判断</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qiE <span class="s2">&#34;(renewed|successfully)&#34;</span><span class="p">;</span> <span class="k">then</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;证书已续期，正在重启邮件服务器...&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;状态: 证书已续期，正在重启邮件服务器...&#34;</span>
 </span></span><span class="line"><span class="cl">    docker compose restart mailserver
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qi <span class="s2">&#34;not yet due&#34;</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;状态: 证书无需续期&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="k">else</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;无需续期，无需重启。&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;警告: 续期过程中可能出现异常，请检查上方 Certbot 输出。&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;任务结束时间: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">续期有效期输出
+</span></span><span class="line"><span class="cl">openssl x509 -noout -dates -in /opt/mailserver/docker-data/certbot/certs/live/mail.site1.com/cert.pem
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>赋予脚本执行权限</p>
+<li>赋予脚本执行权限
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2143,8 +2194,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
-<li>
-<p>配置 Crontab 定时任务</p>
+<li>配置 Crontab 定时任务
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2169,9 +2219,7 @@
 </div></li>
 </ul>
 </li>
-<li>
-<p>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</p>
-</li>
+<li>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</li>
 </ul>
 <h3 id="添加查看删除邮箱">添加、查看、删除邮箱
 </h3><ul>

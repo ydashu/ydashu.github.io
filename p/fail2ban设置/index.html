@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" DNS 类型 描述 优先级 格式 1 LAN 口 DHCP 通告中的 DNS 客户机直接使用下发的 DNS，通过dnsmasq实现 高 6,192.168.2.1 或 6,1.1.1.1等 2 DHCP/DNS 中的 DNS 转发 仅当1设置为6,192.168.2.1时生效 中 /*google.com/10.1.2.3 3 WAN 口 DNS 仅当1设置为6,192.168.2.1时生效 低 1.1.1.1 4 ISP 口 DNS 仅当1和3没有设置的情况下 最低 运营商设置 5 LAN 口 DNS 一般情况下，仅影响路由器自身，与客户机无关。\n仅当强制修改路由器 DNS 转发规则（如绑定 LAN 口 DNS 为上游）时，LAN 口 DNS 才会影响客户端。 / 1.1.1.1 DHCP 通告 1 2 dhcp.lan.dhcp_option=&#34;6,192.168.2.1&#34; dhcp.lan.dhcp_option=&#34;3,192.168.2.1&#34; 区别：\n">
-<title>openwrt的DNS</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" CentOS Stream 9\n安装 1 2 sudo dnf install epel-release -y sudo dnf install fail2ban -y 启用并启动 1 2 sudo systemctl enable fail2ban sudo systemctl start fail2ban 查看状态\n1 sudo systemctl status fail2ban 创建本地配置文件 注意：永远不要直接修改\u00a0/etc/fail2ban/jail.conf，因为软件更新会覆盖它。你应该创建一个名为jail.local\u00a0的副本或新文件\n">
+<title>Fail2Ban设置</title>
 
-<link rel='canonical' href='https://ydashu.github.io/p/openwrt%E7%9A%84dns/'>
+<link rel='canonical' href='https://ydashu.github.io/p/fail2ban%E8%AE%BE%E7%BD%AE/'>
 
-<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="openwrt的DNS">
-<meta property='og:description' content=" DNS 类型 描述 优先级 格式 1 LAN 口 DHCP 通告中的 DNS 客户机直接使用下发的 DNS，通过dnsmasq实现 高 6,192.168.2.1 或 6,1.1.1.1等 2 DHCP/DNS 中的 DNS 转发 仅当1设置为6,192.168.2.1时生效 中 /*google.com/10.1.2.3 3 WAN 口 DNS 仅当1设置为6,192.168.2.1时生效 低 1.1.1.1 4 ISP 口 DNS 仅当1和3没有设置的情况下 最低 运营商设置 5 LAN 口 DNS 一般情况下，仅影响路由器自身，与客户机无关。\n仅当强制修改路由器 DNS 转发规则（如绑定 LAN 口 DNS 为上游）时，LAN 口 DNS 才会影响客户端。 / 1.1.1.1 DHCP 通告 1 2 dhcp.lan.dhcp_option=&#34;6,192.168.2.1&#34; dhcp.lan.dhcp_option=&#34;3,192.168.2.1&#34; 区别：\n">
-<meta property='og:url' content='https://ydashu.github.io/p/openwrt%E7%9A%84dns/'>
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="Fail2Ban设置">
+<meta property='og:description' content=" CentOS Stream 9\n安装 1 2 sudo dnf install epel-release -y sudo dnf install fail2ban -y 启用并启动 1 2 sudo systemctl enable fail2ban sudo systemctl start fail2ban 查看状态\n1 sudo systemctl status fail2ban 创建本地配置文件 注意：永远不要直接修改\u00a0/etc/fail2ban/jail.conf，因为软件更新会覆盖它。你应该创建一个名为jail.local\u00a0的副本或新文件\n">
+<meta property='og:url' content='https://ydashu.github.io/p/fail2ban%E8%AE%BE%E7%BD%AE/'>
 <meta property='og:site_name' content='ydashu'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-15T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="openwrt的DNS">
-<meta name="twitter:description" content=" DNS 类型 描述 优先级 格式 1 LAN 口 DHCP 通告中的 DNS 客户机直接使用下发的 DNS，通过dnsmasq实现 高 6,192.168.2.1 或 6,1.1.1.1等 2 DHCP/DNS 中的 DNS 转发 仅当1设置为6,192.168.2.1时生效 中 /*google.com/10.1.2.3 3 WAN 口 DNS 仅当1设置为6,192.168.2.1时生效 低 1.1.1.1 4 ISP 口 DNS 仅当1和3没有设置的情况下 最低 运营商设置 5 LAN 口 DNS 一般情况下，仅影响路由器自身，与客户机无关。\n仅当强制修改路由器 DNS 转发规则（如绑定 LAN 口 DNS 为上游）时，LAN 口 DNS 才会影响客户端。 / 1.1.1.1 DHCP 通告 1 2 dhcp.lan.dhcp_option=&#34;6,192.168.2.1&#34; dhcp.lan.dhcp_option=&#34;3,192.168.2.1&#34; 区别：\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-11-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-11-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Fail2Ban设置">
+<meta name="twitter:description" content=" CentOS Stream 9\n安装 1 2 sudo dnf install epel-release -y sudo dnf install fail2ban -y 启用并启动 1 2 sudo systemctl enable fail2ban sudo systemctl start fail2ban 查看状态\n1 sudo systemctl status fail2ban 创建本地配置文件 注意：永远不要直接修改\u00a0/etc/fail2ban/jail.conf，因为软件更新会覆盖它。你应该创建一个名为jail.local\u00a0的副本或新文件\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -247,14 +247,18 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#dhcp-通告">DHCP 通告</a>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#启用并启动">启用并启动</a></li>
+    <li><a href="#创建本地配置文件">创建本地配置文件</a></li>
+    <li><a href="#配置参数">配置参数</a></li>
+    <li><a href="#重启">重启</a></li>
+    <li><a href="#查看状态">查看状态</a>
       <ol>
-        <li><a href="#dns-查询路径示例">DNS 查询路径示例</a></li>
-        <li><a href="#通告路由器-vs-通告外部-dns">通告路由器 vs 通告外部 DNS</a></li>
+        <li><a href="#查看当前封禁情况">查看当前封禁情况</a></li>
       </ol>
     </li>
-    <li><a href="#手机设备用clash代理上网dns的路径">手机设备用clash代理上网，DNS的路径</a></li>
-    <li><a href="#总结">总结</a></li>
+    <li><a href="#手动解封某个ip">手动解封某个IP</a></li>
+    <li><a href="#清空所有封禁慎用">清空所有封禁（慎用）：</a></li>
   </ol>
 </nav>
         </div>
@@ -282,7 +286,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/openwrt%E7%9A%84dns/">openwrt的DNS</a>
+            <a href="/p/fail2ban%E8%AE%BE%E7%BD%AE/">Fail2Ban设置</a>
         </h2>
     
         
@@ -304,7 +308,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-04-15</time>
+                <time class="article-time--published">2025-11-25</time>
             </div>
         
 
@@ -320,205 +324,126 @@
     <section class="article-content">
     
     
-    <div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th></th>
-          <th>DNS 类型</th>
-          <th>描述</th>
-          <th>优先级</th>
-          <th>格式</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>LAN 口 DHCP 通告中的 DNS</td>
-          <td>客户机直接使用下发的 DNS，通过dnsmasq实现</td>
-          <td>高</td>
-          <td>6,192.168.2.1 或 6,1.1.1.1等</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>DHCP/DNS 中的 DNS 转发</td>
-          <td>仅当1设置为6,192.168.2.1时生效</td>
-          <td>中</td>
-          <td>/*google.com/10.1.2.3</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>WAN 口 DNS</td>
-          <td>仅当1设置为6,192.168.2.1时生效</td>
-          <td>低</td>
-          <td>1.1.1.1</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>ISP 口 DNS</td>
-          <td>仅当1和3没有设置的情况下</td>
-          <td>最低</td>
-          <td>运营商设置</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td>LAN 口 DNS</td>
-          <td>一般情况下，仅影响路由器自身，与客户机无关。<br>仅当强制修改路由器 DNS 转发规则（如绑定 LAN 口 DNS 为上游）时，LAN 口 DNS 才会影响客户端。</td>
-          <td>/</td>
-          <td>1.1.1.1</td>
-      </tr>
-  </tbody>
-</table></div>
-<h2 id="dhcp-通告">DHCP 通告
+    <blockquote>
+<p>CentOS Stream 9</p>
+</blockquote>
+<h2 id="安装">安装
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dhcp.lan.dhcp_option=&#34;6,192.168.2.1&#34;
-</span></span><span class="line"><span class="cl">dhcp.lan.dhcp_option=&#34;3,192.168.2.1&#34;
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dnf install epel-release -y
+</span></span><span class="line"><span class="cl">sudo dnf install fail2ban -y
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>区别：</p>
-<ul>
-<li><strong><code>6</code></strong> 代表 DNS Servers Option：告诉 DHCP 客户端，它们应该使用 IP 地址为 <code>192.168.1.1</code> 的服务器作为其 <strong>DNS 服务器</strong></li>
-<li><strong><code>3</code></strong> 代表 Router Option：告诉 DHCP 客户端，IP 地址为 <code>192.168.1.1</code> 的设备是它们的 <strong>默认网关</strong>，当客户端需要发送数据包到其本地网络之外的目标时，它们会将这些数据包发送到默认网关，然后由路由器负责将数据包转发到正确的目的地。</li>
-<li>dhcp.lan.dhcp_option默认的就是LAN的ip，所以以上代码是默认的，可以不写，也最好不写，因为LAN的ip可能会变</li>
-<li>设置 <code>dhcp.lan.dhcp_option!=&quot;6,192.168.2.1&quot;</code>，如<code>dhcp.lan.dhcp_option!=&quot;6,8.8.8.8&quot;</code>则客户端查询本地域名失效</li>
-</ul>
-<h3 id="dns-查询路径示例">DNS 查询路径示例
-</h3><p>条件： dhcp.lan.dhcp_option默认；WAN的DNS设置为<code>8.8.8.8</code></p>
-<ol>
-<li>
-<p><strong>客户端查询外部域名（<code>www.google.com</code>）</strong>：</p>
-<ul>
-<li><strong>步骤</strong>：
-<ol>
-<li>笔记本（<code>192.168.1.100</code>）通过 DHCP 获取 DNS 服务器 <code>192.168.1.1</code>。</li>
-<li>笔记本发送查询 <code>www.google.com</code> 到 <code>192.168.1.1:53</code>。</li>
-<li><code>dnsmasq</code> 检查缓存，未命中。</li>
-<li><code>dnsmasq</code> 检查本地记录，非 <code>.lan</code> 域名，继续。</li>
-<li><code>dnsmasq</code> 读取 <code>/tmp/resolv.conf.d/resolv.conf.auto</code>（包含 <code>8.8.8.8</code>）（WAN的DNS）。</li>
-<li><code>dnsmasq</code> 转发查询到 <code>8.8.8.8:53</code>，获取 <code>142.250.190.14</code>。</li>
-<li><code>dnsmasq</code> 缓存结果，返回 <code>142.250.190.14</code> 给笔记本。</li>
-</ol>
-</li>
-<li><strong>路径</strong>：
+</div><h2 id="启用并启动">启用并启动
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> fail2ban
+</span></span><span class="line"><span class="cl">sudo systemctl start fail2ban
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看状态</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → WAN的DNS (8.8.8.8:53) → 返回
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl status fail2ban
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li><strong>效果</strong>：笔记本访问 <code>www.google.com</code>，解析快速（缓存命中后续查询）。</li>
-</ul>
-</li>
-<li>
-<p><strong>客户端查询本地域名（<code>laptop.lan</code>）</strong>：</p>
-<ul>
-<li><strong>步骤</strong>：
-<ol>
-<li>通过 DHCP 获取 DNS 服务器 <code>192.168.1.1</code></li>
-<li>笔记本发送查询 <code>laptop.lan</code> 到 <code>192.168.1.1:53</code>。</li>
-<li><code>dnsmasq</code> 检查缓存，未命中</li>
-<li><code>dnsmasq</code> 检查本地记录，<code>.lan</code> 域名，找到 <code>laptop</code> 对应 <code>192.168.1.100</code>。</li>
-<li><code>dnsmasq</code> 直接返回 <code>192.168.1.100</code>，无需上游查询。</li>
-</ol>
-</li>
-<li><strong>路径</strong>：
+</div><h2 id="创建本地配置文件">创建本地配置文件
+</h2><p><strong>注意</strong>：永远不要直接修改 <code>/etc/fail2ban/jail.conf</code>，因为软件更新会覆盖它。你应该创建一个名为<code>jail.local</code> 的副本或新文件</p>
+<p>Fail2Ban 使用 <code>/etc/fail2ban/jail.local</code> 作为自定义配置（优先级高于 <code>jail.conf</code>）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">笔记本 (192.168.1.100) → dnsmasq (192.168.1.1:53) → 返回
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li><strong>效果</strong>：笔记本可通过 <code>laptop.lan</code> 访问自身或其他本地设备。</li>
-</ul>
-</li>
-<li>
-<p><strong>路由器自身查询（<code>api.openwrt.org</code>）</strong>：</p>
-<ul>
-<li><strong>步骤</strong>：
-<ol>
-<li>路由器运行 <code>opkg update</code>，需要解析 <code>api.openwrt.org</code>。</li>
-<li>查询发送到 <code>127.0.0.1:53</code>（<code>dnsmasq</code>）。</li>
-<li><code>dnsmasq</code> 检查缓存，未命中。</li>
-<li>非本地域名，<code>dnsmasq</code> 转发到 <code>8.8.8.8</code>，获取 IP（如 <code>185.233.100.100</code>）。</li>
-<li><code>dnsmasq</code> 缓存结果，返回给路由器。</li>
-</ol>
-</li>
-<li><strong>路径</strong>：
-<div class="highlight"><div class="chroma">
+</div><h2 id="配置参数">配置参数
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">路由器进程 → dnsmasq (127.0.0.1:53) → WAN的DNS (8.8.8.8:53) → 返回
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vi /etc/fail2ban/jail.local
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li><strong>效果</strong>：路由器完成更新，解析可靠。</li>
-</ul>
-</li>
-</ol>
-<h3 id="通告路由器-vs-通告外部-dns">通告路由器 vs 通告外部 DNS
-</h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th><strong>特性</strong></th>
-          <th><strong>配置 1：通告路由器 IP</strong></th>
-          <th><strong>配置 2：通告外部 DNS</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>DHCP 选项</strong></td>
-          <td>无 <code>dhcp_option</code>，默认 <code>192.168.1.1</code></td>
-          <td><code>dhcp_option=&quot;6,8.8.8.8,8.8.4.4&quot;</code></td>
-      </tr>
-      <tr>
-          <td><strong>本地解析</strong></td>
-          <td>支持（如 <code>laptop.lan</code>）</td>
-          <td>不支持</td>
-      </tr>
-      <tr>
-          <td><strong>缓存</strong></td>
-          <td><code>dnsmasq</code> 提供缓存，加速查询</td>
-          <td>路由器无本地缓存（浏览器和应用程序应用程序可能会有缓存），依赖外部 DNS</td>
-      </tr>
-      <tr>
-          <td><strong>查询路径</strong></td>
-          <td>客户端 → <code>dnsmasq</code> → 上游 DNS</td>
-          <td>客户端 → 外部 DNS</td>
-      </tr>
-      <tr>
-          <td><strong>管理性</strong></td>
-          <td>集中管理，适合本地网络</td>
-          <td>分散管理，适合外部访问优先</td>
-      </tr>
-      <tr>
-          <td><strong>IPv6 DNS</strong></td>
-          <td>RA 通告路由器 IP</td>
-          <td>DHCPv6 通告外部 DNS</td>
-      </tr>
-  </tbody>
-</table></div>
-<h2 id="手机设备用clash代理上网dns的路径">手机设备用clash代理上网，DNS的路径
-</h2><p>前提条件：dhcp.lan.dhcp_option默认；WAN的DNS设置为<code>8.8.8.8</code>；手机clash开启；路由器没有装clash</p>
-<ul>
-<li><strong>DNS 劫持（默认）</strong>：手机 → Clash DNS → 代理通道 → 上游 DNS（如 <code>8.8.8.8</code>）。</li>
-<li><strong>无劫持</strong>：手机 → OpenWrt <code>dnsmasq</code>（<code>192.168.1.1</code>） → <code>wan.dns</code>（<code>1.1.1.1</code>）。</li>
-<li><strong>TUN 模式</strong>：手机 → Clash TUN → Clash DNS → 代理通道 → 上游 DNS。</li>
-</ul>
-<h2 id="总结">总结
-</h2><p>大部分情况只需要设置WAN的DNS和LAN的DNS并开启LAN 口 DHCP 通告</p>
-
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[sshd]</span>
+</span></span><span class="line"><span class="cl"><span class="na">enabled</span> <span class="o">=</span> <span class="s">true</span>
+</span></span><span class="line"><span class="cl"><span class="na">port</span> <span class="o">=</span> <span class="s">ssh</span>
+</span></span><span class="line"><span class="cl"><span class="na">logpath</span> <span class="o">=</span> <span class="s">%(sshd_log)s</span>
+</span></span><span class="line"><span class="cl"><span class="na">maxretry</span> <span class="o">=</span> <span class="s">3          # ❗允许最大重试次数（默认5，建议3）</span>
+</span></span><span class="line"><span class="cl"><span class="na">findtime</span> <span class="o">=</span> <span class="s">10m        # 在多少秒内计算失败次数（默认10分钟）</span>
+</span></span><span class="line"><span class="cl"><span class="na">bantime</span> <span class="o">=</span> <span class="s">1h        # 设 -1 为永久封禁</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="重启">重启
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart fail2ban
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="查看状态">查看状态
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fail2ban-client status
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查看当前封禁情况">查看当前封禁情况
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fail2ban-client status sshd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="手动解封某个ip">手动解封某个IP
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fail2ban-client <span class="nb">set</span> sshd unbanip 1.2.3.4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="清空所有封禁慎用">清空所有封禁（慎用）：
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo fail2ban-client status sshd <span class="p">|</span> grep <span class="s2">&#34;Banned IP list&#34;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*://; s/ /\n/g&#39;</span> <span class="p">|</span> grep -E <span class="s1">&#39;^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$&#39;</span> <span class="p">|</span> xargs -I <span class="o">{}</span> sudo fail2ban-client <span class="nb">set</span> sshd unbanip <span class="o">{}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -551,19 +476,6 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/fail2ban%E8%AE%BE%E7%BD%AE/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Fail2Ban设置</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -612,6 +524,19 @@
 
         <div class="article-details">
             <h2 class="article-title">linux常用系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/j4125-4%E7%BD%91%E5%8F%A3-pve-immortalwrt-debian/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">j4125&#43;4网口&#43;PVE&#43;immortalwrt&#43;debian</h2>
         </div>
     </a>
 </article>
