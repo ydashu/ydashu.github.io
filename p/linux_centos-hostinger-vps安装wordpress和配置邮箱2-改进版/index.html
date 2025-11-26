@@ -317,6 +317,7 @@
                 <li><a href="#自动更新ssl">自动更新SSL</a></li>
               </ol>
             </li>
+            <li><a href="#查看ssl有效期">查看SSL有效期</a></li>
           </ol>
         </li>
         <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a></li>
@@ -2131,9 +2132,6 @@
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
@@ -2178,9 +2176,6 @@
 </span></span><span class="line"><span class="cl"><span class="k">fi</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;任务结束时间: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">续期有效期输出
-</span></span><span class="line"><span class="cl">openssl x509 -noout -dates -in /opt/mailserver/docker-data/certbot/certs/live/mail.site1.com/cert.pem
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -2221,7 +2216,16 @@
 </li>
 <li>如果希望不重启容器加载新证书，可在邮件服务器容器内配置 证书软链接-这里不写了，以后再研究</li>
 </ul>
-<h3 id="添加查看删除邮箱">添加、查看、删除邮箱
+<h4 id="查看ssl有效期">查看SSL有效期
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl x509 -noout -dates -in /opt/mailserver/docker-data/certbot/certs/live/mail.site1.com/cert.pem
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="添加查看删除邮箱">添加、查看、删除邮箱
 </h3><ul>
 <li>常用命令
 <ul>
