@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                        <img src="/img/600_hu_f149b6dc1f375599.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -485,17 +485,17 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nginx <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-fpm <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-mysql <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    tree <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    telnet curl <span class="se">\ </span>
+</span></span></span><span class="line"><span class="cl">    nginx <span class="se">\
+</span></span></span><span class="line"><span class="cl">    php-fpm <span class="se">\
+</span></span></span><span class="line"><span class="cl">    php-mysql <span class="se">\
+</span></span></span><span class="line"><span class="cl">    php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    tree <span class="se">\
+</span></span></span><span class="line"><span class="cl">    telnet curl <span class="se">\ </span>
 </span></span><span class="line"><span class="cl">    mariadb-client <span class="se">\ </span>       <span class="c1"># 👉 用于命令行连接 Oracle MySQL 数据库</span>
 </span></span><span class="line"><span class="cl">    certbot python3-certbot-nginx <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    unzip <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    vim <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    corn
+</span></span></span><span class="line"><span class="cl">    unzip <span class="se">\
+</span></span></span><span class="line"><span class="cl">    vim <span class="se">\
+</span></span></span><span class="line"><span class="cl">    corn
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="table-wrapper"><table>
@@ -666,19 +666,19 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1">-- 创建数据库
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="kt">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">wordpress</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="kt">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 创建用户（限制只能从你的 Web 服务器 IP 登录）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;YourStrongPassword!123&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 创建用户（限制只能从你的 Web 服务器 IP 登录）
+</span></span></span><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;YourStrongPassword!123&#39;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 授权（只授权给 wordpress 库）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 授权（只授权给 wordpress 库）
+</span></span></span><span class="line"><span class="cl"><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">wordpress</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;wpuser&#39;</span><span class="o">@</span><span class="s1">&#39;Y.Y.Y.Y&#39;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 刷新权限
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 刷新权限
+</span></span></span><span class="line"><span class="cl"><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 退出
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">EXIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 退出
+</span></span></span><span class="line"><span class="cl"><span class="k">EXIT</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="下载并部署-wordpress">下载并部署 WordPress
@@ -802,7 +802,7 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 <pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span><span class="p">;</span>   <span class="c1"># 或者填你的公网 IP，例如：130.1.xxx.xxx
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/var/www/wordpress</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
@@ -813,7 +813,7 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php8.3-fpm.sock</span><span class="p">;</span>  <span class="c1"># Ubuntu 24.04 是 8.3
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -969,13 +969,13 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">yourdomain.com</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>   <span class="c1"># ← 添加这一行
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 其他配置...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -1208,27 +1208,27 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="c1"># ============ HTTP 自动跳转 HTTPS ============
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span> <span class="s">www.your-domain.com</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 全局设置：允许最大上传 64M（作用于此 server 块）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># ============ HTTPS 主站点配置 ============
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">your-domain.com</span> <span class="s">www.your-domain.com</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># SSL 证书路径
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_certificate</span> <span class="s">/etc/letsencrypt/live/your-domain.com/fullchain.pem</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate</span> <span class="s">/etc/letsencrypt/live/your-domain.com/fullchain.pem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/letsencrypt/live/your-domain.com/privkey.pem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># SSL 安全设置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_protocols</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.3</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">ssl_protocols</span> <span class="s">TLSv1.2</span> <span class="s">TLSv1.3</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_ciphers</span> <span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">ssl_session_cache</span> <span class="s">shared:SSL:10m</span><span class="p">;</span>
@@ -1236,19 +1236,19 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">Strict-Transport-Security</span> <span class="s">&#34;max-age=63072000&#34;</span> <span class="s">always</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># ⭐ 全局限制客户端上传大小（必须加在这里才对 HTTPS 生效）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">client_max_body_size</span> <span class="s">64M</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 根目录 &amp; 默认首页
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">root</span> <span class="s">/var/www/wordpress</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/var/www/wordpress</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.php</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># WordPress 固定链接支持
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.php?</span><span class="nv">$args</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># PHP 支持
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.php$</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">include</span> <span class="s">snippets/fastcgi-php.conf</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_pass</span> <span class="s">unix:/run/php/php8.3-fpm.sock</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
@@ -1257,7 +1257,7 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 禁止访问敏感文件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span> <span class="sr">/\.ht</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -1266,17 +1266,17 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 💡 静态资源缓存 —— 图片/CSS/JS/字体等，缓存1年 + immutable 提升性能
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(jpg|jpeg|png|gif|ico|svg|webp|css|js|woff2?|eot|ttf|otf)</span>$ <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(jpg|jpeg|png|gif|ico|svg|webp|css|js|woff2?|eot|ttf|otf)</span>$ <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">expires</span> <span class="s">1y</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">&#34;public,</span> <span class="s">immutable&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">add_header</span> <span class="s">Access-Control-Allow-Origin</span> <span class="s">&#34;*&#34;</span> <span class="s">always</span><span class="p">;</span>     <span class="c1"># 可选：允许跨域用作CDN
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1"># 取消日志记录静态资源，减轻磁盘IO（可选）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">        <span class="c1"># 取消日志记录静态资源，减轻磁盘IO（可选）
+</span></span></span><span class="line"><span class="cl">        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 🔐 安全加固头（推荐）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">server_tokens</span> <span class="no">off</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kn">server_tokens</span> <span class="no">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Frame-Options</span> <span class="s">&#34;SAMEORIGIN&#34;</span> <span class="s">always</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">&#34;nosniff&#34;</span> <span class="s">always</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kn">add_header</span> <span class="s">Referrer-Policy</span> <span class="s">&#34;no-referrer-when-downgrade&#34;</span> <span class="s">always</span><span class="p">;</span>
@@ -1617,7 +1617,7 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># 平滑重载 LiteSpeed 配置（不会中断请求）</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"># 平滑重载 LiteSpeed 配置（不会中断请求）</span>
 </span></span><span class="line"><span class="cl">systemctl reload nginx
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 记录执行时间与操作</span>
@@ -1699,7 +1699,7 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d<span class="k">)</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backup&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">MYSQL_HOST</span><span class="o">=</span><span class="s2">&#34;YYYZ&#34;</span>
@@ -1721,8 +1721,8 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 备份网站文件</span>
 </span></span><span class="line"><span class="cl">tar -czf <span class="nv">$BACKUP_DIR</span>/wp_files_<span class="nv">$DATE</span>.tar.gz -C /var/www wordpress <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份成功&#34;</span> &gt;&gt; /var/log/backup.log <span class="o">||</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份失败&#34;</span> &gt;&gt; /var/log/backup.log
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份成功&#34;</span> &gt;&gt; /var/log/backup.log <span class="o">||</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;网站文件备份失败&#34;</span> &gt;&gt; /var/log/backup.log
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 删除7天前的备份</span>
 </span></span><span class="line"><span class="cl">find <span class="nv">$BACKUP_DIR</span> -name <span class="s2">&#34;wp_*&#34;</span> -mtime +7 -delete
@@ -1850,6 +1850,19 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
             
                 
 <article class="">
+    <a href="/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">复制wordpress网站</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/openlitespeed-301%E9%87%8D%E5%AE%9A%E5%90%91/">
         
         
@@ -1895,19 +1908,6 @@ IP：固定公网IP（<code>X.X.X.X</code>），主机私有IP（<code>Y.Y.Y.Y</
 
         <div class="article-details">
             <h2 class="article-title">wordpress逆向处理</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">字符编码</h2>
         </div>
     </a>
 </article>

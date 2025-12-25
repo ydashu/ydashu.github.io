@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                        <img src="/img/600_hu_f149b6dc1f375599.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -341,7 +341,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 配置</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backups/mailserver&#34;</span>  <span class="c1"># 备份目标目录</span>
 </span></span><span class="line"><span class="cl"><span class="nv">SOURCE_DIR</span><span class="o">=</span><span class="s2">&#34;/opt/mailserver&#34;</span>      <span class="c1"># 源目录</span>
@@ -368,8 +368,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1"># 清理超过保留天数的备份文件</span>
 </span></span><span class="line"><span class="cl">    find <span class="s2">&#34;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&#34;</span> -type f -name <span class="s2">&#34;mailserver_files_20??-??-??.tar.gz&#34;</span> -mtime +<span class="nv">$RETENTION_DAYS</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>        -exec <span class="nb">echo</span> <span class="s2">&#34;删除备份: {}&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$CLEAN_LOG</span><span class="s2">&#34;</span> <span class="se">\;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>        -exec rm -f <span class="o">{}</span> <span class="se">\;</span>
+</span></span></span><span class="line"><span class="cl">        -exec <span class="nb">echo</span> <span class="s2">&#34;删除备份: {}&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$CLEAN_LOG</span><span class="s2">&#34;</span> <span class="se">\;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">        -exec rm -f <span class="o">{}</span> <span class="se">\;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;===== 清理完成 =====&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$CLEAN_LOG</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
@@ -501,7 +501,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 配置</span>
 </span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backups/mailserver&#34;</span>  <span class="c1"># 备份目录</span>
 </span></span><span class="line"><span class="cl"><span class="nv">RESTORE_DIR</span><span class="o">=</span><span class="s2">&#34;/opt/mailserver&#34;</span>     <span class="c1"># 恢复目标目录</span>
@@ -610,6 +610,19 @@
             
                 
 <article class="">
+    <a href="/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">复制wordpress网站</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/openlitespeed-301%E9%87%8D%E5%AE%9A%E5%90%91/">
         
         
@@ -655,19 +668,6 @@
 
         <div class="article-details">
             <h2 class="article-title">wordpress添加自定义post type分类的筛选和显示</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress逆向处理</h2>
         </div>
     </a>
 </article>

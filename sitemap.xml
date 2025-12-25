@@ -3,13 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ydashu.github.io/</loc>
-    <lastmod>2025-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/categories/</loc>
-    <lastmod>2025-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/post/</loc>
-    <lastmod>2025-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/wordpress/</loc>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/%E8%94%A1%E5%8F%B8%E6%99%BA%E9%94%90-%E5%AE%9A%E5%88%B6%E7%9C%9F%E4%BC%AA/</loc>
     <lastmod>2025-12-08T00:00:00+00:00</lastmod>
@@ -26,13 +35,7 @@
     <loc>https://ydashu.github.io/p/openlitespeed-301%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
     <lastmod>2025-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ydashu.github.io/categories/wordpress/</loc>
-    <lastmod>2025-11-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ydashu.github.io/p/wordpress%E7%BD%91%E7%AB%99%E5%9F%9F%E5%90%8D%E4%BF%AE%E6%94%B9/</loc>
-    <lastmod>2025-11-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ydashu.github.io/categories/%E5%BB%BA%E7%AB%99/</loc>
     <lastmod>2025-11-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ydashu.github.io/p/oracle-ubuntu%E5%AE%89%E8%A3%85wordpress/</loc>

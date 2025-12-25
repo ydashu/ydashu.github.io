@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                        <img src="/img/600_hu_f149b6dc1f375599.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -350,16 +350,16 @@
 <pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span> <span class="s1">&#39;shortcode_atts_gallery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span> <span class="nv">$result</span><span class="p">,</span> <span class="nv">$defaults</span><span class="p">,</span> <span class="nv">$atts</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 增加三重验证：
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$gallery_data</span> <span class="o">=</span> <span class="nx">get_field</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">],</span> <span class="nx">get_the_ID</span><span class="p">()</span> <span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nv">$gallery_data</span> <span class="o">=</span> <span class="nx">get_field</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">],</span> <span class="nx">get_the_ID</span><span class="p">()</span> <span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 1. 验证 ACF 字段存在性
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 2. 确保数据类型为数组
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$gallery_id_array</span> <span class="o">=</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$gallery_data</span> <span class="o">:</span> <span class="p">[];</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nv">$gallery_id_array</span> <span class="o">=</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$gallery_data</span> <span class="o">:</span> <span class="p">[];</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 3. 过滤非数字值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$valid_ids</span> <span class="o">=</span> <span class="nx">array_filter</span><span class="p">(</span><span class="nv">$gallery_id_array</span><span class="p">,</span> <span class="s1">&#39;is_numeric&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nv">$valid_ids</span> <span class="o">=</span> <span class="nx">array_filter</span><span class="p">(</span><span class="nv">$gallery_id_array</span><span class="p">,</span> <span class="s1">&#39;is_numeric&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nv">$result</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">implode</span><span class="p">(</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$valid_ids</span> <span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
@@ -429,6 +429,19 @@
             
                 
 <article class="">
+    <a href="/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">复制wordpress网站</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/openlitespeed-301%E9%87%8D%E5%AE%9A%E5%90%91/">
         
         
@@ -474,19 +487,6 @@
 
         <div class="article-details">
             <h2 class="article-title">wordpress添加自定义post type分类的筛选和显示</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/wordpress%E9%80%86%E5%90%91%E5%A4%84%E7%90%86/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">wordpress逆向处理</h2>
         </div>
     </a>
 </article>

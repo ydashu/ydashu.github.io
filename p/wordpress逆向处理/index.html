@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                        <img src="/img/600_hu_f149b6dc1f375599.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -396,7 +396,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// wp-config.php
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_CHARSET&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_CHARSET&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;DB_COLLATE&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8mb4_unicode_ci&#39;</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -416,7 +416,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// 插件或主题中强制设置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$wpdb</span><span class="o">-&gt;</span><span class="na">set_charset</span><span class="p">(</span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="nv">$wpdb</span><span class="o">-&gt;</span><span class="na">set_charset</span><span class="p">(</span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -440,13 +440,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// wp-includes/wp-db.php
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span> <span class="s1">&#39;latin1&#39;</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">charset</span> <span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span> <span class="s1">&#39;latin1&#39;</span> <span class="o">===</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">charset</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">is_utf8</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 标记需要特殊处理
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 读取数据时的转换
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">function</span> <span class="nf">_real_escape</span><span class="p">(</span> <span class="nv">$data</span> <span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nf">_real_escape</span><span class="p">(</span> <span class="nv">$data</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">charset</span> <span class="o">===</span> <span class="s1">&#39;latin1&#39;</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">mb_convert_encoding</span><span class="p">(</span> <span class="nv">$data</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO-8859-1&#39;</span> <span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -643,6 +643,19 @@
             
                 
 <article class="">
+    <a href="/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">复制wordpress网站</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/openlitespeed-301%E9%87%8D%E5%AE%9A%E5%90%91/">
         
         
@@ -688,19 +701,6 @@
 
         <div class="article-details">
             <h2 class="article-title">wordpress添加自定义post type分类的筛选和显示</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">字符编码</h2>
         </div>
     </a>
 </article>

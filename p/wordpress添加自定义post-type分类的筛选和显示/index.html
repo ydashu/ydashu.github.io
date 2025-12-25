@@ -58,7 +58,7 @@
                     
                     
                         
-                        <img src="/img/600_hu_dc744339a4a02d5b.png" width="300"
+                        <img src="/img/600_hu_f149b6dc1f375599.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -365,23 +365,23 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nv">$taxonomy</span> <span class="o">=</span> <span class="s1">&#39;product-category&#39;</span><span class="p">;</span> <span class="c1">//  必须和你的 taxonomy slug 一致
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nv">$selected</span> <span class="o">=</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="nv">$taxonomy</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="nv">$taxonomy</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 使用 WordPress 原生函数输出层级化下拉框
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">wp_dropdown_categories</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">wp_dropdown_categories</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;show_option_all&#39;</span> <span class="o">=&gt;</span> <span class="nx">__</span><span class="p">(</span><span class="s1">&#39;All Product Categories&#39;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;taxonomy&#39;</span>        <span class="o">=&gt;</span> <span class="nv">$taxonomy</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;name&#39;</span>            <span class="o">=&gt;</span> <span class="nv">$taxonomy</span><span class="p">,</span>             <span class="c1">// 表单 name，用于筛选
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;orderby&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;orderby&#39;</span>         <span class="o">=&gt;</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;selected&#39;</span>        <span class="o">=&gt;</span> <span class="nv">$selected</span><span class="p">,</span>            <span class="c1">// 默认选中项
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;hierarchical&#39;</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">//  关键！开启层级缩进
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;depth&#39;</span>           <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>                    <span class="c1">// 显示所有层级（可改为 1,2,3...限制深度）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;show_count&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">// 显示文章数量（可选）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;hide_empty&#39;</span>      <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>                <span class="c1">// 显示空分类（可选）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;value_field&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span>               <span class="c1">// 筛选用 slug（推荐）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;class&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;postform&#39;</span><span class="p">,</span>           <span class="c1">// wp 默认 admin class
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;id&#39;</span>              <span class="o">=&gt;</span> <span class="s1">&#39;filter-by-product-category&#39;</span><span class="p">,</span>
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;hierarchical&#39;</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">//  关键！开启层级缩进
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;depth&#39;</span>           <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>                    <span class="c1">// 显示所有层级（可改为 1,2,3...限制深度）
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;show_count&#39;</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>                 <span class="c1">// 显示文章数量（可选）
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;hide_empty&#39;</span>      <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>                <span class="c1">// 显示空分类（可选）
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;value_field&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;slug&#39;</span><span class="p">,</span>               <span class="c1">// 筛选用 slug（推荐）
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;class&#39;</span>           <span class="o">=&gt;</span> <span class="s1">&#39;postform&#39;</span><span class="p">,</span>           <span class="c1">// wp 默认 admin class
+</span></span></span><span class="line"><span class="cl">        <span class="s1">&#39;id&#39;</span>              <span class="o">=&gt;</span> <span class="s1">&#39;filter-by-product-category&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="s1">&#39;echo&#39;</span>            <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -421,6 +421,19 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%88%B6wordpress%E7%BD%91%E7%AB%99/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">复制wordpress网站</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
@@ -469,19 +482,6 @@
 
         <div class="article-details">
             <h2 class="article-title">wordpress逆向处理</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">字符编码</h2>
         </div>
     </a>
 </article>
