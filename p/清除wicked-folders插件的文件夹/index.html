@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field\n">
-<title>wordpress Meow&#43;ACF实现动态产品图片展示</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="确认taxonomy 1 SELECT DISTINCT taxonomy FROM wp_term_taxonomy WHERE taxonomy LIKE &#39;%fold%&#39;; 结果为wf_attachment_folders\n场景一：只删除 Wicked Folders 的“文件夹结构” 👉 不删除任何图片 / attachment（最常见、最安全）\n">
+<title>清除Wicked Folders插件的文件夹</title>
 
-<link rel='canonical' href='https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/'>
+<link rel='canonical' href='https://ydashu.github.io/p/%E6%B8%85%E9%99%A4wicked-folders%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/'>
 
-<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="wordpress Meow+ACF实现动态产品图片展示">
-<meta property='og:description' content=" 参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field\n">
-<meta property='og:url' content='https://ydashu.github.io/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/'>
+<link rel="stylesheet" href="/scss/style.min.1e4130043fd1d6f17930051257777a8e36b08fdfdcd89658833f0268dc3c2015.css"><meta property='og:title' content="清除Wicked Folders插件的文件夹">
+<meta property='og:description' content="确认taxonomy 1 SELECT DISTINCT taxonomy FROM wp_term_taxonomy WHERE taxonomy LIKE &#39;%fold%&#39;; 结果为wf_attachment_folders\n场景一：只删除 Wicked Folders 的“文件夹结构” 👉 不删除任何图片 / attachment（最常见、最安全）\n">
+<meta property='og:url' content='https://ydashu.github.io/p/%E6%B8%85%E9%99%A4wicked-folders%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/'>
 <meta property='og:site_name' content='ydashu'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Meow' /><meta property='article:tag' content='ACF' /><meta property='article:published_time' content='2025-04-16T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-16T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="wordpress Meow+ACF实现动态产品图片展示">
-<meta name="twitter:description" content=" 参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-12-29T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-29T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="清除Wicked Folders插件的文件夹">
+<meta name="twitter:description" content="确认taxonomy 1 SELECT DISTINCT taxonomy FROM wp_term_taxonomy WHERE taxonomy LIKE &#39;%fold%&#39;; 结果为wf_attachment_folders\n场景一：只删除 Wicked Folders 的“文件夹结构” 👉 不删除任何图片 / attachment（最常见、最安全）\n">
     <link rel="shortcut icon" href="/001.ico" />
 
     </head>
@@ -225,7 +225,55 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#确认taxonomy">确认taxonomy</a></li>
+    <li><a href="#场景一只删除-wicked-folders-的文件夹结构">场景一：只删除 Wicked Folders 的“文件夹结构”</a>
+      <ol>
+        <li><a href="#执行前建议">执行前建议</a></li>
+        <li><a href="#第-1-步删除媒体与文件夹的关联关系">第 1 步：删除媒体与文件夹的关联关系</a></li>
+        <li><a href="#第-2-步删除文件夹定义taxonomy">第 2 步：删除文件夹定义（taxonomy）</a></li>
+        <li><a href="#第-3-步清理孤立-terms必须">第 3 步：清理孤立 terms（必须）</a></li>
+      </ol>
+    </li>
+    <li><a href="#验证是否清干净">验证是否清干净</a></li>
+    <li><a href="#-场景二uploads-已删媒体库也是垃圾进阶">⚠️ 场景二：uploads 已删，媒体库也是垃圾（进阶）</a>
+      <ol>
+        <li><a href="#1-删除所有媒体记录">1️⃣ 删除所有媒体记录</a></li>
+        <li><a href="#2-清理-postmeta">2️⃣ 清理 postmeta</a></li>
+        <li><a href="#3-再执行上面的-folders-清理-3-步">3️⃣ 再执行上面的 <strong>folders 清理 3 步</strong></a></li>
+      </ol>
+    </li>
+    <li><a href="#-不建议你做的事容易误删">❌ 不建议你做的事（容易误删）</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -248,7 +296,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/wordpress-meow-acf%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E4%BA%A7%E5%93%81%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/">wordpress Meow&#43;ACF实现动态产品图片展示</a>
+            <a href="/p/%E6%B8%85%E9%99%A4wicked-folders%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/">清除Wicked Folders插件的文件夹</a>
         </h2>
     
         
@@ -270,7 +318,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-04-16</time>
+                <time class="article-time--published">2025-12-29</time>
             </div>
         
 
@@ -286,104 +334,124 @@
     <section class="article-content">
     
     
-    <blockquote>
-<p>参考文档：https://meowapps.com/meow-gallery/tutorial/#gallery-based-on-acf-field</p>
-</blockquote>
-<h2 id="步骤">步骤
-</h2><ul>
-<li>安装Meow gallery和ACF</li>
-<li>ACF定义产品和产品类别，并为产品添加gallery字段</li>
-<li>添加php snippet
-<ul>
-<li>
-<p>官方默认的snippet</p>
-<div class="highlight"><div class="chroma">
+    <h2 id="确认taxonomy">确认taxonomy
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">taxonomy</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wp_term_taxonomy</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">taxonomy</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%fold%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果为<code>wf_attachment_folders</code></p>
+<h2 id="场景一只删除-wicked-folders-的文件夹结构">场景一：只删除 Wicked Folders 的“文件夹结构”
+</h2><p>👉 <strong>不删除任何图片 / attachment（最常见、最安全）</strong></p>
+<h3 id="执行前建议">执行前建议
+</h3><p>备份数据库</p>
+<h3 id="第-1-步删除媒体与文件夹的关联关系">第 1 步：删除媒体与文件夹的关联关系
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span> <span class="s1">&#39;shortcode_atts_gallery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span> <span class="nv">$result</span><span class="p">,</span> <span class="nv">$defaults</span><span class="p">,</span> <span class="nv">$atts</span> <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">$gallery_id_array</span> <span class="o">=</span> <span class="nx">get_field</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">],</span> <span class="nx">get_the_ID</span><span class="p">()</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">$ids</span> <span class="o">=</span> <span class="nx">implode</span><span class="p">(</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$gallery_id_array</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">$result</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$ids</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span> <span class="p">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="n">tr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">wp_term_relationships</span><span class="w"> </span><span class="n">tr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">wp_term_taxonomy</span><span class="w"> </span><span class="n">tt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">tr</span><span class="p">.</span><span class="n">term_taxonomy_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tt</span><span class="p">.</span><span class="n">term_taxonomy_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tt</span><span class="p">.</span><span class="n">taxonomy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wf_attachment_folders&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>可能会出现错误，如果产品的gallery为空的话</p>
-</li>
-<li>
-<p>以下是优化后的代码，替换官方默认的</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">add_filter</span><span class="p">(</span> <span class="s1">&#39;shortcode_atts_gallery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span> <span class="nv">$result</span><span class="p">,</span> <span class="nv">$defaults</span><span class="p">,</span> <span class="nv">$atts</span> <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 增加三重验证：
-</span></span></span><span class="line"><span class="cl">    <span class="nv">$gallery_data</span> <span class="o">=</span> <span class="nx">get_field</span><span class="p">(</span> <span class="nv">$atts</span><span class="p">[</span><span class="s1">&#39;acf&#39;</span><span class="p">],</span> <span class="nx">get_the_ID</span><span class="p">()</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 1. 验证 ACF 字段存在性
-</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 确保数据类型为数组
-</span></span></span><span class="line"><span class="cl">    <span class="nv">$gallery_id_array</span> <span class="o">=</span> <span class="nx">is_array</span><span class="p">(</span><span class="nv">$gallery_data</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$gallery_data</span> <span class="o">:</span> <span class="p">[];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// 3. 过滤非数字值
-</span></span></span><span class="line"><span class="cl">    <span class="nv">$valid_ids</span> <span class="o">=</span> <span class="nx">array_filter</span><span class="p">(</span><span class="nv">$gallery_id_array</span><span class="p">,</span> <span class="s1">&#39;is_numeric&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nv">$result</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">implode</span><span class="p">(</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$valid_ids</span> <span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span> <span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>wordpress编辑界面添加短代码，格式为</p>
-<div class="highlight"><div class="chroma">
+</div><h3 id="第-2-步删除文件夹定义taxonomy">第 2 步：删除文件夹定义（taxonomy）
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[meow-gallery acf=&#34;my_acf_gallery_field&#34;]
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wp_term_taxonomy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">taxonomy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wf_attachment_folders&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>可以添加其他参数，如：<code>layout=&quot;carousel&quot;</code>等</li>
+</div><h3 id="第-3-步清理孤立-terms必须">第 3 步：清理孤立 terms（必须）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">wp_terms</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">wp_term_taxonomy</span><span class="w"> </span><span class="n">tt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">term_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tt</span><span class="p">.</span><span class="n">term_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tt</span><span class="p">.</span><span class="n">term_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 <strong>执行完后效果</strong></p>
+<ul>
+<li>Wicked Folders 所有文件夹消失</li>
+<li>媒体库仍然存在</li>
+<li>不影响文章 / 页面</li>
 </ul>
-</li>
+<h2 id="验证是否清干净">验证是否清干净
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">wp_term_taxonomy</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">taxonomy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wf_attachment_folders&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>👉 返回 <code>0</code> = 已完全删除</p>
+<h2 id="-场景二uploads-已删媒体库也是垃圾进阶">⚠️ 场景二：uploads 已删，媒体库也是垃圾（进阶）
+</h2><p>如果你之前 <strong>已经删了 wp-content/uploads</strong>，现在：</p>
+<ul>
+<li>媒体库全是 404</li>
+<li>Wicked Folders 只是“壳”</li>
 </ul>
-</li>
+<p>那你可以 <strong>先删 attachment，再删 folders</strong></p>
+<h3 id="1-删除所有媒体记录">1️⃣ 删除所有媒体记录
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wp_posts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">post_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;attachment&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-清理-postmeta">2️⃣ 清理 postmeta
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="n">pm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">wp_postmeta</span><span class="w"> </span><span class="n">pm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">wp_posts</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">pm</span><span class="p">.</span><span class="n">post_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-再执行上面的-folders-清理-3-步">3️⃣ 再执行上面的 <strong>folders 清理 3 步</strong>
+</h3><h2 id="-不建议你做的事容易误删">❌ 不建议你做的事（容易误删）
+</h2><ul>
+<li>❌ 直接 <code>DROP TABLE wp_terms</code></li>
+<li>❌ <code>DELETE FROM wp_terms WHERE name LIKE '%xxx%'</code></li>
+<li>❌ 只删 <code>wp_terms</code> 不删 <code>term_taxonomy</code></li>
 </ul>
 
 </section>
@@ -391,14 +459,6 @@
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/meow/">Meow</a>
-        
-            <a href="/tags/acf/">ACF</a>
-        
-    </section>
-
 
     
     <section class="article-copyright">
@@ -426,19 +486,6 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/%E6%B8%85%E9%99%A4wicked-folders%E6%8F%92%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">清除Wicked Folders插件的文件夹</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -487,6 +534,19 @@
 
         <div class="article-details">
             <h2 class="article-title">oracle&#43;ubuntu安装wordpress</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wordpress%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89post-type%E5%88%86%E7%B1%BB%E7%9A%84%E7%AD%9B%E9%80%89%E5%92%8C%E6%98%BE%E7%A4%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">wordpress添加自定义post type分类的筛选和显示</h2>
         </div>
     </a>
 </article>
