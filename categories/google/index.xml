@@ -22,6 +22,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;analytics.google.com&#34; &gt;GA4&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;前提：Ads GA4 GTM最好为同一个谷歌账户&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;ads添加website目标&#34;&gt;ads添加website目标
 &lt;/h2&gt;&lt;ul&gt;

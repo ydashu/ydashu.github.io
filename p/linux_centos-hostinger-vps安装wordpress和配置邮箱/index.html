@@ -300,7 +300,7 @@
         <li><a href="#安装docker-compose">安装Docker Compose</a></li>
         <li><a href="#dns设置1-amx">DNS设置1-A、MX</a></li>
         <li><a href="#安装docker-mailserve">安装docker-mailserve</a></li>
-        <li><a href="#dns设置2--txt">DNS设置2- TXT</a>
+        <li><a href="#dns设置2-txt">DNS设置2-TXT</a>
           <ol>
             <li><a href="#设置">设置</a></li>
           </ol>
@@ -322,6 +322,7 @@
         </li>
         <li><a href="#添加查看删除邮箱">添加、查看、删除邮箱</a></li>
         <li><a href="#设置邮件的大小限制">设置邮件的大小限制</a></li>
+        <li><a href="#邮箱系统测试">邮箱系统测试</a></li>
         <li><a href="#邮件客户端">邮件客户端</a>
           <ol>
             <li><a href="#实现邮件已读">实现邮件“已读”</a></li>
@@ -1833,7 +1834,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="dns设置2--txt">DNS设置2- TXT
+<h3 id="dns设置2-txt">DNS设置2-TXT
 </h3><ul>
 <li>SPF 记录：定义了哪些服务器被允许代表这个域名发送电子邮件</li>
 <li>DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
@@ -1879,7 +1880,7 @@
       <tr>
           <td>mail._domainkey</td>
           <td>TXT</td>
-          <td>v=DKlM1:h=sha256; k=rsa;p=AAABBB</td>
+          <td>v=DKIM1; h=sha256; k=rsa; p=AAABBB</td>
       </tr>
   </tbody>
 </table></div>
@@ -1910,7 +1911,7 @@
       <tr>
           <td>mail._domainkey</td>
           <td>TXT</td>
-          <td>v=DKlM1:h=sha256; k=rsa;p=CCCDDD</td>
+          <td>v=DKIM1; h=sha256; k=rsa; p=CCCDDD</td>
       </tr>
   </tbody>
 </table></div>
@@ -2336,6 +2337,67 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
+</ul>
+<h3 id="邮箱系统测试">邮箱系统测试
+</h3><ul>
+<li><a class="link" href="https://mxtoolbox.com/SuperTool.aspx"  target="_blank" rel="noopener"
+    >mxtoolbox</a>
+<ul>
+<li>点击find problems</li>
+<li>注意Errors和Warning</li>
+</ul>
+</li>
+<li><a class="link" href="https://www.appmaildev.com/en/dkim/"  target="_blank" rel="noopener"
+    >DKIM Test</a>
+<ul>
+<li>Next Step</li>
+<li>向test邮箱发送邮件</li>
+<li>显示DKIM等是否通过</li>
+</ul>
+</li>
+<li>DKIM未通过可能的原因
+<ul>
+<li><a class="link" href="#DNS%e8%ae%be%e7%bd%ae2-TXT" >DNS设置2-TXT</a>未设置完全
+<ul>
+<li>检查方法
+<ul>
+<li><code>tree /opt/mailserver/docker-data/dms/config/opendkim/keys/</code> 是否有相关的文件</li>
+</ul>
+</li>
+<li>解决方法
+<ul>
+<li>如果未出现重新生成 <code>docker exec -it mailserver setup config dkim domain site1.com</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>OpenDKIM的映射表(SigningTable)未更新
+<ul>
+<li>检查方法
+<ul>
+<li><code>docker exec -it mailserver cat /etc/opendkim/SigningTable</code> 是否出现对应邮箱域名的内容<code>*@site1.com mail._domainkey.site1.com</code></li>
+</ul>
+</li>
+<li>解决方法
+<ul>
+<li>重启
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose down
+</span></span><span class="line"><span class="cl">docker-compose up -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="邮件客户端">邮件客户端
 </h3><p>推荐使用</p>

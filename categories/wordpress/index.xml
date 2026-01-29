@@ -7396,7 +7396,7 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;dns设置2--txt&#34;&gt;DNS设置2- TXT
+&lt;h3 id=&#34;dns设置2-txt&#34;&gt;DNS设置2-TXT
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;SPF 记录：定义了哪些服务器被允许代表这个域名发送电子邮件&lt;/li&gt;
 &lt;li&gt;DMARC 记录用于指示收件人邮件服务器如何处理无法通过 SPF 或 DKIM 验证的邮件。它还提供了一个机制，让域名所有者可以收到关于他们的域名被冒用的报告。
@@ -7442,7 +7442,7 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
       &lt;tr&gt;
           &lt;td&gt;mail._domainkey&lt;/td&gt;
           &lt;td&gt;TXT&lt;/td&gt;
-          &lt;td&gt;v=DKlM1:h=sha256; k=rsa;p=AAABBB&lt;/td&gt;
+          &lt;td&gt;v=DKIM1; h=sha256; k=rsa; p=AAABBB&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -7473,7 +7473,7 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
       &lt;tr&gt;
           &lt;td&gt;mail._domainkey&lt;/td&gt;
           &lt;td&gt;TXT&lt;/td&gt;
-          &lt;td&gt;v=DKlM1:h=sha256; k=rsa;p=CCCDDD&lt;/td&gt;
+          &lt;td&gt;v=DKIM1; h=sha256; k=rsa; p=CCCDDD&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -7899,6 +7899,67 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;邮箱系统测试&#34;&gt;邮箱系统测试
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mxtoolbox.com/SuperTool.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mxtoolbox&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;点击find problems&lt;/li&gt;
+&lt;li&gt;注意Errors和Warning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.appmaildev.com/en/dkim/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DKIM Test&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Next Step&lt;/li&gt;
+&lt;li&gt;向test邮箱发送邮件&lt;/li&gt;
+&lt;li&gt;显示DKIM等是否通过&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DKIM未通过可能的原因
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#DNS%e8%ae%be%e7%bd%ae2-TXT&#34; &gt;DNS设置2-TXT&lt;/a&gt;未设置完全
+&lt;ul&gt;
+&lt;li&gt;检查方法
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tree /opt/mailserver/docker-data/dms/config/opendkim/keys/&lt;/code&gt; 是否有相关的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解决方法
+&lt;ul&gt;
+&lt;li&gt;如果未出现重新生成 &lt;code&gt;docker exec -it mailserver setup config dkim domain site1.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenDKIM的映射表(SigningTable)未更新
+&lt;ul&gt;
+&lt;li&gt;检查方法
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it mailserver cat /etc/opendkim/SigningTable&lt;/code&gt; 是否出现对应邮箱域名的内容&lt;code&gt;*@site1.com mail._domainkey.site1.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解决方法
+&lt;ul&gt;
+&lt;li&gt;重启
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose down
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;邮件客户端&#34;&gt;邮件客户端
 &lt;/h3&gt;&lt;p&gt;推荐使用&lt;/p&gt;
@@ -9413,7 +9474,7 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
       &lt;tr&gt;
           &lt;td&gt;mail._domainkey&lt;/td&gt;
           &lt;td&gt;TXT&lt;/td&gt;
-          &lt;td&gt;v=DKlM1:h=sha256; k=rsa;p=AAABBB&lt;/td&gt;
+          &lt;td&gt;v=DKIM1; h=sha256; k=rsa; p=AAABBB&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -9444,7 +9505,7 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
       &lt;tr&gt;
           &lt;td&gt;mail._domainkey&lt;/td&gt;
           &lt;td&gt;TXT&lt;/td&gt;
-          &lt;td&gt;v=DKlM1:h=sha256; k=rsa;p=CCCDDD&lt;/td&gt;
+          &lt;td&gt;v=DKIM1; h=sha256; k=rsa; p=CCCDDD&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -9828,6 +9889,67 @@ IP：固定公网IP（&lt;code&gt;X.X.X.X&lt;/code&gt;），主机私有IP（&lt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;邮箱系统测试&#34;&gt;邮箱系统测试
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mxtoolbox.com/SuperTool.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mxtoolbox&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;点击find problems&lt;/li&gt;
+&lt;li&gt;注意Errors和Warning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.appmaildev.com/en/dkim/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DKIM Test&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Next Step&lt;/li&gt;
+&lt;li&gt;向test邮箱发送邮件&lt;/li&gt;
+&lt;li&gt;显示DKIM等是否通过&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DKIM未通过可能的原因
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#DNS%e8%ae%be%e7%bd%ae2-TXT&#34; &gt;DNS设置2-TXT&lt;/a&gt;未设置完全
+&lt;ul&gt;
+&lt;li&gt;检查方法
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tree /opt/mailserver/docker-data/dms/config/opendkim/keys/&lt;/code&gt; 是否有相关的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解决方法
+&lt;ul&gt;
+&lt;li&gt;如果未出现重新生成 &lt;code&gt;docker exec -it mailserver setup config dkim domain site1.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenDKIM的映射表(SigningTable)未更新
+&lt;ul&gt;
+&lt;li&gt;检查方法
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it mailserver cat /etc/opendkim/SigningTable&lt;/code&gt; 是否出现对应邮箱域名的内容&lt;code&gt;*@site1.com mail._domainkey.site1.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解决方法
+&lt;ul&gt;
+&lt;li&gt;重启
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose down
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker-compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

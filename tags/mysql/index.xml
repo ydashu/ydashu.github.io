@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Mysql on ydashu</title>
+        <title>MySQL on ydashu</title>
         <link>https://ydashu.github.io/tags/mysql/</link>
-        <description>Recent content in Mysql on ydashu</description>
+        <description>Recent content in MySQL on ydashu</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>

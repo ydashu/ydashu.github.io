@@ -7,7 +7,142 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ydashu</copyright>
-        <lastBuildDate>Tue, 06 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%BE%92%E6%AD%A5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ydashu.github.io/categories/%E5%BE%92%E6%AD%A5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>帐篷搭建攻略</title>
+        <link>https://ydashu.github.io/p/%E5%B8%90%E7%AF%B7%E6%90%AD%E5%BB%BA%E6%94%BB%E7%95%A5/</link>
+        <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://ydashu.github.io/p/%E5%B8%90%E7%AF%B7%E6%90%AD%E5%BB%BA%E6%94%BB%E7%95%A5/</guid>
+        <description>&lt;h2 id=&#34;选择露营点&#34;&gt;选择露营点
+&lt;/h2&gt;&lt;h3 id=&#34;不适合&#34;&gt;不适合
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;不适合搭建的地点&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;风险 / 原因&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;河的中洲、河岸低处&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;涨水风险：&lt;/strong&gt; 天气变化或上游降雨可能导致水位暴涨，淹没营地。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;干涸的河床、冲沟（Washes）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;山洪风险：&lt;/strong&gt; 上游突发暴雨可能瞬间引发致命山洪（Flash Flood）。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;山脊、山顶等通风处&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;强风：&lt;/strong&gt; 阻挡物少，侧风和强风可能导致帐篷结构损坏或被吹飞。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;悬崖边缘、碎石陡坡（陡峭、地基不稳）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;落石/滑坡：&lt;/strong&gt; 存在岩石滚落或地基不稳引起的山体滑坡危险。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;雪下、雪洞内&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;雪崩风险：&lt;/strong&gt; 特别在陡峭的山坡或雪积聚的区域。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;枯树、腐烂树木或大树下（“寡妇制造者”）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;落物/雷击风险：&lt;/strong&gt; 强风可能吹落枯枝；雷雨天气有被雷击的危险。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;低洼地或排水不良区域&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;积水风险：&lt;/strong&gt; 一旦下雨，雨水会迅速汇集，导致帐篷底部被淹。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;浓密或高大的草丛中&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;卫生/潮湿：&lt;/strong&gt; 易滋生蚊虫、蜱虫、蛇类；通风差，易导致帐篷内部凝结水汽（返潮）。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;明显的动物径道上&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;人兽冲突：&lt;/strong&gt; 阻碍野生动物（如熊、野猪）的正常活动，增加遭遇危险动物的风险。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;水源地（河流、湖泊）附近 60 米内&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;生态伦理/潮湿：&lt;/strong&gt; 污染饮用水源；同时水源地附近通常湿度较大，易导致帐篷潮湿。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;适合&#34;&gt;适合
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;适合区域&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;优势/说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;背风坡的林缘（Sheltered Forest Edge）&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;既可利用树林作为天然的&lt;strong&gt;防风屏障&lt;/strong&gt;，又不会因为在树林深处而过于潮湿、黑暗或面临枯枝坠落的风险。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;略高的平坦台地或地块&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;天然排水：&lt;/strong&gt; 地势高于周边区域，下雨时能保障雨水顺利排出，不会在帐篷下方汇集。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;阳光充足且干燥的地方&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;能让帐篷和营地保持干燥，有助于早晨露水的蒸发，减少发霉和潮湿感。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;指定的露营地 (Designated Campsites)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;安全保障：&lt;/strong&gt; 这些地方经过考察和维护，通常远离危险区域，地面平整，部分还设有消防设施。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;灌木或低矮植被环绕的空地&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;灌木丛能提供阻挡地面风和沙尘的屏障，同时没有高大树木的危险。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;超详尽的固定帐篷方式&#34;&gt;超详尽的固定帐篷方式
+&lt;/h2&gt;&lt;h3 id=&#34;1-确定帐篷的入口位置&#34;&gt;1. 确定帐篷的入口位置
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;确定入口的位置，使帐篷的入口在&lt;strong&gt;背风一侧&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;若帐篷有多个出入口，则将主入口朝向设在背风一侧&lt;/li&gt;
+&lt;li&gt;如果无风或微风，可将入口朝向景观最好或最隐蔽的方向&lt;/li&gt;
+&lt;li&gt;地形原则：避免头高脚低或头低脚高。在斜坡上，宁可头朝上坡，脚朝下坡，但尽量寻找绝对平坦处。如果不得不在斜坡睡，使用充气垫下方放置防潮垫增加摩擦力防止下滑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-地钉的固定&#34;&gt;2. 地钉的固定
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;45度角&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;全钉入原则&lt;/strong&gt;：除了少数特殊雪钉或沙钉需要露出一部分方便回收外，普通地钉应&lt;strong&gt;全部没入土中&lt;/strong&gt;。露出的部分容易绊倒人，且容易在受力时弯曲&lt;/li&gt;
+&lt;li&gt;将帐篷底部的挂耳全部用地钉或螺钉进行固定&lt;/li&gt;
+&lt;li&gt;尽量确保帐篷固定在靠近地面的地方，&lt;strong&gt;从帐篷底部向上的顺序对帐篷进行固定&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;【注意】&lt;/em&gt; 如果先从距离地面较高的部分进行固定，则帐篷本身的高度会被降低或变形，并且可能会对框架施加过大的压力，从而造成帐篷的损坏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-拉力绳的固定&#34;&gt;3. 拉力绳的固定
+&lt;/h3&gt;&lt;p&gt;使用地钉或者其他手段固定拉力绳，具体操作方法如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;① 外账固定&lt;/strong&gt;
+如果是双层帐篷，请务必将外账挂袢处的拉力绳拉紧，并固定在地面上&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;② 内账与铝杆固定&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将与铝杆链接的拉力绳拉出，固定在四周的地面上&lt;/li&gt;
+&lt;li&gt;*&lt;em&gt;拉力绳拉出的方向应该在与铝杆同方向两端的延长线上。&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;【注意】&lt;/em&gt; 如果沿着与铝杆方向截然不同的方向拉出拉力绳，则这些方向的力作用在铝杆上时，会使帐篷的框架变形&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;③ 避免高位固定&lt;/strong&gt;
+确保拉力绳固定在&lt;strong&gt;地面上&lt;/strong&gt;。倘若利用树木等将拉力绳固定在比地面高的位置，帐篷的拉力将会被分散，造成帐篷受力不稳定，从而导致帐篷破损&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;④ 积雪期间的固定（埋钉子）&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用埋钉子的方法固定拉力绳（地钉被埋在雪里，可能无法回收）&lt;/li&gt;
+&lt;li&gt;不能从钉子处调整拉力绳的拉力大小，所以拉力绳的安装方法要与通常情况相反&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4当地钉不能钉住地面的时候&#34;&gt;4.当地钉不能钉住地面的时候
+&lt;/h3&gt;&lt;p&gt;当地面过于松软（如沙地）或过于坚硬（如岩石地）时，可以采取以下方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将拉力绳垂直绑住钉子，并在两端放置&lt;strong&gt;石头&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;strong&gt;石头网袋&lt;/strong&gt;（网袋需有一定强度，可用厚便利袋代替，但强度可能不足）&lt;/li&gt;
+&lt;li&gt;在积雪时，将&lt;strong&gt;树枝捆成一捆&lt;/strong&gt;，把绳子与树枝埋进雪里&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;温馨提示：&lt;/strong&gt; 使用以上方法来固定帐篷时，绳索的长度要比平时预留得更长，固定起来会更轻松。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>户外装备</title>
         <link>https://ydashu.github.io/p/%E6%88%B7%E5%A4%96%E8%A3%85%E5%A4%87/</link>
         <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
