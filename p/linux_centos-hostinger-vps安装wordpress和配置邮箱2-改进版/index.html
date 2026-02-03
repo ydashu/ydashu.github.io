@@ -2078,6 +2078,12 @@
 </ul>
 <h5 id="自动更新ssl">自动更新SSL
 </h5><ul>
+<li>前提条件前提条件的
+<ul>
+<li><code>listeners</code>中<code>site1</code>中的site1的Virtual Host包含<code>mail.site1.com</code></li>
+<li><code>Virtual Hosts</code>中<code>site1</code>对应的<code>Domain Aliases</code>包含<code>mail.site1.com</code></li>
+</ul>
+</li>
 <li>创建脚本
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2167,7 +2173,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------------------------------------------------------&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 逻辑判断</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qiE <span class="s2">&#34;(renewed|successfully)&#34;</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qi <span class="s2">&#34;success&#34;</span><span class="p">;</span> <span class="k">then</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;状态: 证书已续期，正在重启邮件服务器...&#34;</span>
 </span></span><span class="line"><span class="cl">    docker compose restart mailserver
 </span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$OUTPUT</span><span class="s2">&#34;</span> <span class="p">|</span> grep -qi <span class="s2">&#34;not yet due&#34;</span><span class="p">;</span> <span class="k">then</span>
